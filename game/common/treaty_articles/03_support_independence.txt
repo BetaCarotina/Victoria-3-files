@@ -10,12 +10,18 @@
 	flags = {
 		is_support_independence
 		can_be_renegotiated
+		giftable
+		friendly
 	}
+
+	maintenance_paid_by = source_country
 
 	automatically_support = {
 		dp_independence
 		dp_increase_autonomy
 		dp_annex_subject
+		dp_hungarian_revolution
+		dp_sepoy_mutiny
 	}
 
 	usage_limit = once_per_side
@@ -29,48 +35,81 @@
 	}
 
 	visible = {
-		NOT = { is_country_type = decentralized }
-		is_revolutionary = no
 	}
 
 	possible = {
-		NOT = { is_country_type = decentralized }
-		is_revolutionary = no
 	}
 
-    non_fulfillment = {
-        consequences = withdraw
+	requirement_to_maintain = {
+		trigger = {
+			scope:source_country = {
+				NOT = { has_subject_relation_with = scope:target_country }
+			}
+		}
+	}
 
-        conditions = {
-            weekly = {
-				scope:article = {
-					OR = {
-						source_country.country_rank < target_country.country_rank
-						source_country = { is_subject = yes }
-						target_country = { is_subject = no }
+	requirement_to_maintain = {
+		trigger = {
+			scope:target_country = { is_subject = yes }
+		}
+	}
+
+	requirement_to_maintain = {
+		trigger = {
+			scope:target_country = {
+				save_temporary_scope_as = actor
+			}
+			custom_tooltip = {
+				text = "DIPLOMATIC_PACT_REQUIREMENT_HIGH_LIBERTY_DESIRE"
+				OR = {
+					scope:source_country = {
+						is_subject = no
 					}
+					scope:source_country = {
+						overlord = scope:target_country.overlord
+					}
+					scope:source_country.liberty_desire >= 25 #offering country should not be about to lose its own independence
 				}
-            }
-        }
-    }
+			}
+		}
+	}
+
+	requirement_to_maintain = {
+		trigger = {
+			custom_tooltip = {
+				text = "DIPLOMATIC_PACT_REQUIREMENT_HIGHER_RANK_OR_SAME_OVERLORD"
+				trigger_if = {
+					limit = { #exception for same overlords
+						scope:source_country = {
+							is_subject = yes
+						}
+						scope:target_country.overlord ?= scope:source_country.overlord
+					}
+					always = yes
+				}
+				trigger_else = { #otherwise must be of same or higher rank
+					scope:source_country.country_rank >= scope:target_country.country_rank
+				}
+			}
+		}
+	}
 
 	can_ratify = {
-		scope:target_country = {
-			is_subject = yes
-			NOT = { is_subject_of = scope:source_country }
-		}
 		scope:target_country.overlord ?= {
 			NOT = {
 				any_scope_treaty = {
 					binds = scope:source_country
 					any_scope_article = {
-						has_type = alliance
+						OR = {
+							has_type = alliance
+							has_type = defensive_pact
+						}
 					}
 				}
 			}
 		}
         custom_tooltip = {
-            text = DUPLICATE_ARTICLE_SAME_INPUTS
+            text = DUPLICATE_ARTICLE_SAME_INPUTS_TREATY
             NOT = {
                 scope:source_country = {
                     any_scope_treaty = {
@@ -107,13 +146,17 @@
 
 	on_entry_into_force = {}
 
-	on_withdrawal = {}
+	on_withdrawal = {
+		scope:withdrawing_country = {
+			create_bidirectional_truce = { country = scope:non_withdrawing_country months = 12 }
+		}
+	}
 	on_break = {
 		if = {
 			limit = {
 				scope:withdrawing_country = {
 					is_subject = no
-					scope:target_country = this
+					scope:target_country ?= this
 				}
 			}
 			scope:withdrawing_country = {
@@ -290,7 +333,7 @@
 						value = 30
 					}
 					else = {
-						value = -1000
+						value = -500
 					}
 				}
 			}
@@ -316,7 +359,7 @@
 					}
 					add = {
 						desc = "DIPLOMATIC_ACCEPTANCE_FELLOW_SUBJECT"
-						value = 50
+						value = 25
 					}
 				}
 
@@ -330,6 +373,9 @@
 
 				if = {
 					limit = {
+						scope:target_country ?= {
+							is_subject = yes # For arcane reasons that I will not go into we are repeating this check here
+						}
 						scope:source_country ?= {
 							is_subject = no
 						}
@@ -365,9 +411,15 @@
 					}
 					else_if = {
 						limit = {
-							has_attitude = {
-								who = overlord
-								attitude = loyal
+							OR = {
+								has_attitude = {
+									who = overlord
+									attitude = loyal
+								}
+								has_attitude = {
+									who = overlord
+									attitude = aloof
+								}
 							}
 						}
 						value = -1000
@@ -426,49 +478,6 @@
 						divide = 3650
 					}
 					max = 2
-				}
-			}
-		}
-
-		contextual_accept_score = {
-			value = 0
-
-			if = {
-				limit = {
-					scope:target_country ?= this
-					scope:treaty ?= {
-						NOT = {
-							any_scope_article_option = {
-								OR = {
-									source_country ?= scope:target_country
-									is_giftable_treaty_article = no
-								}
-							}
-						}
-					}
-				}
-				add = {
-					desc = "DIPLOMATIC_ACCEPTANCE_GIFT"
-					value = 200
-				}
-			}
-			else_if = {
-				limit = {
-					scope:treaty ?= {
-						NOT = {
-							any_scope_article_option = {
-								NOT = { has_type = support_independence }
-							}
-						}
-						any_scope_article_option = {
-							count = 2
-							has_type = support_independence
-						}
-					}
-				}
-				add = {
-					desc = "DIPLOMATIC_ACCEPTANCE_EQUAL_EXCHANGE"
-					value = 30
 				}
 			}
 		}

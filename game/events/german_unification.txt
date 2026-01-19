@@ -106,7 +106,7 @@ german_unification.1 = {
 				if = {
 					limit = {
 						exists = c:AUS
-						c:AUS = {
+						c:AUS ?= {
 							country_rank >= rank_value:great_power
 							NOT = { has_claim = root }
 							owns_entire_state_region = STATE_BOHEMIA
@@ -115,7 +115,7 @@ german_unification.1 = {
 						}
 					}
 
-					c:AUS = {
+					c:AUS ?= {
 						set_mutual_secret_goal = {
 							country = root
 							secret_goal = reconcile
@@ -161,7 +161,7 @@ german_unification.1 = {
 				NOT = { exists = c:SGF }
 				OR = {
 					NOT = { exists = c:AUS }
-					NOT = { THIS = c:AUS }
+					NOT = { c:AUS ?= THIS }
 				}
 				OR = {
 					country_tier = kingdom
@@ -270,26 +270,16 @@ german_unification.3 = {
 
 	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
 
+	cooldown = { days = never_fire_again_modifier_time }
+
 	duration = 3
 
 	trigger = {
-		NOT = { has_global_variable = bismarck_variable }
-		ig:ig_landowners = {
-			is_powerful = yes
-			is_in_government = yes
-		}
-		is_unification_candidate = GER
-		has_technology_researched = nationalism
-		game_date > 1846.1.1
-		game_date < 1898.1.1
+		# triggered by character spawn
 	}
 
 	immediate = {
-		set_global_variable = bismarck_variable
-		create_character = {
-			template = PRU_otto_von_bismarck
-		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = junkers
 			leader = {
 				save_scope_as = bismarck_scope
@@ -309,15 +299,25 @@ german_unification.3 = {
 			add_modifier = {
 				name = bismarck_popular
 			}
+			if = {
+				limit = {
+					has_variable = memento_mori_immunity
+				}
+				remove_variable = memento_mori_immunity
+			}
+			set_variable = { name = memento_mori_immunity years = 30 }
 		}
 		add_modifier = {
 			name = realpolitik
-			days = normal_modifier_time
+			days = long_modifier_time
+		}
+
+		ai_chance = {
+			base = 95
 		}
 	}
 	option = {
 		name = german_unification.3.b
-		default_option = yes
 		show_as_tooltip = {
 			create_character = {
 				template = PRU_otto_von_bismarck
@@ -330,7 +330,11 @@ german_unification.3 = {
 		}
 		add_modifier = {
 			name = germany_aggressive_expansion
-			days = normal_modifier_time
+			days = long_modifier_time
+		}
+
+		ai_chance = {
+			base = 5
 		}
 	}
 }
@@ -378,9 +382,7 @@ immediate = {
 		default_option = yes
 		give_claims_on_germany = yes
 		ruler = {
-			add_modifier = {
-				name = german_unifier_ruler
-			}
+			add_trait = special_character_german_unifier_ruler
 		}
 	}
 	option = {

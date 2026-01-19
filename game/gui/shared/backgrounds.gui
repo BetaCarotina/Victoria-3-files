@@ -269,6 +269,48 @@ types background_components {
 		}
 	}
 
+	### hbox header with 1 text
+	type default_header_hbox = default_header_properties {
+
+		block "textbox" {
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				spacing = 5
+
+				block "additional_items_left_of_text" {}
+
+				block "margin" {
+					margin = { 12 0 }
+				}
+
+				textbox = {
+					autoresize = yes
+					default_format = "#title"
+					using = elide_fontsize_min
+
+					block "text" {
+						raw_text = "INSERT_HEADER_TEXT"
+					}
+
+					block "text_size" {
+						using = fontsize_large
+					}
+
+					block "align" {
+						align = hcenter|nobaseline
+					}
+
+					block "text_max_width" {
+						max_width = 540
+					}
+				}
+
+				block "additional_items_right_of_text" {}
+			}
+		}
+	}
+
 	### header with 2 text
 	type default_header_2texts = default_header_properties {
 
@@ -737,12 +779,12 @@ template entry_bg_fancy
 	background = {
 		using = light_bg
 		using = frame_small_mask
-		
+
 		block "entry_bg_fancy_bg_alpha" {
 			alpha = 0.4
 		}
 	}
-	
+
 	background = {
 		using = frame_small
 	}
@@ -1251,7 +1293,7 @@ template fade_horizontal_center_colored
 template fade_center_simple
 {
 	using = dark_area
-	
+
 	modify_texture = {
 		texture = "gfx/interface/masks/fade_vertical_center.dds"
 		spriteType = Corneredstretched
@@ -1360,6 +1402,30 @@ template fade_up_colored
 		spriteborder = { 0 0 }
 		blend_mode = alphamultiply
 	}
+}
+
+template fade_up_colored_green
+{
+	using = fade_up_colored
+	color = { 0.54 0.78 0.33 1 }
+}
+
+template fade_up_colored_red
+{
+	using = fade_up_colored
+	color = { 0.78 0.25 0.25 1 }
+}
+
+template fade_up_colored_grey
+{
+	using = fade_up_colored
+	color = { 0.5 0.5 0.5 1 }
+}
+
+template fade_up_colored_black
+{
+	using = fade_up_colored
+	color = { .0 .0 .0 1 }
 }
 
 template fade_down_simple

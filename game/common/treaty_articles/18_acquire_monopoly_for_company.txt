@@ -1,6 +1,6 @@
 ﻿acquire_monopoly_for_company = {
     kind = directed
-    cost = 50
+    cost = 25
 
 	icon = "gfx/interface/icons/diplomatic_treaties_articles_icons/acquire_monopoly_for_company_treaties.dds"
 
@@ -8,8 +8,11 @@
 		can_be_enforced
 		can_be_renegotiated
 		is_monopoly_for_company
-		recipient_pays_maintenance
 	}
+
+	usage_limit = once_per_side_with_same_inputs
+
+	maintenance_paid_by = target_country
 
     required_inputs = {
 		company
@@ -21,26 +24,73 @@
     }
 
 	visible = {
-		NOT = { is_country_type = decentralized }
-		is_revolutionary = no
+
         has_dlc_feature = mp1_treaties
 	}
 
 	possible = {
-		NOT = { is_country_type = decentralized }
-		is_revolutionary = no
-		any_scope_treaty = {
-			binds = scope:other_country
-			any_scope_article = {
-				has_type = foreign_investment_rights
-				source_country = scope:other_country
+		scope:other_country = {
+			any_company = {
+				owner = prev
 			}
 		}
 	}
 
     can_ratify = {
+		OR = {
+			trigger_if = {
+				limit = {
+					exists = scope:source_country.top_overlord
+				}
+				scope:source_country.top_overlord = {
+					save_temporary_scope_as = source_overlord
+				}
+				scope:source_overlord = {
+					scope:target_country = {
+						has_treaty_foreign_investment_rights_with = { TARGET = scope:source_overlord }
+					}
+				}
+			}
+			custom_description = {
+				text = has_treaty_foreign_investment_rights_with_trigger
+				subject = scope:target_country # Country
+				object = scope:source_country # Country
+
+				hidden_trigger = {
+					OR = {
+						scope:treaty ?= {
+							any_scope_article_option = {
+								has_type = foreign_investment_rights
+								source_country = scope:source_country
+							}
+						}
+						scope:source_country = {
+							any_scope_treaty = {
+								binds = scope:target_country
+								any_scope_article = {
+									has_type = foreign_investment_rights
+									source_country = scope:source_country
+								}
+							}
+						}
+					}
+				}
+			}
+			scope:source_country = {
+				is_subject_of = scope:target_country
+			}
+			scope:source_country.power_bloc ?= {
+				has_principle = principle:principle_foreign_investment_3
+				any_power_bloc_member = {
+					this = scope:target_country
+				}
+				scope:target_country = {
+					country_rank > scope:source_country.country_rank
+				}
+			}
+		}
         custom_tooltip = {
-            text = DUPLICATE_ARTICLE_SAME_INPUTS
+            text = DUPLICATE_ARTICLE_SAME_INPUTS_TREATY
 			trigger_if = {
 				limit = {
 					exists = root.input_building_type
@@ -65,16 +115,6 @@
 					}
 				}
 			}
-            scope:treaty ?= {
-                NOT = {
-                    any_scope_article_option = {
-                        count > 1
-                        has_type = acquire_monopoly_for_company
-                        source_country = scope:source_country
-                        input_building_type = root.input_building_type
-                    }
-                }
-            }
         }
     }
 
@@ -130,6 +170,9 @@
             request
         }
 
+		combined_acceptance_cap_max = 50
+		combined_acceptance_cap_min = -500
+
 		inherent_accept_score = {
 			value = 0
 
@@ -147,7 +190,6 @@
 					save_temporary_scope_as = actor
 				}
 
-
 				if = {
 					limit = {
 						country_rank >= rank_value:great_power
@@ -157,6 +199,16 @@
 						value = -300
 					}
 				}
+				else_if = {
+					limit = {
+						country_rank >= rank_value:unrecognized_major_power
+					}
+					add = {
+						desc = "major_power"
+						value = -200
+					}
+				}
+
 				if = {
 					limit = {
 						country_rank >= scope:target_country.country_rank
@@ -167,7 +219,7 @@
 						value = scope:target_country.country_rank
 						subtract = 2
 						subtract = country_rank
-						multiply = 5
+						multiply = 10
 					}
 				}
 
@@ -195,8 +247,25 @@
 							}
 						}
 					}
-					max = 100
-					min = 20
+					if = {
+						limit = {
+							scope:article.input_building_type = {
+							}
+							any_scope_state = {
+								"num_potential_resources(scope:article.input_building_type)" > 0
+							}
+						}
+						every_scope_state = {
+							limit = {
+								"num_potential_resources(scope:article.input_building_type)" > 0
+							}
+							add = {
+								value = "num_potential_resources(scope:article.input_building_type)"
+							}
+						}
+					}
+					max = 200
+					min = 50
 				}
 			}
 			else_if = {
@@ -239,6 +308,21 @@
 								}
 							}
 						}
+						if = {
+							limit = {
+								any_scope_state = {
+									"num_potential_resources(scope:article.input_building_type)" > 0
+								}
+							}
+							every_scope_state = {
+								limit = {
+									"num_potential_resources(scope:article.input_building_type)" > 0
+								}
+								add = {
+									value = "num_potential_resources(scope:article.input_building_type)"
+								}
+							}
+						}
 					}
 					max = 20
 					min = -100
@@ -248,14 +332,20 @@
 	}
 
 	wargoal = {
-		execution_priority = 60
+		execution_priority = 21
 		contestion_type = control_target_country_capital
 
 		maneuvers = {
-			value = 10
+			value = 0
+
+			add = {
+				desc = "MANEUVERS_BASE_VALUE"
+				value = 2.5
+			}
 
 			scope:target_country = {
 				multiply = {
+					desc = "MANEUVERS_TARGET_COUNTRY_POPULATION_FACTOR"
 					value = total_population
 					divide = define:NDiplomacy|SWAY_OFFER_WARGOAL_MANEUVERS_COST_POPULATION_SCALING_FACTOR
 					multiply = define:NDiplomacy|SWAY_OFFER_WARGOAL_MANEUVERS_COST_POPULATION_SCALING_MULTIPLIER
@@ -265,10 +355,16 @@
 		}
 
 		infamy = {
-			value = 0.5
+			value = 0
+
+			add = {
+				desc = "INFAMY_BASE_VALUE"
+				value = 0.5
+			}
 
 			scope:target_country = {
 				multiply = {
+					desc = "INFAMY_TARGET_COUNTRY_POPULATION_FACTOR"
 					value = total_population
 					divide = define:NDiplomacy|WAR_GOAL_INFAMY_POPULATION_SCALING_FACTOR
 					multiply = define:NDiplomacy|WAR_GOAL_INFAMY_POPULATION_SCALING_MULTIPLIER

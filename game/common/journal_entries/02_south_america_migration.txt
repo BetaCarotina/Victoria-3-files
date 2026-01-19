@@ -4,9 +4,9 @@
 	group = je_group_foreign_affairs
 
 	is_shown_when_inactive = {
-		country_is_in_south_america = yes
+		is_in_geographic_region = geographic_region_south_america
 		any_primary_culture = {
-			has_discrimination_trait = european_heritage
+			has_discrimination_trait_group = heritage_group_european
 		}
 	}
 
@@ -17,13 +17,13 @@
 		is_at_war = no
 		is_subject = no
 		OR = {
-			has_law = law_type:law_racial_segregation
-			has_law = law_type:law_cultural_exclusion
-			has_law = law_type:law_multicultural
+			has_law_or_variant = law_type:law_racial_segregation
+			has_law_or_variant = law_type:law_cultural_exclusion
+			has_law_or_variant = law_type:law_multicultural
 		}
 		NOR = {
-			has_law = law_type:law_closed_borders
-			has_law = law_type:law_isolationism
+			has_law_or_variant = law_type:law_closed_borders
+			has_law_or_variant = law_type:law_isolationism
 		}
 	}
 
@@ -39,7 +39,7 @@
 		every_scope_state = {
 			limit = {
 				is_incorporated = yes
-				state_is_in_south_america = yes
+				is_in_geographic_region = geographic_region_south_america
 			}
 			ROOT = {
 				change_variable = {
@@ -72,7 +72,7 @@
 			every_scope_state = {
 				limit = {
 					is_incorporated = yes
-					state_is_in_south_america = yes
+					is_in_geographic_region = geographic_region_south_america
 				}
 				ROOT = {
 					change_variable = {
@@ -88,7 +88,7 @@
 			every_scope_state = {
 				limit = {
 					is_incorporated = yes
-					state_is_in_south_america = yes
+					is_in_geographic_region = geographic_region_south_america
 				}
 				ROOT = {
 					change_variable = {
@@ -156,7 +156,7 @@ je_central_america_migration = {
 			}
 		}
 		any_primary_culture = {
-			has_discrimination_trait = european_heritage
+			has_discrimination_trait_group = heritage_group_european
 		}
 	}
 
@@ -167,13 +167,13 @@ je_central_america_migration = {
 		is_at_war = no
 		is_subject = no
 		OR = {
-			has_law = law_type:law_racial_segregation
-			has_law = law_type:law_cultural_exclusion
-			has_law = law_type:law_multicultural
+			has_law_or_variant = law_type:law_racial_segregation
+			has_law_or_variant = law_type:law_cultural_exclusion
+			has_law_or_variant = law_type:law_multicultural
 		}
 		NOR = {
-			has_law = law_type:law_closed_borders
-			has_law = law_type:law_isolationism
+			has_law_or_variant = law_type:law_closed_borders
+			has_law_or_variant = law_type:law_isolationism
 		}
 	}
 
@@ -303,11 +303,11 @@ je_american_west_migration = {
 
 	is_shown_when_inactive = {
 		OR = {
-			country_is_in_north_america = yes
-			country_is_in_central_america = yes
+			is_in_geographic_region = geographic_region_north_america
+			is_in_geographic_region = geographic_region_central_america
 		}
 		any_primary_culture = {
-			has_discrimination_trait = european_heritage
+			has_discrimination_trait_group = heritage_group_european
 		}
 		any_scope_state = {
 			OR = {
@@ -332,13 +332,13 @@ je_american_west_migration = {
 		is_at_war = no
 		is_subject = no
 		OR = {
-			has_law = law_type:law_racial_segregation
-			has_law = law_type:law_cultural_exclusion
-			has_law = law_type:law_multicultural
+			has_law_or_variant = law_type:law_racial_segregation
+			has_law_or_variant = law_type:law_cultural_exclusion
+			has_law_or_variant = law_type:law_multicultural
 		}
 		NOR = {
-			has_law = law_type:law_closed_borders
-			has_law = law_type:law_isolationism
+			has_law_or_variant = law_type:law_closed_borders
+			has_law_or_variant = law_type:law_isolationism
 		}
 	}
 

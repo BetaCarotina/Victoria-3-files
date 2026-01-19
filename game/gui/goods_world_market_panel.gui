@@ -61,7 +61,7 @@ types goods_world_market_panel_tyes
 					visible = "[And(GoodsWorldMarketPanel.GetGoods.HasMarketContext,Not(GoodsWorldMarketPanel.GetGoods.IsLocal))]"
 				}
 				blockoverride "second_button_click" {
-					onclick = "[InformationPanelBar.OpenGoodsPanel( GoodsWorldMarketPanel.GetGoods.GetMarket, GoodsWorldMarketPanel.GetGoods )]"
+					onclick = "[InformationPanelBar.OpenGoodsPanel( GoodsWorldMarketPanel.GetGoods.GetMarket, GoodsWorldMarketPanel.GetGoods.Self )]"
 				}
 				
 				# selected state
@@ -75,7 +75,7 @@ types goods_world_market_panel_tyes
 					visible = "[GoodsWorldMarketPanel.GetGoods.HasStateContext]"
 				}
 				blockoverride "third_button_click" {
-					onclick = "[InformationPanelBar.OpenGoodsStatePanel( GoodsWorldMarketPanel.GetGoods.GetState, GoodsWorldMarketPanel.GetGoods )]"
+					onclick = "[InformationPanelBar.OpenGoodsStatePanel( GoodsWorldMarketPanel.GetGoods.GetState, GoodsWorldMarketPanel.GetGoods.Self )]"
 				}			
 				
 				# states in market
@@ -89,7 +89,7 @@ types goods_world_market_panel_tyes
 					visible = "[GoodsWorldMarketPanel.GetGoods.HasMarketContext]"
 				}			
 				blockoverride "fourth_button_click" {
-					onclick = "[InformationPanelBar.OpenGoodsLocalPricesPanel(GoodsWorldMarketPanel.GetGoods)]"
+					onclick = "[InformationPanelBar.OpenGoodsLocalPricesPanel(GoodsWorldMarketPanel.GetGoods.Self)]"
 				}					
 				
 				# usage / application
@@ -115,7 +115,7 @@ types goods_world_market_panel_tyes
 				minimumsize = { @panel_width -1 }
 				using = default_list_position
 				direction = vertical
-				datacontext = "[GoodsWorldMarketPanel.GetBaseGoods]"					
+				datacontext = "[GoodsWorldMarketPanel.GetBaseGoods]"
 				
 				container = {
 					parentanchor = hcenter
@@ -164,10 +164,6 @@ types goods_world_market_panel_tyes
 					goods_prestige_goods_breakdown_list_item = {						
 						parentanchor = hcenter
 
-						blockoverride "prestige_goods_item_minimumsize" {
-							minimumsize = { 540 -1 }
-						}
-
 						blockoverride "prestige_goods_item_name_size" {
 							minimumsize = { 300 -1 }
 							maximumsize = { 300 -1 }
@@ -189,13 +185,9 @@ types goods_world_market_panel_tyes
 						
 						item = {
 							goods_prestige_goods_breakdown_list_item = {
-								blockoverride "prestige_goods_item_minimumsize" {
-									minimumsize = { 540 -1 }
-								}
-
 								blockoverride "prestige_goods_item_name_size" {
-									minimumsize = { 300 -1 }
-									maximumsize = { 300 -1 }
+									minimumsize = { 260 -1 }
+									maximumsize = { 260 -1 }
 								}
 
 								blockoverride "prestige_goods_item_text_1" {
@@ -252,7 +244,7 @@ types goods_world_market_panel_tyes
 						text = "IMPORTS_TA"
 						tooltip = "IMPORTS_TA"
 					}
-					
+
 					sort_button = {
 						size = { 80 30 }
 						onclick = "[GoodsWorldMarketPanel.SortMarkets('exports')]"

@@ -22,10 +22,12 @@ election_other_parties_events.1 = {
 	icon = "gfx/interface/icons/event_icons/event_election.dds"
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
 		NOT = { has_variable = election_event_cooldown }
+		NOT = { has_variable = mute_election_events }
 		any_active_party = {
+			party_has_members = yes
 			is_party_type = agrarian_party
 		}
 		any_scope_state = {
@@ -40,8 +42,8 @@ election_other_parties_events.1 = {
 				}
 			}
 		}
-		ig:ig_industrialists = {
-			is_marginal = no
+		ig:ig_industrialists ?= {
+			ig_counts_as_marginal = no
 		}
 		has_technology_researched = intensive_agriculture
 	}
@@ -52,7 +54,10 @@ election_other_parties_events.1 = {
 			months = election_event_cooldown_months
 		}
 		random_active_party = {
-			limit = { is_party_type = agrarian_party }
+			limit = {
+				party_has_members = yes
+				is_party_type = agrarian_party
+			}
 			save_scope_as = agrarian_party
 		}
 		random_scope_state = {
@@ -68,7 +73,7 @@ election_other_parties_events.1 = {
 			}
 			save_scope_as = industrial_state
 		}
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			save_scope_as = ig_industrialists
 		}
 	}
@@ -82,7 +87,7 @@ election_other_parties_events.1 = {
 		py:agrarian_party = {
 			add_momentum = momentum_medium
 		}
-		ig:ig_rural_folk = { #rural folk agrees
+		ig:ig_rural_folk ?= { #rural folk agrees
 			add_modifier = {
 				name = anti_industrial_party_modifier # interest_group_approval_add
 				days = normal_modifier_time
@@ -204,10 +209,11 @@ election_other_parties_events.2 = {
 	icon = "gfx/interface/icons/event_icons/event_election.dds"
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
 		NOT = { has_variable = election_event_cooldown }
-		ig:ig_devout = {
+		NOT = { has_variable = mute_election_events }
+		ig:ig_devout ?= {
 			has_party = yes
 		}
 	}
@@ -217,12 +223,12 @@ election_other_parties_events.2 = {
 			name = election_event_cooldown
 			months = election_event_cooldown_months
 		}
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			party = {
 				save_scope_as = religious_party
 			}
 		}
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			save_scope_as = ig_devout
 			leader = {
 				save_scope_as = religious_leader
@@ -231,11 +237,15 @@ election_other_parties_events.2 = {
 		if = {
 			limit = {
 				any_active_party = {
+					party_has_members = yes
 					NOT = { THIS = scope:religious_party }
 				}
 			}
 			random_active_party = {
-				limit = { NOT = { THIS = scope:religious_party } }
+				limit = {
+					party_has_members = yes
+					NOT = { THIS = scope:religious_party }
+				}
 				save_scope_as = other_party
 			}
 		}
@@ -247,7 +257,7 @@ election_other_parties_events.2 = {
 
 	option = { #and who are we to go against God's will
 		name = election_other_parties_events.2.a
-		ig:ig_devout = { #wahooo
+		ig:ig_devout ?= { #wahooo
 			add_modifier = {
 				name = gods_will_modifier # interest_group_pol
 				days = normal_modifier_time
@@ -299,10 +309,12 @@ election_other_parties_events.3 = {
 	icon = "gfx/interface/icons/event_icons/event_election.dds"
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
 		NOT = { has_variable = election_event_cooldown }
+		NOT = { has_variable = mute_election_events }
 		any_active_party = {
+			party_has_members = yes
 			is_party_type = military_party
 		}
 		is_at_war = yes
@@ -314,7 +326,10 @@ election_other_parties_events.3 = {
 			months = election_event_cooldown_months
 		}
 		random_active_party = {
-			limit = { is_party_type = military_party }
+			limit = {
+				party_has_members = yes
+				is_party_type = military_party
+			}
 			save_scope_as = military_party
 		}
 		random_scope_war = {
@@ -331,7 +346,7 @@ election_other_parties_events.3 = {
 		py:military_party = {
 			add_momentum = momentum_medium
 		}
-		ig:ig_armed_forces = { #armed forces like this
+		ig:ig_armed_forces ?= { #armed forces like this
 			add_modifier = {
 				name = supported_war_politics_modifier # interest_group_approval_add
 				days = normal_modifier_time
@@ -402,20 +417,25 @@ election_other_parties_events.4 = {
 	icon = "gfx/interface/icons/event_icons/event_election.dds"
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
 		NOT = { has_variable = election_event_cooldown }
+		NOT = { has_variable = mute_election_events }
 		any_active_party = {
+			party_has_members = yes
 			is_party_type = social_democrat_party
 		}
 		OR = {
 			any_active_party = {
+				party_has_members = yes
 				is_party_type = communist_party
 			}
 			any_active_party = {
+				party_has_members = yes
 				is_party_type = anarchist_party
 			}
 			any_active_party = {
+				party_has_members = yes
 				is_party_type = radical_party
 			}
 		}
@@ -427,39 +447,54 @@ election_other_parties_events.4 = {
 			months = election_event_cooldown_months
 		}
 		random_active_party = {
-			limit = { is_party_type = social_democrat_party }
+			limit = {
+				party_has_members = yes
+				is_party_type = social_democrat_party
+			}
 			save_scope_as = social_democrat_party
 		}
 		if = {
 			limit = {
 				any_active_party = {
+					party_has_members = yes
 					is_party_type = communist_party
 				}
 			}
 			random_active_party = {
-				limit = { is_party_type = communist_party }
+				limit = {
+					party_has_members = yes
+					is_party_type = communist_party
+				}
 				save_scope_as = leftist_party
 			}
 		}
 		else_if = {
 			limit = {
 				any_active_party = {
+					party_has_members = yes
 					is_party_type = anarchist_party
 				}
 			}
 			random_active_party = {
-				limit = { is_party_type = anarchist_party }
+				limit = {
+					party_has_members = yes
+					is_party_type = anarchist_party
+				}
 				save_scope_as = leftist_party
 			}
 		}
 		else_if = {
 			limit = {
 				any_active_party = {
+					party_has_members = yes
 					is_party_type = radical_party
 				}
 			}
 			random_active_party = {
-				limit = { is_party_type = radical_party }
+				limit = {
+					party_has_members = yes
+					is_party_type = radical_party
+				}
 				save_scope_as = leftist_party
 			}
 		}
@@ -507,10 +542,12 @@ election_other_parties_events.5 = {
 	icon = "gfx/interface/icons/event_icons/event_election.dds"
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
 		NOT = { has_variable = election_event_cooldown }
+		NOT = { has_variable = mute_election_events }
 		any_active_party = {
+			party_has_members = yes
 			is_party_type = radical_party
 		}
 	}
@@ -521,7 +558,10 @@ election_other_parties_events.5 = {
 			months = election_event_cooldown_months
 		}
 		random_active_party = {
-			limit = { is_party_type = radical_party }
+			limit = {
+				party_has_members = yes
+				is_party_type = radical_party
+			}
 			save_scope_as = radical_party
 		}
 		random_scope_state = {
@@ -584,7 +624,7 @@ election_other_parties_events.5 = {
 					institution = institution_police
 					value >= 5
 				}
-				has_law = law_type:law_outlawed_dissent
+				has_law_or_variant = law_type:law_outlawed_dissent
 			}
 		}
 		py:radical_party = {

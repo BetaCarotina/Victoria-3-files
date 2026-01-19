@@ -3,6 +3,10 @@
 
 	group = je_group_tanzimat
 
+	is_shown_in_lobby = {
+		c:TUR = THIS
+    }
+
 	complete = {
 		scope:journal_entry = {
 			is_goal_complete = yes
@@ -20,6 +24,11 @@
 
 	on_timeout = {
 		remove_modifier = sick_man_of_europe
+		add_modifier = {
+			name = dead_man_of_europe
+			days = very_long_modifier_time
+			is_decaying = yes
+		}
 		trigger_event = {
 			id = sick_man.3
 		}
@@ -37,7 +46,34 @@
 				years = 20
 			}
 		}
-
+		if = {
+			limit = {
+				has_dlc_feature = ip3_content
+			}
+			custom_tooltip = {
+				text = eastern_crisis_consequence_tt
+				set_variable = failed_sick_man_main
+			}
+		}
+		if = { #failure immediately triggers eastern_crisis
+			limit = {
+				c:TUR ?= this
+				has_dlc_feature = ip3_content
+				NOT = {
+					has_global_variable = eastern_crisis_happened
+				}
+			}
+			add_contextless_journal_entry = je_great_eastern_crisis
+		}
+		cu:albanian = {
+			remove_tradition_trait = tradition_rumelian
+		}
+		cu:bosniak = {
+			remove_tradition_trait = tradition_rumelian
+		}
+		cu:sephardic = {
+			remove_tradition_trait = tradition_rumelian
+		}
 	}
 
 	current_value = {
@@ -97,7 +133,7 @@ je_sick_man_syria = {
 				OR = {
 					AND = {
 						exists = c:EGY
-						c:EGY = {
+						c:EGY ?= {
 							is_subject_of = ROOT
 						}
 					}
@@ -109,7 +145,6 @@ je_sick_man_syria = {
 					}
 				}
 			}
-			custom_tooltip = je_sick_man_advance
 			change_variable = {
 				name = sick_man_var
 				add = 1
@@ -152,7 +187,7 @@ je_sick_man_egypt = {
 		OR = {
 			AND = {
 				exists = c:EGY
-				c:EGY = {
+				c:EGY ?= {
 					is_subject_of = ROOT
 				}
 			}
@@ -317,6 +352,20 @@ je_sick_man_separatism = {
 		highest_secession_progress > 0.5
 	}
 
+	on_fail = {
+		set_variable = failed_sick_man_separatism
+		if = { #failure immediately triggers eastern_crisis
+			limit = {
+				c:TUR ?= this
+				has_dlc_feature = ip3_content
+				NOT = {
+					has_global_variable = eastern_crisis_happened
+				}
+			}
+			add_contextless_journal_entry = je_great_eastern_crisis
+		}
+	}
+
 	current_value = {
 		value = var:sick_man_separatist_var
 	}
@@ -352,7 +401,7 @@ je_sick_man_army = {
 		has_technology_researched = napoleonic_warfare
 		any_scope_building = {
 			filter = {
-				is_building_type = building_barracks
+				is_building_type = building_barrack
 			}
 			NOR = {
 				building_has_goods_shortage = yes
@@ -411,9 +460,9 @@ je_sick_man_bureaucracy = {
 
 	complete = {
 		NOR = {
-			has_law = law_type:law_hereditary_bureaucrats
-			has_law = law_type:law_land_based_taxation
-			has_law = law_type:law_consumption_based_taxation
+			has_law_or_variant = law_type:law_hereditary_bureaucrats
+			has_law_or_variant = law_type:law_land_based_taxation
+			has_law_or_variant = law_type:law_consumption_based_taxation
 		}
 		bureaucracy >= 0
 		approaching_bureaucracy_shortage = no

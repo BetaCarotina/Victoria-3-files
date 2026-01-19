@@ -13,7 +13,7 @@ resignation.1 = {
 					ruler.interest_group = {
 						OR = {
 							ig_approval <= angry
-							is_marginal = yes
+							ig_counts_as_marginal = yes
 						}
 					}
 				}
@@ -85,7 +85,7 @@ resignation.1 = {
 				scope:resignation_ig = {
 					OR = {
 						ig_approval <= angry
-						is_marginal = yes
+						ig_counts_as_marginal = yes
 					}
 				}
 				scope:resigning_politician = {
@@ -115,7 +115,7 @@ resignation.1 = {
 				scope:resignation_ig = {
 					OR = {
 						ig_approval <= angry
-						is_marginal = yes
+						ig_counts_as_marginal = yes
 					}
 				}
 				scope:resigning_politician = {
@@ -143,7 +143,7 @@ resignation.1 = {
 	option = { # Immediate snap election
 		name = resignation.1.c
 		trigger = {
-			has_law = law_type:law_parliamentary_republic
+			has_law_or_variant = law_type:law_parliamentary_republic
 		}
 		custom_tooltip = {
 			text = leader_resigns_from_office_tt
@@ -191,7 +191,12 @@ resignation.2 = {
 				save_scope_as = resignation_ig
 			}
 		}
-		save_revolution_scopes = yes
+		random_civil_war = {
+			limit = {
+				is_civil_war_type = revolution
+			}
+			civil_war_save_scopes = yes
+		}
 	}
 
 	option = {
@@ -251,7 +256,7 @@ resignation.2 = {
 		trigger = {
 			country_has_voting_franchise = yes
 			NOT = {
-				has_law = law_type:law_single_party_state
+				has_law_or_variant = law_type:law_single_party_state
 			}
 		}
 		custom_tooltip = {
@@ -311,12 +316,17 @@ resignation.3 = {
 		ROOT = {
 			save_scope_as = country_scope
 		}
-		save_revolution_scopes = yes
+		random_civil_war = {
+			limit = {
+				is_civil_war_type = revolution
+			}
+			civil_war_save_scopes = yes
+		}
 		if = {
 			limit = {
 				exists = heir
 			}
-			heir = {
+			heir ?= {
 				save_scope_as = heir_scope
 			}
 		}
@@ -417,7 +427,7 @@ resignation.3 = {
 		trigger = {
 			country_has_voting_franchise = yes
 			NOT = {
-				has_law = law_type:law_single_party_state
+				has_law_or_variant = law_type:law_single_party_state
 			}
 		}
 		custom_tooltip = {

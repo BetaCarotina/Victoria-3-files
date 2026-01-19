@@ -20,17 +20,17 @@
 			is_incorporated = no
 			custom_tooltip = {
 				text = in_africa_tt
-				state_is_in_africa = yes
+				is_in_geographic_region = geographic_region_africa
 			}
 			any_neighbouring_state = {
 				is_incorporated = no
 				custom_tooltip = {
 					text = in_africa_tt
-					state_is_in_africa = yes
+					is_in_geographic_region = geographic_region_africa
 				}
 			}
 		}
-		has_law = law_type:law_colonial_exploitation
+		has_law_or_variant = law_type:law_colonial_exploitation
 	}
 
 	immediate = {
@@ -48,10 +48,10 @@
 		random_scope_state = {
 			limit = {
 				is_incorporated = no
-				state_is_in_africa = yes
+				is_in_geographic_region = geographic_region_africa
 				any_neighbouring_state = {
 					is_incorporated = no
-					state_is_in_africa = yes
+					is_in_geographic_region = geographic_region_africa
 				}
 			}
 			save_scope_as = colonial_state
@@ -80,7 +80,7 @@
 			limit = {
 				exists = c:AFS
 			}
-			c:AFS = {
+			c:AFS ?= {
 				remove_modifier = free_state_mort
 			}
 		}
@@ -92,9 +92,9 @@
 			if = {
 				limit = { #check if the possible conditions are still true
 					has_law = law_type:law_monarchy
-					has_law = law_type:law_colonial_exploitation
+					has_law_or_variant = law_type:law_colonial_exploitation
 					exists = c:AFS
-					c:AFS = {
+					c:AFS ?= {
 						is_subject_of = ROOT
 					}
 				}
@@ -148,13 +148,13 @@
 				}
 				AND = {
 					exists = c:AFS
-					c:AFS = {
+					c:AFS ?= {
 						NOT = { is_subject_of = ROOT }
 					}
 				}
 			}
 		}
-		NOT = { has_law = law_type:law_colonial_exploitation }
+		NOT = { has_law_or_variant = law_type:law_colonial_exploitation }
 	}
 
 	weight = 200

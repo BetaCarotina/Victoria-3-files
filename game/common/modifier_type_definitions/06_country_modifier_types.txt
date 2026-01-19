@@ -79,6 +79,15 @@ country_economic_dependence_on_overlord_add = {
 	}
 }
 
+country_electoral_confidence_impact_mult = {
+	decimals = 0
+	color = neutral
+	percent = yes
+	game_data={
+		ai_value=0
+	}
+}
+
 country_lobby_leverage_generation_mult={
 	decimals=0
 	color = good
@@ -187,6 +196,15 @@ country_institution_cost_institution_schools_mult={
 	}
 }
 
+country_institution_cost_institution_social_security_mult={
+	decimals=0
+	color=bad
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
 country_institution_cost_institution_health_system_mult={
 	decimals=0
 	color=bad
@@ -231,16 +249,7 @@ country_legitimacy_min_add={
 	}
 }
 
-country_acceptance_culture_base_add = {
-	decimals=0
-	color=good
-	game_data = {
-		ai_value = 0
-		tags = { cultural_acceptance }
-	}
-}
-
-country_acceptance_shared_cultural_trait_add = {
+country_acceptance_primary_culture_add = {
 	decimals=0
 	color=good
 	game_data = {
@@ -258,7 +267,7 @@ country_acceptance_shared_heritage_trait_add = {
 	}
 }
 
-country_acceptance_shared_heritage_and_cultural_trait_add = {
+country_acceptance_shared_heritage_trait_group_add = {
 	decimals=0
 	color=good
 	game_data = {
@@ -267,7 +276,52 @@ country_acceptance_shared_heritage_and_cultural_trait_add = {
 	}
 }
 
-country_acceptance_primary_culture_add = {
+country_acceptance_no_shared_heritage_trait_add = {
+	decimals=0
+	color=good
+	game_data = {
+		ai_value = 0
+		tags = { cultural_acceptance }
+	}
+}
+
+country_acceptance_shared_language_trait_add = {
+	decimals=0
+	color=good
+	game_data = {
+		ai_value = 0
+		tags = { cultural_acceptance }
+	}
+}
+
+country_acceptance_shared_language_trait_group_add = {
+	decimals=0
+	color=good
+	game_data = {
+		ai_value = 0
+		tags = { cultural_acceptance }
+	}
+}
+
+country_acceptance_no_shared_language_trait_add = {
+	decimals=0
+	color=good
+	game_data = {
+		ai_value = 0
+		tags = { cultural_acceptance }
+	}
+}
+
+country_acceptance_shared_tradition_trait_add = {
+	decimals=0
+	color=good
+	game_data = {
+		ai_value = 0
+		tags = { cultural_acceptance }
+	}
+}
+
+country_acceptance_no_shared_tradition_trait_add = {
 	decimals=0
 	color=good
 	game_data = {
@@ -292,11 +346,35 @@ country_acceptance_shared_religious_trait_add = {
 	}
 }
 
-country_acceptance_religion_base_add = {
+country_acceptance_shared_religious_trait_group_add = {
 	decimals=0
 	color=good
 	game_data={
 		ai_value=0
+	}
+}
+
+country_acceptance_no_shared_religious_trait_add = {
+	decimals=0
+	color=good
+	game_data={
+		ai_value=0
+	}
+}
+
+country_acceptance_homeland_add = {
+	decimals=0
+	color=good
+	game_data = {
+		ai_value = 0
+	}
+}
+
+country_acceptance_not_homeland_add = {
+	decimals=0
+	color=good
+	game_data = {
+		ai_value = 0
 	}
 }
 
@@ -717,4 +795,83 @@ country_allow_conversion_full_acceptance_bool = {
 	boolean = yes
 	decimals = 1
 	color = neutral
+}
+
+country_enactment_success_chance_law_autocracy_add={
+	decimals=0
+	color=good
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+country_enactment_time_law_autocracy_mult={
+	decimals=0
+	color=bad
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+country_enactment_success_chance_law_oligarchy_add={
+	decimals=0
+	color=good
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+country_enactment_time_law_oligarchy_mult={
+	decimals=0
+	color=bad
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+country_enactment_success_chance_law_single_party_state_add={
+	decimals=0
+	color=good
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+country_enactment_time_law_single_party_state_mult={
+	decimals=0
+	color=bad
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+country_enactment_success_chance_law_anarchy_add={
+	decimals=0
+	color=good
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+country_enactment_time_law_anarchy_mult={
+	decimals=0
+	color=bad
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
+
+country_financial_districts_buy_farms_likelihood = {
+	script_only = yes
+	percent = yes
+	decimals = 0
+	color = good
 }

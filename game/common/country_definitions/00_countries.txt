@@ -99,6 +99,10 @@ AUS = {
 
 	cultures = { south_german }
 	capital = STATE_AUSTRIA
+
+	primary_unit_color = { 211 220 240 }
+	secondary_unit_color  = { 94 120 165 }
+	tertiary_unit_color = { 20 20 20 }
 }
 
 USA = {
@@ -215,14 +219,14 @@ ITA = {
 }
 
 KUK = {
-	color = { 124 40 30 }
+	color = { 190 90 95 }
 
 	country_type = recognized
 
 	tier = empire
 
 	capital = STATE_CENTRAL_HUNGARY
-	cultures = { hungarian romanian croat czech slovak slovene }
+	cultures = { south_german hungarian romanian croat czech slovak slovene }
 }
 
 DEN = {
@@ -293,7 +297,7 @@ BEL = {
 }
 
 CAT = {
-	color = { 213  132  76 }
+	color = { 213 132 76 }
 
 	country_type = recognized
 
@@ -356,8 +360,19 @@ SCO = {
 
 	tier = kingdom
 
-	cultures = { scottish }
+	cultures = { scottish scottish_gaelic }
 	capital = STATE_LOWLANDS
+}
+
+ALA = {
+	color = { 0 140 230 }
+
+	country_type = recognized
+
+	tier = kingdom
+
+	cultures = { scottish_gaelic }
+	capital = STATE_HIGHLANDS
 }
 
 ENG = {
@@ -397,26 +412,30 @@ WLS = {
 }
 
 NAV = {
-	color = { 185 112 55 }
+	color = { 252 233 58 }
 
 	country_type = recognized
 
 	tier = kingdom
 
 	cultures = { basque }
-	capital = STATE_NAVARRA
+	capital = STATE_BASQUE_COUNTRY
 	is_named_from_capital = yes
 }
 
 SPA = {
 	color = hsv360{ 38  97  83 }
 
+	primary_unit_color = "blue"
+	secondary_unit_color  = "white"
+	tertiary_unit_color = "black"
+
 	country_type = recognized
 
 	tier = kingdom
 
 	cultures = { spanish }
-	capital = STATE_TOLEDO
+	capital = STATE_NEW_CASTILE
 }
 
 WLL = {
@@ -821,6 +840,10 @@ HUN = {
 
 	cultures = { hungarian }
 	capital = STATE_CENTRAL_HUNGARY
+
+	primary_unit_color = { 170 117 83 }
+	secondary_unit_color  = { 198 196 207 }
+	tertiary_unit_color = { 20 20 20 }
 }
 
 LIT = {
@@ -863,7 +886,7 @@ GAL = {
 
 	tier = principality
 
-	cultures = { ukrainian polish }
+	cultures = { polish ukrainian }
 	capital = STATE_EAST_GALICIA
 }
 
@@ -875,7 +898,7 @@ SLV = {
 	tier = principality
 
 	cultures = { slovak }
-	capital = STATE_WEST_SLOVAKIA
+	capital = STATE_SLOVAKIA
 }
 
 SWI = {
@@ -897,7 +920,7 @@ TRS = {
 
 	tier = principality
 
-	cultures = { szekely romanian }
+	cultures = { szekely hungarian romanian south_german }
 	capital = STATE_SOUTHERN_TRANSYLVANIA
 }
 
@@ -955,7 +978,7 @@ BUL = {
 	tier = kingdom
 
 	cultures = { bulgarian }
-	capital = STATE_NORTHERN_THRACE
+	capital = STATE_BULGARIA
 }
 
 CRE = {
@@ -971,7 +994,7 @@ CRE = {
 }
 
 CRO = {
-	color = { 174  227  95 }
+	color = { 255  126  242 }
 
 	country_type = recognized
 
@@ -1062,7 +1085,7 @@ SER = {
 	tier = kingdom
 
 	cultures = { serb }
-	capital = STATE_NORTHERN_SERBIA
+	capital = STATE_WESTERN_SERBIA
 }
 
 SLO = {
@@ -1101,14 +1124,14 @@ WAL = {
 }
 
 YUG = {
-	color = { 37 128 174 }
+	color = { 50 60 100 }
 
 	country_type = recognized
 
 	tier = empire
 
-	capital = STATE_NORTHERN_SERBIA
-	cultures = { serb croat slovene bosniak }
+	capital = STATE_WESTERN_SERBIA
+	cultures = { serb croat slovene bosniak bulgarian }
 }
 
 ABU = {
@@ -1279,10 +1302,10 @@ OMA = {
 
 	country_type = unrecognized
 
-	tier = principality
+	tier = kingdom
 
 	cultures = { bedouin }
-	religion = shiite
+	religion = ibadi
 	capital = STATE_OMAN
 	is_named_from_capital = yes
 }
@@ -1810,7 +1833,7 @@ DAI = {
 	religion = confucian
 
 	cultures = { vietnamese }
-	capital = STATE_TONKIN
+	capital = STATE_ANNAM
 }
 
 JAV = {
@@ -1955,7 +1978,8 @@ PHI = {
 
 	tier = kingdom
 
-	cultures = { filipino spanish }
+	cultures = { filipino_mestizo tagalog ilocano visayan }
+
 	capital = STATE_LUZON
 }
 
@@ -2035,7 +2059,7 @@ CUB = {
 	tier = principality
 
 	cultures = { caribeno }
-	capital = STATE_CUBA
+	capital = STATE_WESTERN_CUBA
 	is_named_from_capital = yes
 }
 
@@ -2106,6 +2130,17 @@ HAI = {
 
 	cultures = { afro_antillean }
 	capital = STATE_HAITI
+}
+
+ATL = {
+	color = { 115  236  250 }
+
+	country_type = recognized
+
+	tier = kingdom
+
+	cultures = { caribeno afro_caribeno }
+	capital = STATE_SANTO_DOMINGO
 }
 
 MEX = {
@@ -2585,8 +2620,8 @@ IBE = {
 
 	tier = empire
 
-	cultures = { spanish catalan portuguese basque galician }
-	capital = STATE_TOLEDO
+	cultures = { spanish portuguese }
+	capital = STATE_NEW_CASTILE
 }
 
 ORG = {
@@ -2725,7 +2760,7 @@ BAH = {
 PCO = {
 	color = { 104  92  87 }
 
-	country_type = recognized
+	country_type = colonial
 
 	tier = principality
 
@@ -2769,14 +2804,14 @@ GRN = {
 }
 
 ANL = {
-	color = hsv360{ 82  87  78 }
+	color = { 240 230 155 }
 
 	country_type = recognized
 
 	tier = principality
 
 	cultures = { spanish }
-	capital = STATE_ANDALUSIA
+	capital = STATE_LOWER_ANDALUSIA
 	is_named_from_capital = yes
 }
 
@@ -2788,7 +2823,7 @@ CAS = {
 	tier = kingdom
 
 	cultures = { spanish }
-	capital = STATE_TOLEDO
+	capital = STATE_NEW_CASTILE
 	is_named_from_capital = yes
 }
 
@@ -3617,7 +3652,7 @@ KUR = {
 }
 
 GLI = {
-	color = { 125 243 255 }
+	color = { 240 167 130 }
 
 	country_type = recognized
 
@@ -4084,7 +4119,7 @@ TJI = {
 
 	country_type = recognized
 
-	tier = principality
+	tier = grand_principality
 
 	cultures = { tajik }
 	capital = STATE_TAJIKISTAN
@@ -4095,7 +4130,7 @@ UZB = {
 
 	country_type = recognized
 
-	tier = principality
+	tier = grand_principality
 
 	cultures = { uzbek }
 	capital = STATE_FERGANA
@@ -4106,7 +4141,7 @@ KYR = {
 
 	country_type = recognized
 
-	tier = principality
+	tier = grand_principality
 
 	cultures = { kirgiz }
 	capital = STATE_KIRGHIZIA
@@ -5004,4 +5039,176 @@ IDS = {
 
 	cultures = { panjabi sindi }
 	capital = STATE_PUNJAB
+}
+
+MPH = {
+	color = { 111 3 252 }
+
+	country_type = unrecognized
+
+	tier = principality
+
+	cultures = { lao }
+	capital = STATE_LAOS
+}
+
+KLO = {
+	color = { 3 165 252 }
+
+	country_type = decentralized
+
+	religion = animist
+
+	tier = principality
+
+	cultures = { khmer }
+	capital = STATE_CAMBODIA
+}
+
+DGR = {
+	color = { 235 222 52 }
+
+	country_type = decentralized
+
+	religion = animist
+
+	tier = principality
+
+	cultures = { champa }
+	capital = STATE_ANNAM
+}
+
+SCT = {
+	color = { 50 162 210 }
+
+	country_type = decentralized
+
+	religion = animist
+
+	tier = principality
+
+	cultures = { lao }
+	capital = STATE_TONKIN
+}
+
+BNT = {
+	color = { 59 104 94 }
+
+	country_type = recognized
+
+	religion = catholic
+
+	tier = principality
+
+	cultures = { south_german serb }
+	capital = STATE_DELVIDEK
+}
+
+# Eden
+EDE = {
+	color = { 226 194 106 }
+
+	country_type = unrecognized
+
+	religion = atheist
+
+	tier = principality
+
+	cultures = { promethean }
+	capital = STATE_BAVARIA
+}
+
+SPC = {
+	color = { 217 23 26 }
+
+	# Based on the colours of the Guias de Navarra, originally these troops employed grey cloaks but by 1836 they had switched to blue
+	primary_unit_color = "blue"
+	secondary_unit_color  = "red"
+	tertiary_unit_color = "red"
+
+	country_type = recognized
+
+	religion = catholic
+
+	tier = kingdom
+
+	cultures = { spanish }
+	capital = STATE_BASQUE_COUNTRY
+}
+
+ARN = {
+	color = { 166 68 72 }
+
+	country_type = recognized
+
+	tier = kingdom
+
+	cultures = { aragonese }
+	capital = STATE_ARAGON
+}
+
+LEO = {
+	color = { 99 14 87 }
+
+	country_type = recognized
+
+	tier = kingdom
+
+	cultures = { asturleonese }
+	capital = STATE_LEON
+}
+
+ASU = {
+	color = { 104 173 230 }
+
+	country_type = recognized
+
+	tier = principality
+
+	cultures = { asturleonese }
+	capital = STATE_ASTURIAS
+}
+
+SC1 = { # New Spain
+	color = { 247 231 124 }
+
+	country_type = colonial
+
+	tier = kingdom
+
+	cultures = { spanish }
+	capital = STATE_MEXICO
+}
+
+SC2 = { # New Grenada
+	color = { 199 184 84 }
+
+	country_type = colonial
+
+	tier = kingdom
+
+	cultures = { spanish }
+	capital = STATE_CUNDINAMARCA
+}
+
+SC3 = { # Peru
+	color = { 235 207 23 }
+
+	country_type = colonial
+
+	tier = kingdom
+
+	cultures = { spanish }
+	capital = STATE_LIMA
+}
+
+SC4 = { # River Plate
+	color = { 195 179 75 }
+
+	country_type = colonial
+
+	tier = kingdom
+
+	cultures = { spanish }
+	capital = STATE_BUENOS_AIRES
 }

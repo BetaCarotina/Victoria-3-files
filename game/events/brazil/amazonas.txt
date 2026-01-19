@@ -24,10 +24,10 @@ amazonas.1 = {
 		in_default = no
 		any_scope_state = {
 			has_state_trait = state_trait_amazon_rainforest
-			has_potential_resource = bg_rubber
+			has_potential_resource = building_rubber_plantation
 			state_region = {
 				remaining_undepleted = {
-					type = bg_rubber
+					type = building_rubber_plantation
 					amount >= 15
 				}
 			}
@@ -57,10 +57,10 @@ amazonas.1 = {
 			random_scope_state = {
 				limit = {
 					has_state_trait = state_trait_amazon_rainforest
-					has_potential_resource = bg_rubber
+					has_potential_resource = building_rubber_plantation
 					state_region = {
 						remaining_undepleted = {
-							type = bg_rubber
+							type = building_rubber_plantation
 							amount >= 15
 						}
 					}
@@ -417,12 +417,12 @@ amazonas.5 = {
 				limit = {
 					NOT = {
 						any_scope_building = {
-							is_building_type = building_arts_academy
+							is_building_type = building_art_academy
 						}
 					}
 				}
 				create_building = {
-					building = building_arts_academy
+					building = building_art_academy
 					level = 2
 				}
 				add_modifier = {
@@ -539,7 +539,7 @@ amazonas.6 = {
 			remove_state_trait = state_trait_amazon_rainforest
 			add_state_trait = state_trait_amazon_rainforest_level_1
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_modifier = {
 				name = rubber_barons_modifier
 				days = normal_modifier_time
@@ -563,7 +563,7 @@ amazonas.6 = {
 			remove_state_trait = state_trait_amazon_rainforest
 			add_state_trait = state_trait_amazon_rainforest_level_1
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_modifier = {
 				name = rubber_barons_modifier
 				days = normal_modifier_time
@@ -717,7 +717,7 @@ amazonas.8 = {
 		cu:amazonian = {
 			save_scope_as = amazonian_culture_scope
 		}
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			save_scope_as = devout_scope
 		}
 	}
@@ -731,7 +731,7 @@ amazonas.8 = {
 				days = normal_modifier_time
 			}
 		}
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			add_modifier = {
 				name = amazon_exploitation_devout_upset
 				days = normal_modifier_time
@@ -749,7 +749,7 @@ amazonas.8 = {
 				multiplier = 0.5
 			}
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_modifier = {
 				name = amazon_exploitation_landowners_upset
 				days = normal_modifier_time

@@ -1,4 +1,5 @@
-﻿namespace = india_non_cooperation
+﻿
+namespace = india_non_cooperation
 
 india_non_cooperation.1 = { # The Non-Cooperation Movement
 	type = country_event
@@ -35,7 +36,8 @@ india_non_cooperation.1 = { # The Non-Cooperation Movement
 						market_goods_sell_orders > 200
 					}
 					order_by = "market.market_production_share(scope:probably_britain_scope)"
-
+					position = 0
+					check_range_bounds = no
 					goods = {
 						save_scope_as = british_trade_route_goods
 					}
@@ -50,7 +52,8 @@ india_non_cooperation.1 = { # The Non-Cooperation Movement
 						market_goods_sell_orders > 200
 					}
 					order_by = "market.market_imports_reliance(scope:probably_britain_scope.market)"
-
+					position = 0
+					check_range_bounds = no
 					goods = {
 						save_scope_as = british_trade_route_goods	# need a good to be called on for loc in the non-trade-route path
 					}
@@ -64,7 +67,7 @@ india_non_cooperation.1 = { # The Non-Cooperation Movement
 		random_political_movement = {
 			limit = {
 				is_political_movement_type = movement_india_pan_national
-				political_movement_radicalism >= 0.35
+				movement_is_causing_obstinance = yes
 			}
 			save_scope_as = indian_independence_movement
 
@@ -118,7 +121,7 @@ india_non_cooperation.1 = { # The Non-Cooperation Movement
 		highlighted_option = yes
 
 		trigger = {
-			NOT = { has_law = law_type:law_guaranteed_liberties }
+			NOT = { has_law_or_variant = law_type:law_guaranteed_liberties }
 			exists = scope:indian_independence_movement_agitator
 		}
 
@@ -189,7 +192,7 @@ india_non_cooperation.3 = { # Hartal!
 	trigger = {
 		any_scope_state = {
 			NOT = { has_modifier = hartal_action }
-			state_is_in_india = yes
+			is_in_geographic_region = geographic_region_india
 		}
 	}
 
@@ -197,9 +200,11 @@ india_non_cooperation.3 = { # Hartal!
 		ordered_scope_state = {
 			limit = {
 				NOT = { has_modifier = hartal_action }
-				state_is_in_india = yes
+				is_in_geographic_region = geographic_region_india
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = hartal_state
 		}
 		random_political_movement = {
@@ -226,7 +231,7 @@ india_non_cooperation.3 = { # Hartal!
 			text = add_small_indian_radicals_tt
 			every_scope_culture = {
 				limit = {
-					has_discrimination_trait = south_asian_heritage
+					has_discrimination_trait_group = heritage_group_south_asian
 				}
 				scope:hartal_state = {
 					add_radicals = {
@@ -329,7 +334,7 @@ india_non_cooperation.4 = { # Swadeshi Production
 			text = add_huge_indian_radicals_tt
 			every_scope_culture = {
 				limit = {
-					has_discrimination_trait = south_asian_heritage
+					has_discrimination_trait_group = heritage_group_south_asian
 				}
 				scope:swadeshi_state = {
 					add_radicals_in_state = {
@@ -377,7 +382,7 @@ india_non_cooperation.5 = { # The Chauri Chaura Incident / The Blazing Chowki
 		}
 		random_scope_culture = {
 			limit = {
-				has_discrimination_trait = south_asian_heritage
+				has_discrimination_trait_group = heritage_group_south_asian
 				has_homeland = prev
 			}
 			save_scope_as = firebrand_movement_leader
@@ -390,7 +395,8 @@ india_non_cooperation.5 = { # The Chauri Chaura Incident / The Blazing Chowki
 
 			ordered_influenced_interest_group = {
 				order_by = ig_clout
-
+				position = 0
+				check_range_bounds = no
 				save_scope_as = powerful_movement_ig
 			}
 

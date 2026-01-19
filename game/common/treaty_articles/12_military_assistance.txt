@@ -1,6 +1,6 @@
 ﻿military_assistance = {
 	kind = directed
-	cost = 50
+	cost = 25
 
 	relations_progress_per_day = 0.5
 	relations_improvement_max = 50
@@ -8,9 +8,12 @@
 	icon = "gfx/interface/icons/diplomatic_treaties_articles_icons/military_assistance_treaties.dds"
 
 	flags = {
-		is_military_assistance
 		can_be_renegotiated
+		giftable
+		friendly
 	}
+
+	maintenance_paid_by = source_country
 
 	unlocked_by_technologies = {
 		general_staff
@@ -35,13 +38,18 @@
 	}
 
 	visible = {
-		NOT = { is_country_type = decentralized }
+
 	}
 
 	possible = {
-		NOT = { is_country_type = decentralized }
-		country_rank >= scope:other_country.country_rank
+
 		army_power_projection > scope:other_country.army_power_projection
+	}
+
+	requirement_to_maintain = {
+		trigger = {
+			scope:source_country.country_rank >= scope:target_country.country_rank
+		}
 	}
 
     non_fulfillment = {
@@ -50,10 +58,7 @@
         conditions = {
             weekly = {
 				scope:article = {
-					OR = {
-						source_country.country_rank < target_country.country_rank
-						source_country.army_power_projection < target_country.army_power_projection
-					}
+					source_country = { army_power_projection < prev.target_country.army_power_projection }
 				}
             }
         }
@@ -63,17 +68,28 @@
 		scope:source_country = {
 			is_revolutionary = no
 		}
-		scope:target_country = {
-			any_scope_treaty = {
-				count < 2
-				any_scope_article = {
-					has_type = military_assistance
-					target_country = scope:target_country
+		custom_tooltip = {
+			text = military_assistance_limit_tt
+			scope:target_country = {
+				any_scope_treaty = {
+					count < 2
+					hidden_trigger = {
+						OR = {
+							scope:treaty = {
+								is_renegotiation = no
+							}
+							scope:treaty.amended_treaty != this
+						}
+					}
+					any_scope_article = {
+						has_type = military_assistance
+						target_country = scope:target_country
+					}
 				}
 			}
 		}
         custom_tooltip = {
-            text = DUPLICATE_ARTICLE_SAME_INPUTS
+            text = DUPLICATE_ARTICLE_SAME_INPUTS_TREATY
             NOT = {
                 scope:source_country = {
                     any_scope_treaty = {
@@ -189,7 +205,7 @@
 					}
 					add = {
 						desc = "DIPLOMATIC_ACCEPTANCE_MAINTAIN_POWER_BALANCE"
-						add = 25
+						add = 10
 					}
 				}
 				else_if = {
@@ -198,7 +214,7 @@
 					}
 					add = {
 						desc = "DIPLOMATIC_ACCEPTANCE_ECONOMIC_IMPERIALISM"
-						add = 25
+						add = 10
 					}
 				}
 
@@ -268,7 +284,7 @@
 								}
 							}
 						}
-						value = 50
+						value = 25
 					}
 				}
 
@@ -441,7 +457,7 @@
 						subtract = 50
 						multiply = 2
 						min = -50
-						max = 50
+						max = 25
 					}
 				}
 
@@ -454,7 +470,7 @@
 								attitude = protective
 							}
 						}
-						value = 75
+						value = 25
 					}
 					else_if = {
 						limit = {
@@ -558,6 +574,7 @@
 						NOT = {
 							any_scope_article_option = {
 								NOT = { has_type = military_assistance }
+								NOT = { is_desired_by = root }
 							}
 						}
 						any_scope_article_option = {
@@ -601,7 +618,7 @@
 					}
 					add = {
 						desc = "LOBBY_OPPORTUNITY_BONUS"
-						value = 20
+						value = 10
 					}
 				}
 
@@ -614,28 +631,8 @@
 					}
 					add = {
 						desc = "LOBBY_OPPORTUNITY_BONUS"
-						value = 10
+						value = 5
 					}
-				}
-			}
-
-			if = {
-				limit = {
-					scope:target_country ?= this
-					scope:treaty ?= {
-						NOT = {
-							any_scope_article_option = {
-								OR = {
-									source_country ?= scope:target_country
-									is_giftable_treaty_article = no
-								}
-							}
-						}
-					}
-				}
-				add = {
-					desc = "DIPLOMATIC_ACCEPTANCE_GIFT"
-					value = 200
 				}
 			}
 		}

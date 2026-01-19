@@ -3,6 +3,13 @@
 
 	group = je_group_poland
 
+    is_shown_in_lobby = {
+        OR = {
+            c:POL ?= this
+            c:KRA ?= this
+        }
+    }
+
     scripted_button = christ_of_nations_button
 
     is_shown_when_inactive = {
@@ -57,6 +64,10 @@ je_poland_lithuania = {
 
 	group = je_group_poland
 
+     is_shown_in_lobby = {
+        country_has_primary_culture = cu:polish
+    }
+
     is_shown_when_inactive = {
        country_has_primary_culture = cu:polish
     }
@@ -90,6 +101,15 @@ je_poland_lithuania = {
     on_complete = {
         set_variable = greater_commonwealth_var
         trigger_event = { id = poland_events.7 popup = yes }
+		s:STATE_VILNIUS = {
+			add_homeland = cu:polish
+		}
+		s:STATE_BREST = {
+			add_homeland = cu:polish
+		}
+		s:STATE_VOLHYNIA = {
+			add_homeland = cu:polish
+		}
         custom_tooltip = plc_discrimination_tt
         show_as_tooltip = {
             add_primary_culture = cu:ukrainian

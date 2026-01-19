@@ -2,11 +2,11 @@
 	c:GBR ?= {
 		set_next_election_date = 1836.2.1
 		
-		ig:ig_intelligentsia = {
+		ig:ig_intelligentsia ?= {
 			add_ruling_interest_group = yes
 		}
 
-		ig:ig_petty_bourgeoisie = {
+		ig:ig_petty_bourgeoisie ?= {
 			add_ruling_interest_group = yes
 		}
 		
@@ -14,9 +14,9 @@
 			goods = g:grain 
 			level = high_tariffs
 		}
-		set_export_tariff_level = { 
+		set_import_tariff_level = { 
 			goods = g:fabric
-			level = low_tariffs
+			level = no_tariffs_or_subventions
 		}	
 		set_export_tariff_level = { 
 			goods = g:opium
@@ -55,6 +55,7 @@
 		activate_law = law_type:law_professional_army
 		activate_law = law_type:law_tenant_farmers # enclosure acts
 		activate_law = law_type:law_migration_controls
+		activate_law = law_type:law_anti_strike_laws # 1825 Combinations of Workmen Act
 		
 		set_institution_investment_level = {
 			institution = institution_colonial_affairs
@@ -103,6 +104,13 @@
 			set_company_state_region = s:STATE_HOME_COUNTIES
 			add_owned_country = c:BIC #links the country to this company
 		}
-
+		
+		set_variable = free_elections_var
+		active_law:lawgroup_distribution_of_power ?= { # Wealth Voting - Reform Act
+			add_amendment = {
+				type = amendment_tradition_of_free_elections
+				sponsor = PREV.ig:ig_intelligentsia
+			}
+		}
 	}
 }

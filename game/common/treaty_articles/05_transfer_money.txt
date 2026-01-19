@@ -2,18 +2,16 @@
 	kind = directed
 	cost = 25
 
-	relations_progress_per_day = 0.5
-	relations_improvement_max = 20
-
 	icon = "gfx/interface/icons/diplomatic_treaties_articles_icons/bankroll_treaties.dds"
 
 	flags = {
 		is_money_transfer
 		can_be_enforced
 		can_be_renegotiated
-		recipient_pays_maintenance
+		giftable
 	}
 
+	maintenance_paid_by = target_country
 	usage_limit = once_per_treaty
 
     required_inputs = {
@@ -25,13 +23,22 @@
 	}
 
 	visible = {
-		NOT = { is_country_type = decentralized }
-		is_revolutionary = no
 	}
 
 	possible = {
-		NOT = { is_country_type = decentralized }
-		is_revolutionary = no
+		in_default = no
+	}
+
+	requirement_to_maintain = {
+		trigger = {
+			custom_tooltip = {
+				text = "MONEY_TRANSFER_INPUT_QUANTITY_INVALID"
+				scope:article ?= {
+					exists = input_quantity
+					input_quantity > 0
+				}
+			}
+		}
 	}
 
     non_fulfillment = {
@@ -54,6 +61,9 @@
 					}
 				}
 			}
+		}
+		scope:source_country = {
+			in_default = no
 		}
 	}
 
@@ -82,13 +92,20 @@
 
 	quantity_min_value = {
         value = 100
-		max = income
+		max = fixed_income
 		min = 0
     }
 
     quantity_max_value = {
-        value = income
+        value = fixed_income
 		divide = 4
+
+		if = {
+			limit = {
+				income_transfer_relative_expenses >= 0.5
+			}
+			max = 100
+		}
     }
 
 	ai = {
@@ -107,7 +124,7 @@
 			}
 
 			max = {
-				value = weekly_net_fixed_income
+				value = net_fixed_income
 				multiply = 0.25
 			}
 			min = 1000
@@ -151,7 +168,7 @@
 					subtract = {
 						desc = "DIPLOMATIC_ACCEPTANCE_INPUT_QUANTITY"
 						value = scope:article.input_quantity
-						divide = 50
+						divide = 25
 					}
 				}
 
@@ -161,7 +178,7 @@
 
 					add = {
 						value = "scope:source_country.ai_gdp_comparison(root)"
-						max = 50
+						max = 25
 						min = -50
 						multiply = 0.01
 					}
@@ -171,7 +188,7 @@
 					limit = { in_default = yes }
 
 					add = {
-						desc = "DIPLOMATIC_ACCEPTANCE_DEBT"
+						desc = "DIPLOMATIC_ACCEPTANCE_DEBT_TARGET"
 						value = -1000
 					}
 				}
@@ -179,10 +196,10 @@
 					limit = { scaled_debt >= 0.05 }
 
 					multiply = {
-						desc = "DIPLOMATIC_ACCEPTANCE_DEBT"
+						desc = "DIPLOMATIC_ACCEPTANCE_DEBT_TARGET"
 						value = 1
 
-						subtract = {
+						add = {
 							value = scaled_debt
 							max = 0.2
 						}
@@ -195,7 +212,7 @@
 						desc = "DIPLOMATIC_ACCEPTANCE_GOLD_RESERVES"
 						value = 1
 
-						add = {
+						subtract = {
 							value = scaled_gold_reserves
 							max = 0.2
 						}
@@ -206,14 +223,14 @@
 					limit = { exists = scope:article.input_quantity }
 
 					if = {
-						limit = { weekly_net_fixed_income < 0 }
+						limit = { net_fixed_income < 0 }
 
 						multiply = {
 							desc = "DIPLOMATIC_ACCEPTANCE_BUDGET_DEFICIT"
 							value = 1
 
-							subtract = {
-								value = weekly_net_fixed_income
+							add = {
+								value = net_fixed_income
 								divide = scope:article.input_quantity
 								multiply = -1
 								max = 0.2
@@ -221,14 +238,14 @@
 						}
 					}
 					else_if = {
-						limit = { weekly_net_fixed_income > 0 }
+						limit = { net_fixed_income > 0 }
 
 						multiply = {
 							desc = "DIPLOMATIC_ACCEPTANCE_BUDGET_SURPLUS"
 							value = 1
 
-							add = {
-								value = weekly_net_fixed_income
+							subtract = {
+								value = net_fixed_income
 								divide = scope:article.input_quantity
 								max = 0.2
 							}
@@ -240,7 +257,6 @@
 					limit = {
 						income_transfer_relative_expenses >= 0.2
 					}
-
 					add = {
 						desc = "DIPLOMATIC_ACCEPTANCE_MONEY_TRANSFER_CAP"
 						value = -200
@@ -281,7 +297,7 @@
 					limit = { scaled_debt >= 0.05 }
 
 					multiply = {
-						desc = "DIPLOMATIC_ACCEPTANCE_DEBT"
+						desc = "DIPLOMATIC_ACCEPTANCE_DEBT_TARGET"
 						value = 1
 
 						add = {
@@ -308,14 +324,14 @@
 					limit = { exists = scope:article.input_quantity }
 
 					if = {
-						limit = { weekly_net_fixed_income < 0 }
+						limit = { net_fixed_income < 0 }
 
 						multiply = {
 							desc = "DIPLOMATIC_ACCEPTANCE_BUDGET_DEFICIT"
 							value = 1
 
 							add = {
-								value = weekly_net_fixed_income
+								value = net_fixed_income
 								divide = scope:article.input_quantity
 								multiply = -1
 								max = 0.2
@@ -323,14 +339,14 @@
 						}
 					}
 					else_if = {
-						limit = { weekly_net_fixed_income > 0 }
+						limit = { net_fixed_income > 0 }
 
 						multiply = {
 							desc = "DIPLOMATIC_ACCEPTANCE_BUDGET_SURPLUS"
 							value = 1
 
 							subtract = {
-								value = weekly_net_fixed_income
+								value = net_fixed_income
 								divide = scope:article.input_quantity
 								max = 0.2
 							}
@@ -357,45 +373,27 @@
 				}
 			}
 		}
-
-		contextual_accept_score = {
-			value = 0
-
-			if = {
-				limit = {
-					scope:target_country ?= this
-					scope:treaty ?= {
-						NOT = {
-							any_scope_article_option = {
-								OR = {
-									source_country ?= scope:target_country
-									is_giftable_treaty_article = no
-								}
-							}
-						}
-					}
-				}
-				add = {
-					desc = "DIPLOMATIC_ACCEPTANCE_GIFT"
-					value = 200
-				}
-			}
-		}
 	}
 
 	wargoal = {
-		execution_priority = 1
+		execution_priority = 21
 
-		contestion_type = control_any_target_country_state
+		contestion_type = control_any_target_incorporated_state
 
 		maneuvers = {
-			value = 10
+			value = 0
+
+			add = {
+				desc = "MANEUVERS_BASE_VALUE"
+				value = 2.5
+			}
 
 			if = {
 				limit = {
 					exists = scope:quantity
 				}
 				add = {
+					desc = "MANEUVERS_QUANTITY_FACTOR"
 					value = scope:quantity
 					divide = 1000
 					min = 0
@@ -412,6 +410,7 @@
 					exists = scope:quantity
 				}
 				add = {
+					desc = "INFAMY_QUANTITY_FACTOR"
 					value = scope:quantity
 					divide = 1000
 					min = 5
@@ -443,6 +442,8 @@
 								has_type = money_transfer
 								target_country = root
 							}
+
+							desc = "INFAMY_MONEY_TRANSFER_QUANTITY_ROOT_HAS_ALREADY_ESTABLISHED_FACTOR"
 							add = input_quantity
 							divide = 2000
 						}
@@ -457,11 +458,13 @@
 						initiator = scope:target_country
 						target = root
 					}
+					exists = scope:quantity
 				}
 				subtract = {
 					add = scope:quantity
 					value = {
-						add = scope:target_country.income
+						desc = "INFAMY_TARGET_QUANTITY_DEDUCTION_FACTOR"
+						add = scope:target_country.fixed_income
 						multiply = 0.1
 					}
 					divide = 1000

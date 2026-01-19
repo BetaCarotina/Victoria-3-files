@@ -58,7 +58,7 @@ dei_breakup.1 = {
 					OR = {
 						is_subject_of = ROOT
 						any_primary_culture = {
-							has_discrimination_trait = malay_culture
+							has_discrimination_trait = language_malay
 						}
 					}
 					any_scope_state = {
@@ -100,7 +100,7 @@ dei_breakup.1 = {
 				make_independent = yes
 			}
 		}
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			remove_ideology = ideology_colonialist
 			add_ideology = ideology_laissez_faire
 		}
@@ -117,6 +117,7 @@ dei_breakup.1 = {
 				}
 				kill_character = yes
 			}
+			trigger_event = { id = independence.2 }
 		}
 	}
 
@@ -130,7 +131,7 @@ dei_breakup.1 = {
 			factor = 1
 		}
 		change_tag = IDN
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			remove_ideology = ideology_colonialist
 			add_ideology = ideology_laissez_faire
 		}
@@ -151,6 +152,7 @@ dei_breakup.1 = {
 				}
 				kill_character = yes
 			}
+			trigger_event = { id = independence.2 }
 		}
 	}
 	option = {
@@ -162,6 +164,7 @@ dei_breakup.1 = {
 		add_radicals = {
 			value = very_large_radicals
 		}
+		trigger_event = { id = independence.2 }
 	}
 }
 
@@ -206,7 +209,7 @@ alk_breakup.1 = {
 			limit = {
 				owner = {
 					any_primary_culture = {
-						has_discrimination_trait = east_slavic
+						has_discrimination_trait = heritage_east_slavic
 					}
 				}
 				OR = {
@@ -215,6 +218,8 @@ alk_breakup.1 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = russian_evacuation_state
 		}
 		random_state = {
@@ -247,14 +252,14 @@ alk_breakup.1 = {
 			every_scope_pop = {
 				limit = {
 					culture = {
-						has_discrimination_trait = european_heritage
+						has_discrimination_trait_group = heritage_group_european
 					}
 				}
 				if = {
 					limit = {
 						exists = scope:russian_evacuation_state
 						this.culture = {
-							has_discrimination_trait = east_slavic
+							has_discrimination_trait = heritage_east_slavic
 						}
 					}
 					random_list = {
@@ -314,14 +319,14 @@ alk_breakup.1 = {
 			every_scope_pop = {
 				limit = {
 					culture = {
-						has_discrimination_trait = european_heritage
+						has_discrimination_trait_group = heritage_group_european
 					}
 				}
 				if = {
 					limit = {
 						exists = scope:russian_evacuation_state
 						this.culture = {
-							has_discrimination_trait = east_slavic
+							has_discrimination_trait = heritage_east_slavic
 						}
 					}
 					random_list = {
@@ -360,11 +365,12 @@ alk_breakup.1 = {
 			factor = 1
 		}
 		custom_tooltip = alaskan_declaration_of_independence_tt
+		activate_law = law_type:law_presidential_republic
 		add_modifier = {
 			name = modifier_alyaska_republic
 			days = long_modifier_time
 		}
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			remove_ideology = ideology_colonialist
 			add_ideology = ideology_laissez_faire
 		}
@@ -376,14 +382,14 @@ alk_breakup.1 = {
 			every_scope_pop = {
 				limit = {
 					culture = {
-						has_discrimination_trait = european_heritage
+						has_discrimination_trait_group = heritage_group_european
 					}
 				}
 				if = {
 					limit = {
 						exists = scope:russian_evacuation_state
 						this.culture = {
-							has_discrimination_trait = east_slavic
+							has_discrimination_trait = heritage_east_slavic
 						}
 					}
 					random_list = {
@@ -417,10 +423,10 @@ alk_breakup.1 = {
 		highlighted_option = yes
 		trigger = {
 			has_technology_researched = nationalism
-			has_law = law_type:law_no_colonial_affairs
+			has_law_or_variant = law_type:law_no_colonial_affairs
 			OR = {
-				has_law = law_type:law_multicultural
-				has_law = law_type:law_council_republic
+				has_law_or_variant = law_type:law_multicultural
+				has_law_or_variant = law_type:law_council_republic
 			}
 		}
 		ai_chance = {
@@ -440,7 +446,7 @@ alk_breakup.1 = {
 						hidden = yes
 					}
 				}
-				c:ATB = {
+				c:ATB ?= {
 					every_scope_character = { # Replaces them with Athabaskan IG leaders
 						transfer_character = c:ALK
 						if = {
@@ -459,6 +465,8 @@ alk_breakup.1 = {
 						has_role = politician
 					}
 					order_by = this.interest_group.ig_clout
+					position = 0
+					check_range_bounds = no
 					set_character_as_ruler = yes
 				}
 				annex = c:ATB
@@ -471,19 +479,20 @@ alk_breakup.1 = {
 			change_tag = ATB
 			add_primary_culture = cu:athabaskan
 		}
+		trigger_event = { id = independence.2 }
 		custom_tooltip = {
 			text = some_european_pops_abandon_alaska_tt
 			every_scope_pop = {
 				limit = {
 					culture = {
-						has_discrimination_trait = european_heritage
+						has_discrimination_trait_group = heritage_group_european
 					}
 				}
 				if = {
 					limit = {
 						exists = scope:russian_evacuation_state
 						this.culture = {
-							has_discrimination_trait = east_slavic
+							has_discrimination_trait = heritage_east_slavic
 						}
 					}
 					random_list = {

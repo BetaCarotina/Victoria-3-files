@@ -276,7 +276,7 @@ wedding.3 = {
 					ruler.interest_group = {
 						OR = {
 							ig_approval <= angry
-							is_marginal = yes
+							ig_counts_as_marginal = yes
 						}
 					}
 				}
@@ -329,7 +329,7 @@ wedding.3 = {
 				save_scope_as = monarch_ig
 			}
 		}
-		heir = {
+		heir ?= {
 			save_scope_as = heir_scope
 		}
 		law_type:law_monarchy = {

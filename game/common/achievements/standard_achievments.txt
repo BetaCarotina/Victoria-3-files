@@ -50,7 +50,7 @@ anarchy_in_the_uk = {
 	}
 	happened = {
         c:GBR ?= this
-		has_law = law_type:law_anarchy
+		has_law_or_variant = law_type:law_anarchy
 	}
 }
 
@@ -88,10 +88,10 @@ i_didnt_vote_for_pedro = {
     happened = {
         c:BRZ ?= this
         OR = {
-            has_law = law_type:law_presidential_republic
-            has_law = law_type:law_parliamentary_republic
+            has_law_or_variant = law_type:law_presidential_republic
+            has_law_or_variant = law_type:law_parliamentary_republic
         }
-        has_law = law_type:law_universal_suffrage
+        has_law_or_variant = law_type:law_universal_suffrage
     }
 }
 
@@ -154,8 +154,8 @@ the_paris_commune = {
     }
     happened = {
         c:FRA ?= this
-        has_law = law_type:law_command_economy
-        has_law = law_type:law_council_republic
+        has_law_or_variant = law_type:law_command_economy
+        has_law_or_variant = law_type:law_council_republic
     }
 }
 
@@ -194,7 +194,7 @@ miners_and_minors = {
                 state_region = s:STATE_WEST_BORNEO
                 is_incorporated = yes
             }
-            has_law = law_type:law_compulsory_primary_school
+            has_law_or_variant = law_type:law_compulsory_primary_school
         }
     }
 }
@@ -220,14 +220,15 @@ habsburg_resurgence = {
     happened = {
         c:AUS ?= this
         hidden_trigger = {
-            owns_entire_state_region = STATE_SILESIA
+            owns_entire_state_region = STATE_LOWER_SILESIA
+            owns_entire_state_region = STATE_UPPER_SILESIA
             or = {
                 NOT = {
-                    c:PRU = {
+                    c:PRU ?= {
                         is_country_alive = yes
                     }
                 }
-                c:PRU = {
+                c:PRU ?= {
                     country_rank < rank_value:major_power
                 }
             }
@@ -254,13 +255,21 @@ bourbon_for_everyone = {
         has_variable = bourbon_for_everyone_ach_possible
     }
     happened = {
-        c:SPA ?= this
-        hidden_trigger = {
-            c:SPA = {
-                root.average_sol >= 20
-                has_law = law_type:law_monarchy
+        OR = {
+            c:SPA ?= this
+            custom_tooltip = {
+                text = has_formed_iberia_tt
+                c:IBE ?= this
             }
         }
+        custom_tooltip = {
+            text = ruler_is_borbon_tt
+            ruler = {
+                has_variable = house_bourbon
+            }
+        }
+        root.average_sol >= 20
+        has_law = law_type:law_monarchy
     }
 }
 
@@ -270,7 +279,7 @@ manifest_mexico = {
 	}
 	happened = {
         c:MEX ?= this
-		c:MEX = {
+		c:MEX ?= {
 			owned_great_plains_region_states = yes
 			owned_pacific_coast_region_states = yes
             owns_entire_state_region = STATE_TEXAS
@@ -279,11 +288,11 @@ manifest_mexico = {
 		hidden_trigger = {
 			OR = {
 				NOT = {
-					c:USA = {
+					c:USA ?= {
 						is_country_alive = yes
 					}
 				}
-				c:USA = {
+				c:USA ?= {
 					country_rank <= rank_value:major_power
 				}
 			}
@@ -326,28 +335,11 @@ broken_promises = {
                         target_is = c:ITA
                     }
                 }
-                OR = {
-                    AND = {
-                        any_scope_initiator_ally = {
-                            this = c:ITA
-                        }
-                        any_scope_target_ally = {
-                            count >= 2
-                            any_scope_ally = {
-                                this = c:ITA
-                            }
-                        }
-                    }
-                    AND = {
-                        any_scope_target_ally = {
-                            this = c:ITA
-                        }
-                        any_scope_initiator_ally = {
-                            count >= 2
-                            any_scope_ally = {
-                                this = c:ITA
-                            }
-                        }
+                any_scope_play_involved = {
+                    c:ITA ?= this
+                    any_scope_ally = {
+                        is_diplomatic_play_enemy_of = prev
+                        count >= 2
                     }
                 }
             }
@@ -363,7 +355,7 @@ the_berlin_conference = {
         c:GER ?= this
         hidden_trigger = {
             any_scope_state = {
-                state_is_in_africa = yes
+                is_in_geographic_region = geographic_region_africa
                 is_split_state = no
                 count >= 10
             }
@@ -389,7 +381,7 @@ deeds_not_words = {
     }
     happened = {
         hidden_trigger = {
-            has_law = law_type:law_womens_suffrage
+            has_law_or_variant = law_type:law_womens_suffrage
         }
     }
 }
@@ -442,7 +434,7 @@ serfs_up = {
     }
     happened = {
         hidden_trigger = {
-            has_law = law_type:law_worker_protections
+            has_law_or_variant = law_type:law_worker_protections
             has_variable = serfs_up_ach_possible
         }
     }
@@ -489,7 +481,7 @@ enlightened_despot = {
     }
     happened = {
         hidden_trigger = {
-            has_law = law_type:law_autocracy
+            has_law_or_variant = law_type:law_autocracy
             any_scope_state = {
                 percent = 1
                 is_production_method_active = {
@@ -593,7 +585,6 @@ poppydock = {
                 level >= 8
             }
             market = {
-				# TODO PRCAL-38034 - change to look at country aggregated exports
                 mg:opium = {
                     market_goods_exports >= 2500
                 }
@@ -608,7 +599,7 @@ grander_colombia = {
     }
     happened = {
         c:GCO ?= this
-        c:GCO = {
+        c:GCO ?= {
             custom_tooltip = {
                 text = own_all_gran_colombia_tt
                 owned_gran_colombia_region_states = yes
@@ -696,8 +687,8 @@ star_swarmed_banner = {
                 is_incorporated = yes
                 count >= 100
             }
-            has_law = law_type:law_presidential_republic
-            NOT = { has_law = law_type:law_autocracy }
+            has_law_or_variant = law_type:law_presidential_republic
+            NOT = { has_law_or_variant = law_type:law_autocracy }
         }
     }
 }

@@ -113,8 +113,8 @@ french_pretenders_pulse.1 = {
 		name = french_pretenders_pulse.1.b
 		trigger = {
 			OR = {
-				has_law = law_type:law_outlawed_dissent
-				has_law = law_type:law_censorship
+				has_law_or_variant = law_type:law_outlawed_dissent
+				has_law_or_variant = law_type:law_censorship
 			}
 		}
 		custom_tooltip = {
@@ -422,7 +422,7 @@ french_pretenders_pulse.3 = {
 			AND = {
 				any_interest_group = {
 					leader = { has_ideology = ideology:ideology_orleanist }
-					is_marginal = no
+					ig_counts_as_marginal = no
 					is_in_government = no
 					NOR = {
 						has_modifier = solidarity_in_opposition
@@ -436,7 +436,7 @@ french_pretenders_pulse.3 = {
 			AND = {
 				any_interest_group = {
 					leader = { has_ideology = ideology:ideology_legitimist }
-					is_marginal = no
+					ig_counts_as_marginal = no
 					is_in_government = no
 					NOR = {
 						has_modifier = solidarity_in_opposition
@@ -450,7 +450,7 @@ french_pretenders_pulse.3 = {
 			AND = {
 				any_interest_group = {
 					leader = { has_ideology = ideology:ideology_bonapartist }
-					is_marginal = no
+					ig_counts_as_marginal = no
 					is_in_government = no
 					NOR = {
 						has_modifier = solidarity_in_opposition
@@ -464,7 +464,7 @@ french_pretenders_pulse.3 = {
 		}
 		any_interest_group = {
 			is_in_government = no
-			is_marginal = no
+			ig_counts_as_marginal = no
 			AND = {
 				law_stance = {
 					law = law_type:law_presidential_republic
@@ -489,7 +489,7 @@ french_pretenders_pulse.3 = {
 					AND = {
 						leader = { has_ideology = ideology:ideology_orleanist }
 						is_in_government = no
-						is_marginal = no
+						ig_counts_as_marginal = no
 						NOT = {
 							owner = {
 								ruler_is_orleanist = yes
@@ -499,7 +499,7 @@ french_pretenders_pulse.3 = {
 					AND = {
 						leader = { has_ideology = ideology:ideology_legitimist }
 						is_in_government = no
-						is_marginal = no
+						ig_counts_as_marginal = no
 						NOT = {
 							owner = {
 								ruler_is_legitimist = yes
@@ -509,7 +509,7 @@ french_pretenders_pulse.3 = {
 					AND = {
 						leader = { has_ideology = ideology:ideology_bonapartist }
 						is_in_government = no
-						is_marginal = no
+						ig_counts_as_marginal = no
 						NOT = {
 							owner = {
 								ruler_is_bonapartist = yes
@@ -523,7 +523,7 @@ french_pretenders_pulse.3 = {
 		random_interest_group = {
 			limit = {
 				is_in_government = no
-				is_marginal = no
+				ig_counts_as_marginal = no
 				AND = {
 					law_stance = {
 						law = law_type:law_presidential_republic
@@ -953,10 +953,7 @@ french_pretenders_pulse.5 = {
 		}
 
 		scope:monarch_of_france = {
-			add_modifier = {
-				name = restitutor_orbis
-				days = normal_modifier_time
-			}
+			add_trait = special_character_restitutor_orbis
 		}
 	}
 
@@ -1062,7 +1059,7 @@ french_pretenders_pulse.10 = {
 	option = {
 		name = french_pretenders_pulse.10.b
 		default_option = yes
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_modifier = {
 				name = modifier_bonapartist_armed_forces_modifier
 				days = normal_modifier_time
@@ -1113,14 +1110,14 @@ french_pretenders_pulse.11 = {
 		NOT = {
 			has_variable = fra_divided_monarchists_freeze
 		}
+
 		any_scope_character = {
 			has_ideology = ideology:ideology_orleanist
 		}
-
-		# TODO PRCAL-38034 - change to look at trade volume with world market
-		#any_trade_route = {
-		#	is_trade_route_active = yes
-		#}
+		any_scope_state = {
+			is_world_market_hub = yes
+			num_world_market_hub_trade_center_levels >= 20
+		}
 	}
 
 	immediate = {
@@ -1154,7 +1151,7 @@ french_pretenders_pulse.11 = {
 	option = {
 		name = french_pretenders_pulse.11.b
 		default_option = yes
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			add_modifier = {
 				name = modifier_orleanist_industrialist_modifier
 				days = normal_modifier_time
@@ -1208,7 +1205,7 @@ french_pretenders_pulse.12 = {
 		any_scope_character = {
 			has_ideology = ideology:ideology_legitimist
 		}
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			ig_clout >= 0.15
 		}
 	}
@@ -1220,7 +1217,7 @@ french_pretenders_pulse.12 = {
 			}
 			save_scope_as = legitimist_character
 		}
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			save_scope_as = devout_ig
 		}
 	}
@@ -1247,7 +1244,7 @@ french_pretenders_pulse.12 = {
 	option = {
 		name = french_pretenders_pulse.12.b
 		default_option = yes
-		ig:ig_devout = {
+		ig:ig_devout ?= {
 			add_modifier = {
 				name = modifier_legitimist_devout_modifier
 				days = normal_modifier_time
@@ -1300,7 +1297,7 @@ french_pretenders_pulse.13 = {
 		}
 		any_interest_group = {
 			AND = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				leader = {
 					OR = {
 						has_ideology = ideology:ideology_bonapartist
@@ -1316,7 +1313,7 @@ french_pretenders_pulse.13 = {
 		random_interest_group = {
 			limit = {
 				AND = {
-					is_marginal = no
+					ig_counts_as_marginal = no
 					leader = {
 						OR = {
 							has_ideology = ideology:ideology_bonapartist

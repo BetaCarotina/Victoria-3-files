@@ -93,6 +93,8 @@
  catalyst_recognition_requested_desc: "[TARGET_COUNTRY.GetName](이)가 [COUNTRY.GetName]에 대사관을 요구함"
  catalyst_support_regime_requested: "정권 지지 요청"
  catalyst_support_regime_requested_desc: "[TARGET_COUNTRY.GetName](이)가 정권 지지를 요청함"
+ catalyst_investment_rights_requested: "투자권 요청"
+ catalyst_investment_rights_requested_desc: "[TARGET_COUNTRY.GetName]의 [concept_foreign_investment_rights] 요청"
  catalyst_knowledge_sharing_requested: "지식 공유 요청"
  catalyst_knowledge_sharing_requested_desc: "[TARGET_COUNTRY.GetName](이)가 [COUNTRY.GetName]에 [concept_technology] 지식 공유를 요청함"
  catalyst_diplomatic_incident: "외교 사건 발생"
@@ -130,7 +132,7 @@
  catalyst_granted_military_assistance: "$concept_military_assistance$ 허용"
  catalyst_granted_military_assistance_desc: "[TARGET_COUNTRY.GetName](이)가 자국에 [concept_military_assistance]을 제공함"
  #Treaties
- catalyst_treaty_broken_broken: "$concept_treaty$ 파기"
- catalyst_treaty_broken_broken_desc: "[COUNTRY.GetName](이)가 [TARGET_COUNTRY.GetName](와)과의 [concept_treaty]을 파기함"
+ catalyst_treaty_broken: "$concept_treaty$ 파기"
+ catalyst_treaty_broken_desc: "[COUNTRY.GetName](이)가 [TARGET_COUNTRY.GetName](와)과의 [concept_treaty]을 파기함"
  catalyst_treaty_enforced: "$concept_treaty$ 강제"
  catalyst_treaty_enforced_desc: "[COUNTRY.GetName](이)가 [TARGET_COUNTRY.GetName]에 [concept_treaty]을 강제함"

@@ -29,6 +29,18 @@ types lens_toolbar_types {
 			using = half_and_fullscreen_hide
 			allow_outside = yes
 
+			state = {
+				name = moblization_sound
+
+				block "trigger" {
+					trigger_when = "[GetPlayer.IsInvolvedInActiveConflict]"
+				}
+
+				start_sound = {
+					soundeffect = "event:/SFX/UI/MapLenses/mobilize_general"
+				}
+			}
+
 			lensbar_mobilized_animation = {
 				visible = "[GetPlayer.IsInvolvedInActiveConflict]"
 			}
@@ -770,9 +782,10 @@ types lens_toolbar_types {
 				parentanchor = hcenter
 				alwaystransparent = yes
 
-				icon = {
+				button = {
 					size = { 50 50 }
 					parentanchor = hcenter
+					alwaystransparent = yes
 					texture = "[LensOption.GetTexture]"
 				}
 			}

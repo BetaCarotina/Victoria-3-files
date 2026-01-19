@@ -12,7 +12,7 @@ achievement_amish_paradise = {
 			text = achievement_amish_paradise.tt
 			has_variable = achievement_amish_paradise_var
 		}
-		has_law = law_type:law_industry_banned
+		has_law_or_variant = law_type:law_industry_banned
 		country_has_primary_culture = cu:yankee
 		average_sol > 20
 
@@ -24,8 +24,8 @@ achievement_euphoric = {
 		always = yes
 	}
 	happened = {
-		has_law = law_type:law_state_atheism
-		ig:ig_intelligentsia = {
+		has_law_or_variant = law_type:law_state_atheism
+		ig:ig_intelligentsia ?= {
 			is_powerful = yes
 			is_in_government = yes
 		}
@@ -35,17 +35,17 @@ achievement_euphoric = {
 achievement_it_never_ends = {
 	possible = {
 		exists = c:FRA
-		this = c:FRA
+		c:FRA ?= THIS
 		has_dlc_feature = voice_of_the_people_content
 	}
 	happened = {
 		exists = c:FRA
-		this = c:FRA
+		c:FRA ?= THIS
 		custom_tooltip = {
 			text = bonaparte_cemented_tt
 			has_variable = bonapartist_restoration_var
 		}
-		has_law = law_type:law_presidential_republic
+		has_law_or_variant = law_type:law_presidential_republic
 		custom_tooltip = {
 			text = stamped_out_monarchy_tt
 			has_variable = stamped_out_monarchy_var
@@ -56,12 +56,12 @@ achievement_it_never_ends = {
 achievement_hexagon_no_more = {
 	possible = {
 		exists = c:FRA
-		this = c:FRA
+		c:FRA ?= THIS
 		has_dlc_feature = voice_of_the_people_content
 	}
 	happened = {
 		exists = c:FRA
-		this = c:FRA
+		c:FRA ?= THIS
 		# see je_french_natural_borders
 		custom_tooltip = {
 			text = achievement_hexagon_no_more_tt
@@ -73,11 +73,11 @@ achievement_hexagon_no_more = {
 achievement_lallemagne_cest_rien = {
 	possible = {
 		exists = c:FRA
-		this = c:FRA
+		c:FRA ?= THIS
 	}
 	happened = {
 		exists = c:FRA
-		this = c:FRA
+		c:FRA ?= THIS
 		year >= 1930
 		custom_tooltip = {
 			text = germany_never_exists.tt
@@ -103,11 +103,11 @@ achievement_emperor_norton = {
 	possible = {
 		has_dlc_feature = voice_of_the_people_content
 		exists = c:USA
-		THIS = c:USA
+		c:USA ?= THIS
 	}
 	happened = {
 		exists = c:USA
-		THIS = c:USA
+		c:USA ?= THIS
 		has_law = law_type:law_monarchy
 		custom_tooltip = {
 			text = achievement_emperor_norton.tt
@@ -143,7 +143,7 @@ achievement_shut_the_door_behind_you = {
 				}
 			}
 		}
-		has_law = law_type:law_closed_borders
+		has_law_or_variant = law_type:law_closed_borders
 	}
 }
 
@@ -151,7 +151,7 @@ achievement_crush_the_commune = {
 	possible = {
 		has_dlc_feature = voice_of_the_people_content
 		exists = c:FRA
-		THIS = c:FRA
+		c:FRA ?= THIS
 	}
 	happened = {
 		custom_tooltip = {
@@ -163,7 +163,10 @@ achievement_crush_the_commune = {
 
 achievement_military_junta = {
 	possible = {
-		has_dlc_feature = voice_of_the_people_content
+		OR = {
+			has_dlc_feature = voice_of_the_people_content
+			has_dlc_feature = ip4_content
+		}
 		always = yes
 	}
 	happened = {
@@ -181,7 +184,7 @@ achievement_huge_ego_sorry = {
 	}
 	happened = {
 		exists = c:GER
-		THIS = c:GER
+		c:GER ?= this
 		ruler = {
 			custom_tooltip = {
 				text = achievement_huge_ego_sorry.tt
@@ -197,9 +200,9 @@ achievement_authoritarian = {
 		always = yes
 	}
 	happened = {
-		has_law = law_type:law_single_party_state
-		has_law = law_type:law_militarized_police
-		has_law = law_type:law_outlawed_dissent
+		has_law_or_variant = law_type:law_single_party_state
+		has_law_or_variant = law_type:law_militarized_police
+		has_law_or_variant = law_type:law_outlawed_dissent
 	}
 }
 
@@ -208,7 +211,7 @@ achievement_breadbasket = {
 		always = yes
 	}
 	happened = {
-		has_law = law_type:law_homesteading
+		has_law_or_variant = law_type:law_homesteading
 		leading_producer_of = g:grain
 		leading_producer_of = g:groceries
 	}
@@ -217,11 +220,11 @@ achievement_breadbasket = {
 achievement_meiji_restoration = {
 	possible = {
 		exists = c:JAP
-		THIS = c:JAP
+		c:JAP ?= THIS
 	}
 	happened = {
 		exists = c:JAP
-		THIS = c:JAP
+		c:JAP ?= THIS
 		year <= 1912
 		custom_tooltip = {
 			text = achievement_meiji_restoration_tt

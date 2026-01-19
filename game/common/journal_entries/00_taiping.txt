@@ -7,14 +7,14 @@
 
 	is_shown_when_inactive = {
 		exists = c:CHI
-		THIS = c:CHI
+		c:CHI ?= THIS
 	}
 
 	possible = {
 		OR = {
 			has_modifier = opium_wars_lost
 			NOT = {
-				has_law = law_type:law_closed_borders
+				has_law_or_variant = law_type:law_closed_borders
 			}
 		}
 		any_neighbouring_state = {
@@ -23,13 +23,16 @@
 				text = owner_is_christian_tt
 				owner = {
 					religion = {
-						has_discrimination_trait = christian
+						has_discrimination_trait = heritage_christian
 					}
 				}
 			}
 		}
-		NOT = {
-			has_law = law_type:law_isolationism
+		OR = {
+			NOT = { has_law_or_variant = law_type:law_isolationism }
+			any_country = {
+				has_treaty_port_in_market = root.market
+			}
 		}
 	}
 
@@ -46,7 +49,7 @@
 					is_treaty_port = yes
 					owner = {
 						religion = {
-							has_discrimination_trait = christian
+							has_discrimination_trait = heritage_christian
 						}
 					}
 				}
@@ -59,7 +62,7 @@
 		effect = {
 			if = {
 				limit = {
-					has_law = law_type:law_no_migration_controls
+					has_law_or_variant = law_type:law_no_migration_controls
 					any_scope_state = {
 						NOT = {
 							has_variable = open_to_missionaries_state
@@ -82,7 +85,7 @@
 							is_treaty_port = yes
 							owner = {
 								religion = {
-									has_discrimination_trait = christian
+									has_discrimination_trait = heritage_christian
 								}
 							}
 						}
@@ -111,9 +114,9 @@
 		}
 		OR = {
 			is_country_type = recognized
-			has_law = law_type:law_state_atheism
-			has_law = law_type:law_isolationism
-			has_law = law_type:law_closed_borders
+			has_law_or_variant = law_type:law_state_atheism
+			has_law_or_variant = law_type:law_isolationism
+			has_law_or_variant = law_type:law_closed_borders
 		}
 	}
 
@@ -128,7 +131,7 @@ je_heavenly_kingdom_main = {
 
 	is_shown_when_inactive = {
 		exists = c:CHI
-		THIS = c:CHI
+		c:CHI ?= THIS
 	}
 
 	possible = {
@@ -146,8 +149,9 @@ je_heavenly_kingdom_main = {
 		is_subject = no
 		any_scope_state = {
 			is_incorporated = yes
-			any_scope_pop = {
-				has_pop_religion = protestant
+			religion_percent_state = {
+				target = rel:protestant
+				value >= 0.01
 			}
 			is_capital = no
 			state_region = {
@@ -164,8 +168,9 @@ je_heavenly_kingdom_main = {
 		random_scope_state = {
 			limit = {
 				is_incorporated = yes
-				any_scope_pop = {
-					has_pop_religion = protestant
+				religion_percent_state = {
+					target = rel:protestant
+					value >= 0.01
 				}
 				is_capital = no
 				state_region = {
@@ -209,10 +214,9 @@ je_heavenly_kingdom_main = {
 		any_scope_state = {
 			AND = {
 				has_modifier = god_worshippers
-				hidden_trigger = {
-					any_scope_pop = {
-						has_pop_religion = protestant
-					}
+				religion_percent_state = {
+					target = rel:protestant
+					value >= 0.01
 				}
 				state_religious_acceptance = {
 	 				target = rel:protestant
@@ -241,16 +245,14 @@ je_taiping = {
 	complete = {
 		custom_tooltip = {
 			text = taiping_destroyed
-			hidden_trigger = {
-				NOT = {
-					exists = c:TPG
-				}
+			NOT = {
+				exists = c:TPG
 			}
 		}
 	}
 
 	immediate = {
-		c:TPG = {
+		c:TPG ?= {
 			save_scope_as = taiping_scope
 		}
 	}
@@ -274,7 +276,7 @@ je_taiping = {
 		}
 		hidden_effect = {
 			remove_modifier = taiping_taiping_rebellion
-			c:TPG = {
+			c:TPG ?= {
 				remove_modifier = taiping_taiping_rebellion
 			}
 		}
@@ -295,10 +297,8 @@ je_taiping_revolution = {
 		OR = {
 			custom_tooltip = {
 				text = china_destroyed
-				hidden_trigger = {
-					NOT = {
-						exists = c:CHI
-					}
+				NOT = {
+					exists = c:CHI
 				}
 			}
 			AND = {
@@ -310,7 +310,7 @@ je_taiping_revolution = {
 	}
 
 	immediate = {
-		c:CHI = {
+		c:CHI ?= {
 			save_scope_as = china_scope
 		}
 	}

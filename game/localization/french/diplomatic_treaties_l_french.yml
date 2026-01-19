@@ -17,13 +17,14 @@
  treaty_name_ham_pru_trade: "Accord commercial hambourgeois-prussien"
  treaty_name_swe_pru_trade: "Accord commercial suédo-prussien"
  treaty_name_prussian_military_mission_to_turkey: "Mission prussienne en Empire ottoman"
+ treaty_name_treaty_of_adrianople: "Traité d’Andrinople"
  ### Dynamic Treaties
  # Generic
  treaty_name_treaty_of_city: "Traité de $SIGNING_LOCATION$"
  treaty_name_city_protocol: "Protocole de $SIGNING_LOCATION$"
  treaty_name_city_convention: "Convention de $SIGNING_LOCATION$"
  treaty_name_convention_of_city: "Entente de $SIGNING_LOCATION$"
- treaty_name_september_convention: "Convention de septembre"
+ treaty_name_september_convention: "Convention de $SIGNING_MONTH$"
  treaty_name_city_declaration: "Déclaration de $SIGNING_LOCATION$"
  treaty_name_declaration_of_captial: "Édit de $SIGNING_LOCATION$"
  treaty_name_country_adj_country_adj_treaty: "Traité entre [FIRST_COUNTRY.GetAltNameNoFormatting('Le')][FIRST_COUNTRY.GetNameNoFormatting] et [SECOND_COUNTRY.GetAltNameNoFormatting('Le')][SECOND_COUNTRY.GetNameNoFormatting]"

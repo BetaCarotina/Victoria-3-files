@@ -647,7 +647,6 @@ ARG_William_Brown = { # Sea
 	historical = yes
 	culture = cu:irish
 	female = no
-	culture = primary_culture
 	religion = rel:catholic
 	commander_rank = default
 	interest_group = ig_armed_forces
@@ -910,12 +909,6 @@ ARG_Juan_Lavalle = {
 		imposing
 		honorable
 		popular_commander
-	}
-	on_created = {
-		if = {
-			limit = { is_in_exile_pool = no }
-			exile_character = yes # Lived in Uruguay until 1838
-		}
 	}
 	trait_generation = { }
 }

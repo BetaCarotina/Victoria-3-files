@@ -3,26 +3,25 @@
 	cost = 0
 
 	flags = {
-		is_join_power_bloc
 	}
 
+	maintenance_paid_by = source_country
 	usage_limit = once_per_treaty
 
 	icon = "gfx/interface/icons/diplomatic_treaties_articles_icons/invite_to_power_bloc_treaties.dds"
 
 	visible = {
-		NOT = { is_country_type = decentralized }
-		is_revolutionary = no
+
 	}
 
 	possible = {
-		NOT = { is_country_type = decentralized }
-		is_revolutionary = no
+
 	}
 
 	can_ratify = {
 		scope:source_country = {
 			is_subject = no
+			is_power_bloc_leader = no
 			custom_tooltip = {
 				text = "NO_POWER_STRUGGLE_BLOC_JOIN"
 				OR = {
@@ -390,6 +389,7 @@
 						NOT = {
 							any_scope_article_option = {
 								NOT = { has_type = join_power_bloc }
+								NOT = { is_desired_by = root }
 							}
 						}
 						any_scope_article_option = {
@@ -433,7 +433,7 @@
 					}
 					add = {
 						desc = "LOBBY_OPPORTUNITY_BONUS"
-						value = 20
+						value = 10
 					}
 				}
 
@@ -446,7 +446,7 @@
 					}
 					add = {
 						desc = "LOBBY_OPPORTUNITY_BONUS"
-						value = 10
+						value = 5
 					}
 				}
 			}

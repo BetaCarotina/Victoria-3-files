@@ -24,10 +24,10 @@
 	}
 
 	immediate = {
-		c:BIC = {
+		c:BIC ?= {
 			save_scope_as = BIC_scope
 		}
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			save_scope_as = industrialists_ig
 		}
 		trigger_event = { id = utilitarian.9 popup = yes }
@@ -38,14 +38,14 @@
 		bureaucracy >= 0
 		approaching_bureaucracy_shortage = no
 		NOT = {
-			has_law = law_type:law_no_womens_rights
+			has_law_or_variant = law_type:law_no_womens_rights
 		}
-		has_law = law_type:law_compulsory_primary_school
-		has_law = law_type:law_public_schools
-		has_law = law_type:law_slavery_banned
+		has_law_or_variant = law_type:law_compulsory_primary_school
+		has_law_or_variant = law_type:law_public_schools
+		has_law_or_variant = law_type:law_slavery_banned
 		OR = {
-			has_law = law_type:law_proportional_taxation
-			has_law = law_type:law_graduated_taxation
+			has_law_or_variant = law_type:law_proportional_taxation
+			has_law_or_variant = law_type:law_graduated_taxation
 		}
 	}
 

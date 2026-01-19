@@ -68,6 +68,7 @@
  popneed_luxury_items: "Lüks Eşya"
  popneed_art: "Sanat"
  popneed_leisure: "Boş Vakit"
+ popneed_stimulants: "Uyarıcılar"
  #Prestige goods:
  prestige_good_krupp_guns: "Krupp Silahları"
  prestige_good_canton_porcelain: "Kanton Porseleni"
@@ -109,6 +110,20 @@
  prestige_good_schichau_engines: "Schichau Motorları"
  prestige_good_smirnoff_vodka: "Smirnoff Votkası"
  prestige_good_russia_iron: "Rusya Demiri"
+ prestige_good_philips_chapel_radio: "Chapel Radyoları"
+ prestige_good_grand_strategy_games: "Büyük Strateji Oyunları"
+ #IP3 Goods
+ prestige_good_basma_tobacco: "Basma Tütünü"
+ prestige_good_acorn_fed_pork: "Meşe Palamuduyla Beslenmiş Domuz Eti"
+ prestige_good_pannonian_patent_flour: "Pannonia Patent Unu"
+ prestige_good_brunn_type_engines: "Brunn Tipi Motorlar"
+ #IP4 Goods
+ prestige_good_bacardi_rum: "Bacardi Romu"
+ prestige_good_sherry: "Sherry"
+ prestige_good_cigars: "Purolar"
+ prestige_good_havana_sugar: "Havana Şekeri"
+ prestige_good_port_wine: "Porto Şarabı"
+ #Generic Prestige Goods
  prestige_good_generic_groceries: "Gurme Yiyecekler"
  prestige_good_generic_steel: "Rafine Çelik"
  prestige_good_generic_furniture: "Şık Mobilya"
@@ -119,3 +134,9 @@
  prestige_good_generic_coffee: "Rezerve Kahve"
  prestige_good_generic_meat: "Üstün Kaliteli Et"
  prestige_good_generic_fish: "Özenle Seçilmiş Balık"
+ prestige_good_generic_small_arms: "Güçlü Hafif Silahlar"
+ prestige_good_generic_artillery: "Hızlı Ateşlenen Toplar"
+ prestige_good_generic_merchant_marine: "Hızlı Denizci Tüccar"
+ prestige_good_generic_grain: "Kaliteli Tahıl"
+ prestige_good_generic_paper: "Kraft Kâğıdı"
+ prestige_good_generic_explosives: "Üst Düzey Patlayıcılar"

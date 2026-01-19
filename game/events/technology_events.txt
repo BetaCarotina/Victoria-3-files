@@ -50,7 +50,7 @@ technology_events.1 = { #New regulations for cars
 			days = normal_modifier_time
 		}
 
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			add_modifier = {
 				name = industrialists_cars_restricted
 				days = normal_modifier_time
@@ -61,7 +61,7 @@ technology_events.1 = { #New regulations for cars
 	option = { #Don't restrict them
 		name = technology_events.1.b
 		default_option = yes
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			add_modifier = {
 				name = industrialists_cars_unrestricted
 				days = normal_modifier_time
@@ -284,7 +284,7 @@ technology_events.30 = { #Article on weapons of war
 				value = -10
 			}
 		}
-		ig:ig_intelligentsia = {
+		ig:ig_intelligentsia ?= {
 			add_modifier = {
 				name = disapproves_of_no_weapon_restriction
 				days = normal_modifier_time
@@ -403,7 +403,7 @@ technology_events.50 = {
 	option = { #no
 		name = technology_events.50.b
 		default_option = yes
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_modifier = {
 				name = modifier_can_anger
 				days = normal_modifier_time

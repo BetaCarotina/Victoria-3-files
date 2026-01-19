@@ -17,13 +17,14 @@
  treaty_name_ham_pru_trade: "Гамбургско-прусское торговое соглашение"
  treaty_name_swe_pru_trade: "Шведско-прусское торговое соглашение"
  treaty_name_prussian_military_mission_to_turkey: "Прусская миссия в Османскую Империю"
+ treaty_name_treaty_of_adrianople: "Адрианопольский мирный договор"
  ### Dynamic Treaties
  # Generic
  treaty_name_treaty_of_city: "Договор города $SIGNING_LOCATION$"
  treaty_name_city_protocol: "Протокол города $SIGNING_LOCATION$"
  treaty_name_city_convention: "Конвенция города $SIGNING_LOCATION$"
  treaty_name_convention_of_city: "Конвенция города $SIGNING_LOCATION$"
- treaty_name_september_convention: "Сентябрьская конвенция"
+ treaty_name_september_convention: "Конвенция месяца $SIGNING_MONTH$"
  treaty_name_city_declaration: "Декларация города $SIGNING_LOCATION$"
  treaty_name_declaration_of_captial: "Декларация города $SIGNING_LOCATION$"
  treaty_name_country_adj_country_adj_treaty: "[FIRST_COUNTRY.GetAdjectiveNoFormatting]о-[SECOND_COUNTRY.GetAdjectiveNoFormatting|l]ий договор"

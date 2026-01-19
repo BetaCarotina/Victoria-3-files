@@ -23,8 +23,8 @@ internal_security_events.1 = {
 
 	trigger = {
 		is_enacting_law = law_type:law_secret_police
-		ig:ig_armed_forces = {
-			is_marginal = no
+		ig:ig_armed_forces ?= {
+			ig_counts_as_marginal = no
 		}
 		NOT = {
 			has_modifier = forced_disappearance_modifier
@@ -53,7 +53,7 @@ internal_security_events.1 = {
 		currently_enacting_law = {
 			save_scope_as = current_law_scope
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			save_scope_as = internal_security_ig
 		}
 		random_interest_group = {
@@ -125,8 +125,8 @@ internal_security_events.2 = {
 
 	trigger = {
 		is_enacting_law = law_type:law_secret_police
-		ig:ig_armed_forces = {
-			is_marginal = no
+		ig:ig_armed_forces ?= {
+			ig_counts_as_marginal = no
 		}
 		any_country = {
 			relations:root < relations_threshold:neutral
@@ -151,7 +151,7 @@ internal_security_events.2 = {
 		currently_enacting_law = {
 			save_scope_as = current_law_scope
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			save_scope_as = internal_security_ig
 		}
 		random_country = {
@@ -220,8 +220,8 @@ internal_security_events.3 = {
 
 	trigger = {
 		is_enacting_law = law_type:law_secret_police
-		ig:ig_armed_forces = {
-			is_marginal = no
+		ig:ig_armed_forces ?= {
+			ig_counts_as_marginal = no
 		}
 		NOT = {
 			has_modifier = privacy_concerns_modifier
@@ -246,7 +246,7 @@ internal_security_events.3 = {
 		currently_enacting_law = {
 			save_scope_as = current_law_scope
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			save_scope_as = internal_security_ig
 		}
 		random_interest_group = {
@@ -388,7 +388,7 @@ internal_security_events.4 = {
 		any_political_movement = {
 			political_movement_support > 0.05
 			any_influenced_interest_group = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 			}
 			law_stance = {
 				law = law_type:law_guaranteed_liberties
@@ -441,7 +441,7 @@ internal_security_events.4 = {
 				pop_type = soldiers
 			}
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			add_modifier = {
 				name = blamed_police_modifier
 				days = normal_modifier_time

@@ -11,9 +11,18 @@
 		is_subject = yes
 	}
 
+	is_shown_in_lobby = {
+		OR = {
+			country_has_primary_culture = cu:anglo_canadian
+			country_has_primary_culture = cu:franco_canadian
+		}
+	}
+
 	possible = {
 		has_technology_researched = nationalism
 	}
+
+	scripted_button = je_canada_unite_can_button
 
 	complete = {
 		calc_true_if = {
@@ -67,6 +76,22 @@ je_canada_gbr = {
 
 	group = je_group_historical_content
 
+	is_shown_in_lobby = {
+		any_subject_or_below = {
+			OR = {
+				country_has_primary_culture = cu:anglo_canadian
+				country_has_primary_culture = cu:franco_canadian
+			}
+			count >= 2
+		}
+		NOT = {
+			OR = {
+				country_has_primary_culture = cu:anglo_canadian
+				country_has_primary_culture = cu:franco_canadian
+			}
+		}
+	}
+
 	is_shown_when_inactive = {
 		any_subject_or_below = {
 			OR = {
@@ -86,6 +111,8 @@ je_canada_gbr = {
 	possible = {
 		has_technology_researched = nationalism
 	}
+
+	scripted_button = je_canada_unite_can_button
 
 	complete = {
 		any_subject_or_below = {
@@ -151,6 +178,8 @@ je_australia_aus = {
 		has_technology_researched = nationalism
 	}
 
+	scripted_button = je_australia_unite_aus_button
+
 	complete = {
 		calc_true_if = {
 			amount >= 7
@@ -201,6 +230,8 @@ je_australia_gbr = {
 	possible = {
 		has_technology_researched = nationalism
 	}
+
+	scripted_button = je_australia_unite_aus_button
 
 	complete = {
 		any_subject_or_below = {

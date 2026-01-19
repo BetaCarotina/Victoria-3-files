@@ -858,6 +858,16 @@ harvest_condition_started_in_country_important = {
 	color = neutral
 }
 
+national_awakening_started = {
+	type = country
+	group = "national_awakening_started_notification_group"
+
+	texture = "gfx/interface/icons/notification_icons/revolution.dds"
+
+	notification_type = toast
+	color = neutral
+}
+
 harvest_condition_started_in_country = {
 	type = country
 	group = "harvest_condition_notification_group"
@@ -914,6 +924,16 @@ character_died_notification = {
 
 	notification_type = feed
 	color = bad
+}
+
+character_retired_notification = {
+	type = character
+	group = "character_died_notification_group"
+
+	texture = "gfx/interface/icons/notification_icons/character.dds"
+
+	notification_type = feed
+	color = neutral
 }
 
 character_new_formation_notification = {
@@ -1560,6 +1580,16 @@ political_movement_formed = {
 	color = neutral
 }
 
+political_movement_spread_from_country = {
+	type = political_movement
+	group = "political_movement_notification_group"
+
+	texture = "gfx/interface/icons/notification_icons/laws.dds"
+
+	notification_type = feed
+	color = neutral
+}
+
 political_movement_disbanded = {
 	type = political_movement
 	group = "political_movement_notification_group"
@@ -1837,10 +1867,10 @@ country_withdrawn_from_treaty = {
 
 	texture = "gfx/interface/icons/notification_icons/influence_bad.dds"
 
-	notification_type = feed
+	notification_type = toast
 	color = bad
 
-	on_created_soundeffect = "event:/SFX/UI/Alerts/Toasts/diplomatic_treaties_revoke_neutral_negative"
+	on_created_soundeffect = "event:/SFX/UI/Alerts/Toasts/diplomatic_treaties_revoke_negative"
 }
 
 country_broke_treaty = {
@@ -1849,14 +1879,14 @@ country_broke_treaty = {
 
 	texture = "gfx/interface/icons/notification_icons/influence_bad.dds"
 
-	notification_type = feed
+	notification_type = toast
 	color = bad
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/Toasts/diplomatic_treaties_revoke_negative"
 }
 
 treaty_proposal_declined = {
-	type = country
+	type = treaty
 	group = "treaty_proposal_declined_notification_group"
 
 	texture = "gfx/interface/icons/notification_icons/influence_bad.dds"
@@ -1868,14 +1898,25 @@ treaty_proposal_declined = {
 }
 
 treaty_dissolved = {
-	type = country
+	type = treaty
 	group = "treaty_dissolved_notification_group"
 
 	texture = "gfx/interface/icons/notification_icons/influence_bad.dds"
 
-	notification_type = feed
+	notification_type = toast
 	color = neutral
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/Toasts/diplomatic_treaties_revoke_neutral"
 }
 
+treaty_article_removed = {
+	type = treaty
+	group = "treaty_dissolved_notification_group"
+
+	texture = "gfx/interface/icons/notification_icons/influence_bad.dds"
+
+	notification_type = toast
+	color = neutral
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/Toasts/diplomatic_treaties_revoke_neutral"
+}

@@ -7,7 +7,7 @@ election_generic.1 = {
 	title = election_generic.1.t
 	desc = election_generic.1.d
 	flavor = election_generic.1.f
-	
+
 	event_image = {
 		video = "southamerica_election"
 	}
@@ -23,22 +23,28 @@ election_generic.1 = {
 	trigger = {
 		in_election_campaign = yes
 		NOT = { has_variable = election_event_cooldown }
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_variable = mute_election_events }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		any_active_party = {
+			party_has_members = yes
 			count > 1
 		}
 	}
-	
+
 	immediate = {
 		set_variable = {
 			name = election_event_cooldown
 			months = election_event_cooldown_months
 		}
 		random_active_party = {
+			limit = {
+				party_has_members = yes
+			}
 			save_scope_as = party_1_scope
 		}
 		random_active_party = {
 			limit = {
+				party_has_members = yes
 				NOT = {
 					scope:party_1_scope ?= this
 				}
@@ -47,6 +53,7 @@ election_generic.1 = {
 		}
 		random_active_party = {
 			limit = {
+				party_has_members = yes
 				NOR = {
 					scope:party_1_scope ?= this
 					scope:party_2_scope ?= this
@@ -56,6 +63,7 @@ election_generic.1 = {
 		}
 		random_active_party = {
 			limit = {
+				party_has_members = yes
 				NOR = {
 					scope:party_1_scope ?= this
 					scope:party_2_scope ?= this
@@ -69,7 +77,7 @@ election_generic.1 = {
 	cancellation_trigger = {
 		in_election_campaign = no
 	}
-	
+
 	option = {
 		name = election_generic.1.a
 		default_option = yes
@@ -116,7 +124,7 @@ election_generic.2 = {
 	title = election_generic.2.t
 	desc = election_generic.2.d
 	flavor = election_generic.2.f
-	
+
 	event_image = {
 		video = "southamerica_election"
 	}
@@ -132,38 +140,49 @@ election_generic.2 = {
 	trigger = {
 		in_election_campaign = yes
 		NOT = { has_variable = election_event_cooldown }
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_variable = mute_election_events }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		any_active_party = {
+			party_has_members = yes
 			count > 1
 		}
 	}
-	
+
 	immediate = {
 		set_variable = {
 			name = election_event_cooldown
 			months = election_event_cooldown_months
 		}
 		random_active_party = {
+			limit = {
+				party_has_members = yes
+			}
 			save_scope_as = party_1_scope
 			ordered_member = {
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				save_scope_as = party_1_ig_scope
 			}
 		}
 		random_active_party = {
 			limit = {
+				party_has_members = yes
 				NOT = {
 					scope:party_1_scope ?= this
 				}
 			}
 			ordered_member = {
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				save_scope_as = party_2_ig_scope
 			}
 			save_scope_as = party_2_scope
 		}
 		random_active_party = {
 			limit = {
+				party_has_members = yes
 				NOR = {
 					scope:party_1_scope ?= this
 					scope:party_2_scope ?= this
@@ -171,12 +190,15 @@ election_generic.2 = {
 			}
 			ordered_member = {
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				save_scope_as = party_3_ig_scope
 			}
 			save_scope_as = party_3_scope
 		}
 		random_active_party = {
 			limit = {
+				party_has_members = yes
 				NOR = {
 					scope:party_1_scope ?= this
 					scope:party_2_scope ?= this
@@ -185,6 +207,8 @@ election_generic.2 = {
 			}
 			ordered_member = {
 				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
 				save_scope_as = party_4_ig_scope
 			}
 			save_scope_as = party_4_scope
@@ -194,7 +218,7 @@ election_generic.2 = {
 	cancellation_trigger = {
 		in_election_campaign = no
 	}
-	
+
 	option = {
 		name = election_generic.2.a
 		default_option = yes

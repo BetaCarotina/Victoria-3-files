@@ -54,11 +54,11 @@
 #			limit = {
 #				country_rank = c:RUS
 #			}
-#			c:GBR = { add_treasury = 100000 }
+#			c:GBR ?= { add_treasury = 100000 }
 #
 #			if = {
 #				limit = {
-#					this = c:PRU
+#					c:PRU ?= THIS
 #				}
 #				add_treasury = 100000
 #			}
@@ -121,12 +121,12 @@
 #			setting = no
 #			country = c:PRU
 #		}
-#		c:DEN = {
+#		c:DEN ?= {
 #			set_country_type = decentralized
 #		}
 #		set_capital = STATE_ILE_DE_FRANCE
 #		clear_debt = yes
-#		c:DEN = {
+#		c:DEN ?= {
 #			clear_debt = no
 #			clear_scaled_debt = 5
 #		}
@@ -213,21 +213,21 @@
 #
 #	option = {
 #		name = "Get angry"
-#		ig:ig_rural_folk = {
+#		ig:ig_rural_folk ?= {
 #			add_modifier = {
 #				name = angry_plebs
 #				days = normal_modifier_time
 #			}
 #		}
 #
-#		ig:ig_petty_bourgeoisie = {
+#		ig:ig_petty_bourgeoisie ?= {
 #			add_modifier = {
 #				name = angry_plebs
 #				days = normal_modifier_time
 #			}
 #		}
 #
-#		ig:ig_trade_unions = {
+#		ig:ig_trade_unions ?= {
 #			add_modifier = {
 #				name = angry_plebs
 #				days = normal_modifier_time
@@ -298,7 +298,7 @@
 #
 #		if = {
 #			limit = {
-#				ig:ig_petty_bourgeoisie = {
+#				ig:ig_petty_bourgeoisie ?= {
 #					has_ideology = ideology_jingoist
 #				}
 #			}
@@ -427,7 +427,7 @@
 #
 #	option = {
 #		name = "Get angry"
-#		ig:ig_armed_forces = {
+#		ig:ig_armed_forces ?= {
 #			add_modifier = {
 #				name = angry_plebs
 #				days = normal_modifier_time
@@ -584,7 +584,7 @@
 #
 #		if = {
 #			limit = {
-#				this = c:USA
+#				c:USA ?= THIS
 #			}
 #			create_country = {
 #				tag = CSA
@@ -926,7 +926,7 @@
 #		show_as_unavailable = { always = yes }
 #		trigger = {
 #			any_primary_culture = {
-#				has_discrimination_trait = european_heritage
+#				has_discrimination_trait_group = heritage_group_european
 #			}
 #		}
 #	}
@@ -938,7 +938,7 @@
 #		show_as_unavailable = { always = yes }
 #		trigger = {
 #			religion = {
-#				has_discrimination_trait = christian
+#				has_discrimination_trait = heritage_christian
 #			}
 #		}
 #	}
@@ -950,7 +950,7 @@
 #		show_as_unavailable = { always = yes }
 #		trigger = {
 #			any_primary_culture = {
-#				has_discrimination_trait = anglophone
+#				has_discrimination_trait = language_anglophone
 #			}
 #		}
 #	}
@@ -991,7 +991,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #
-#		ig:ig_landowners = {
+#		ig:ig_landowners ?= {
 #			set_ig_bolstering = yes
 #		}
 #	}
@@ -1001,7 +1001,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #
-#		ig:ig_landowners = {
+#		ig:ig_landowners ?= {
 #			set_ig_bolstering = no
 #		}
 #	}
@@ -1012,7 +1012,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #
-#		ig:ig_landowners = {
+#		ig:ig_landowners ?= {
 #			set_ig_suppression = yes
 #		}
 #	}
@@ -1022,7 +1022,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #
-#		ig:ig_landowners = {
+#		ig:ig_landowners ?= {
 #			set_ig_suppression = no
 #		}
 #	}
@@ -1661,7 +1661,7 @@
 #            limit = {
 #				owner = ROOT
 #			}
-#			start_building_construction = building_barracks
+#			start_building_construction = building_barrack
 #		}
 #    }
 #}
@@ -1826,7 +1826,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #		trigger = {
-#			ig:ig_landowners = {
+#			ig:ig_landowners ?= {
 #				is_being_suppressed = yes
 #			}
 #		}
@@ -1837,7 +1837,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #		trigger = {
-#			ig:ig_devout = {
+#			ig:ig_devout ?= {
 #				is_being_suppressed = no
 #			}
 #		}
@@ -1859,7 +1859,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #		trigger = {
-#			ig:ig_landowners = {
+#			ig:ig_landowners ?= {
 #				is_being_bolstered = yes
 #			}
 #		}
@@ -1870,7 +1870,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #		trigger = {
-#			ig:ig_devout = {
+#			ig:ig_devout ?= {
 #				is_being_bolstered = no
 #			}
 #		}
@@ -1898,7 +1898,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #		trigger = {
-#			ig:ig_devout = {
+#			ig:ig_devout ?= {
 #				is_same_interest_group_type = scope:random_ig
 #			}
 #		}
@@ -1909,7 +1909,7 @@
 #		highlighted_option = yes
 #		show_as_unavailable = { always = yes }
 #		trigger = {
-#			ig:ig_landowners = {
+#			ig:ig_landowners ?= {
 #				is_same_interest_group_type = scope:random_ig
 #			}
 #		}
@@ -2195,7 +2195,7 @@
 #	option = {
 #		name = "Start building barracks"
 #		scope:cur_state = {
-#			start_building_construction = building_barracks
+#			start_building_construction = building_barrack
 #		}
 #	}
 #
@@ -2334,7 +2334,7 @@
 #		name = "Add 2 levels to barracks"
 #		scope:cur_state = {
 #			add_building_level = {
-#				building = building_barracks
+#				building = building_barrack
 #				level = 2
 #			}
 #		}
@@ -2344,7 +2344,7 @@
 #		name = "Remove 1 level from barracks"
 #		scope:cur_state = {
 #			add_building_level = {
-#				building = building_barracks
+#				building = building_barrack
 #				level = -1
 #			}
 #		}
@@ -2385,28 +2385,28 @@
 #
 # 	option = {
 #		name = "Rural Folk gains momentum"
-#		ig:ig_rural_folk = {
+#		ig:ig_rural_folk ?= {
 #			add_momentum = 0.2
 #		}
 #	}
 #
 # 	option = {
 #		name = "Rural Folk loses momentum"
-#		ig:ig_rural_folk = {
+#		ig:ig_rural_folk ?= {
 #			add_momentum = -0.1
 #		}
 #	}
 #
 # 	option = {
 #		name = "Petty Bourgeoisie gains momentum"
-#		ig:ig_petty_bourgeoisie = {
+#		ig:ig_petty_bourgeoisie ?= {
 #			add_momentum = 0.4
 #		}
 #	}
 #
 # 	option = {
 #		name = "Petty Bourgeoisie loses momentum"
-#		ig:ig_petty_bourgeoisie = {
+#		ig:ig_petty_bourgeoisie ?= {
 #			add_momentum = -0.25
 #		}
 #	}
@@ -2486,7 +2486,7 @@
 # 		highlighted_option = yes
 # 		show_as_unavailable = { always = yes }
 #
-# 		c:BEL = {
+# 		c:BEL ?= {
 # 			annex = root
 # 		}
 # 	}
@@ -2991,7 +2991,7 @@
 #            any_interest_group = {
 #                is_revolutionary = no
 #                is_insurrectionary = no
-#                is_marginal = no
+#                ig_counts_as_marginal = no
 #                OR = {
 #                    has_ideology = ideology_pro_slavery
 #                    leader = {
@@ -4863,3 +4863,20 @@ test.120 = {
 		default_option = yes
 	}
 }
+
+#test.121 = {
+#	title = "Spawn harvest conditions"
+#
+#	immediate = {
+#		random_state = {
+#           state_region = {
+#              start_harvest_condition = earthquake
+#            }
+#        }
+#        // copy-paste multiple times #
+#
+#
+#	option = {
+#		name = "option name"
+#	}
+#}

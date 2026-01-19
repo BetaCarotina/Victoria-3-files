@@ -22,7 +22,7 @@ acw_events.1 = {
 	trigger = {
 		exists = c:USA
 		c:USA = ROOT
-		NOT = { has_law = law_type:law_slavery_banned }
+		NOT = { has_law_or_variant = law_type:law_slavery_banned }
 		NOT = { has_variable = abolitionist_martydom }
 		any_interest_group = {
 			OR = {
@@ -30,7 +30,7 @@ acw_events.1 = {
 				is_interest_group_type = ig_trade_unions
 				is_interest_group_type = ig_devout
 			}
-        	is_marginal = no
+        	ig_counts_as_marginal = no
         	leader = {
     			NOR = {
     				has_ideology = ideology:ideology_abolitionist
@@ -43,7 +43,7 @@ acw_events.1 = {
 				is_interest_group_type = ig_intelligentsia
 				is_interest_group_type = ig_trade_unions
 			}
-    		is_marginal = no
+    		ig_counts_as_marginal = no
     		leader = {
     			NOR = {
     				has_ideology = ideology:ideology_abolitionist
@@ -70,7 +70,7 @@ acw_events.1 = {
 					is_interest_group_type = ig_trade_unions
 					is_interest_group_type = ig_devout
 				}
-        		is_marginal = no
+        		ig_counts_as_marginal = no
         		leader = {
         			NOR = {
         				has_ideology = ideology:ideology_abolitionist
@@ -92,7 +92,7 @@ acw_events.1 = {
 					is_interest_group_type = ig_intelligentsia
 					is_interest_group_type = ig_trade_unions
 				}
-        		is_marginal = no
+        		ig_counts_as_marginal = no
         		leader = {
         			NOR = {
         				has_ideology = ideology:ideology_abolitionist
@@ -126,20 +126,20 @@ acw_events.2 = {
 	duration = 3
 
 	trigger = {
-		NOT = { has_law = law_type:law_slavery_banned }
+		NOT = { has_law_or_variant = law_type:law_slavery_banned }
 		NOT = { has_variable = american_civil_war }
 		any_interest_group = {
 			is_revolutionary = no
 			is_insurrectionary = no
-			is_marginal = no
+			ig_counts_as_marginal = no
 			OR = {
 				has_ideology = ideology:ideology_pro_slavery
+				has_ideology = ideology:ideology_pro_slavery_colonial
 				leader = {
 					has_ideology = ideology:ideology_slaver
 				}
 			}
 		}
-		NOT = { has_variable = fugitive_slave_var }
 	}
 
 	immediate = {
@@ -147,9 +147,10 @@ acw_events.2 = {
 			limit = {
 				is_revolutionary = no
 				is_insurrectionary = no
-				is_marginal = no
+				ig_counts_as_marginal = no
 				OR = {
 					has_ideology = ideology:ideology_pro_slavery
+					has_ideology = ideology:ideology_pro_slavery_colonial
 					leader = {
 						has_ideology = ideology:ideology_slaver
 					}
@@ -160,11 +161,9 @@ acw_events.2 = {
 				save_scope_as = slaver_ig_leader
 			}
 		}
-		set_variable = {
-			name = fugitive_slave_var
-			days = short_modifier_time
-		}
 	}
+
+	cooldown = { days = normal_modifier_time }
 
 	cancellation_trigger = {
 		has_global_variable = american_civil_war
@@ -173,11 +172,26 @@ acw_events.2 = {
 	option = {
 		name = acw_events.2.a
         default_option = yes
-
+		if = {
+			limit = {
+				active_law:lawgroup_slavery ?= {
+					NOT = {
+						has_amendment = amendment_type:amendment_american_fugitive_slaves_act
+					}
+				}
+			}
+			active_law:lawgroup_slavery ?= {
+				add_amendment = {
+					type = amendment_american_fugitive_slaves_act
+					sponsor = PREV.ig:ig_landowners
+				}
+			}
+		}
 		every_interest_group = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_pro_slavery
+					has_ideology = ideology:ideology_pro_slavery_colonial
 					leader = { has_ideology = ideology:ideology_slaver }
 				}
 			}
@@ -201,11 +215,23 @@ acw_events.2 = {
 	}
 	option = {
 		name = acw_events.2.b
-
+		if = {
+			limit = {
+				active_law:lawgroup_slavery ?= {
+					has_amendment = amendment_type:amendment_american_fugitive_slaves_act
+				}
+			}
+			active_law:lawgroup_slavery ?= {
+				random_scope_amendment = {
+					remove_amendment = yes # TODO make this more targeted once we have the requisite support
+				}
+			}
+		}
 		every_interest_group = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_pro_slavery
+					has_ideology = ideology:ideology_pro_slavery_colonial
 					leader = { has_ideology = ideology:ideology_slaver }
 				}
 				NOT = { has_modifier = ig_slavers_mad }
@@ -252,7 +278,7 @@ acw_events.3 = {
 	trigger = {
 		exists = c:USA
 		c:USA = ROOT
-		NOT = { has_law = law_type:law_slavery_banned }
+		NOT = { has_law_or_variant = law_type:law_slavery_banned }
 		NOT = { has_variable = american_civil_war }
 		NOT = { has_variable = USA_wilmot_proviso }
 		exists = c:MEX
@@ -262,7 +288,7 @@ acw_events.3 = {
 		any_interest_group = {
 			is_revolutionary = no
 			is_insurrectionary = no
-			is_marginal = no
+			ig_counts_as_marginal = no
 			OR = {
 				has_ideology = ideology:ideology_anti_slavery
 				leader = {
@@ -281,7 +307,7 @@ acw_events.3 = {
 			limit = {
 				is_revolutionary = no
 				is_insurrectionary = no
-				is_marginal = no
+				ig_counts_as_marginal = no
 				OR = {
 					has_ideology = ideology:ideology_anti_slavery
 					leader = {
@@ -308,6 +334,7 @@ acw_events.3 = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_pro_slavery
+					has_ideology = ideology:ideology_pro_slavery_colonial
 					leader = { has_ideology = ideology:ideology_slaver }
 				}
 				NOT = { has_modifier = disappointing_compromise }
@@ -344,6 +371,7 @@ acw_events.3 = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_pro_slavery
+					has_ideology = ideology:ideology_pro_slavery_colonial
 					leader = { has_ideology = ideology:ideology_slaver }
 				}
 				NOT = { has_modifier = ig_slavers_mad }
@@ -375,6 +403,7 @@ acw_events.3 = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_pro_slavery
+					has_ideology = ideology:ideology_pro_slavery_colonial
 					leader = { has_ideology = ideology:ideology_slaver }
 				}
 				NOT = { has_modifier = ig_slavers_happy }
@@ -422,7 +451,7 @@ acw_events.5 = {
 	trigger = {
 		exists = c:USA
 		c:USA = ROOT
-		NOT = { has_law = law_type:law_slavery_banned }
+		NOT = { has_law_or_variant = law_type:law_slavery_banned }
 		NOT = { has_variable = bleeding_kansas_happened }
 		any_scope_state = {
 			is_slave_state = no
@@ -477,18 +506,31 @@ acw_events.5 = {
 					is_slave_state = yes
 				}
 				order_by = state_population
+				position = 0
+				check_range_bounds = no
 				ordered_scope_pop = {
 					limit = {
 						is_pop_type = slaves
 					}
+					save_temporary_scope_as = relevant_pop
 					order_by = total_size
+					position = 0
+					check_range_bounds = no
 					move_partial_pop = {
 						state = scope:bleeding_kansas
 						population = {
 							# move in at most 5% of the target state's population, max 5000, or the max size of the pop, whichever is smaller
 							add = scope:bleeding_kansas.state_population
 							multiply = 0.05
-							max = 5000
+							if = {
+								limit = {
+									scope:relevant_pop.total_size >= 5000
+								}
+								max = 5000
+							}
+							else = {
+								max = scope:relevant_pop.total_size
+							}
 						}
 					}
 				}
@@ -520,14 +562,15 @@ acw_events.6 = {
 	trigger = {
 		exists = c:USA
 		c:USA = ROOT
-		NOT = { has_law = law_type:law_slavery_banned }
+		NOT = { has_law_or_variant = law_type:law_slavery_banned }
 		NOT = { has_variable = slave_power_speech }
 		any_interest_group = {
 			is_revolutionary = no
 			is_insurrectionary = no
-			is_marginal = no
+			ig_counts_as_marginal = no
 			OR = {
 				has_ideology = ideology:ideology_pro_slavery
+				has_ideology = ideology:ideology_pro_slavery_colonial
 				leader = {
 					has_ideology = ideology:ideology_slaver
 				}
@@ -539,7 +582,7 @@ acw_events.6 = {
 		any_interest_group = {
 			is_revolutionary = no
 			is_insurrectionary = no
-			is_marginal = no
+			ig_counts_as_marginal = no
 			OR = {
 				has_ideology = ideology:ideology_anti_slavery
 				leader = {
@@ -562,9 +605,10 @@ acw_events.6 = {
 			limit = {
 				is_revolutionary = no
 				is_insurrectionary = no
-				is_marginal = no
+				ig_counts_as_marginal = no
 				OR = {
 					has_ideology = ideology:ideology_pro_slavery
+					has_ideology = ideology:ideology_pro_slavery_colonial
 					leader = {
 						has_ideology = ideology:ideology_slaver
 					}
@@ -582,7 +626,7 @@ acw_events.6 = {
 			limit = {
 				is_revolutionary = no
 				is_insurrectionary = no
-				is_marginal = no
+				ig_counts_as_marginal = no
 				OR = {
 					has_ideology = ideology:ideology_anti_slavery
 					leader = {
@@ -658,7 +702,7 @@ acw_events.7 = { # Free State of [x]
 
 	trigger = {
 		exists = c:USA
-		c:USA = {
+		c:USA ?= {
 			has_journal_entry = je_acw_war
 		}
 		OR = {
@@ -677,7 +721,7 @@ acw_events.7 = { # Free State of [x]
 		random_scope_state = {
 			save_scope_as = free_state_of_county
 		}
-		c:USA = {
+		c:USA ?= {
 			save_scope_as = unionist_usa
 		}
 	}
@@ -779,7 +823,7 @@ acw_events.8 = {
 	option = { # You know what would have prevented this? A competent police force.
 		name = acw_events.8.c
 		trigger = {
-			has_law = law_type:law_no_police
+			has_law_or_variant = law_type:law_no_police
 			OR = {
 				is_enacting_law = law_type:law_local_police
 				is_enacting_law = law_type:law_dedicated_police
@@ -894,7 +938,7 @@ acw_events.9 = {
 			limit = {
 				exists = c:USA
 			}
-			c:USA = {
+			c:USA ?= {
 				capital = {
 					save_scope_as = acw_victory_capital_scope
 				}
@@ -917,7 +961,7 @@ acw_events.9 = {
         	name = acw_victory_modifier
         	days = long_modifier_time
         }
-        ig:ig_landowners = {
+        ig:ig_landowners ?= {
         	add_modifier = {
         		name = acw_victory_landowners_modifier
         		days = long_modifier_time
@@ -937,7 +981,7 @@ acw_events.9 = {
         	name = acw_slave_trade_restarted_modifier
         	days = very_long_modifier_time
         }
-        ig:ig_rural_folk = {
+        ig:ig_rural_folk ?= {
         	add_modifier = {
         		name = acw_slave_trade_rural_folk
         		days = long_modifier_time
@@ -946,7 +990,7 @@ acw_events.9 = {
         every_country = {
         	limit = {
         		country_rank = rank_value:great_power
-        		has_law = law_type:law_slavery_banned
+        		has_law_or_variant = law_type:law_slavery_banned
         		has_diplomatic_relevance = root
         	}
 			change_relations = {

@@ -91,7 +91,7 @@ red_scare.2 = {
 	trigger = {
 		exists = scope:red_scare_target_nation
 		scope:red_scare_target_nation ?= {
-			has_law = law_type:law_council_republic
+			has_law_or_variant = law_type:law_council_republic
 		}
 		any_interest_group = {
 			OR = {
@@ -110,7 +110,7 @@ red_scare.2 = {
 				law = law_type:law_council_republic
 				value < neutral
 			}
-			is_marginal = no
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -133,7 +133,7 @@ red_scare.2 = {
 					law = law_type:law_council_republic
 					value < neutral
 				}
-				is_marginal = no
+				ig_counts_as_marginal = no
 			}
 			save_scope_as = anticommunist_ig
 		}
@@ -146,10 +146,6 @@ red_scare.2 = {
 		add_loyalists = {
 			value = small_radicals
 			interest_group = scope:anticommunist_ig
-		}
-		add_radicals = {
-			value = small_radicals
-			strata = lower
 		}
 	}
 	option = {
@@ -185,7 +181,7 @@ red_scare.3 = {
 	trigger = {
 		exists = scope:red_scare_target_nation
 		scope:red_scare_target_nation ?= {
-			has_law = law_type:law_council_republic
+			has_law_or_variant = law_type:law_council_republic
 		}
 		any_interest_group = {
 			OR = {
@@ -204,7 +200,7 @@ red_scare.3 = {
 				law = law_type:law_council_republic
 				value < neutral
 			}
-			is_marginal = no
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -227,7 +223,7 @@ red_scare.3 = {
 					law = law_type:law_council_republic
 					value < neutral
 				}
-				is_marginal = no
+				ig_counts_as_marginal = no
 			}
 			save_scope_as = anticommunist_ig
 		}
@@ -276,7 +272,7 @@ red_scare.4 = {
 	trigger = {
 		exists = scope:red_scare_target_nation
 		scope:red_scare_target_nation ?= {
-			has_law = law_type:law_council_republic
+			has_law_or_variant = law_type:law_council_republic
 		}
 		any_interest_group = {
 			OR = {
@@ -295,7 +291,7 @@ red_scare.4 = {
 				law = law_type:law_council_republic
 				value < neutral
 			}
-			is_marginal = no
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -318,7 +314,7 @@ red_scare.4 = {
 					law = law_type:law_council_republic
 					value < neutral
 				}
-				is_marginal = no
+				ig_counts_as_marginal = no
 			}
 			save_scope_as = anticommunist_press_ig
 		}
@@ -476,10 +472,10 @@ red_scare.6 = {
 	trigger = {
 		exists = scope:red_scare_target_nation
 		scope:red_scare_target_nation ?= {
-			has_law = law_type:law_council_republic
+			has_law_or_variant = law_type:law_council_republic
 		}
 		NOT = {
-			has_law = law_type:law_closed_borders
+			has_law_or_variant = law_type:law_closed_borders
 		}
 		scope:red_scare_target_nation = {
 			any_primary_culture = {
@@ -530,6 +526,8 @@ red_scare.6 = {
 				}
 			}
 			order_by = state_population
+			position = 0
+			check_range_bounds = no
 			add_modifier = {
 				name = modifier_nativist_agitation
 				days = short_modifier_time
@@ -550,6 +548,8 @@ red_scare.6 = {
 				}
 			}
 			order_by = state_population
+			position = 0
+			check_range_bounds = no
 			add_modifier = {
 				name = modifier_nativist_agitation
 				days = short_modifier_time
@@ -683,7 +683,7 @@ red_scare.8 = {
 	trigger = {
 		exists = scope:red_scare_target_nation
 		scope:red_scare_target_nation ?= {
-			has_law = law_type:law_council_republic
+			has_law_or_variant = law_type:law_council_republic
 		}
 		any_interest_group = {
 			law_stance = {
@@ -798,7 +798,7 @@ red_scare.9 = {
 			turmoil > 0.15
 		}
 		NOT = {
-			has_law = law_type:law_no_police
+			has_law_or_variant = law_type:law_no_police
 		}
 	}
 
@@ -832,7 +832,7 @@ red_scare.9 = {
 	}
 	option = {
 		name = red_scare.9.b
-		ig:ig_petty_bourgeoisie = {
+		ig:ig_petty_bourgeoisie ?= {
 			add_modifier = {
 				name = modifier_possible_revolution_risk
 				days = short_modifier_time
@@ -863,10 +863,10 @@ red_scare.10 = {
 	trigger = {
 		exists = scope:red_scare_target_nation
 		scope:red_scare_target_nation ?= {
-			has_law = law_type:law_council_republic
+			has_law_or_variant = law_type:law_council_republic
 		}
 		NOT = {
-			has_law = law_type:law_closed_borders
+			has_law_or_variant = law_type:law_closed_borders
 		}
 		OR = {
 			any_neighbouring_state = {
@@ -951,7 +951,7 @@ red_scare.11 = {
 	trigger = {
 		exists = scope:red_scare_target_nation
 		scope:red_scare_target_nation ?= {
-			has_law = law_type:law_council_republic
+			has_law_or_variant = law_type:law_council_republic
 		}
 		any_interest_group = {
 			leader = {
@@ -1047,15 +1047,13 @@ red_scare.12 = {
 
 	trigger = {
 		NOT = {
-			has_law = law_type:law_closed_borders
+			has_law_or_variant = law_type:law_closed_borders
 		}
 		any_scope_state = {
 			is_incorporated = yes
 			any_scope_pop = {
-				culture = {
-					ROOT = {
-						cultural_acceptance_base = { target = prev value < acceptance_status_5 }
-					}
+				PREV = {
+					state_average_culture_pop_acceptance = { culture = prev.culture value < acceptance_status_5 }
 				}
 			}
 		}
@@ -1067,17 +1065,19 @@ red_scare.12 = {
 			limit = {
 				is_incorporated = yes
 				any_scope_pop = {
-					ROOT = {
-						cultural_acceptance_base = { target = prev.culture value < acceptance_status_5 }
+					PREV = {
+						state_average_culture_pop_acceptance = { culture = prev.culture value < acceptance_status_5 }
 					}
 				}
 			}
 			order_by = state_population
+			position = 0
+			check_range_bounds = no
 			save_scope_as = red_scare_victim_state
 			random_scope_pop = {
 				limit = {
-					ROOT = {
-						cultural_acceptance_base = { target = prev.culture value < acceptance_status_5 }
+					PREV = {
+						state_average_culture_pop_acceptance = { culture = prev.culture value < acceptance_status_5 }
 					}
 				}
 				culture = {
@@ -1165,7 +1165,7 @@ red_scare.13 = {
 			value = small_radicals
 			culture = scope:sacco_and_vanzetti_culture
 		}
-		ig:ig_petty_bourgeoisie = {
+		ig:ig_petty_bourgeoisie ?= {
 			add_modifier = {
 				name = modifier_spared_anarchists
 				days = normal_modifier_time
@@ -1210,10 +1210,10 @@ red_scare.14 = {
 	trigger = {
 		exists = scope:red_scare_target_nation
 		scope:red_scare_target_nation ?= {
-			has_law = law_type:law_council_republic
+			has_law_or_variant = law_type:law_council_republic
 		}
 		NOT = {
-			has_law = law_type:law_closed_borders
+			has_law_or_variant = law_type:law_closed_borders
 		}
 		any_scope_state = {
 			has_building = building_port
@@ -1306,7 +1306,7 @@ red_scare.14 = {
 	}
 	option = {
 		name = red_scare.14.b
-		ig:ig_petty_bourgeoisie = {
+		ig:ig_petty_bourgeoisie ?= {
 			add_modifier = {
 				name = modifier_refused_soviet_ark
 				days = short_modifier_time
@@ -1336,10 +1336,11 @@ red_scare.15 = {
 
 	trigger = {
 		OR = {
-			has_law = law_type:law_census_voting
-			has_law = law_type:law_universal_suffrage
+			has_law_or_variant = law_type:law_census_voting
+			has_law_or_variant = law_type:law_universal_suffrage
 		}
 		any_active_party = {
+			party_has_members = yes
 			OR = {
 				is_party_type = communist_party
 				is_party_type = social_democrat_party
@@ -1354,6 +1355,7 @@ red_scare.15 = {
 	immediate = {
 		random_active_party = {
 			limit = {
+				party_has_members = yes
 				OR = {
 					is_party_type = communist_party
 					is_party_type = social_democrat_party
@@ -1370,6 +1372,8 @@ red_scare.15 = {
 				is_capital = no
 			}
 			order_by = state_population
+			position = 0
+			check_range_bounds = no
 			save_scope_as = red_scare_victim_state
 		}
 	}
@@ -1445,6 +1449,8 @@ red_scare.20 = { #Timeout Event
 					has_ideology = ideology:ideology_reactionary
 					has_ideology = ideology:ideology_paternalistic
 					has_ideology = ideology:ideology_magnatial
+					has_ideology = ideology:ideology_carlist_ig
+					has_ideology = ideology:ideology_moderantist
 					leader = {
 						has_reactionary_ideology = yes
 					}
@@ -1468,6 +1474,8 @@ red_scare.20 = { #Timeout Event
 					has_ideology = ideology:ideology_reactionary
 					has_ideology = ideology:ideology_paternalistic
 					has_ideology = ideology:ideology_magnatial
+					has_ideology = ideology:ideology_carlist_ig
+					has_ideology = ideology:ideology_moderantist
 					leader = {
 						has_reactionary_ideology = yes
 					}

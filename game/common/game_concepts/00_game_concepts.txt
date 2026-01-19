@@ -2,7 +2,6 @@
 
 concept_regime_change = {
 	texture = "gfx/interface/icons/war_goals/regime_change.dds"
-	is_loading_tip = yes
 }
 
 concept_invasion = {}
@@ -16,6 +15,8 @@ concept_presence = {
 	texture = "gfx/interface/icons/military_icons/military_formation_identity_icons/fleet_01.dds"
 	is_loading_tip = yes
 }
+
+concept_electoral_confidence = {}
 
 concept_organization = {
 	texture = "gfx/interface/icons/military_icons/organization.dds"
@@ -84,6 +85,8 @@ concept_building = {
 	texture = "gfx/interface/icons/notification_icons/buildings.dds"
 	is_loading_tip = yes
 }
+
+concept_building_group = {}
 
 concept_company = {
 	texture = "gfx/interface/main_hud/companies_btn.dds"
@@ -277,6 +280,7 @@ concept_party = {
 }
 
 concept_party_leader = {}
+concept_party_leaders = {}
 
 concept_subsistence_output = {}
 
@@ -335,7 +339,9 @@ concept_military_lens = {
 	texture = "gfx/interface/icons/lens_toolbar_icons/military_lens_button.dds"
 }
 
-concept_country = {}
+concept_country = {
+	texture = "gfx/interface/icons/dlc_icons/dynamic_countries.dds"
+}
 
 concept_decree = {
 	texture = "gfx/interface/icons/lens_toolbar_icons/lens_tabs/icon_political_lens_decrees.dds"
@@ -375,7 +381,15 @@ concept_in_government = {
 	is_loading_tip = yes
 }
 
+concept_change_rate_scaling = {
+	is_loading_tip = yes
+}
+
 concept_default = {
+	is_loading_tip = yes
+}
+
+concept_decision = {
 	is_loading_tip = yes
 }
 
@@ -409,6 +423,11 @@ concept_acceptance = {
 
 }
 
+concept_national_awakening = {
+	texture = "gfx/interface/icons/generic_icons/national_awakening.dds"
+	is_loading_tip = yes
+}
+
 concept_ideological_incoherence = {
 	texture = "gfx/interface/icons/generic_icons/legitimacy.dds"
 	is_loading_tip = yes
@@ -417,6 +436,8 @@ concept_ideological_incoherence = {
 concept_consumption_tax = {
 	texture = "gfx/interface/icons/trade_icons/consumption_tax.dds"
 }
+
+concept_morale_damage = {}
 
 concept_market_owner = {}
 
@@ -492,6 +513,10 @@ concept_rank = {}
 concept_power_bloc_rank = {}
 
 concept_power_projection = {}
+
+concept_army_power_projection = {}
+
+concept_naval_power_projection = {}
 
 concept_credit = {}
 
@@ -591,6 +616,7 @@ concept_heir = {
 concept_executive = {
 	texture = "gfx/interface/icons/character_role_icons/executive.dds"
 }
+concept_executives = {}
 
 concept_homeland = {
 	texture = "gfx/interface/icons/state_status_icons/state_homelands.dds"
@@ -654,9 +680,7 @@ concept_slavery = {
 	texture = "gfx/interface/icons/pops_icons/slaves.dds"
 }
 
-concept_building_owners = {
-
-}
+concept_building_owners = {}
 
 concept_nationally_owned = {
 	texture = "gfx/interface/icons/generic_icons/government_building_icon.dds"
@@ -871,6 +895,8 @@ concept_chartered_company = { }
 
 concept_vassal = {}
 
+concept_crown_land_subject = {}
+
 concept_tributary = {}
 
 concept_revolution = {
@@ -895,6 +921,10 @@ concept_construction = {
 concept_gdp = {
 	texture = "gfx/interface/icons/generic_icons/gdp.dds"
 	is_loading_tip = yes
+}
+
+concept_gdp_ownership = {
+	texture = "gfx/interface/icons/generic_icons/gdp.dds"
 }
 
 concept_education_access = {}
@@ -1043,6 +1073,12 @@ concept_law = {
 	is_loading_tip = yes
 }
 
+concept_amendment = {}
+
+concept_amendment_repeal = {}
+
+concept_parent_law = {}
+
 concept_enactment_setback = {
 	texture = "gfx/interface/icons/generic_icons/red_cross.dds"
 }
@@ -1136,6 +1172,7 @@ concept_budget_additional_expenses = {
 }
 
 concept_budget_diplomatic_pacts = {}
+concept_budget_treaties = {}
 concept_budget_power_bloc = {}
 
 concept_budget_construction_goods = {}
@@ -1292,11 +1329,15 @@ concept_popularity = {
 
 concept_momentum = {}
 
-concept_cultural_trait = {}
+concept_discrimination_trait = {}
 
-concept_cultural_heritage_trait = {}
+concept_discrimination_trait_group = {}
 
-concept_religious_trait = {}
+concept_heritage_trait = {}
+
+concept_language_trait = {}
+
+concept_tradition_trait = {}
 
 concept_dead = {}
 
@@ -1382,6 +1423,10 @@ concept_political_lobby_demand = {}
 concept_diplomatic_catalyst = {}
 
 concept_political_movement = {}
+
+concept_cultural_movement = {}
+
+concept_religious_movement = {}
 
 concept_political_movement_support = {
 	texture = "gfx/interface/icons/generic_icons/population.dds"
@@ -1575,6 +1620,10 @@ concept_princely_state = {
 	texture = "gfx/interface/icons/lens_toolbar_icons/lens_tabs/icon_diplomatic_lens_interests.dds"
 }
 
+concept_crown_land = {
+	texture = "gfx/interface/icons/lens_toolbar_icons/lens_tabs/icon_diplomatic_lens_interests.dds"
+}
+
 concept_social_hierarchy = {}
 
 concept_social_class = {}
@@ -1587,9 +1636,15 @@ concept_court_intrigue = {}
 
 concept_empire_stability = {}
 
+concept_ottoman_integrity = {}
+
+concept_balkan_culture = {}
+
 concept_georegion = {}
 
 concept_georegion_europe = {}
+
+concept_georegion_balkans = {}
 
 concept_georegion_americas = {}
 
@@ -1617,6 +1672,14 @@ concept_georegion_china = {}
 
 concept_georegion_southeast_asia = {}
 
+concept_georegion_south_africa = {}
+
+concept_fervor = {
+	texture = "gfx/interface/icons/generic_icons/cultural_fervor.dds"
+}
+
+concept_austrian_constitutional_pressure = {}
+
 concept_monopoly = {}
 
 concept_company_monopoly = {
@@ -1627,8 +1690,52 @@ concept_country_monopoly = {}
 
 concept_privy_purse = {}
 
+concept_dynastic_loyalty = {}
+
+concept_house_of_obrenovic = {}
+
+concept_house_of_karadjordjevic = {}
+
+concept_lands_of_anarchy_control = {}
+
 concept_company_hq = {}
 
 concept_regional_company_hq = {}
 
 concept_company_charter = {}
+
+concept_coup = {}
+
+concept_coup_strength = {}
+
+concept_coup_resistance = {}
+
+concept_pronunciamento = {}
+
+concept_negotiation = {
+	texture = "gfx/interface/icons/generic_icons/negotiate.dds"
+}
+
+concept_amenability = {
+	texture = "gfx/interface/icons/generic_icons/amenability.dds"
+}
+concept_obstinance = { #TODO PRCAL-38778
+	texture = "gfx/interface/icons/state_status_icons/state_obstinance.dds"
+}
+
+concept_bavarocratic_ire = {}
+
+concept_guerilla_war = {}
+
+concept_bio_tomas_de_zumalacarregui = {
+	texture = "gfx/interface/icons/generic_icons/historical_character_icon.dds"
+}
+
+concept_disqualified_culture = {}
+
+concept_integrated_culture = {}
+
+concept_radicalized_interest_group = {
+	texture = "gfx/interface/icons/politics_icons/radicalized.dds"
+}
+

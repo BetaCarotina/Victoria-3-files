@@ -3,7 +3,7 @@
 
 	group = je_group_historical_content
 
-	is_shown_when_inactive = {
+	is_shown_in_lobby = {
 		exists = c:PAT
 		any_neighbouring_state = {
 			owner = c:PAT
@@ -14,15 +14,50 @@
 		}
 	}
 
+	is_shown_when_inactive = {
+		any_neighbouring_state = {
+			owner = {
+				is_country_type = decentralized
+			}
+			state_region = {
+				OR = {
+					this = s:STATE_ARAUCANIA
+					this = s:STATE_PATAGONIA
+					this = s:STATE_RIO_NEGRO
+				}
+			}
+		}
+		OR = {
+			country_has_primary_culture = cu:south_andean
+			country_has_primary_culture = cu:platinean
+			country_has_primary_culture = cu:argentine
+			country_has_primary_culture = cu:chilean
+		}
+	}
+
 	scripted_button = patagonia_button
 
 	possible = {
-		NOT = { has_law = law_type:law_no_colonial_affairs }
+		NOT = { has_law_or_variant = law_type:law_no_colonial_affairs }
 	}
 
 	complete = {
-		OR = {
+		trigger_if = {
+			limit = {
+				OR = {
+					c:CHL ?= this
+					was_formed_from = CHL
+				}
+			}
 			owns_entire_state_region = STATE_ARAUCANIA
+		}
+		trigger_if = {
+			limit = {
+				OR = {
+					c:ARG ?= this
+					was_formed_from = ARG
+				}
+			}
 			AND = {
 				owns_entire_state_region = STATE_PATAGONIA
 				owns_entire_state_region = STATE_RIO_NEGRO
@@ -43,4 +78,6 @@
 	}
 
 	weight = 20
+
+	should_be_pinned_by_default = yes
 }

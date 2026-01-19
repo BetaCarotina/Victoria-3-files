@@ -47,6 +47,7 @@
 	# Root = character
 	# scope:culture = The cultural identity of the movement, if any
 	# scope:religion = The religious identity of the movement, if any
+	# scope:interest_group = The interest group in the movement's country matching the character's IG - use this instead of character's actual IG so that it works for exiled agitators
 	character_support_trigger = {}
 	
 	# The weight for an agitator to support movements of this type, compared to other movements that are valid for them to support
@@ -86,6 +87,11 @@
 		# Root = political movement
 		# scope:clout = combined clout of IGs that would become insurrectionary
 		possible = {}
+		
+		# Trigger for whether an interest group can join a civil war started by the movement
+		# Root = interest group
+		# scope:political_movement = political movement
+		interest_group_can_join = {}	
 		
 		# Weight for whether this civil war type should be selected over others
 		# Root = political movement

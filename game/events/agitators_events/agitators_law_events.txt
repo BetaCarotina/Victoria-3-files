@@ -53,7 +53,7 @@ agitators_law_events.1 = {
 		}
 		random_interest_group = {
 			limit = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				is_in_government = yes
 				law_enactment_stance = {
 					law = owner.currently_enacting_law.type
@@ -235,7 +235,7 @@ agitators_law_events.3 = {
 		agitator_supports_enaction = yes
 		any_neighbouring_state = {
 			owner = {
-				has_law = root.currently_enacting_law.type
+				has_law_or_variant = root.currently_enacting_law.type
 				NOT = {
 					is_country_type = decentralized
 				}
@@ -265,7 +265,7 @@ agitators_law_events.3 = {
 		random_neighbouring_state = {
 			limit = {
 				owner = {
-					has_law = root.currently_enacting_law.type
+					has_law_or_variant = root.currently_enacting_law.type
 					NOT = {
 						is_country_type = decentralized
 					}
@@ -284,7 +284,7 @@ agitators_law_events.3 = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_reactionary
-					has_ideology = ideology:ideology_stratocratic
+					has_ideology = ideology:ideology_hierarchic
 					has_ideology = ideology:ideology_isolationist
 					has_ideology = ideology:ideology_jingoist
 				}
@@ -321,7 +321,7 @@ agitators_law_events.3 = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_reactionary
-					has_ideology = ideology:ideology_stratocratic
+					has_ideology = ideology:ideology_hierarchic
 					has_ideology = ideology:ideology_isolationist
 					has_ideology = ideology:ideology_jingoist
 				}
@@ -391,7 +391,7 @@ agitators_law_events.4 = {
 		}
 		random_interest_group = {
 			limit = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				is_in_government = yes
 				law_stance = {
 					law = owner.currently_enacting_law.type
@@ -662,7 +662,7 @@ agitators_law_events.7 = {
 		}
 		random_interest_group = {
 			limit = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				is_in_government = yes
 				law_stance = {
 					law = owner.currently_enacting_law.type
@@ -683,6 +683,13 @@ agitators_law_events.7 = {
 			add_modifier = {
 				name = modifier_accounted_for_concerns
 				days = short_modifier_time
+			}
+		}
+		currently_enacting_law = {
+			add_amendment = {
+				type = amendment_generic_sponsor_polstr_increase
+				sponsor = scope:neutral_ig
+				cooldown = 60
 			}
 		}
 	}
@@ -751,7 +758,7 @@ agitators_law_events.8 = {
 		}
 		random_interest_group = {
 			limit = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				is_in_government = yes
 				law_stance = {
 					law = owner.currently_enacting_law.type
@@ -881,7 +888,7 @@ agitators_law_events.9 = {
 		}
 		random_interest_group = {
 			limit = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				is_in_government = yes
 				law_stance = {
 					law = owner.currently_enacting_law.type
@@ -1011,8 +1018,8 @@ agitators_law_events.10 = {
 		name = agitators_law_events.10.b
 		trigger = {
 			OR = {
-				has_law = law_type:law_outlawed_dissent
-				has_law = law_type:law_censorship
+				has_law_or_variant = law_type:law_outlawed_dissent
+				has_law_or_variant = law_type:law_censorship
 			}
 		}
 		scope:opposing_movement = {
@@ -1132,7 +1139,7 @@ agitators_law_events.12 = {
 				law = owner.currently_enacting_law.type
 				value >= neutral
 			}
-			is_marginal = no
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -1161,7 +1168,7 @@ agitators_law_events.12 = {
 					law = owner.currently_enacting_law.type
 					value >= neutral
 				}
-				is_marginal = no
+				ig_counts_as_marginal = no
 			}
 			save_scope_as = poet_ig
 		}
@@ -1222,8 +1229,8 @@ agitators_law_events.13 = {
 
 	trigger = {
 		agitator_supports_enaction = yes
-		ig:ig_rural_folk = {
-			is_marginal = no
+		ig:ig_rural_folk ?= {
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -1246,7 +1253,7 @@ agitators_law_events.13 = {
 		currently_enacting_law = {
 			save_scope_as = current_law_scope
 		}
-		ig:ig_rural_folk = {
+		ig:ig_rural_folk ?= {
 			save_scope_as = peasants_ig
 		}
 	}
@@ -1254,14 +1261,14 @@ agitators_law_events.13 = {
 	option = {
 		name = agitators_law_events.13.a
 		trigger = {
-			ig:ig_rural_folk = {
+			ig:ig_rural_folk ?= {
 				is_insurrectionary = no
 			}
 		}
 		add_enactment_modifier = {
 			name = modifier_rurals_endorsed_proposal
 		}
-		ig:ig_rural_folk = {
+		ig:ig_rural_folk ?= {
 			add_modifier = {
 				name = modifier_rurals_approached
 				days = normal_modifier_time
@@ -1272,7 +1279,7 @@ agitators_law_events.13 = {
 	option = {
 		name = agitators_law_events.13.b
 		trigger = {
-			ig:ig_rural_folk = {
+			ig:ig_rural_folk ?= {
 				law_stance = {
 					law = owner.currently_enacting_law.type
 					value > neutral
@@ -1308,7 +1315,7 @@ agitators_law_events.13 = {
 	option = {
 		name = agitators_law_events.13.e
 		trigger = {
-			ig:ig_rural_folk = {
+			ig:ig_rural_folk ?= {
 				is_insurrectionary = yes
 			}
 		}
@@ -1457,7 +1464,7 @@ agitators_law_events.15 = {
 				law = owner.currently_enacting_law.type
 				value >= neutral
 			}
-			is_marginal = no
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -1492,7 +1499,7 @@ agitators_law_events.15 = {
 					law = owner.currently_enacting_law.type
 					value >= neutral
 				}
-				is_marginal = no
+				ig_counts_as_marginal = no
 			}
 			save_scope_as = newspaper_ig
 		}
@@ -1693,7 +1700,7 @@ agitators_law_events.18 = {
 		movement_opposes_enaction = yes
 		agitator_opposes_enaction = yes
 		NOT = {
-			has_law = law_type:law_no_police
+			has_law_or_variant = law_type:law_no_police
 		}
 	}
 
@@ -1839,7 +1846,7 @@ agitators_law_events.19 = {
 		random_scope_state = {
 			limit = {
 				is_incorporated = yes
-				has_building = building_barracks
+				has_building = building_barrack
 			}
 			save_scope_as = problem_child_barracks
 		}
@@ -1880,7 +1887,7 @@ agitators_law_events.19 = {
 	option = { #IG leader's son rolls "worst political opinion ever", asked to attend military school.
 		name = agitators_law_events.19.c
 		trigger = {
-			ig:ig_armed_forces = {
+			ig:ig_armed_forces ?= {
 				is_in_government = yes
 			}
 		}
@@ -2028,7 +2035,7 @@ agitators_law_events.21 = {
 		}
 		random_interest_group = {
 			limit = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				is_in_government = yes
 				law_stance = {
 					law = law_type:law_monarchy
@@ -2118,7 +2125,7 @@ agitators_law_events.22 = {
 		}
 		random_interest_group = {
 			limit = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				is_in_government = yes
 				law_stance = {
 					law = law_type:law_monarchy
@@ -2282,7 +2289,7 @@ agitators_law_events.23 = {
 	option = {
 		name = agitators_law_events.23.c
 		trigger = {
-			has_law = law_type:law_autocracy
+			has_law_or_variant = law_type:law_autocracy
 		}
 		add_radicals = {
 			value = small_radicals
@@ -2450,9 +2457,9 @@ agitators_law_events.25 = {
 
 	trigger = {
 		OR = {
-			has_law = law_type:law_autocracy
-			has_law = law_type:law_oligarchy
-			has_law = law_type:law_single_party_state
+			has_law_or_variant = law_type:law_autocracy
+			has_law_or_variant = law_type:law_oligarchy
+			has_law_or_variant = law_type:law_single_party_state
 		}
 		OR = {
 			is_enacting_law = law_type:law_landed_voting
@@ -2532,9 +2539,9 @@ agitators_law_events.26 = {
 
 	trigger = {
 		OR = {
-			has_law = law_type:law_autocracy
-			has_law = law_type:law_oligarchy
-			has_law = law_type:law_single_party_state
+			has_law_or_variant = law_type:law_autocracy
+			has_law_or_variant = law_type:law_oligarchy
+			has_law_or_variant = law_type:law_single_party_state
 		}
 		OR = {
 			is_enacting_law = law_type:law_landed_voting
@@ -2567,7 +2574,7 @@ agitators_law_events.26 = {
 		capital = {
 			save_scope_as = capital_scope
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = landowners_ig
 		}
 	}
@@ -2649,9 +2656,9 @@ agitators_law_events.27 = {
 
 	trigger = {
 		OR = {
-			has_law = law_type:law_autocracy
-			has_law = law_type:law_oligarchy
-			has_law = law_type:law_single_party_state
+			has_law_or_variant = law_type:law_autocracy
+			has_law_or_variant = law_type:law_oligarchy
+			has_law_or_variant = law_type:law_single_party_state
 		}
 		OR = {
 			is_enacting_law = law_type:law_landed_voting
@@ -2729,8 +2736,8 @@ agitators_law_events.28 = {
 
 	trigger = {
 		OR = {
-			has_law = law_type:law_censorship
-			has_law = law_type:law_outlawed_dissent
+			has_law_or_variant = law_type:law_censorship
+			has_law_or_variant = law_type:law_outlawed_dissent
 		}
 		OR = {
 			is_enacting_law = law_type:law_right_of_assembly
@@ -2818,8 +2825,8 @@ agitators_law_events.29 = {
 
 	trigger = {
 		OR = {
-			has_law = law_type:law_censorship
-			has_law = law_type:law_outlawed_dissent
+			has_law_or_variant = law_type:law_censorship
+			has_law_or_variant = law_type:law_outlawed_dissent
 		}
 		OR = {
 			is_enacting_law = law_type:law_right_of_assembly
@@ -2894,8 +2901,8 @@ agitators_law_events.30 = {
 
 	trigger = {
 		OR = {
-			has_law = law_type:law_censorship
-			has_law = law_type:law_outlawed_dissent
+			has_law_or_variant = law_type:law_censorship
+			has_law_or_variant = law_type:law_outlawed_dissent
 		}
 		OR = {
 			is_enacting_law = law_type:law_right_of_assembly
@@ -2907,7 +2914,7 @@ agitators_law_events.30 = {
 				law = owner.currently_enacting_law.type
 				value > neutral
 			}
-			is_marginal = no
+			ig_counts_as_marginal = no
 		}
 	}
 
@@ -2936,7 +2943,7 @@ agitators_law_events.30 = {
 					law = owner.currently_enacting_law.type
 					value > neutral
 				}
-				is_marginal = no
+				ig_counts_as_marginal = no
 			}
 			save_scope_as = newspaper_ig
 		}

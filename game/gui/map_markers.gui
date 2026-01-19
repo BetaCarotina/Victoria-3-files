@@ -814,14 +814,16 @@ container = {
 		round_progress_default = {
 			parentanchor = center
 			size = { 31 31 }
+			alwaystransparent = yes
 			tooltip = "DEFAULT_EVENT_OPTION"
 			value = "[Event.GetPercentageRemainingDays]"
 		}
 
-		icon = {
+		button = {
 			texture = "[Event.GetEventIcon]"
 			parentanchor = center
 			size = { 25 25 }
+			alwaystransparent = yes
 
 			background = {
 				using = blurry_dark_background
@@ -829,13 +831,15 @@ container = {
 		}
 	}
 
-	widget = {
+	button = {
 		size = { 100% 100% }
+		alwaystransparent = yes
 
-		icon = {
+		button = {
 			visible = "[Or( Or(Event.HasCategory('enactment'), Event.HasCategory('revolution')), LessThanOrEqualTo_int32( Event.GetNumRemainingDays, '(int32)60'))]"
 			using = highlighted_circle_selection_small
 			size = { 110% 110% }
+			alwaystransparent = yes
 		}
 	}
 }
@@ -851,7 +855,7 @@ container = {
 	onmousehierarchyleave = "[AccessHighlightManager.RemoveHighlight]"
 
 	tooltipwidget = {
-		RegularTooltip_WarGoal = {}
+		FancyTooltip_WarGoal = {}
 	}
 
 	background = {
@@ -1742,6 +1746,93 @@ container = {
 	}
 }
 
+### OBSTINANCE
+container = {
+	name = "obstinance_marker"
+	datacontext = "[ObstinanceMarker.GetState]"
+	using = clickthrough_blocker
+	alwaystransparent = no
+	ignoreinvisible = yes
+	layer = layer_map_markers
+	max_update_rate = 8
+	parentanchor = bottom|hcenter
+	tooltip = "TOOLTIP_STATE_OBSTINANCE"
+
+	widget = {
+		visible = "[IsZoomLevelNear]"
+		size = { 40 40 }
+		allow_outside = yes
+
+		flowcontainer = {
+			margin = { 5 2 }
+			margin_left = 15
+			parentanchor = vcenter
+			position = { 27 0 }
+			allow_outside = yes
+			using = clickthrough_blocker
+			alwaystransparent = no
+
+			background = {
+				using = entry_bg_simple_solid
+			}
+
+			textbox = {
+				parentanchor = vcenter
+				autoresize = yes
+				align = nobaseline
+				raw_text = "STATE_OBSTINANCE_CONDENSED"
+			}
+		}
+
+		button = {
+			parentanchor = hcenter
+			size = { 40 40 }
+			onclick = "[InformationPanelBar.OpenStatePanel(State.AccessSelf)]"
+			texture = "gfx/interface/icons/state_status_icons/state_obstinance.dds"
+		}
+	}
+
+	widget = {
+		visible = "[IsZoomLevelMid]"
+		size = { 40 40 }
+		allow_outside = yes
+
+		flowcontainer = {
+			margin = { 5 2 }
+			margin_left = 15
+			parentanchor = vcenter
+			position = { 27 0 }
+			using = clickthrough_blocker
+			alwaystransparent = no
+
+			background = {
+				using = entry_bg_simple_solid
+			}
+
+			textbox = {
+				parentanchor = vcenter
+				autoresize = yes
+				align = nobaseline
+				raw_text = "#v [State.GetObstinance|%r1]#!"
+			}
+		}
+
+		button = {
+			parentanchor = hcenter
+			size = { 40 40 }
+			onclick = "[InformationPanelBar.OpenStatePanel(State.AccessSelf)]"
+			texture = "gfx/interface/icons/state_status_icons/state_obstinance.dds"
+		}
+	}
+
+	button = {
+		visible = "[IsZoomLevelFar]"
+		size = { 30 30 }
+		onclick = "[InformationPanelBar.OpenStatePanel(State.AccessSelf)]"
+		texture = "gfx/interface/icons/state_status_icons/state_obstinance.dds"
+	}
+}
+
 ### PRODUCTION STATE (small)
 flowcontainer = {
 	name = "production_marker"
@@ -1856,13 +1947,13 @@ container = {
 		widget = {
 			parentanchor = bottom|hcenter
 			size = { 100% 3 }
-			
+
 			battle_progressbar = {
 				parentanchor = bottom|hcenter
 				position = { 0 7 }
 				visible = "[Not(Battle.HasEnded)]"
 				size = { 90% 3 }
-				
+
 				blockoverride "values" {
 					value = "[Battle.CalcPushOfWar]"
 					min = -1
@@ -2250,7 +2341,7 @@ button = {
 				margin_right = 5
 				visible = "[MilitaryFormation.IsExiled]"
 				parentanchor = vcenter
-				
+
 				icon = {
 					size = { 32 32 }
 					texture = "gfx/interface/icons/military_icons/exiled_state.dds"
@@ -2518,7 +2609,6 @@ container = {
 		tooltip = "FRONT_MARKER_TOOLTIP"
 		onclick = "[FrontMarker.OnClick]"
 		parentanchor = bottom|hcenter
-		using = tooltip_below
 		size = { 70 70 }
 	}
 
@@ -2527,7 +2617,6 @@ container = {
 		tooltip = "FRONT_MARKER_TOOLTIP"
 		onclick = "[FrontMarker.OnClick]"
 		parentanchor = bottom|hcenter
-		using = tooltip_below
 		size = { 45 45 }
 	}
 
@@ -2536,7 +2625,6 @@ container = {
 		tooltip = "FRONT_MARKER_TOOLTIP"
 		onclick = "[FrontMarker.OnClick]"
 		parentanchor = bottom|hcenter
-		using = tooltip_below
 		size = { 30 30 }
 	}
 }
@@ -2605,7 +2693,6 @@ container = {
 		onmousehierarchyleave = "[AccessHighlightManager.RemoveHighlight]"
 		size = { 70 70 }
 		tooltip = "FRONT_MOVEMENT_MARKER_TOOLTIP"
-		using = tooltip_below
 		onclick = "[InformationPanelBar.OpenFrontPanel(FrontMovementMarker.GetFront.Self)]"
 	}
 
@@ -2616,7 +2703,6 @@ container = {
 		onmousehierarchyleave = "[AccessHighlightManager.RemoveHighlight]"
 		size = { 70 70 }
 		tooltip = "FRONT_MOVEMENT_MARKER_TOOLTIP"
-		using = tooltip_below
 		onclick = "[InformationPanelBar.OpenFrontPanel(FrontMovementMarker.GetFront.Self)]"
 		onrightclick = "[Execute( Front.GetDeploySelectedFormationsCommand )]"
 		onrightclick = "[PdxGuiWidget.AccessParent.FindChild('onrightclick_vfx').TriggerAnimation('show')]"
@@ -2782,6 +2868,14 @@ container = {
 	onmousehierarchyenter = "[AccessHighlightManager.HighlightPoliticalMovement(PoliticalMovement.Self)]"
 	onmousehierarchyleave = "[AccessHighlightManager.RemoveHighlight]"
 
+	state = {
+		name = revolutionary_sound
+		trigger_when = "[PoliticalMovement.IsInsurrectionary]"
+
+		start_sound = {
+			soundeffect = "event:/SFX/DLC/1.3_ip1/UI/item_revolutionary_movt"
+		}
+	}
 
 	tooltipwidget = {
 		FancyTooltip_PoliticalMovement = {}
@@ -2913,6 +3007,35 @@ container = {
 			texture = "gfx/interface/map_markers/revolutionary_movement_frame.dds"
 		}
 
+	}
+}
+
+### NATIONAL AWAKENING
+container = {
+	name = "national_awakening_marker"
+	datacontext = "[NationalAwakeningMarker.GetCulture]"
+	using = clickthrough_blocker
+	alwaystransparent = no
+	ignoreinvisible = yes
+	layer = layer_map_markers
+	max_update_rate = 8
+	parentanchor = bottom|hcenter
+	onmousehierarchyenter = "[SetCanOpenRightClickContextMenu( '(bool)no' )]"
+	onmousehierarchyleave = "[SetCanOpenRightClickContextMenu( '(bool)yes' )]"
+
+	button_icon_round = {
+		using = small_nib
+		size = { 40 40 }
+		onclick = "[InformationPanelBar.OpenCultureInfoPanel(Culture.AccessSelf)]"
+		tooltip = "NATIONAL_AWAKENING_CULTURE_TOOLTIP"
+
+		blockoverride "icon" {
+			texture = "gfx/interface/icons/generic_icons/national_awakening.dds"
+		}
+
+		blockoverride "icon_size" {
+			size = { 75% 75% }
+		}
 	}
 }
 
@@ -3350,7 +3473,7 @@ container = {
 			onclick = "[InformationPanelBar.OpenInvasionPanel(Invasion.Self)]"
 			size = { 100% 100% }
 		}
-		
+
 		button = {
 			visible = "[InvasionMarker.CanDeploySelectedFormationsToDefend]"
 			onclick = "[InformationPanelBar.OpenInvasionPanel(Invasion.Self)]"
@@ -3592,8 +3715,7 @@ flowcontainer = {
 		visible = "[Or(IsZoomLevelNear, State.IsBeingHighlighted)]"
 
 		icon = {
-			visible = "[State.GetStateRegion.HasDevastation]"
-			datacontext = "[State.GetStateRegion]"
+			visible = "[State.HasDevastation]"
 			tooltip = "TOOLTIP_STATE_DEVASTATION"
 			texture = "gfx/interface/icons/state_status_icons/has_devastation.dds"
 			size = { 30 30 }

@@ -23,9 +23,10 @@ communist_elections.1 = {
 	cooldown = { days = very_long_modifier_time }
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
-		NOT = { has_law = law_type:law_council_republic }
+		NOT = { has_variable = mute_election_events }
+		NOT = { has_law_or_variant = law_type:law_council_republic }
 		NOT = { has_variable = red_scare_var }
 		# Leftists are running in the election but aren't in government
 		any_interest_group = {
@@ -120,8 +121,8 @@ communist_elections.1 = {
 		highlighted_option = yes
 		trigger = {
 			OR = {
-				has_law = law_type:law_outlawed_dissent
-				has_law = law_type:law_censorship
+				has_law_or_variant = law_type:law_outlawed_dissent
+				has_law_or_variant = law_type:law_censorship
 			}
 		}
 		scope:leftist_party = {
@@ -139,7 +140,7 @@ communist_elections.1 = {
 		name = communist_elections.1.d
 		highlighted_option = yes
 		trigger = {
-			has_law = law_type:law_secret_police
+			has_law_or_variant = law_type:law_secret_police
 		}
 		scope:leftist_party = {
 			add_momentum = momentum_very_large_decrease
@@ -155,8 +156,8 @@ communist_elections.1 = {
 		highlighted_option = yes
 		trigger = {
 			OR = {
-				has_law = law_type:law_right_of_assembly
-				has_law = law_type:law_protected_speech
+				has_law_or_variant = law_type:law_right_of_assembly
+				has_law_or_variant = law_type:law_protected_speech
 			}
 		}
 		scope:leftist_party = {
@@ -195,14 +196,16 @@ communist_elections.2 = {
 	cooldown = { days = very_long_modifier_time }
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
+		NOT = { has_variable = mute_election_events }
 		NOT = { has_variable = council_elections_var }
-		has_law = law_type:law_council_republic
-		ig:ig_trade_unions = {
+		has_law_or_variant = law_type:law_council_republic
+		ig:ig_trade_unions ?= {
 			has_party = yes
 		}
 		any_active_party = {
+			party_has_members = yes
 			NOT = {
 				any_member = { is_interest_group_type = ig_trade_unions }
 			}
@@ -214,7 +217,7 @@ communist_elections.2 = {
 			name = council_elections_var
 			days = short_modifier_time
 		}
-		ig:ig_trade_unions = {
+		ig:ig_trade_unions ?= {
 			save_scope_as = unions_ig
 			party = {
 				save_scope_as = unions_party
@@ -222,6 +225,7 @@ communist_elections.2 = {
 		}
 		random_active_party = {
 			limit = {
+				party_has_members = yes
 				NOT = { this = scope:unions_party }
 			}
 			save_scope_as = anti_union_party
@@ -250,8 +254,8 @@ communist_elections.2 = {
 				}
 			}
 			OR = {
-				has_law = law_type:law_outlawed_dissent
-				has_law = law_type:law_censorship
+				has_law_or_variant = law_type:law_outlawed_dissent
+				has_law_or_variant = law_type:law_censorship
 			}
 		}
 		scope:unions_party = {
@@ -267,8 +271,8 @@ communist_elections.2 = {
 		highlighted_option = yes
 		trigger = {
 			OR = {
-				has_law = law_type:law_right_of_assembly
-				has_law = law_type:law_protected_speech
+				has_law_or_variant = law_type:law_right_of_assembly
+				has_law_or_variant = law_type:law_protected_speech
 			}
 			custom_tooltip = {
 				text = communist_elections.2.c.tt
@@ -316,15 +320,16 @@ communist_elections.3 = {
 	cooldown = { days = very_long_modifier_time }
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
+		NOT = { has_variable = mute_election_events }
 		NOT = { has_variable = international_socialism_var }
 		any_country = {
 			NOT = { has_war_with = ROOT }
 			NOT = { THIS = ROOT }
 			country_rank >= rank_value:major_power
 			any_interest_group = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				leader = {
 					OR = {
 						has_ideology = ideology:ideology_anarchist
@@ -335,6 +340,7 @@ communist_elections.3 = {
 			}
 		}
 		any_active_party = {
+			party_has_members = yes
 			OR = {
 				is_party_type = communist_party
 				is_party_type = social_democrat_party
@@ -369,7 +375,7 @@ communist_elections.3 = {
 				NOT = { THIS = ROOT }
 				country_rank >= rank_value:major_power
 				any_interest_group = {
-					is_marginal = no
+					ig_counts_as_marginal = no
 					leader = {
 						OR = {
 							has_ideology = ideology:ideology_anarchist
@@ -382,7 +388,7 @@ communist_elections.3 = {
 			save_scope_as = socialist_country
 			random_interest_group = {
 				limit = {
-					is_marginal = no
+					ig_counts_as_marginal = no
 					leader = {
 						OR = {
 							has_ideology = ideology:ideology_anarchist
@@ -498,9 +504,9 @@ communist_elections.3 = {
 				}
 			}
 			OR = {
-				has_law = law_type:law_closed_borders
-				has_law = law_type:law_outlawed_dissent
-				has_law = law_type:law_secret_police
+				has_law_or_variant = law_type:law_closed_borders
+				has_law_or_variant = law_type:law_outlawed_dissent
+				has_law_or_variant = law_type:law_secret_police
 			}
 		}
 		scope:socialist_party = {
@@ -545,8 +551,9 @@ communist_elections.4 = {
 	cooldown = { days = very_long_modifier_time }
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
+		NOT = { has_variable = mute_election_events }
 		NOT = { has_variable = blackshirts_var }
 		any_interest_group = {
 			has_party = yes
@@ -602,6 +609,7 @@ communist_elections.4 = {
 		}
 		every_active_party = {
 			limit = {
+				party_has_members = yes
 				NOT = { is_party_type = fascist_party }
 			}
 			add_momentum = momentum_small_decrease
@@ -620,14 +628,14 @@ communist_elections.4 = {
 				}
 			}
 			OR = {
-				ig:ig_armed_forces = {
+				ig:ig_armed_forces ?= {
 					is_powerful = yes
 				}
 				institution_investment_level = {
 					institution = institution_police
 					value >= 3
 				}
-				has_law = law_type:law_militarized_police
+				has_law_or_variant = law_type:law_militarized_police
 			}
 		}
 		scope:fascist_party_scope = {
@@ -636,13 +644,14 @@ communist_elections.4 = {
 		}
 		every_active_party = {
 			limit = {
+				party_has_members = yes
 				NOT = { is_party_type = fascist_party }
 			}
 			add_momentum = momentum_medium_decrease
 		}
 		if = {
 			limit = {
-				ig:ig_armed_forces = {
+				ig:ig_armed_forces ?= {
 					law_stance = {
 						law = law_type:law_militarized_police
 						value > neutral
@@ -656,7 +665,7 @@ communist_elections.4 = {
 		}
 		else_if = {
 			limit = {
-				ig:ig_armed_forces = {
+				ig:ig_armed_forces ?= {
 					law_stance = {
 						law = law_type:law_militarized_police
 						value < neutral
@@ -684,6 +693,7 @@ communist_elections.4 = {
 		}
 		every_active_party = {
 			limit = {
+				party_has_members = yes
 				NOT = { is_party_type = fascist_party }
 			}
 			add_momentum = momentum_small_decrease
@@ -695,8 +705,8 @@ communist_elections.4 = {
 		highlighted_option = yes
 		trigger = {
 			OR = {
-				has_law = law_type:law_protected_speech
-				has_law = law_type:law_guaranteed_liberties
+				has_law_or_variant = law_type:law_protected_speech
+				has_law_or_variant = law_type:law_guaranteed_liberties
 				institution_investment_level = {
 					institution = institution_police
 					value >= 3
@@ -737,8 +747,9 @@ cable_street.1 = {
 	cooldown = { days = stupidly_long_modifier_time }
 
 	trigger = {
-		NOT = { has_law = law_type:law_single_party_state }
+		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
+		NOT = { has_variable = mute_election_events }
 		NOT = { has_variable = cable_street_var }
 		any_interest_group = {
 			has_party = yes

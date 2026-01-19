@@ -25,8 +25,6 @@ utilitarian.1 = {
 		}
 	}
 
-	dlc = dlc011
-
 	event_image = {
 		video = "ip2_india_factory_floor"
 	}
@@ -80,7 +78,7 @@ utilitarian.1 = {
 			name = utilitarian_bonus
 			days = long_modifier_time
 		}
-		ig:ig_industrialists = {
+		ig:ig_industrialists ?= {
 			if = {
 				limit = {
 					has_ideology = ideology:ideology_malthusian
@@ -269,8 +267,8 @@ utilitarian.3 = {
 		if = {
 			limit = {
 				OR = {
-					has_law = law_type:law_proportional_taxation
-					has_law = law_type:law_graduated_taxation
+					has_law_or_variant = law_type:law_proportional_taxation
+					has_law_or_variant = law_type:law_graduated_taxation
 				}
 			}
 			change_variable = {
@@ -280,7 +278,7 @@ utilitarian.3 = {
 		}
 		if = {
 			limit = {
-				has_law = law_type:law_compulsory_primary_school
+				has_law_or_variant = law_type:law_compulsory_primary_school
 			}
 			change_variable = {
 				name = util_end_var
@@ -289,7 +287,7 @@ utilitarian.3 = {
 		}
 		if = {
 			limit = {
-				has_law = law_type:law_public_schools
+				has_law_or_variant = law_type:law_public_schools
 			}
 			change_variable = {
 				name = util_end_var
@@ -299,7 +297,7 @@ utilitarian.3 = {
 		if = {
 			limit = {
 				NOT = {
-					has_law = law_type:law_no_womens_rights
+					has_law_or_variant = law_type:law_no_womens_rights
 				}
 			}
 			change_variable = {
@@ -351,7 +349,7 @@ utilitarian.3 = {
 			limit = {
 				var:util_end_var > 2
 			}
-			ig:ig_industrialists = {
+			ig:ig_industrialists ?= {
 				if = {
 					limit = {
 						has_ideology = ideology:ideology_malthusian
@@ -392,7 +390,7 @@ utilitarian.4 = {
 	}
 
 	immediate = {
-		c:BIC = {
+		c:BIC ?= {
 			save_scope_as = bic_scope
 			top_overlord = {
 				save_scope_as = relevant_overlord
@@ -499,7 +497,7 @@ utilitarian.5 = {
 			}
 			any_scope_pop = {
 				culture = {
-					has_discrimination_trait = anglophone
+					has_discrimination_trait = language_anglophone
 				}
 			}
 		}
@@ -529,7 +527,7 @@ utilitarian.5 = {
 			random_scope_pop = {
 				limit = {
 					culture = {
-						has_discrimination_trait = anglophone
+						has_discrimination_trait = language_anglophone
 					}
 				}
 				save_scope_as = primary_culture_pop
@@ -726,7 +724,7 @@ utilitarian.7 = {
 			}
 			any_scope_pop = {
 				culture = {
-					has_discrimination_trait = anglophone
+					has_discrimination_trait = language_anglophone
 				}
 				total_size >= 5000
 			}
@@ -750,7 +748,7 @@ utilitarian.7 = {
 			random_scope_pop = {
 				limit = {
 					culture = {
-						has_discrimination_trait = anglophone
+						has_discrimination_trait = language_anglophone
 					}
 					total_size >= 5000
 				}
@@ -759,7 +757,7 @@ utilitarian.7 = {
 			}
 			save_scope_as = relevant_state
 		}
-		c:BIC = {
+		c:BIC ?= {
 			save_scope_as = bic_scope
 			top_overlord = {
 				save_scope_as = relevant_overlord
@@ -851,7 +849,7 @@ utilitarian.8 = { # Success event for schooling
 	}
 
 	immediate = {
-		c:BIC = {
+		c:BIC ?= {
 			save_scope_as = bic_scope
 			top_overlord = {
 				save_scope_as = relevant_overlord
@@ -1008,7 +1006,7 @@ utilitarian.9 = {
 				save_scope_as = relevant_character
 			}
 		}
-		c:BIC = {
+		c:BIC ?= {
 			save_scope_as = bic_scope
 			top_overlord = {
 				save_scope_as = relevant_overlord

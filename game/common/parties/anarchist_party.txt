@@ -8,27 +8,37 @@ anarchist_party = {
 				desc = party_cnt
 				trigger = {
 					exists = c:SPA
-					THIS = c:SPA
+					c:SPA ?= THIS
 				}
 			}
 			triggered_desc = {
 				desc = party_socialist_league
 				trigger = {
 					exists = c:GBR
-					THIS = c:GBR
+					c:GBR ?= THIS
 				}
 			}
 			triggered_desc = {
 				desc = party_anarcho_communist_federation
 				trigger = {
 					exists = c:FRA
-					THIS = c:FRA
+					c:FRA ?= THIS
 				}
 			}
 			triggered_desc = {
-				desc = party_maximalist_federation
+				desc = party_social_revolution_group
 				trigger = {
-					country_has_primary_culture = cu:portuguese
+					c:POR ?= this
+					NOT = {
+						has_technology_researched = mass_propaganda
+					}
+				}
+			}
+			triggered_desc = {
+				desc = party_portuguese_anarchist_federation
+				trigger = {
+					c:POR ?= this
+					has_technology_researched = mass_propaganda
 				}
 			}
 			triggered_desc = {
@@ -46,6 +56,11 @@ anarchist_party = {
 					OR = {
 						country_has_primary_culture = cu:north_italian
 						country_has_primary_culture = cu:south_italian
+					}
+					NOR = {
+						c:AUS ?= this
+						c:KUK ?= this
+						c:HRE ?= this
 					}
 				}
 			}
@@ -71,13 +86,13 @@ anarchist_party = {
 		owner = {
 			country_has_voting_franchise = yes
 			any_interest_group = {
-				is_marginal = no
-				leader = {
+				ig_counts_as_marginal = no
+				leader ?= {
 					has_ideology = ideology:ideology_anarchist
 				}
 			}
 		}
-		leader = {
+		leader ?= {
 			has_ideology = ideology:ideology_anarchist
 		}
 	}
@@ -112,7 +127,7 @@ anarchist_party = {
 		}
 		if = { # anarchists like anarchism
 			limit = {
-				leader = { has_ideology = ideology:ideology_anarchist }
+				leader ?= { has_ideology = ideology:ideology_anarchist }
 			}
 			add = {
 				value = 6
@@ -122,7 +137,7 @@ anarchist_party = {
 		if = { # strong anarchists like anarchism
 			limit = {
 				is_powerful = yes
-				leader = { has_ideology = ideology:ideology_anarchist }
+				leader ?= { has_ideology = ideology:ideology_anarchist }
 			}
 			add = {
 				value = 10
@@ -131,11 +146,11 @@ anarchist_party = {
 		}
 		if = { # anarchists don't like the revolution being hijacked
 			limit = {
-				leader = {
+				leader ?= {
 					has_ideology = ideology:ideology_anarchist
 				}
 				owner = {
-					has_law = law_type:law_council_republic
+					has_law_or_variant = law_type:law_council_republic
 					ruler = {
 						has_ideology = ideology:ideology_vanguardist
 					}
@@ -148,14 +163,14 @@ anarchist_party = {
 		}
 		if = { # anarchists will make their own party if there is no communist party to join
 			limit = {
-				leader = {
+				leader ?= {
 					has_ideology = ideology:ideology_anarchist
 				}
 				owner = {
 					NOT = {
 						any_interest_group = {
-							is_marginal = no
-							leader = {
+							ig_counts_as_marginal = no
+							leader ?= {
 								OR = {
 									has_ideology = ideology:ideology_communist
 									has_ideology = ideology:ideology_vanguardist
@@ -172,7 +187,7 @@ anarchist_party = {
 		}
 		if = { # radical anti-censorship
 			limit = {
-				leader = {
+				leader ?= {
 					OR = {
 						has_ideology = ideology:ideology_radical
 						has_ideology = ideology:ideology_anarchist
@@ -180,8 +195,8 @@ anarchist_party = {
 				}
 				owner = {
 					OR = {
-						has_law = law_type:law_outlawed_dissent
-						has_law = law_type:law_censorship
+						has_law_or_variant = law_type:law_outlawed_dissent
+						has_law_or_variant = law_type:law_censorship
 					}
 				}
 			}
@@ -197,12 +212,12 @@ anarchist_party = {
 					has_ideology = ideology:ideology_liberal_modern
 					has_ideology = ideology:ideology_egalitarian
 					has_ideology = ideology:ideology_egalitarian_modern
-					leader = {
+					leader ?= {
 						has_ideology = ideology:ideology_humanitarian
 					}
 				}
 				owner = {
-					has_law = law_type:law_outlawed_dissent
+					has_law_or_variant = law_type:law_outlawed_dissent
 				}
 			}
 			add = {
@@ -214,13 +229,14 @@ anarchist_party = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_meritocratic
+					has_ideology = ideology:ideology_cartist
 					has_ideology = ideology:ideology_agrarian
-					leader = {
+					leader ?= {
 						has_ideology = ideology:ideology_social_democrat
 					}
 				}
 				owner = {
-					has_law = law_type:law_land_based_taxation
+					has_law_or_variant = law_type:law_land_based_taxation
 				}
 			}
 			add = {
@@ -232,12 +248,12 @@ anarchist_party = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_anti_clerical
-					leader = {
+					leader ?= {
 						has_ideology = ideology:ideology_nihilist
 					}
 				}
 				owner = {
-					has_law = law_type:law_state_religion
+					has_law_or_variant = law_type:law_state_religion
 				}
 			}
 			add = {
@@ -251,7 +267,7 @@ anarchist_party = {
 					has_ideology = ideology:ideology_jingoist
 					has_ideology = ideology:ideology_particularist
 					has_ideology = ideology:ideology_sikh_moralist
-					leader = {
+					leader ?= {
 						OR = {
 							has_ideology = ideology:ideology_anarchist
 							has_ideology = ideology:ideology_pacifist
@@ -259,7 +275,7 @@ anarchist_party = {
 					}
 				}
 				owner = {
-					has_law = law_type:law_peasant_levies
+					has_law_or_variant = law_type:law_peasant_levies
 				}
 			}
 			add = {
@@ -271,13 +287,14 @@ anarchist_party = {
 			limit = {
 				owner = {
 					OR = {
-						has_law = law_type:law_legacy_slavery
-						has_law = law_type:law_slave_trade
+						has_law_or_variant = law_type:law_legacy_slavery
+						has_law_or_variant = law_type:law_slave_trade
+						has_law_or_variant = law_type:law_colonial_slavery
 					}
 				}
 				OR = {
 					has_ideology = ideology:ideology_anti_slavery
-					leader = {
+					leader ?= {
 						has_ideology = ideology:ideology_abolitionist
 					}
 				}
@@ -290,7 +307,7 @@ anarchist_party = {
 		if = { # anti-serfdom
 			limit = {
 				owner = {
-					has_law = law_type:law_serfdom
+					has_law_or_variant = law_type:law_serfdom
 				}
 				OR = {
 					has_ideology = ideology:ideology_egalitarian
@@ -298,10 +315,13 @@ anarchist_party = {
 					has_ideology = ideology:ideology_anti_slavery
 					has_ideology = ideology:ideology_laissez_faire
 					has_ideology = ideology:ideology_particularist
-					leader = {
+					leader ?= {
+						OR = {
 						has_ideology = ideology:ideology_abolitionist
 						has_ideology = ideology:ideology_social_democrat
 						has_ideology = ideology:ideology_communist
+								has_ideology = ideology:ideology_vanguardist
+						}
 					}
 				}
 			}
@@ -314,7 +334,7 @@ anarchist_party = {
 			limit = {
 				scope:number = 1
 				is_powerful = no
-				is_marginal = no
+				ig_counts_as_marginal = no
 			}
 			multiply = {
 				value = 2
@@ -335,7 +355,7 @@ anarchist_party = {
 				scope:number = 3
 			}
 			multiply = {
-				value = 0.25
+				value = 0.05
 				desc = "from_three_prior_members"
 			}
 		}
@@ -344,7 +364,7 @@ anarchist_party = {
 				scope:number > 3
 			}
 			multiply = {
-				value = 0.1
+				value = 0.0
 				desc = "from_more_than_three_prior_members"
 			}
 		}

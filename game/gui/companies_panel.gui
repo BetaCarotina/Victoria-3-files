@@ -211,31 +211,35 @@ types companies_panel
 				hbox = {
 
 					sort_button = {
-						text = "COUNTRY"
-						onclick = "[CompaniesPanel.Sort('owner')]"
 						layoutpolicy_horizontal = preferred
 						size = { 70 30 }
+						text = "COUNTRY"
+						onclick = "[CompaniesPanel.Sort('owner')]"
+						tooltip = "SORT_BY_COUNTRY"
 					}
 
 					sort_button = {
-						text = "NAME"
-						onclick = "[CompaniesPanel.Sort('name')]"
 						layoutpolicy_horizontal = preferred
 						size = { 220 30 }
+						text = "NAME"
+						onclick = "[CompaniesPanel.Sort('name')]"
+						tooltip = "SORT_BY_NAME"
 					}
 
 					sort_button = {
-						text = "BUILDINGS"
 						enabled = no
 						layoutpolicy_horizontal = preferred
 						size = { 110 30 }
+						text = "BUILDINGS"
+						tooltip = "BUILDINGS"
 					}
 
 					sort_button = {
-						text = "concept_building_balance_profit"
-						onclick = "[CompaniesPanel.Sort('profit')]"
 						layoutpolicy_horizontal = preferred
 						size = { 110 30 }
+						text = "concept_building_balance_profit"
+						onclick = "[CompaniesPanel.Sort('profit')]"
+						tooltip = "concept_building_balance_profit"
 					}
 				}
 			}
@@ -399,7 +403,7 @@ types companies_panel
 							layoutpolicy_horizontal = expanding
 							size = { 0 30 }
 							onclick = "[AccessPlayer.SortCompanies('name')]"
-							
+							tooltip = "NAME"
 							text = "NAME"
 						}
 
@@ -407,7 +411,7 @@ types companies_panel
 							layoutpolicy_horizontal = expanding
 							size = { 0 30 }
 							onclick = "[AccessPlayer.SortCompanies('building_database_order')]"
-							
+							tooltip = "BUILDING_DATABASE_ORDER"
 							text = "BUILDING_DATABASE_ORDER"
 						}
 
@@ -415,7 +419,7 @@ types companies_panel
 							layoutpolicy_horizontal = expanding
 							size = { 0 30 }
 							onclick = "[AccessPlayer.SortCompanies('productivity')]"
-							
+							tooltip = "SORT_BY_BUILDING_PRODUCTIVITY"
 							text = "concept_productivity"
 						}
 
@@ -423,7 +427,7 @@ types companies_panel
 							layoutpolicy_horizontal = expanding
 							size = { 0 30 }
 							onclick = "[AccessPlayer.SortCompanies('levels')]"
-							
+							tooltip = "SORT_BY_BUILDING_SIZE"
 							text = "concept_building_levels"
 						}
 					}
@@ -854,8 +858,10 @@ types companies_panel
 							visible = "[Not(IsDataModelEmpty(Company.GetPrestigeGoods))]"
 
 							company_info_item = {
+								tooltip = "COMPANY_PRODUCING_PRESTIGE_GOODS_TOOLTIP"
+
 								blockoverride "header" {
-									text = "[concept_prestige_good]"
+									text = "COMPANY_PRODUCING_PRESTIGE_GOODS_HEADER"
 								}
 
 								blockoverride "info" {
@@ -865,12 +871,50 @@ types companies_panel
 										datamodel = "[Company.GetPrestigeGoods]"
 										
 										item = {
-											icon = {
-												size = { 40 40 }
-												texture = "[Goods.GetTexture]"
-												
+											button = {
+												texture = "gfx/interface/market_view/trade_good_icon_bg.dds"
+												color = "[Goods.GetCategoryColor]"
+												alpha = "[TransparentIfFalse(Company.IsProducingPrestigeGoods)]"
+												enabled = "[Company.IsProducingPrestigeGoods]"
+												onclick = "[InformationPanelBar.OpenGoodsPanel(Goods.GetMarket, Goods.Self)]"
+												onrightclick = "[RightClickMenuManager.ShowForGoods(Goods.AccessSelf)]"
+
 												tooltipwidget = {
 													FancyTooltip_Goods = {}
+												}
+
+												block "bg_size" {
+													size = { 40 40 }
+												}
+
+												button = {
+													texture = "[Goods.GetTexture]"
+													size = { 28 28 }
+													parentanchor = center
+													alwaystransparent = yes
+												}
+
+												icon = {
+													visible = "[Goods.HasGoodsShortage]"
+													tooltip = "GOODS_SHORTAGE_TOOLTIP"
+
+													size = { 25 25 }
+													texture = "gfx/interface/icons/generic_icons/goods_shortage.dds"
+													parentanchor = bottom
+												}
+
+												cannot_be_trade_icon = {}
+
+												icon = {
+													size = { 100% 100% }
+													texture = "gfx/interface/icons/goods_icons/prestige_goods/trade_good_icon_prestige_frame.dds"
+													visible = "[Goods.IsPrestigeGoods]"
+												}
+
+												icon = {
+													size = { 100% 100% }
+													texture = "gfx/interface/icons/goods_icons/prestige_goods/trade_good_icon_prestige_ribbon.dds"
+													visible = "[Goods.IsPrestigeGoods]"
 												}
 											}
 										}
@@ -1072,16 +1116,16 @@ types companies_panel
 					flowcontainer = {
 						direction = horizontal
 						spacing = 5							
-						datamodel = "[CompanyType.AccessBuildingTypes]"
+						datamodel = "[CompanyType.AccessBuildingTypes(GetPlayer.Self)]"
 						
 						item = {
 							company_type_building_item = {}
 						}
 					}
 					
-					flowcontainer = {					
+					flowcontainer = {
 						visible = "[Not(IsDataModelEmpty(CompanyType.GetPrestigeGoods))]"
-							
+
 						textbox = {
 							autoresize = yes
 							align = left|vcenter
@@ -1089,22 +1133,22 @@ types companies_panel
 							fontsize_min = 12
 							max_width = 360
 							text = "PRESTIGE_GOODS_CONCEPT"
-						}		
+						}
 
 						widget = { size = { 5 5 } }
-						
+
 						flowcontainer = {
 							direction = horizontal
 							spacing = 5
-								
+
 							datamodel = "[CompanyType.GetPrestigeGoods]"
-							
+
 							item = {
 								company_type_prestige_good_item = {}
 							}
-						}	
+						}
 					}
-					
+
 					textbox = {
 						autoresize = yes
 						align = nobaseline
@@ -1180,10 +1224,10 @@ types companies_panel
 			}
 
 			#Progress Bar
-			widget = {		
+			widget = {
 				size = { 240 10 }
 				using = tooltip_below
-			
+
 				changed_value_increased_progressbar_horizontal = {
 					visible = "[And(GreaterThan_CFixedPoint(Company.GetProsperityChange,'(CFixedPoint)0'), LessThan_CFixedPoint(Company.GetProsperity, GetDefine('NEconomy', 'COMPANY_PROSPERITY_MAX')))]"
 					size = { 100%  100% }
@@ -1278,14 +1322,14 @@ types companies_panel
 			FancyTooltip_BuildingType = {}
 		}
 	}
-	
+
 	type company_type_prestige_good_item = icon {
 		texture = "[Goods.GetTexture]"
-		size = { 30 30 }	
+		size = { 30 30 }
 		tooltipwidget = {
 			FancyTooltip_Goods = {}
 		}
-	}	
+	}
 
 	type company_building_item = button {
 		texture = "[BuildingType.GetIcon]"

@@ -14,6 +14,7 @@ pmg_secondary_building_rye_farm = {
 		pm_no_secondary
 		pm_potatoes
 		pm_apple_orchards
+		pm_sugar_beets
 	}
 }
 
@@ -43,6 +44,7 @@ pmg_secondary_building_wheat_farm = {
 	production_methods = {
 		pm_no_secondary
 		pm_citrus_orchards
+		pm_sugar_beets
 	}
 }
 
@@ -176,5 +178,21 @@ pmg_refrigeration_building_livestock_ranch = {
 		pm_unrefrigerated
 		pm_refrigerated_storage_building_livestock_ranch
 		pm_refrigerated_rail_cars_building_livestock_ranch
+	}
+}
+
+pmg_base_building_vineyard = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	production_methods = {
+		default_building_vineyard
+		automatic_irrigation_building_vineyard
+	}
+}
+
+pmg_train_automation_building_vineyard = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_automation.dds"
+	production_methods = {
+		pm_road_carts
+		pm_steam_rail_transport
 	}
 }

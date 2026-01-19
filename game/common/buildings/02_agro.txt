@@ -1,12 +1,12 @@
 ﻿############# FARMING & RANCHING
 
 building_rye_farm = {
-	building_group = bg_rye_farms
+	building_group = bg_staple_crops
 
 	icon = "gfx/interface/icons/building_icons/rye_farm.dds"
 
 	city_type = farm
-	levels_per_mesh = 5
+	levels_per_mesh = 50
 
 	unlocking_technologies = {
 		enclosure
@@ -27,12 +27,12 @@ building_rye_farm = {
 }
 
 building_wheat_farm = {
-	building_group = bg_wheat_farms
+	building_group = bg_staple_crops
 
 	icon = "gfx/interface/icons/building_icons/wheat_farm.dds"
 
 	city_type = farm
-	levels_per_mesh = 5
+	levels_per_mesh = 50
 
 	unlocking_technologies = {
 		enclosure
@@ -53,12 +53,12 @@ building_wheat_farm = {
 }
 
 building_rice_farm = {
-	building_group = bg_rice_farms
+	building_group = bg_staple_crops
 
 	icon = "gfx/interface/icons/building_icons/rice_farm.dds"
 
 	city_type = farm
-	levels_per_mesh = 5
+	levels_per_mesh = 50
 
 	unlocking_technologies = {
 		enclosure
@@ -79,12 +79,12 @@ building_rice_farm = {
 }
 
 building_maize_farm = {
-	building_group = bg_maize_farms
+	building_group = bg_staple_crops
 
 	icon = "gfx/interface/icons/building_icons/maize_farm.dds"
 
 	city_type = farm
-	levels_per_mesh = 5
+	levels_per_mesh = 50
 
 	unlocking_technologies = {
 		enclosure
@@ -105,12 +105,12 @@ building_maize_farm = {
 }
 
 building_millet_farm = {
-	building_group = bg_millet_farms
+	building_group = bg_staple_crops
 
 	icon = "gfx/interface/icons/building_icons/millet_farm.dds"
 
 	city_type = farm
-	levels_per_mesh = 5
+	levels_per_mesh = 50
 
 	unlocking_technologies = {
 		enclosure
@@ -131,12 +131,12 @@ building_millet_farm = {
 }
 
 building_livestock_ranch = {
-	building_group = bg_livestock_ranches
+	building_group = bg_ranching
 
 	icon = "gfx/interface/icons/building_icons/cattle_ranch.dds"
 
 	city_type = farm
-	levels_per_mesh = 5
+	levels_per_mesh = 50
 
 	unlocking_technologies = {
 		enclosure
@@ -155,4 +155,27 @@ building_livestock_ranch = {
 	ownership_type = self
 
 	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_farming.dds"
+}
+
+
+building_vineyard = {
+	aliases = { building_vineyard_plantations }
+	building_group = bg_agriculture
+	icon = "gfx/interface/icons/building_icons/vineyards.dds"
+	required_construction = construction_cost_low
+
+	unlocking_technologies = {
+		enclosure
+	}
+
+	city_type = farm
+	levels_per_mesh = 50
+
+	production_method_groups = {
+		pmg_base_building_vineyard
+		pmg_train_automation_building_vineyard
+	}
+	ownership_type = self
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_plantations.dds"
 }

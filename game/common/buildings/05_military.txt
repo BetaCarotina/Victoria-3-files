@@ -1,6 +1,8 @@
 ﻿############ BARRACKS
 
-building_barracks = {
+building_barrack = {
+	aliases = { building_barracks }
+
 	building_group = bg_army
 	recruits_combat_units = yes
 	icon = "gfx/interface/icons/building_icons/building_barracks.dds"
@@ -8,7 +10,7 @@ building_barracks = {
 
 	has_max_level = yes
 
-	levels_per_mesh = 25
+	levels_per_mesh = 50
 
 	unlocking_technologies = {
 		standing_army
@@ -49,7 +51,7 @@ building_naval_base = {
 	building_group = bg_navy
 	recruits_combat_units = yes
 	city_type = port
-	levels_per_mesh = 25
+	levels_per_mesh = 1
 
 	has_max_level = yes
 

@@ -1,12 +1,12 @@
 ﻿CHARACTERS = {
-	c:UBD = {
+	c:UBD ?= {
 		create_character = {
 			first_name = Carl_Magnus
 			last_name = von_der_Pahlen
 			interest_group = ig_armed_forces
 			ideology = ideology_jingoist_leader
 			historical = yes
-			culture = cu:north_german
+			culture = cu:east_german
 			ruler = yes
 			is_general = yes
 			hq = region_baltic_states

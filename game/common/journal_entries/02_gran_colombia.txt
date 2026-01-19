@@ -3,6 +3,17 @@
 
 	group = je_group_foreign_affairs
 
+    is_shown_in_lobby = {
+        has_dlc_feature = rp1_content #Colossus of the South
+        country_has_primary_culture = cu:north_andean
+        NOT = {
+            OR = {
+                country_tier = empire
+                country_tier = hegemony
+            }
+        }
+    }
+
     is_shown_when_inactive = {
         country_has_primary_culture = cu:north_andean
 		has_dlc_feature = rp1_content
@@ -14,7 +25,8 @@
         }
     }
     possible = {
-		has_technology_researched = nationalism
+        country_rank >= rank_value:minor_power
+        army_power_projection >= 500
         country_has_primary_culture = cu:north_andean
     }
     immediate = {
@@ -76,7 +88,8 @@ je_la_plata = {
         }
     }
     possible = {
-		has_technology_researched = nationalism
+        country_rank >= rank_value:minor_power
+        army_power_projection >= 500
         country_has_primary_culture = cu:platinean
     }
     immediate = {
@@ -127,34 +140,44 @@ je_andean_federation = {
 
 	group = je_group_foreign_affairs
 
+    is_shown_in_lobby = {
+        has_dlc_feature = rp1_content #Colossus of the South
+        OR = {
+            country_has_primary_culture = cu:north_andean
+            country_has_primary_culture = cu:south_andean
+        }
+    }
+
     is_shown_when_inactive = {
         OR = {
             country_has_primary_culture = cu:north_andean
             country_has_primary_culture = cu:south_andean
         }
-		has_technology_researched = nationalism
-        NOT = {
+        NOR = {
             has_variable = rejected_gran_colombia
+            has_variable = rejected_la_plata
         }
 		has_dlc_feature = rp1_content
     }
     possible = {
-        has_technology_researched = pan-nationalism
         OR = {
             country_has_primary_culture = cu:north_andean
             country_has_primary_culture = cu:south_andean
         }
-        custom_tooltip = {
-            text = andean_federation_reqs_tt
-            OR = {
-                any_scope_state = {
-                    state_is_in_south_america = yes
-                    is_incorporated = yes
-                    count >= 10
+        country_rank >= rank_value:major_power
+        OR = {
+            custom_tooltip = {
+                text = andean_federation_reqs_tt
+                OR = {
+                    c:GCO ?= this
+                    c:PBC ?= this
+                    c:PLT ?= this
                 }
-                c:GCO ?= this
-                c:PBC ?= this
-                c:PLT ?= this
+            }
+            any_scope_state = {
+                is_in_geographic_region = geographic_region_south_america
+                is_incorporated = yes
+                count >= 10
             }
         }
     }

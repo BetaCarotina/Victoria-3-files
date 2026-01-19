@@ -2,6 +2,15 @@
 
 #MARKET ICONS
 texticon = {
+  icon = important_action
+  iconsize = {
+    offset = { 0 13 }
+    texture = "gfx/interface/current_situations/icon_situation_unread.dds"
+    fontsize = 45
+  }
+}
+
+texticon = {
   icon = market_balance
   iconsize = {
     offset = { 0 13 }
@@ -367,6 +376,15 @@ texticon = {
 }
 
 texticon = {
+  icon = amenability
+  iconsize = {
+    offset = { 0 10 }
+    texture = "gfx/interface/icons/generic_icons/amenability.dds"
+    fontsize = 100
+  }
+}
+
+texticon = {
   icon = unincorporated
   iconsize = {
     offset = { 0 22 }
@@ -670,6 +688,15 @@ texticon = {
   iconsize = {
     offset = { 0 20 }
     texture = "gfx/interface/icons/generic_icons/flotillas.dds"
+    fontsize = 120
+  }
+}
+
+texticon = {
+  icon = conscripts_SP
+  iconsize = {
+    offset = { 0 20 }
+    texture = "gfx/interface/icons/generic_icons/conscripts.dds"
     fontsize = 120
   }
 }
@@ -1167,6 +1194,16 @@ texticon = {
 }
 
 texticon = {
+  icon = obstinance
+  iconsize = {
+    offset = { 0 30 }
+    texture = "gfx/interface/icons/state_status_icons/state_obstinance.dds"
+    fontsize = 86
+  }
+}
+
+
+texticon = {
   icon = activism
   iconsize = {
     offset = { 0 36 }
@@ -1487,10 +1524,19 @@ texticon = {
 
 texticon = {
   icon = acceptance_status_increasing
-  iconsize = [
+  iconsize = {
     offset = { 0 0 }
     texture = "gfx/interface/icons/generic_icons/trend_upup.dds"
     fontsize = 22
+  }
+}
+
+texticon = {
+  icon = national_awakening
+  iconsize = {
+    offset = { 0 20 }
+    texture = "gfx/interface/icons/generic_icons/national_awakening.dds"
+    fontsize = 82
   }
 }
 
@@ -1563,6 +1609,15 @@ texticon = {
   iconsize = {
     offset = { 0 7 }
     texture = "gfx/interface/icons/diplomatic_action_icons/personal_union_15.dds"
+    fontsize = 22
+  }
+}
+
+texticon = {
+  icon = crown_land
+  iconsize = {
+    offset = { 0 7 }
+    texture = "gfx/interface/icons/diplomatic_action_icons/crown_land_15.dds"
     fontsize = 22
   }
 }
@@ -1811,7 +1866,7 @@ texticon = {
     fontsize = 30
   }
 }
-  
+
   texticon = {
   icon = officers
   iconsize = {
@@ -1827,16 +1882,16 @@ texticon = {
     offset = { 0 50 }
     texture = "gfx/interface/icons/pops_icons/peasants.dds"
     fontsize = 250
-  } 
+  }
 }
- 
+
   texticon = {
   icon = peasants
   iconsize = {
     offset = { 0 5 }
     texture = "gfx/interface/icons/pops_icons/peasants_15.dds"
     fontsize = 30
-  } 
+  }
 }
 
 texticon = {
@@ -1845,16 +1900,16 @@ texticon = {
     offset = { 0 50 }
     texture = "gfx/interface/icons/pops_icons/soldiers.dds"
     fontsize = 250
-  } 
+  }
 }
-  
+
   texticon = {
   icon = soldiers
   iconsize = {
     offset = { 0 5 }
     texture = "gfx/interface/icons/pops_icons/soldiers_15.dds"
     fontsize = 30
-  }  
+  }
 }
 
 texticon = {
@@ -1863,16 +1918,16 @@ texticon = {
     offset = { 0 50 }
     texture = "gfx/interface/icons/pops_icons/shopkeepers.dds"
     fontsize = 250
-  }  
+  }
 }
-  
+
   texticon = {
   icon = shopkeepers
   iconsize = {
     offset = { 0 5 }
     texture = "gfx/interface/icons/pops_icons/shopkeepers_15.dds"
     fontsize = 30
-  }  
+  }
 }
 
 texticon = {
@@ -2052,6 +2107,15 @@ texticon = {
   iconsize = {
     offset = { 0 30 }
     texture = "gfx/interface/icons/harvest_condition_icons/moderate_rainfall.dds"
+    fontsize = 150
+  }
+}
+
+texticon = {
+  icon = tsunami
+  iconsize = {
+    offset = { 0 30 }
+    texture = "gfx/interface/icons/harvest_condition_icons/flood.dds"
     fontsize = 150
   }
 }
@@ -2266,7 +2330,6 @@ texticon = {
   }
 }
 
-
 ### FRONTEND
 
 texticon = {
@@ -2275,5 +2338,154 @@ texticon = {
     offset = { 0 20 }
     texture = "gfx/frontend/interface/icons/flat_icons/discord.dds"
     fontsize = 91
+  }
+}
+
+# Special texticons
+
+texticon = {
+  icon = ibe_republic_1_flag
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/ibe_republic_1.dds"
+    fontsize = 55
+  }
+}
+
+texticon = {
+  icon = ibe_republic_2_flag
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/ibe_republic_2.dds"
+    fontsize = 55
+  }
+}
+
+texticon = {
+  icon = ibe_republic_3_flag
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/ibe_republic_3.dds"
+    fontsize = 55
+  }
+}
+
+texticon = {
+  icon = ibe_republic_1_flag_small
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/ibe_republic_1.dds"
+    fontsize = 280
+  }
+}
+
+texticon = {
+  icon = ibe_republic_2_flag_small
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/ibe_republic_2.dds"
+    fontsize = 280
+  }
+}
+
+texticon = {
+  icon = ibe_republic_3_flag_small
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/ibe_republic_3.dds"
+    fontsize = 280
+  }
+}
+
+texticon = {
+  icon = spa_republic_1_flag
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/spa_republic_1.dds"
+    fontsize = 55
+  }
+}
+
+texticon = {
+  icon = spa_republic_2_flag
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/spa_republic_2.dds"
+    fontsize = 55
+  }
+}
+
+texticon = {
+  icon = spa_republic_3_flag
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/spa_republic_3.dds"
+    fontsize = 55
+  }
+}
+
+texticon = {
+  icon = spa_republic_1_flag_small
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/spa_republic_1.dds"
+    fontsize = 280
+  }
+}
+
+texticon = {
+  icon = spa_republic_2_flag_small
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/spa_republic_2.dds"
+    fontsize = 280
+  }
+}
+
+texticon = {
+  icon = spa_republic_3_flag_small
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/coat_of_arms/special_coa_texticons/spa_republic_3.dds"
+    fontsize = 280
+  }
+}
+
+
+# Levels
+
+texticon = {
+  icon = levels1
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/interface/icons/generic_icons/levels1.dds"
+    fontsize = 55
+  }
+}
+
+texticon = {
+  icon = levels2
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/interface/icons/generic_icons/levels2.dds"
+    fontsize = 55
+  }
+}
+
+texticon = {
+  icon = levels3
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/interface/icons/generic_icons/levels3.dds"
+    fontsize = 55
+  }
+}
+
+texticon = {
+  icon = levels4
+  iconsize = {
+    offset = { 0 50 }
+    texture = "gfx/interface/icons/generic_icons/levels4.dds"
+    fontsize = 55
   }
 }

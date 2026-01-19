@@ -86,7 +86,7 @@ acw_je_events.1 = {
 				# Re-enslave pops if the ACW happens after slavery has been abolished
 				if = {
 					limit = {
-						c:USA = {
+						c:USA ?= {
 							has_variable = slavery_recently_abolished
 						}
 					}
@@ -121,8 +121,20 @@ acw_je_events.1 = {
 				target = c:CSA
 			}
 			remove_modifier = missouri_compromise
-			c:CSA = {
+			c:CSA ?= {
 				set_variable = acw_slave_nation_var
+			}
+
+			# historical Confederates move to CSA
+			every_scope_character = {
+				limit = {
+					has_variable = historical_csa
+					NOR = {
+						is_ruler = yes
+						is_heir = yes
+					}
+				}
+				transfer_character = c:CSA
 			}
 		}
 		else_if = {
@@ -246,7 +258,7 @@ acw_je_events.2 = {
 		add_journal_entry = { type = je_acw_reincorporate }
 		if = {
 			limit = {
-				has_law = law_type:law_slavery_banned
+				has_law_or_variant = law_type:law_slavery_banned
 			}
 			add_journal_entry = {
 				type = je_acw_equality
@@ -337,8 +349,8 @@ acw_je_events.4 = {
 		NOT = { has_law = law_type:law_slavery_banned }
 		any_diplomatic_play = {
 			AND = {
-				any_scope_play_involved = { this = c:CSA }
-				any_scope_play_involved = { this = c:USA }
+				any_scope_play_involved = { c:CSA ?= THIS }
+				any_scope_play_involved = { c:USA ?= THIS }
 			}
 		}
 		NOT = { exists = c:FSA } # fringe sanity check

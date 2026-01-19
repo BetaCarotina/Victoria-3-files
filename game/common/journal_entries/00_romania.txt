@@ -3,8 +3,20 @@
 
 	group = je_group_historical_content
 
+    is_shown_in_lobby  = {
+        country_has_primary_culture = cu:romanian
+        NOR = {
+            c:AUS ?= this
+            c:KUK ?= this
+        }
+    }
+
     is_shown_when_inactive = {
 		country_has_primary_culture = cu:romanian
+        NOR = {
+            c:AUS ?= this
+            c:KUK ?= this
+        }
     }
     scripted_button = je_unite_the_principalities_button
     possible = {
@@ -44,6 +56,10 @@
                     any_country = {
                         NOT = { this = ROOT }
                         country_has_primary_culture = cu:romanian
+                        NOR = {
+                            c:AUS ?= this
+                            c:KUK ?= this
+                        }
                     }
                 }
             }
@@ -103,7 +119,8 @@ je_all_for_one = {
     fail = {
         OR = {
             hidden_trigger = {
-                NOT = { c:ROM ?= this }
+                exists = c:ROM
+                NOT = { c:ROM ?= THIS }
             }
             NOT = { exists = scope:romania_lesser_union_partner }
             scope:romania_lesser_union_partner = {

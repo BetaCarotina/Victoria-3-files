@@ -34,7 +34,7 @@
 	pact = {
 		cost = 0
 		forced_duration = 12
-		recipient_pays_maintenance = no
+		maintenance_paid_by = first_country
 		income_transfer = -0.1
 		second_country_gets_income_transfer = no
 		income_transfer_based_on_second_country = yes
@@ -81,6 +81,7 @@
 		}
 
 		will_propose = {
+			exists = scope:target_country
 			"relations(scope:target_country)" >= relations_threshold:friendly
 			has_attitude = {
 				who = scope:target_country

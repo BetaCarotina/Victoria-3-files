@@ -106,7 +106,7 @@ democracy = {
 	category = society
 
 	modifier = {
-		country_institution_social_security_max_investment_add = 1
+		country_institution_social_security_max_investment_add = 2
 	}
 
 	unlocking_technologies = {
@@ -163,6 +163,7 @@ centralization = {
 	modifier = {
 		state_tax_capacity_add = 25
 		country_institution_home_affairs_max_investment_add = 1
+		state_incorporation_speed_mult = 0.05
 	}
 
 	unlocking_technologies = {
@@ -338,6 +339,7 @@ mass_communication = {
 
 	modifier = {
 		country_authority_mult = 0.1
+		country_voting_power_mult = 0.1
 	}
 
 	unlocking_technologies = {
@@ -356,7 +358,7 @@ empiricism = {
 	category = society
 
 	modifier = {
-		country_influence_mult = 0.1
+		country_influence_mult = 0.25
 		country_diplomatic_play_maneuvers_add = 10
 		country_institution_schools_max_investment_add = 1
 		state_education_access_wealth_add = 0.005
@@ -389,6 +391,20 @@ egalitarianism = {
 
 	unlocking_technologies = {
 		democracy
+	}
+
+	on_researched = {
+		if = {
+			limit = {
+				has_journal_entry = je_springtime_of_the_peoples
+				NOT = {
+					is_involved_in_journal_entry = je_springtime_of_the_peoples
+				}
+			}
+			je:je_springtime_of_the_peoples ?= {
+				add_involved_country = ROOT
+			}
+		}
 	}
 
 	ai_weight = {
@@ -464,6 +480,7 @@ quinine = {
 
 	modifier = {
 		country_institution_colonial_affairs_max_investment_add = 1
+		country_institution_health_system_max_investment_add = 1
 	}
 
 	unlocking_technologies = {
@@ -491,7 +508,7 @@ quinine = {
 			if = {
 				limit = {
 					any_scope_state = {
-						state_is_in_africa = yes
+						is_in_geographic_region = geographic_region_africa
 					}
 				}
 				add = 3
@@ -528,6 +545,7 @@ central_archives = {
 	modifier = {
 		state_tax_capacity_add = 25
 		country_institution_home_affairs_max_investment_add = 1
+		state_incorporation_speed_mult = 0.05
 	}
 
 	unlocking_technologies = {
@@ -545,8 +563,8 @@ central_archives = {
 				OR = {
 					AND = {
 						OR = {
-							country_is_in_south_america = yes
-							country_is_in_central_america = yes
+							is_in_geographic_region = geographic_region_south_america
+							is_in_geographic_region = geographic_region_central_america
 						}
 						country_rank <= rank_value:major_power
 					}
@@ -554,13 +572,13 @@ central_archives = {
 					is_country_type = unrecognized
 				}
 				NAND = {
-					has_law = law_type:law_protectionism
+					has_law_or_variant = law_type:law_protectionism
 					OR = {
-						has_law = law_type:law_interventionism
-						has_law = law_type:law_command_economy
-						has_law = law_type:law_laissez_faire
+						has_law_or_variant = law_type:law_interventionism
+						has_law_or_variant = law_type:law_command_economy
+						has_law_or_variant = law_type:law_laissez_faire
 					}
-					has_law = law_type:law_compulsory_primary_school
+					has_law_or_variant = law_type:law_compulsory_primary_school
 				}
 			}
 			create_political_movement = { type = movement_modernizer }
@@ -638,7 +656,7 @@ psychiatry = {
 	category = society
 
 	modifier = {
-		country_influence_mult = 0.1
+		country_influence_mult = 0.25
 		country_diplomatic_play_maneuvers_add = 10
 		state_bureaucracy_population_base_cost_factor_mult = -0.05
 	}
@@ -680,6 +698,7 @@ nationalism = {
 
 	modifier = {
 		country_authority_mult = 0.1
+		country_voting_power_mult = 0.1
 	}
 
 	unlocking_technologies = {
@@ -687,17 +706,6 @@ nationalism = {
 		international_relations
 	}
 
-	on_researched = {
-		if = {
-			limit = {
-				NOT = { has_variable = nationalism_researched }
-			}
-			custom_tooltip = {
-				text = unlock_national_agitation_tt
-				set_variable = nationalism_researched
-			}
-		}
-	}
 	ai_weight = {
 		value = 2 # Important in general
 
@@ -720,6 +728,19 @@ nationalism = {
 				}
 				any_country = {
 					has_journal_entry = je_risorgimento
+				}
+			}
+			multiply = 4
+		}
+
+		if = { # Important for Hungary and the Balkan states
+			limit = {
+				OR = {
+					country_has_primary_culture = cu:croat
+					country_has_primary_culture = cu:serb
+					country_has_primary_culture = cu:slovene
+					country_has_primary_culture = cu:bosniak
+					country_has_primary_culture = cu:hungarian
 				}
 			}
 			multiply = 4
@@ -781,6 +802,9 @@ postal_savings = {
 	modifier = {
 		state_farmers_investment_pool_efficiency_mult = 0.15
 		state_shopkeepers_investment_pool_efficiency_mult = 0.15
+		state_bureaucrats_investment_pool_efficiency_mult = 0.15
+		state_engineers_investment_pool_efficiency_mult = 0.15
+		state_machinists_investment_pool_efficiency_mult = 0.15
 		building_cash_reserves_mult = 0.2
 	}
 
@@ -871,6 +895,10 @@ feminism = {
 				}
 			}
 		}
+	}
+
+	modifier = {
+		country_institution_social_security_max_investment_add = 1
 	}
 
 	unlocking_technologies = {
@@ -1012,7 +1040,7 @@ socialism = {
 				NOT = { has_variable = socialism_researched }
 			}
 			set_variable = socialism_researched
-			ig:ig_trade_unions = {
+			ig:ig_trade_unions ?= {
 				add_ideology = ideology_socialist
 			}
 		}
@@ -1055,7 +1083,7 @@ corporatism = {
 				NOT = { has_variable = corporatism_researched }
 			}
 			set_variable = corporatism_researched
-			ig:ig_devout = {
+			ig:ig_devout ?= {
 				remove_ideology = ideology_pious
 				add_ideology = ideology_corporatist
 			}
@@ -1101,6 +1129,8 @@ pan-nationalism = {
 
 	modifier = {
 		country_authority_mult = 0.1
+		country_support_separatism_strength_mult = 0.25
+		country_voting_power_mult = 0.1
 	}
 
 	unlocking_technologies = {
@@ -1118,6 +1148,10 @@ pan-nationalism = {
 					country_has_primary_culture = cu:south_german
 					country_has_primary_culture = cu:north_italian
 					country_has_primary_culture = cu:south_italian
+					country_has_primary_culture = cu:croat
+					country_has_primary_culture = cu:serb
+					country_has_primary_culture = cu:slovene
+					country_has_primary_culture = cu:bosniak
 				}
 			}
 			add = 5
@@ -1192,7 +1226,7 @@ philosophical_pragmatism = {
 	category = society
 
 	modifier = {
-		country_influence_mult = 0.1
+		country_influence_mult = 0.25
 		country_diplomatic_play_maneuvers_add = 10
 		state_bureaucracy_population_base_cost_factor_mult = -0.05
 	}
@@ -1216,6 +1250,7 @@ identification_documents = {
 	modifier = {
 		state_tax_capacity_add = 25
 		country_institution_home_affairs_max_investment_add = 1
+		state_incorporation_speed_mult = 0.05
 	}
 
 	unlocking_technologies = {
@@ -1276,6 +1311,7 @@ malaria_prevention = {
 
 	modifier = {
 		country_institution_colonial_affairs_max_investment_add = 1
+		country_institution_health_system_max_investment_add = 1
 	}
 
 	unlocking_technologies = {
@@ -1312,6 +1348,8 @@ central_planning = {
 	modifier = {
 		state_tax_capacity_add = 25
 		country_government_dividends_efficiency_add = 0.05
+		country_institution_home_affairs_max_investment_add = 1
+		state_incorporation_speed_mult = 0.05
 	}
 
 	unlocking_technologies = {
@@ -1334,6 +1372,7 @@ political_agitation = {
 	modifier = {
 		state_expected_sol_from_literacy = 1
 		country_authority_mult = 0.1
+		country_voting_power_mult = 0.1
 		country_agitator_slots_add = 1
 	}
 
@@ -1411,7 +1450,7 @@ psychoanalysis = {
 	category = society
 
 	modifier = {
-		country_influence_mult = 0.1
+		country_influence_mult = 0.25
 		country_diplomatic_play_maneuvers_add = 10
 		state_bureaucracy_population_base_cost_factor_mult = -0.05
 	}
@@ -1479,6 +1518,9 @@ mass_surveillance = {
 
 	modifier = {
 		state_tax_capacity_add = 25
+		country_support_separatism_resistance_mult = 0.25
+		country_institution_home_affairs_max_investment_add = 1
+		state_incorporation_speed_mult = 0.05
 	}
 
 	unlocking_technologies = {
@@ -1518,8 +1560,10 @@ mass_propaganda = {
 
 	modifier = {
 		country_authority_mult = 0.1
+		country_voting_power_mult = 0.1
 		state_expected_sol_from_literacy = 1
 		country_agitator_slots_add = 1
+		country_support_separatism_strength_mult = 0.25
 	}
 
 	unlocking_technologies = {
@@ -1576,8 +1620,8 @@ behaviorism = {
 	category = society
 
 	modifier = {
-		country_influence_mult = 0.1
-		country_diplomatic_play_maneuvers_add = 10
+		country_influence_mult = 0.5
+		country_diplomatic_play_maneuvers_add = 20
 		state_bureaucracy_population_base_cost_factor_mult = -0.05
 	}
 

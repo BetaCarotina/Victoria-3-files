@@ -60,6 +60,7 @@ add_technology_progress = {
 
 activate_law = {
 	global = ACTIVATE_LAW
+	first =  ACTIVATE_LAW_FIRST
 }
 
 deactivate_law = {
@@ -155,6 +156,24 @@ try_form_government_with = {
 	global = TRY_FORM_GOVERNMENT_WITH
 	first = TRY_FORM_GOVERNMENT_WITH_FIRST
 	third = TRY_FORM_GOVERNMENT_WITH_FIRST
+}
+
+liberate_slaves = {
+	global = LIBERATE_SLAVES
+	first = LIBERATE_SLAVES_FIRST
+	third = LIBERATE_SLAVES_THIRD
+}
+
+liberate_slaves_in_incorporated_states = {
+	global = LIBERATE_SLAVES_IN_INCORPORATED_STATES
+	first = LIBERATE_SLAVES_IN_INCORPORATED_STATES_FIRST
+	third = LIBERATE_SLAVES_IN_INCORPORATED_STATES_THIRD
+}
+
+liberate_slaves_in_unincorporated_states = {
+	global = LIBERATE_SLAVES_IN_UNINCORPORATED_STATES
+	first = LIBERATE_SLAVES_IN_UNINCORPORATED_STATES_FIRST
+	third = LIBERATE_SLAVES_IN_UNINCORPORATED_STATES_THIRD
 }
 
 set_country_navy_sp_target = {
@@ -291,7 +310,7 @@ add_banned_goods = {
 }
 
 cede_treaty_port = {
-#See TREATY_DRAFT_ARTICLE_FLAG_IS_TREATY_PORT_EFFECT for the visible effect in treaties. Either use a custom tooltip if doing this as an effect outside of treaties, or request code support for promotes if using often. 
+#See TREATY_DRAFT_ARTICLE_FLAG_IS_TREATY_PORT_EFFECT for the visible effect in treaties. Either use a custom tooltip if doing this as an effect outside of treaties, or request code support for promotes if using often.
 }
 
 remove_banned_goods = {
@@ -355,6 +374,24 @@ change_tag = {
 	global = CHANGE_TAG
 	first = CHANGE_TAG_FIRST
 	third = CHANGE_TAG_THIRD
+}
+
+add_culture_acceptance_modifier = {
+	global = ADD_CULTURE_ACCEPTANCE_MODIFIER
+	first = ADD_CULTURE_ACCEPTANCE_MODIFIER_FIRST
+	third = ADD_CULTURE_ACCEPTANCE_MODIFIER_THIRD
+	global_neg = ADD_CULTURE_ACCEPTANCE_MODIFIER_NEG
+	first_neg = ADD_CULTURE_ACCEPTANCE_MODIFIER_FIRST_NEG
+	third_neg = ADD_CULTURE_ACCEPTANCE_MODIFIER_THIRD_NEG
+}
+
+add_fervor_target_modifier = { #these make sense to use the same loc
+	global = ADD_FERVOR_TARGET_MODIFIER
+	first = ADD_FERVOR_TARGET_MODIFIER
+	third = ADD_FERVOR_TARGET_MODIFIER
+	global_neg = ADD_FERVOR_TARGET_MODIFIER_NEG
+	first_neg = ADD_FERVOR_TARGET_MODIFIER_NEG
+	third_neg = ADD_FERVOR_TARGET_MODIFIER_NEG
 }
 
 add_culture_standard_of_living_modifier = {
@@ -424,3 +461,20 @@ add_company_monopoly = {
 	third = ADD_COMPANY_MONOPOLY_THIRD
 }
 
+withdraw = {
+	global = WITHDRAW_EFFECT
+	first = WITHDRAW_EFFECT_FIRST
+	third = WITHDRAW_EFFECT_THIRD
+}
+
+start_national_awakening = {
+	global = START_NATIONAL_AWAKENING
+	first = START_NATIONAL_AWAKENING_FIRST
+	third = START_NATIONAL_AWAKENING_THIRD
+}
+
+end_national_awakening = {
+	global = END_NATIONAL_AWAKENING
+	first = END_NATIONAL_AWAKENING_FIRST
+	third = END_NATIONAL_AWAKENING_THIRD
+}

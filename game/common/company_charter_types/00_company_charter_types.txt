@@ -9,14 +9,14 @@
 		company_prosperity >= 50
 		owner = {
 			NOT = {
-				has_law = law_type:law_isolationism
+				has_law_or_variant = law_type:law_isolationism
 			}
 
 			OR = {
 				any_scope_treaty = {
 					any_scope_article = {
 						has_type = foreign_investment_rights
-						target_country = this
+						target_country = root.owner
 					}
 				}
 				num_subjects >= 1
@@ -58,6 +58,8 @@ monopoly_charter = {
 industry_charter = {
 	type = industry
 
+	cooldown = { years = 5 }
+
 	icon = "gfx/interface/icons/company_charter_icons/industry_charter.dds"
 
 	additional_input = yes
@@ -83,13 +85,15 @@ industry_charter = {
 trade_charter = {
 	type = trade
 
+	cooldown = { years = 5 }
+
 	icon = "gfx/interface/icons/company_charter_icons/trade_charter.dds"
 
 	ai_possible = {
 		company_prosperity >= 50
 		NOT = {
 			owner = {
-				has_law = law_type:law_isolationism
+				has_law_or_variant = law_type:law_isolationism
 			}
 		}
 	}
@@ -115,6 +119,12 @@ colonization_charter = {
 
 	additional_input = yes
 
+	possible = {
+		owner ?= {
+			NOT = { is_country_type = unrecognized }
+		}
+	}
+
 	ai_possible = {
 		company_prosperity >= 50
 		OR = {
@@ -131,6 +141,24 @@ colonization_charter = {
 			is_company_type = company_mozambique_company
 			is_company_type = company_moscow_irrigation_company
 			is_company_type = company_anglo_persian_oil
+		}
+		scope:target = {
+			NOT = {
+				any_scope_state = {
+					OR = {
+						is_homeland_of_country_cultures = root.owner
+						any_neighbouring_state = {
+							OR = {
+								is_homeland_of_country_cultures = root.owner
+								AND = {
+									owner = root.owner
+									is_incorporated = yes
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 

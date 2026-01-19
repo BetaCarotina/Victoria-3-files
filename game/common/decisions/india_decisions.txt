@@ -2,12 +2,11 @@
 	is_shown = {
 		has_dlc_feature = ip2_content
 		any_primary_culture = {
-			has_discrimination_trait = south_asian_heritage
+			has_discrimination_trait_group = heritage_group_south_asian
 		}
 		is_subject = no
 		country_rank >= rank_value:unrecognized_major_power
-		any_country = {
-			country_is_in_europe = yes
+		any_country_in_europe = {
 			has_variable = koh_i_noor
 		}
 	}
@@ -15,8 +14,7 @@
 	possible = {
 		custom_tooltip = {
 			text = koh_i_noor_in_europe_tt
-			any_country = {
-				country_is_in_europe = yes
+			any_country_in_europe = {
 				has_variable = koh_i_noor
 			}
 		}
@@ -210,7 +208,7 @@ pressure_to_sell_berar_province = {
 	}
 
 	when_taken = {
-		c:HYD = {
+		c:HYD ?= {
 			trigger_event = { id = india_events.18 }
 		}
 		custom_tooltip = if_they_accept_tt
@@ -305,7 +303,7 @@ bic_end_company_rule = {
 					decrease_autonomy = yes
 				}
 			}
-			c:BIC = {
+			c:BIC ?= {
 				set_variable = doctrine_of_lapse_ended
 				custom_tooltip = doctrine_of_lapse_disabled
 				if = {
@@ -333,7 +331,7 @@ bic_end_company_rule = {
 				if = {
 					limit = {
 						NOT = {
-							has_law = law_type:law_appointed_bureaucrats
+							has_law_or_variant = law_type:law_appointed_bureaucrats
 						}
 					}
 					activate_law = law_type:law_appointed_bureaucrats
@@ -341,7 +339,7 @@ bic_end_company_rule = {
 				if = {
 					limit = {
 						NOT = {
-							has_law = law_type:law_autocracy
+							has_law_or_variant = law_type:law_autocracy
 						}
 					}
 					activate_law = law_type:law_autocracy
@@ -349,13 +347,13 @@ bic_end_company_rule = {
 				if = {
 					limit = {
 						NOR = {
-							has_law = law_type:law_hindu_caste_enforced
-							has_law = law_type:law_hindu_caste_codified
+							has_law_or_variant = law_type:law_hindu_caste_enforced
+							has_law_or_variant = law_type:law_hindu_caste_codified
 						}
 					}
 					activate_law = law_type:law_hindu_caste_codified
 				}
-				ig:ig_industrialists = {
+				ig:ig_industrialists ?= {
 					set_interest_group_name = ig_government_of_india
 				}
 			}
@@ -462,7 +460,7 @@ bht_end_privy_purse_payments = {
 	}
 
 	possible = {
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			is_in_government = no
 		}
 		trigger_if = {
@@ -492,7 +490,7 @@ bht_end_privy_purse_payments = {
 			value = large_radicals
 			pop_type = aristocrats
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_modifier = {
 				name = modifier_ended_privy_purse_payments
 				days = normal_modifier_time

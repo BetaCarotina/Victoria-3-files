@@ -86,9 +86,15 @@ italian_unification.2 = {
 					country_has_primary_culture = cu:north_italian
 					country_has_primary_culture = cu:south_italian
 				}
+				NOR = {
+					c:AUS ?= this
+					c:KUK ?= this
+					c:HRE ?= this
+				}
 				OR = {
 					is_subject = no
 					is_subject_of = ROOT
+					is_in_customs_union_with = root
 				}
 				country_rank <= rank_value:minor_power
 				relations:root >= relations_threshold:friendly
@@ -110,14 +116,23 @@ italian_unification.2 = {
 						country_has_primary_culture = cu:north_italian
 						country_has_primary_culture = cu:south_italian
 					}
+					NOR = {
+						c:AUS ?= this
+						c:KUK ?= this
+						c:HRE ?= this
+					}
 					OR = {
 						is_subject = no
 						is_subject_of = ROOT
+						is_in_customs_union_with = root
 					}
-					is_in_customs_union_with = root
 					country_rank <= rank_value:minor_power
 					relations:root >= relations_threshold:friendly
 					is_player = no
+					custom_tooltip = {
+						text = risorgimento_unifying_stance_tt
+						has_variable = risorgimento_unifying_stance
+					}
 					NOT = { has_variable = italian_minor_dont_annex }
 				}
 			}
@@ -157,7 +172,7 @@ italian_unification.2 = {
 	}
 }
 
-# Owned by Pan-Nationalist Radicals
+# Taken Over by Pan-Nationalist Radicals
 italian_unification.4 = {
 	type = country_event
 	placement = ROOT
@@ -202,7 +217,6 @@ italian_unification.4 = {
 
 	trigger = {
 		NOT = { has_variable = italian_unification_5_happened_here }
-		has_revolution = yes
 		capital = {
 			radical_fraction = {
 				value >= 0.10
@@ -210,11 +224,7 @@ italian_unification.4 = {
 		}
 		any_civil_war = {
 			this.political_movement ?= {
-				OR = {
-					movement_is_liberal = yes
-					movement_is_socialist = yes
-					movement_is_nationalist = yes
-				}
+				is_political_movement_type = movement_italian_national
 			}
 			is_civil_war_type = revolution
 		}
@@ -229,11 +239,17 @@ italian_unification.4 = {
 				country_has_primary_culture = cu:north_italian
 				country_has_primary_culture = cu:south_italian
 			}
+			NOR = {
+				c:AUS ?= this
+				c:KUK ?= this
+				c:HRE ?= this
+			}
 		}
 	}
 
 	immediate = {
 		set_variable = risorgimento_unifying_stance
+		set_strategy = ai_strategy_unify_italy
 		if = {
 			limit = {
 				has_variable = risorgimento_anti_unifying_stance
@@ -249,6 +265,11 @@ italian_unification.4 = {
 					country_has_primary_culture = cu:north_italian
 					country_has_primary_culture = cu:south_italian
 				}
+				NOR = {
+					c:AUS ?= this
+					c:KUK ?= this
+					c:HRE ?= this
+				}
 				is_adjacent_to_country = ROOT
 				NOT = {
 					is_subject = yes
@@ -259,6 +280,8 @@ italian_unification.4 = {
 				}
 			}
 			order_by = country_rank
+			position = 0
+			check_range_bounds = no
 			save_scope_as = italian_leader
 		}
 		if = {
@@ -273,6 +296,11 @@ italian_unification.4 = {
 						country_has_primary_culture = cu:north_italian
 						country_has_primary_culture = cu:south_italian
 					}
+					NOR = {
+						c:AUS ?= this
+						c:KUK ?= this
+						c:HRE ?= this
+					}
 					NOT = {
 						is_subject = yes
 					}
@@ -282,6 +310,8 @@ italian_unification.4 = {
 					}
 				}
 				order_by = country_rank
+				position = 0
+				check_range_bounds = no
 				save_scope_as = italian_leader
 			}
 		}
@@ -297,6 +327,11 @@ italian_unification.4 = {
 						country_has_primary_culture = cu:north_italian
 						country_has_primary_culture = cu:south_italian
 					}
+					NOR = {
+						c:AUS ?= this
+						c:KUK ?= this
+						c:HRE ?= this
+					}
 					NOT = {
 						is_subject = yes
 					}
@@ -305,6 +340,8 @@ italian_unification.4 = {
 					}
 				}
 				order_by = country_rank
+				position = 0
+				check_range_bounds = no
 				save_scope_as = italian_leader
 			}
 		}
@@ -344,7 +381,7 @@ italian_unification.4 = {
 		set_variable = owned_by_pan_nationalist_radicals
 		if = {
 			limit = {
-				has_law = law_type:law_hereditary_bureaucrats
+				has_law_or_variant = law_type:law_hereditary_bureaucrats
 			}
 			activate_law = law_type:law_appointed_bureaucrats
 		}
@@ -552,6 +589,11 @@ italian_unification.7 = {
 				OR = {
 					country_has_primary_culture = cu:north_italian
 					country_has_primary_culture = cu:south_italian
+				}
+				NOR = {
+					c:AUS ?= this
+					c:KUK ?= this
+					c:HRE ?= this
 				}
 			}
 			activate_law = law_type:law_presidential_republic
@@ -841,6 +883,7 @@ italian_unification.10 = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_patriotic
+					has_ideology = ideology:ideology_military_absolutist
 					has_ideology = ideology:ideology_liberal
 					has_ideology = ideology:ideology_liberal_modern
 					leader = {
@@ -906,19 +949,19 @@ italian_unification.10 = {
 			base = 15
 			modifier = {
 				trigger = {
-					has_law = law_type:law_theocracy
+					has_law_or_variant = law_type:law_theocracy
 				}
 				add = 50
 			}
 			modifier = {
 				trigger = {
-					has_law = law_type:law_traditionalism
+					has_law_or_variant = law_type:law_traditionalism
 				}
 				add = 50
 			}
 			modifier = {
 				trigger = {
-					ig:ig_intelligentsia = {
+					ig:ig_intelligentsia ?= {
 						is_in_government = yes
 					}
 				}
@@ -926,7 +969,7 @@ italian_unification.10 = {
 			}
 			modifier = {
 				trigger = {
-					ig:ig_landowners = {
+					ig:ig_landowners ?= {
 						is_in_government = yes
 					}
 				}

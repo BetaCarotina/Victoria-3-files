@@ -21,7 +21,7 @@
 	}
 
 	possible = {
-		has_law = law_type:law_state_religion
+		has_law_or_variant = law_type:law_state_religion
 	}
 
 	accept_effect = {
@@ -29,8 +29,8 @@
 			if = {
 				limit = {
 					OR = {
-						has_law = law_type:law_state_religion
-						ig:ig_devout = {
+						has_law_or_variant = law_type:law_state_religion
+						ig:ig_devout ?= {
 							is_in_government = yes
 						}
 						any_interest_group = {
@@ -60,7 +60,7 @@
 
 	pact = {
 		cost = 25
-		recipient_pays_maintenance = no
+		maintenance_paid_by = first_country
 		forced_duration = 12
 
 		second_modifier = {
@@ -76,8 +76,8 @@
 				if = {
 					limit = {
 						OR = {
-							has_law = law_type:law_state_religion
-							ig:ig_devout = {
+							has_law_or_variant = law_type:law_state_religion
+							ig:ig_devout ?= {
 								is_in_government = yes
 							}
 							any_interest_group = {
@@ -117,7 +117,7 @@
 				attitude = protective
 			}
 			OR = {
-				ig:ig_devout = {
+				ig:ig_devout ?= {
 					is_in_government = yes
 				}
 				any_interest_group = {
@@ -139,7 +139,7 @@
 					attitude = domineering
 				}
 				NOR = {
-					ig:ig_devout = {
+					ig:ig_devout ?= {
 						is_in_government = yes
 					}
 					any_interest_group = {

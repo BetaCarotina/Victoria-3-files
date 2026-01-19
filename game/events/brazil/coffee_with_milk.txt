@@ -72,7 +72,7 @@ coffee_with_milk.2 = {
 
 	icon = "gfx/interface/icons/event_icons/event_industry.dds"
 
-	cooldown = { days = short_modifier_time }
+	cooldown = { days = long_modifier_time }
 
 	trigger = {
 		any_scope_state = {
@@ -112,6 +112,8 @@ coffee_with_milk.2 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = reinvestment_state
 		}
 	}
@@ -163,7 +165,7 @@ coffee_with_milk.3 = {
 
 	icon = "gfx/interface/icons/event_icons/event_trade.dds"
 
-	cooldown = { days = normal_modifier_time }
+	cooldown = { days = long_modifier_time }
 
 	trigger = {
 		any_scope_state = {
@@ -209,6 +211,8 @@ coffee_with_milk.3 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = population_state
 			random_scope_building = {
 				limit = {
@@ -238,7 +242,7 @@ coffee_with_milk.3 = {
 		name = coffee_with_milk.3.b
 		trigger = {
 			NOT = {
-				has_law = law_type:law_slavery_banned
+				has_law_or_variant = law_type:law_slavery_banned
 			}
 		}
 		random_interest_group = {
@@ -326,6 +330,8 @@ coffee_with_milk.4 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -379,7 +385,7 @@ coffee_with_milk.5 = {
 		default_option = yes
 		if = {
 			limit = {
-				has_law = law_type:law_collectivized_agriculture
+				has_law_or_variant = law_type:law_collectivized_agriculture
 			}
 			add_modifier = {
 				name = modifier_successful_agrarian_production_collectivised
@@ -388,7 +394,7 @@ coffee_with_milk.5 = {
 		}
 		else_if = {
 			limit = {
-				has_law = law_type:law_commercialized_agriculture
+				has_law_or_variant = law_type:law_commercialized_agriculture
 			}
 			add_modifier = {
 				name = modifier_successful_agrarian_production_commercialised
@@ -397,7 +403,7 @@ coffee_with_milk.5 = {
 		}
 		else_if = {
 			limit = {
-				has_law = law_type:law_homesteading
+				has_law_or_variant = law_type:law_homesteading
 			}
 			add_modifier = {
 				name = modifier_successful_agrarian_production_homesteading
@@ -407,8 +413,8 @@ coffee_with_milk.5 = {
 		else_if = {
 			limit = {
 				OR = {
-					has_law = law_type:law_tenant_farmers
-					has_law = law_type:law_serfdom
+					has_law_or_variant = law_type:law_tenant_farmers
+					has_law_or_variant = law_type:law_serfdom
 				}
 			}
 			add_modifier = {
@@ -422,7 +428,7 @@ coffee_with_milk.5 = {
 		name = coffee_with_milk.5.b
 		if = {
 			limit = {
-				has_law = law_type:law_collectivized_agriculture
+				has_law_or_variant = law_type:law_collectivized_agriculture
 			}
 			add_modifier = {
 				name = modifier_successful_agrarian_production_collectivised
@@ -432,7 +438,7 @@ coffee_with_milk.5 = {
 		}
 		else_if = {
 			limit = {
-				has_law = law_type:law_commercialized_agriculture
+				has_law_or_variant = law_type:law_commercialized_agriculture
 			}
 			add_modifier = {
 				name = modifier_successful_agrarian_production_commercialised
@@ -442,7 +448,7 @@ coffee_with_milk.5 = {
 		}
 		else_if = {
 			limit = {
-				has_law = law_type:law_homesteading
+				has_law_or_variant = law_type:law_homesteading
 			}
 			add_modifier = {
 				name = modifier_successful_agrarian_production_homesteading
@@ -453,8 +459,8 @@ coffee_with_milk.5 = {
 		else_if = {
 			limit = {
 				OR = {
-					has_law = law_type:law_tenant_farmers
-					has_law = law_type:law_serfdom
+					has_law_or_variant = law_type:law_tenant_farmers
+					has_law_or_variant = law_type:law_serfdom
 				}
 			}
 			add_modifier = {
@@ -490,6 +496,8 @@ coffee_with_milk.6 = {
 	cooldown = { days = normal_modifier_time }
 
 	trigger = {
+		exists = scope:milk_state
+		exists = scope:coffee_state
 		NOR = {
 			scope:milk_state = {
 				is_brazil_northeast_state = yes
@@ -508,7 +516,7 @@ coffee_with_milk.6 = {
 					state_region = s:STATE_PARAIBA
 					state_region = s:STATE_RIO_GRANDE_DO_NORTE
 					state_region = s:STATE_CEARA
-					state_region = s:STATE_PAUAI
+					state_region = s:STATE_PIAUI
 					state_region = s:STATE_MARANHAO
 					state_region = s:STATE_BAHIA
 				}
@@ -523,6 +531,8 @@ coffee_with_milk.6 = {
 				is_incorporated = yes
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = milk_state
 		}
 		ordered_scope_state = {
@@ -535,6 +545,8 @@ coffee_with_milk.6 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -592,8 +604,8 @@ coffee_with_milk.7 = {
 				desc = coffee_with_milk.7.f1
 				trigger = {
 					OR = {
-						has_law = law_type:law_presidential_republic
-						has_law = law_type:law_parliamentary_republic
+						has_law_or_variant = law_type:law_presidential_republic
+						has_law_or_variant = law_type:law_parliamentary_republic
 					}
 				}
 			}
@@ -601,8 +613,8 @@ coffee_with_milk.7 = {
 				desc = coffee_with_milk.7.f2
 				trigger = {
 					NOR = {
-						has_law = law_type:law_presidential_republic
-						has_law = law_type:law_parliamentary_republic
+						has_law_or_variant = law_type:law_presidential_republic
+						has_law_or_variant = law_type:law_parliamentary_republic
 					}
 				}
 			}
@@ -620,14 +632,20 @@ coffee_with_milk.7 = {
 	cooldown = { days = normal_modifier_time }
 
 	trigger = {
+		has_journal_entry = je_coffee_with_milk
 		in_election_campaign = yes
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			has_party = yes
 		}
+		modifier:country_forbid_electoral_fraud_bool = no
 	}
 
 	immediate = {
-		ig:ig_landowners = {
+		handle_possible_absent_caciquismo_variables = yes
+		active_law:lawgroup_distribution_of_power ?={
+			save_scope_as = election_law_scope
+		}
+		ig:ig_landowners ?= {
 			save_scope_as = landowners_scope
 			party = {
 				save_scope_as = republicans_scope
@@ -641,6 +659,8 @@ coffee_with_milk.7 = {
 				is_incorporated = yes
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = milk_state
 		}
 		ordered_scope_state = {
@@ -653,6 +673,8 @@ coffee_with_milk.7 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -660,8 +682,25 @@ coffee_with_milk.7 = {
 	option = {
 		name = coffee_with_milk.7.a
 		default_option = yes
-		scope:republicans_scope = {
-			add_momentum = momentum_very_large
+		scope:republicans_scope ?= {
+			add_momentum = momentum_utterly_fraudulent
+		}
+		every_active_party = {
+			limit = {
+				party_has_members = yes
+				NOT = {
+					scope:republicans_scope ?= this
+				}
+			}
+			add_momentum = momentum_very_large_decrease
+		}
+		add_caciquismo_effect = yes
+		custom_tooltip = {
+			text = mutes_all_election_events_tt
+			set_variable = {
+				name = mute_election_events
+				months = 12
+			}
 		}
 	}
 
@@ -675,6 +714,15 @@ coffee_with_milk.7 = {
 		highlighted_option = yes
 		scope:republicans_scope = {
 			add_momentum = momentum_medium
+		}
+		if = {
+			limit = {
+				var:electoral_fraud_abolish_var < 5
+			}
+			subtract_caciquismo_effect = yes
+		}
+		else = {
+			remove_electoral_fraud_effect = yes
 		}
 	}
 }
@@ -710,10 +758,11 @@ coffee_with_milk.8 = {
 		NOT = {
 			has_variable = governors_policy_decision
 		}
+		country_has_voting_franchise = yes
 	}
 
 	immediate = {
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = landowners_ig
 		}
 		ordered_scope_state = {
@@ -724,6 +773,8 @@ coffee_with_milk.8 = {
 				is_incorporated = yes
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = milk_state
 		}
 		ordered_scope_state = {
@@ -736,6 +787,8 @@ coffee_with_milk.8 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -819,6 +872,8 @@ coffee_with_milk.9 = {
 				is_incorporated = yes
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = milk_state
 		}
 		ordered_scope_state = {
@@ -831,6 +886,8 @@ coffee_with_milk.9 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -931,17 +988,17 @@ coffee_with_milk.10 = {
 			}
 		}
 		OR = {
-			has_law = law_type:law_tenant_farmers
-			has_law = law_type:law_serfdom
+			has_law_or_variant = law_type:law_tenant_farmers
+			has_law_or_variant = law_type:law_serfdom
 		}
 		has_technology_researched = camera
 	}
 
 	immediate = {
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = landowners_scope
 		}
-		ig:ig_rural_folk = {
+		ig:ig_rural_folk ?= {
 			save_scope_as = rf_scope
 		}
 		random_scope_state = {
@@ -1019,6 +1076,8 @@ coffee_with_milk.10 = {
 				is_incorporated = yes
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = milk_state
 		}
 		ordered_scope_state = {
@@ -1031,6 +1090,8 @@ coffee_with_milk.10 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -1159,10 +1220,10 @@ coffee_with_milk.11 = {
 		capital = {
 			turmoil >= 0.15
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			ig_approval < 5
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			is_powerful = yes
 			is_in_government = yes
 		}
@@ -1173,7 +1234,7 @@ coffee_with_milk.11 = {
 		capital = {
 			save_scope_as = capital_scope
 		}
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			save_scope_as = armed_forces_scope
 		}
 		ordered_scope_state = {
@@ -1184,6 +1245,8 @@ coffee_with_milk.11 = {
 				is_incorporated = yes
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = milk_state
 		}
 		ordered_scope_state = {
@@ -1196,6 +1259,8 @@ coffee_with_milk.11 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -1258,7 +1323,7 @@ coffee_with_milk.12 = {
 	}
 
 	immediate = {
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = landowners_ig
 		}
 		ordered_scope_state = {
@@ -1269,6 +1334,8 @@ coffee_with_milk.12 = {
 				is_incorporated = yes
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = milk_state
 		}
 		ordered_scope_state = {
@@ -1281,6 +1348,8 @@ coffee_with_milk.12 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -1339,12 +1408,12 @@ coffee_with_milk.13 = {
 	}
 
 	immediate = {
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = landowners_ig
 		}
 		if = {
 			limit = {
-				has_law = law_type:law_commercialized_agriculture
+				has_law_or_variant = law_type:law_commercialized_agriculture
 			}
 			random_law = {
 				limit = {
@@ -1355,7 +1424,7 @@ coffee_with_milk.13 = {
 		}
 		if = {
 			limit = {
-				has_law = law_type:law_collectivized_agriculture
+				has_law_or_variant = law_type:law_collectivized_agriculture
 			}
 			random_law = {
 				limit = {
@@ -1366,7 +1435,7 @@ coffee_with_milk.13 = {
 		}
 		if = {
 			limit = {
-				has_law = law_type:law_homesteading
+				has_law_or_variant = law_type:law_homesteading
 			}
 			random_law = {
 				limit = {
@@ -1383,6 +1452,8 @@ coffee_with_milk.13 = {
 				is_incorporated = yes
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = milk_state
 		}
 		ordered_scope_state = {
@@ -1395,6 +1466,8 @@ coffee_with_milk.13 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -1406,7 +1479,7 @@ coffee_with_milk.13 = {
 			name = modifier_election_bonuses_brazil
 			days = normal_modifier_time
 		}
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_modifier = {
 				name = modifier_landowners_weaken_brazil
 				days = normal_modifier_time
@@ -1420,7 +1493,7 @@ coffee_with_milk.13 = {
 
 	option = {
 		name = coffee_with_milk.13.b
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			add_modifier = {
 				name = modifier_landowners_weaken_brazil
 				days = normal_modifier_time
@@ -1461,7 +1534,7 @@ coffee_with_milk.14 = {
 	}
 
 	immediate = {
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = landowners_ig
 		}
 		ordered_scope_state = {
@@ -1472,6 +1545,8 @@ coffee_with_milk.14 = {
 				is_incorporated = yes
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = milk_state
 		}
 		ordered_scope_state = {
@@ -1484,6 +1559,8 @@ coffee_with_milk.14 = {
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_scope_as = coffee_state
 		}
 	}
@@ -1536,7 +1613,7 @@ coffee_with_milk.15 = {
 	}
 
 	immediate = {
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = landowners_ig
 		}
 		random_scope_state = {
@@ -1611,10 +1688,10 @@ coffee_with_milk.16 = {
 	}
 
 	immediate = {
-		ig:ig_landowners = {
+		ig:ig_landowners ?= {
 			save_scope_as = landowners_ig
 		}
-		ig:ig_rural_folk = {
+		ig:ig_rural_folk ?= {
 			save_scope_as = rural_folk_ig
 		}
 		random_scope_state = {

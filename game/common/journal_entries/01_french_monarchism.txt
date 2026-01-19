@@ -3,6 +3,11 @@
 
 	group = je_group_france_divided_monarchists
 
+	is_shown_in_lobby = {
+		has_dlc_feature = voice_of_the_people_content #France DLC
+		c:FRA = THIS
+	}
+
 	modifiers_while_active = {
 		fra_republican_unrest
 	}
@@ -211,7 +216,10 @@
 
 	fail = {
 		any_political_movement = {
-			is_political_movement_type = movement_radical
+			OR = {
+				movement_is_liberal = yes
+				movement_is_socialist = yes
+			}
 			is_insurrectionary = yes
 		}
 		OR = {
@@ -219,10 +227,8 @@
 				is_civil_war_type = revolution
 				civil_war_progress >= 0.75
 			}
-			AND = {
-				capital = {
-					turmoil >= 0.25
-				}
+			capital = {
+				is_in_revolt = yes
 			}
 		}
 	}
@@ -239,7 +245,8 @@
 	}
 
 	invalid = {
-		NOT = { #Previous "Stamp Out Monarchism" requirement is deprecated - this can now come back from the dead properly upon restoring the monarchy.
+		NOT = {
+			#Previous "Stamp Out Monarchism" requirement is deprecated - this can now come back from the dead properly upon restoring the monarchy.
 			has_law = law_type:law_monarchy
 		}
 	}
@@ -285,7 +292,7 @@ je_cement_the_rightful_dynasty = {
 			limit = {
 				any_scope_character = {
 					is_ruler = yes
-					has_variable = orleanist_leader
+					has_variable = house_orleans
 				}
 			}
 			set_variable = {
@@ -296,7 +303,7 @@ je_cement_the_rightful_dynasty = {
 			limit = {
 				any_scope_character = {
 					is_ruler = yes
-					has_variable = bonapartist_leader
+					has_variable = house_bonaparte
 				}
 			}
 			set_variable = {
@@ -384,7 +391,7 @@ je_cement_the_rightful_dynasty = {
 							ruler = {
 								OR = {
 									has_variable = legitimist_leader
-									has_variable = bonapartist_leader
+									has_variable = house_bonaparte
 								}
 							}
 						}
@@ -394,8 +401,8 @@ je_cement_the_rightful_dynasty = {
 						OR = {
 							ruler = {
 								OR = {
-									has_variable = orleanist_leader
-									has_variable = bonapartist_leader
+									has_variable = house_orleans
+									has_variable = house_bonaparte
 								}
 							}
 						}
@@ -405,7 +412,7 @@ je_cement_the_rightful_dynasty = {
 						OR = {
 							ruler = {
 								OR = {
-									has_variable = orleanist_leader
+									has_variable = house_orleans
 									has_variable = legitimist_leader
 								}
 							}
@@ -442,7 +449,7 @@ je_cement_the_rightful_dynasty = {
 			}
 			remove_variable = bonapartist_restoration_var
 		}
-		je:je_divided_monarchists = {
+		je:je_divided_monarchists ?= {
 			add_progress = { value = -300 name = divided_monarchists_bonapartist_progress_bar }
 			add_progress = { value = -300 name = divided_monarchists_legitimist_progress_bar }
 			add_progress = { value = -300 name = divided_monarchists_orleanist_progress_bar }

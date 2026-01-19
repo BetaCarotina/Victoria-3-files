@@ -80,7 +80,7 @@ production_tech_events.102 = {
 		has_technology_researched = dynamite
 		any_scope_building = {
 			OR = {
-				is_building_type = building_munition_plants
+				is_building_type = building_munition_plant
 				is_building_type = building_iron_mine
 				is_building_type = building_coal_mine
 				is_building_type = building_lead_mine
@@ -89,6 +89,11 @@ production_tech_events.102 = {
 		}
 		any_scope_building = {
 			is_building_type = building_explosives_factory
+		}
+		market_capital.market = {
+			mg:explosives = {
+				market_goods_pricier > 0.15
+			}
 		}
 	}
 
@@ -111,9 +116,12 @@ production_tech_events.102 = {
 	flavor = production_tech_events.102.f
 
 	immediate = {
+		g:explosives = {
+			save_scope_as = explosives_goods
+		}
 	}
 
-	option = { # Make national to effect chemical plants to produce more explosives.
+	option = { # Make national to effect explosives plants to produce more explosives.
 		name = production_tech_events.102.a
 		default_option = yes
 		add_modifier = {
@@ -748,6 +756,12 @@ production_tech_events.501 = {
 	flavor = production_tech_events.501.f
 
 	trigger = {
+		any_scope_state = {
+			has_building = building_motor_industry
+		}
+		any_scope_state = {
+			has_building = building_railway
+		}
 		trigger_if = {
 			limit = {
 				any_scope_building = {
@@ -815,12 +829,6 @@ production_tech_events.501 = {
 				has_active_production_method = pm_steam_rail_transport
 				occupancy >= 0.75
 			}
-		}
-		any_scope_state = {
-			has_building = building_motor_industry
-		}
-		any_scope_state = {
-			has_building = building_railway
 		}
 	}
 

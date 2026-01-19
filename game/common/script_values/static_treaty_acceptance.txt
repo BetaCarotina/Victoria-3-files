@@ -1,6 +1,6 @@
 ﻿#root = evaluating country
 #scope:other_country = other country
-#scope:binding_period = binding period of the treaty (in days)
+#scope:treaty_options = treaty options
 static_treaty_acceptance = {
 	value = 0
 
@@ -16,20 +16,39 @@ static_treaty_acceptance = {
 		desc = "DIPLOMATIC_ACCEPTANCE_BASE"
 		value = -10
 	}
+	
+	if = {
+		limit = { 
+			exists = scope:bad_faith_factor
+		}
+		
+		subtract = {
+			value = 10
+			add = {
+				value = scope:bad_faith_factor
+				multiply = 2
+			}
+			desc = "DIPLOMATIC_ACCEPTANCE_DEAL_IS_WORSE"
+		}	
+	}
+
+	add = {
+		value = "scope:other_country.modifier:country_diplomatic_reputation_add"
+		desc = "DIPLOMATIC_REPUTATION_REASON"
+	}
 
 	subtract = {
 		desc = "DIPLOMATIC_ACCEPTANCE_BINDING_PERIOD"
 
 		if = {
 			limit = {
-				NOT = { exists = scope:is_treaty_active }
-				exists = scope:binding_period
-				scope:binding_period >= 18250
+				exists = scope:treaty_options.binding_period
+				scope:treaty_options.binding_period >= 18250
 			}
 			add = 25
 
 			add = {
-				value = scope:binding_period
+				value = scope:treaty_options.binding_period
 				min = 365
 				divide = 365
 				max = 150
@@ -38,30 +57,54 @@ static_treaty_acceptance = {
 	}
 
 	subtract = {
-		desc = "DIPLOMATIC_ACCEPTANCE_UNTRUSTWORTHY_COUNTRY"
+		desc = "DIPLOMATIC_ACCEPTANCE_NOT_RECOGNIZED_BY_SPAIN_ACTOR"
+		# Treaty Diplomacy will be impossible between Spain and her former colonies before she recognizes them
 
 		if = {
 			limit = {
 				scope:other_country = {
-					has_modifier = modifier_untrustworthy_country
+					has_modifier = modifier_not_recognized_by_spain
+				}
+				OR = {
+					c:SPA ?= this
+					c:SPC ?= this
+					was_formed_from = SPA
+				}
+				NOT = {
+					scope:treaty_options ?= {
+						any_scope_article_option = {
+							has_type = recognize_independence
+						}
+					}
 				}
 			}
-			value = 25
+			value = 1000
+		}
+	}
 
-			if = {
-				limit = {
-					NOT = { exists = scope:is_treaty_active }
-					exists = scope:binding_period
-					scope:binding_period > 18250
+	subtract = {
+		desc = "DIPLOMATIC_ACCEPTANCE_NOT_RECOGNIZED_BY_SPAIN_TARGET"
+		# Treaty Diplomacy will be impossible between Spain and her former colonies before she recognizes them
+
+		if = {
+			limit = {
+				scope:other_country = {
+					OR = {
+						c:SPA ?= this
+						c:SPC ?= this
+						was_formed_from = SPA
+					}
 				}
-				add = {
-					value = 5
-					multiply = scope:binding_period
-					divide = 365
-					subtract = 25
-					max = 100
+				has_modifier = modifier_not_recognized_by_spain
+				NOT = {
+					scope:treaty_options ?= {
+						any_scope_article_option = {
+							has_type = recognize_independence
+						}
+					}
 				}
 			}
+			value = 1000
 		}
 	}
 
@@ -209,17 +252,6 @@ static_treaty_acceptance = {
 				max = 10
 			}
 		}
-
-		if = {
-			limit = {
-				"scope:other_country.ai_treaty_fairness(root)" < 0
-			}
-			add = {
-				desc = "DIPLOMATIC_ACCEPTANCE_TREATY_FAIRNESS"
-				value = "scope:other_country.ai_treaty_fairness(root)"
-				min = -30
-			}
-		}
 	}
 
 	add = {
@@ -243,16 +275,20 @@ static_treaty_acceptance = {
 				min = -100
 			}
 		}
+	}
 
-		if = {
-			limit = {
-				"scope:other_country.ai_treaty_fairness(root)" < 0
-			}
-			add = {
-				desc = "DIPLOMATIC_ACCEPTANCE_TREATY_FAIRNESS"
-				value = "scope:other_country.ai_treaty_fairness(root)"
-				min = -30
-			}
+	if = {
+		limit = {
+			NOT = { exists = scope:is_treaty_active }
+			NOT = { exists = scope:is_renegotiation }
+			"ai_treaty_fairness(scope:other_country)" < 0
+		}
+		add = {
+			desc = "DIPLOMATIC_ACCEPTANCE_TREATY_FAIRNESS"
+			value = "ai_treaty_fairness(scope:other_country)"
+			divide = 2
+			max = -1
+			min = -50
 		}
 	}
 
@@ -263,7 +299,7 @@ static_treaty_acceptance = {
 		add = {
 			desc = "DIPLOMATIC_ACCEPTANCE_IDEOLOGICAL_OPINION"
 			value = "root.ai_ideological_opinion(scope:other_country)"
-			multiply = 0.5
+			multiply = 0.25
 			max = 10
 		}
 	}
@@ -275,7 +311,7 @@ static_treaty_acceptance = {
 			desc = "DIPLOMATIC_ACCEPTANCE_IDEOLOGICAL_OPINION_NEGATIVE"
 			value = "root.ai_ideological_opinion(scope:other_country)"
 			multiply = 0.5
-			min = -10
+			min = -25
 		}
 	}
 
@@ -325,5 +361,44 @@ static_treaty_acceptance = {
 		value = "scope:other_country.lobby_foreign_anti_clout(root)"
 		multiply = -100
 		min = -15
+	}
+
+	if = {
+		limit = {
+			scope:other_country ?= { is_ai = no }
+			scope:treaty_options ?= {
+				is_exchanging_obligations = no
+				any_scope_article_option = {
+					is_giftable_to = root
+					is_desired_by = root
+				}
+				NOT = {
+					any_scope_article_option = {
+						OR = {
+							NOT = { is_giftable_to = root }
+							NOT = { is_desired_by = root }
+						}
+					}
+				}
+			}
+		}
+		add = {
+			desc = "DIPLOMATIC_ACCEPTANCE_GIFT"
+			value = 1000
+		}
+	}
+	else_if = {
+		limit = {
+			scope:treaty_options ?= {
+				is_equal_exchange_for = root
+				any_scope_article_option = {
+					is_desired_by = root
+				}
+			}
+		}
+		add = {
+			desc = "DIPLOMATIC_ACCEPTANCE_EQUAL_EXCHANGE"
+			value = 30
+		}
 	}
 }

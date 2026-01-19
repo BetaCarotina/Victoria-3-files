@@ -11,7 +11,7 @@
 	possible = {
 		has_technology_researched = nationalism
 		any_decentralized_country = {
-			country_is_in_north_america = yes
+			is_in_geographic_region = geographic_region_north_america
 			is_adjacent_to_country = root
 		}
 	}
@@ -32,28 +32,31 @@ je_unite_the_nations_organize_the_tribes_button = {
 
 	possible = {
 		any_decentralized_country = {
-			country_is_in_north_america = yes
+			is_in_geographic_region = geographic_region_north_america
 			is_adjacent_to_country = root
 			any_primary_culture = {
-				shares_heritage_trait_with_any_primary_culture = root
+				shares_heritage_trait_group_with_any_primary_culture = root
 			}
-		}
+			}
 		bureaucracy > 150
 	}
 
 	effect = {
 		ordered_decentralized_country = {
 			limit = {
-				country_is_in_north_america = yes
+				is_in_geographic_region = geographic_region_north_america
+				is_adjacent_to_country = root
 				any_primary_culture = {
-					shares_heritage_trait_with_any_primary_culture = root
+					shares_heritage_trait_group_with_any_primary_culture = root
 				}
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_temporary_scope_as = decentralised_neighbouring_territory
 		}
 
-		if = {
+		if = { #This is here to display the effects tooltip when the button is disabled and scope doesn't exist
 			limit = { NOT = { exists = scope:decentralised_neighbouring_territory } }
 			custom_tooltip = { text = je_unite_the_nations_organize_the_tribes_tt }
 		}
@@ -85,26 +88,31 @@ je_unite_the_nations_offer_confederation_button = {
 	}
 
 	possible = {
-		any_decentralized_country = {
-			country_is_in_north_america = yes
+		any_country = {
+			is_in_geographic_region = geographic_region_north_america
 			is_adjacent_to_country = root
 			relations:root >= 25
 			any_primary_culture = {
-				shares_heritage_trait_with_any_primary_culture = ROOT
+				shares_heritage_trait_group_with_any_primary_culture = ROOT
 			}
 		}
 	}
 
 	effect = {
-		ordered_decentralized_country = {
+		ordered_country = {
 			limit = {
-				country_is_in_north_america = yes
+				is_in_geographic_region = geographic_region_north_america
 				any_primary_culture = {
-					shares_heritage_trait_with_any_primary_culture = root
+					shares_heritage_trait_group_with_any_primary_culture = root
+				}
+				NOT = {
+					this = root
 				}
 				relations:root >= 25
 			}
 			order_by = gdp
+			position = 0
+			check_range_bounds = no
 			save_temporary_scope_as = to_be_annexed
 			if = {
 				limit = {
@@ -129,7 +137,7 @@ je_unite_the_nations_offer_confederation_button = {
 			}
 		}
 
-		if = {
+		if = { #This is here to display the effects tooltip when the button is disabled and scope doesn't exist
 			limit = { NOT = { exists = scope:to_be_annexed } }
 			custom_tooltip = { text = je_unite_the_nations_offer_confederation_tt }
 		}

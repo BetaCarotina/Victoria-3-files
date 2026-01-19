@@ -5,7 +5,7 @@
 	visible = { always = yes }
 
 	possible = {
-		ig:ig_armed_forces = {
+		ig:ig_armed_forces ?= {
 			is_in_government = yes
 			is_powerful = yes
 		}
@@ -15,9 +15,8 @@
 	effect = {
 		custom_tooltip = {
 			text = gain_caudillo_points
-			change_variable = {
-				name = caudillo_var
-				add = 100
+			je:je_caudillo ?= {
+				add_progress = { value = 100 name = je_caudillo_progress_bar }
 			}
 		}
 		add_modifier = {

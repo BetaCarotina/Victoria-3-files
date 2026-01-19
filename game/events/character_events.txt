@@ -27,13 +27,13 @@ character_events.2 = { #Rich industrialist wants to build a university
 			limit = {
 				c:BIC ?= this
 			}
-			ig:ig_petty_bourgeoisie = {
-				is_marginal = no
+			ig:ig_petty_bourgeoisie ?= {
+				ig_counts_as_marginal = no
 			}
 		}
 		trigger_else = {
-			ig:ig_industrialists = {
-				is_marginal = no
+			ig:ig_industrialists ?= {
+				ig_counts_as_marginal = no
 			}
 		}
 		any_scope_state = {
@@ -50,14 +50,14 @@ character_events.2 = { #Rich industrialist wants to build a university
 			limit = {
 				c:BIC ?= this
 			}
-			ig:ig_petty_bourgeoisie = {
+			ig:ig_petty_bourgeoisie ?= {
 				leader = {
 					save_scope_as = university_benefactor
 				}
 			}
 		}
 		else = {
-			ig:ig_industrialists = {
+			ig:ig_industrialists ?= {
 				leader = {
 					save_scope_as = university_benefactor
 				}
@@ -372,14 +372,14 @@ character_events.3 = { #The duel
 		set_variable = duels_banned
 		if = {
 			limit = {
-				ig:ig_landowners = {
+				ig:ig_landowners ?= {
 					OR = {
 						is_powerful = yes
 						is_in_government = yes
 					}
 				}
 			}
-			ig:ig_landowners = {
+			ig:ig_landowners ?= {
 				add_modifier = {
 					name = angry_duels_banned
 					days = normal_modifier_time
@@ -387,14 +387,14 @@ character_events.3 = { #The duel
 			}
 		}
 		else = {
-			ig:ig_armed_forces = {
+			ig:ig_armed_forces ?= {
 				add_modifier = {
 					name = angry_duels_banned
 					days = normal_modifier_time
 				}
 			}
 		}
-		ig:ig_intelligentsia = {
+		ig:ig_intelligentsia ?= {
 			add_modifier = {
 				name = happy_duels_banned
 				days = normal_modifier_time
@@ -432,7 +432,7 @@ character_events.4 = { #Devout leader sleeping with a nun
 			age > 18
 			is_busy = no
 			interest_group = {
-				is_marginal = no
+				ig_counts_as_marginal = no
 				is_interest_group_type = ig_devout
 			}
 		}
@@ -446,7 +446,7 @@ character_events.4 = { #Devout leader sleeping with a nun
 				age > 18
 				is_busy = no
 				interest_group = {
-					is_marginal = no
+					ig_counts_as_marginal = no
 					is_interest_group_type = ig_devout
 				}
 			}

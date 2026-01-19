@@ -17,13 +17,14 @@
  treaty_name_ham_pru_trade: "汉堡‑普鲁士贸易协定"
  treaty_name_swe_pru_trade: "瑞典‑普鲁士贸易协定"
  treaty_name_prussian_military_mission_to_turkey: "普鲁士驻奥斯曼帝国军事代表团"
+ treaty_name_treaty_of_adrianople: "哈德良堡条约"
  ### Dynamic Treaties
  # Generic
  treaty_name_treaty_of_city: "$SIGNING_LOCATION$条约"
  treaty_name_city_protocol: "$SIGNING_LOCATION$协议"
  treaty_name_city_convention: "$SIGNING_LOCATION$公约"
  treaty_name_convention_of_city: "$SIGNING_LOCATION$公约"
- treaty_name_september_convention: "九月协定"
+ treaty_name_september_convention: "$SIGNING_MONTH$协定"
  treaty_name_city_declaration: "$SIGNING_LOCATION$宣言"
  treaty_name_declaration_of_captial: "$SIGNING_LOCATION$宣言"
  treaty_name_country_adj_country_adj_treaty: "[FIRST_COUNTRY.GetAdjectiveNoFormatting]‑[SECOND_COUNTRY.GetAdjectiveNoFormatting]条约"

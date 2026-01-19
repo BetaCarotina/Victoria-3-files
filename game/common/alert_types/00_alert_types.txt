@@ -60,6 +60,33 @@ has_no_research_alert = {
 	color = green
 }
 
+major_formable_possible = {
+	script_context = player_country_formation
+	texture = "gfx/interface/icons/alert_icons/formable_possible.dds"
+
+	valid = {
+		is_major_formation = yes
+	}
+
+	open_panel = diplomatic_overview|nation_formation
+	type = alert
+	color = green
+}
+
+formable_possible = {
+	script_context = player_country_formation
+	texture = "gfx/interface/icons/alert_icons/formable_possible.dds"
+
+	valid = {
+		is_major_formation = no
+	}
+
+	open_panel = diplomatic_overview|nation_formation
+	type = important_action
+	color = green
+	alert_group = formables_possible
+}
+
 can_establish_company = {
 	script_context = player_country
 	texture = "gfx/interface/icons/alert_icons/can_establish_company.dds"
@@ -159,7 +186,11 @@ has_no_war_goal_alert = {
 	texture = "gfx/interface/icons/alert_icons/has_no_war_goal.dds"
 
 	valid = {
-		scope:actor = { should_set_wargoal = yes }
+		scope:actor = { 
+			should_set_wargoal = {
+				target = root
+			}
+		}
 	}
 
 	open_panel = diplomatic_play
@@ -311,6 +342,9 @@ legitimacy_level_illegitimate_alert = {
 
 	valid = {
 		government_legitimacy < 25
+		NOT = {
+			has_journal_entry = je_montenegrin_raiding
+		}
 	}
 
 	open_panel = politics|interest_groups
@@ -439,7 +473,7 @@ has_low_liberty_desire = {
     texture = "gfx/interface/icons/diplomatic_action_icons/da_decrease_autonomy.dds"
 
 	valid = {
-        can_own_autonomy_be_decreased = yes
+		can_own_autonomy_be_decreased = yes
 	}
 
 	open_panel = diplomatic_overview
@@ -562,6 +596,20 @@ diplomatic_pact_in_danger = {
 	alert_group = diplomatic_pact_in_danger
 }
 
+treaty_article_in_danger = {
+	texture = "gfx/interface/icons/lens_toolbar_icons/diplomatic_actions_break.dds"
+	script_context = player_article
+
+	valid = {
+		is_treaty_article_in_danger = yes
+	}
+
+	open_panel = diplomatic_overview
+	type = angry_important_action
+	color = yellow
+	alert_group = treaty_article_in_danger
+}
+
 # Hidden by default
 #has_convoys_being_sunk = {
 #	script_context = player_country
@@ -583,6 +631,9 @@ legitimacy_level_unacceptable_alert = {
 	valid = {
 		government_legitimacy < 50
 		government_legitimacy >= 25
+		NOT = {
+			has_journal_entry = je_montenegrin_raiding
+		}
 	}
 
 	open_panel = politics|interest_groups
@@ -651,15 +702,12 @@ state_goods_shortage = {
 
 can_take_decisions = {
 	texture = "gfx/interface/icons/event_icons/event_scales.dds"
-	script_context = player_country
-
-	valid = {
-		has_possible_decisions = yes
-	}
+	script_context = player_decision
 
 	open_panel = journal
 	type = important_action
 	color = green
+	alert_group = can_take_decisions
 }
 
 # Hidden by default
@@ -681,7 +729,7 @@ stockpiling_gold_alert = {
 
 	valid = {
 		gold_reserves > gold_reserves_limit
-		weekly_net_fixed_income > 0
+		net_fixed_income > 0
 	}
 
 	open_panel = budget|default
@@ -725,7 +773,7 @@ can_resign_alert = {
 		has_dlc_feature = voice_of_the_people_content
 		NOR = {
 			has_law = law_type:law_monarchy
-			has_law = law_type:law_theocracy
+			has_law_or_variant = law_type:law_theocracy
 		}
 		ruler = {
 			is_immortal = no
@@ -943,6 +991,28 @@ article_contravened = {
 	}
 
 	open_panel = treaty_panel
+	type = alert
+	color = red
+}
+
+
+may_be_annexed_by_austria = {
+	script_context = player_country
+    texture = "gfx/interface/icons/war_goals/annex_country.dds"
+
+	valid = {
+		exists = c:AUS
+		is_subject_of = c:AUS
+		is_subject_type = subject_type_crown_land
+		liberty_desire < define:NDiplomacy|WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_THRESHOLD
+		c:AUS ?= {
+			NOT = {
+				has_variable = crownlands_annexed_var
+			}
+		}
+	}
+
+	open_panel = diplomatic_overview
 	type = alert
 	color = red
 }

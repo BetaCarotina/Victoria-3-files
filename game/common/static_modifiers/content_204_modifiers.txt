@@ -480,7 +480,7 @@ modifier_andean_federation_military = {
 	country_prestige_mult = 0.05
 	country_influence_mult = 0.05
 	country_prestige_from_army_power_projection_mult = 0.10
-	building_barracks_throughput_add = 0.10
+	building_barrack_throughput_add = 0.10
 }
 
 modifier_knight_of_hope = {
@@ -535,7 +535,7 @@ modifier_manaus_commune = {
 	state_lower_strata_standard_of_living_add = 1
 	state_middle_strata_standard_of_living_add = 1
 	state_upper_strata_standard_of_living_add = -1
-	building_barracks_throughput_add = -0.50
+	building_barrack_throughput_add = -0.50
 }
 
 modifier_landowners_hegemony_retained = {
@@ -642,7 +642,8 @@ modifier_lessons_from_vargas = {
 modifier_against_the_confederation = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_positive.dds
 	state_conscription_rate_mult = 0.25
-	country_diplomatic_play_maneuvers_add = 10
+	building_training_rate_mult = 0.25
+	country_diplomatic_play_maneuvers_add = 50
 }
 
 modifier_alexander_ii = {
@@ -713,7 +714,6 @@ modifier_confederation_failure = {
 modifier_assimilation_nnc = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	state_assimilation_mult = 0.50
-	country_allow_assimilation_full_acceptance_bool = yes
 	state_radicalism_increases_violent_hostility_mult = 0.1
 	state_radicalism_increases_cultural_erasure_mult = 0.1
 	state_radicalism_increases_open_prejudice_mult = 0.1

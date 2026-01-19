@@ -46,7 +46,7 @@ je_texas_usa = {
 	invalid = {
 		OR = {
 			NOT = { exists = c:TEX }
-			c:TEX = { is_subject = yes }
+			c:TEX ?= { is_subject = yes }
 		}
 	}
 

@@ -43,11 +43,11 @@
 		if = {
 			limit = {
 				OR = {
-					country_is_in_europe = yes
-					country_is_in_north_america = yes
-					country_is_in_east_asia = yes
-					country_is_in_middle_east = yes
-					country_is_in_central_asia = yes
+					is_in_geographic_region = geographic_region_europe
+					is_in_geographic_region = geographic_region_north_america
+					is_in_geographic_region = geographic_region_east_asia
+					is_in_geographic_region = geographic_region_middle_east
+					is_in_geographic_region = geographic_region_central_asia
 					capital.region = sr:region_oceania
 				}
 			}
@@ -63,6 +63,13 @@
 				}
 			}
 			add = 20
+		}
+
+		if = {
+			limit = {
+				is_princely_state = yes
+			}
+			add = 10
 		}
 
 		if = {
@@ -83,7 +90,7 @@
 		if = {
 			limit = {
 				exists = ig:ig_landowners
-				ig:ig_landowners = { is_powerful = yes }
+				ig:ig_landowners ?= { is_powerful = yes }
 			}
 			multiply = 1.5
 		}
@@ -95,7 +102,7 @@
 					OR = {
 						AND = {
 							is_ai = no
-							NOT = { has_law = law_type:law_traditionalism }
+							NOT = { has_law_or_variant = law_type:law_traditionalism }
 						}
 						has_strategy = ai_strategy_resource_expansion
 						has_strategy = ai_strategy_industrial_expansion
@@ -132,13 +139,13 @@ ai_strategy_plantation_economy = {
 	possible = {
 		OR = {
 			capital.region = sr:region_dixie
-			country_is_in_south_america = yes
-			country_is_in_central_america = yes
-			country_is_in_india = yes
-			country_is_in_southeast_asia = yes
-			country_is_in_africa = yes
-			country_is_in_east_asia = yes
-			country_is_in_middle_east = yes
+			is_in_geographic_region = geographic_region_south_america
+			is_in_geographic_region = geographic_region_central_america
+			is_in_geographic_region = geographic_region_india
+			is_in_geographic_region = geographic_region_south_east_asia
+			is_in_geographic_region = geographic_region_africa
+			is_in_geographic_region = geographic_region_east_asia
+			is_in_geographic_region = geographic_region_middle_east
 		}
 	}
 
@@ -148,10 +155,10 @@ ai_strategy_plantation_economy = {
 		if = {
 			limit = {
 				OR = {
-					country_is_in_south_america = yes
-					country_is_in_central_america = yes
-					country_is_in_india = yes
-					country_is_in_southeast_asia = yes
+					is_in_geographic_region = geographic_region_south_america
+					is_in_geographic_region = geographic_region_central_america
+					is_in_geographic_region = geographic_region_india
+					is_in_geographic_region = geographic_region_south_east_asia
 					capital.region = sr:region_dixie
 				}
 			}
@@ -166,9 +173,16 @@ ai_strategy_plantation_economy = {
 		if = {
 			limit = {
 				exists = ig:ig_landowners
-				ig:ig_landowners = { is_powerful = yes }
+				ig:ig_landowners ?= { is_powerful = yes }
 			}
 			multiply = 1.5
+		}
+
+		if = {
+			limit = {
+				is_princely_state = yes
+			}
+			add = 20
 		}
 
 		if = {
@@ -193,7 +207,7 @@ ai_strategy_resource_expansion = {
 	}
 
 	subsidies = {
-		building_tooling_workshops = nice_to_have
+		building_tooling_workshop = nice_to_have
 		building_explosives_factory = nice_to_have
 	}
 
@@ -225,8 +239,8 @@ ai_strategy_resource_expansion = {
 		if = {
 			limit = {
 				OR = {
-					country_is_in_europe = yes
-					country_is_in_north_america = yes
+					is_in_geographic_region = geographic_region_europe
+					is_in_geographic_region = geographic_region_north_america
 				}
 			}
 			add = 20
@@ -253,7 +267,7 @@ ai_strategy_resource_expansion = {
 		if = {
 			limit = {
 				exists = ig:ig_industrialists
-				ig:ig_industrialists = { is_powerful = yes }
+				ig:ig_industrialists ?= { is_powerful = yes }
 			}
 			multiply = 1.5
 		}
@@ -272,7 +286,7 @@ ai_strategy_resource_expansion = {
 					OR = {
 						AND = {
 							is_ai = no
-							NOT = { has_law = law_type:law_traditionalism }
+							NOT = { has_law_or_variant = law_type:law_traditionalism }
 						}
 						has_strategy = ai_strategy_resource_expansion
 						has_strategy = ai_strategy_industrial_expansion
@@ -331,14 +345,23 @@ ai_strategy_industrial_expansion = {
 		bg_logging = 1.25
 	}
 
+	economic_vs_government_spending_balance = { # Refer to 00_default_strategy for how this works
+		if = { # Slightly more inclined to spend on economic buildings when not at war
+			limit = {
+				is_at_war = no
+			}
+			add = 0.05
+		}
+	}
+
 	weight = {
 		value = 10
 
 		if = {
 			limit = {
 				OR = {
-					country_is_in_europe = yes
-					country_is_in_north_america = yes
+					is_in_geographic_region = geographic_region_europe
+					is_in_geographic_region = geographic_region_north_america
 				}
 			}
 			add = 20
@@ -360,12 +383,19 @@ ai_strategy_industrial_expansion = {
 				c:FRA = this
 				ruler = {
 					OR = {
-						has_variable = orleanist_leader
-						has_variable = bonapartist_leader
+						has_variable = house_orleans
+						has_variable = house_bonaparte
 					}
 				}
 			}
 			add = 20
+		}
+
+		if = { # Grunderzeit
+			limit = {
+				has_journal_entry = je_grunderzeit
+			}
+			add = 100
 		}
 
 		if = {
@@ -381,9 +411,18 @@ ai_strategy_industrial_expansion = {
 			add = 50
 		}
 
+		# Metternich agenda of 1844 - inclined to industrialise
 		if = {
 			limit = {
-				has_law = law_type:law_command_economy
+				c:AUS ?= this
+				has_journal_entry = je_metternich
+			}
+           add = 10
+		}
+
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_command_economy
 			}
 			multiply = 2
 		}
@@ -396,7 +435,7 @@ ai_strategy_industrial_expansion = {
 		if = {
 			limit = {
 				exists = ig:ig_industrialists
-				ig:ig_industrialists = { is_powerful = yes }
+				ig:ig_industrialists ?= { is_powerful = yes }
 			}
 			multiply = 2.0
 		}
@@ -459,7 +498,7 @@ ai_strategy_placate_population = {
 	}
 
 	possible = {
-		has_law = law_type:law_traditionalism
+		has_law_or_variant = law_type:law_traditionalism
 	}
 
 	weight = {
@@ -495,7 +534,7 @@ ai_strategy_placate_population = {
 		if = {
 			limit = {
 				exists = ig:ig_rural_folk
-				ig:ig_rural_folk = { is_powerful = yes }
+				ig:ig_rural_folk ?= { is_powerful = yes }
 			}
 			multiply = 1.5
 		}
@@ -507,7 +546,7 @@ ai_strategy_placate_population = {
 					OR = {
 						AND = {
 							is_ai = no
-							NOT = { has_law = law_type:law_traditionalism }
+							NOT = { has_law_or_variant = law_type:law_traditionalism }
 						}
 						has_strategy = ai_strategy_resource_expansion
 						has_strategy = ai_strategy_industrial_expansion
@@ -532,7 +571,7 @@ ai_strategy_colonial_extraction = {
     }
 
     subsidies = {
-        building_tooling_workshops = wants_to_have
+        building_tooling_workshop = wants_to_have
     }
 
     goods_stances = {
@@ -562,7 +601,52 @@ ai_strategy_colonial_extraction = {
     }
     possible = {
     	is_subject = yes
-    	is_country_type = colonial
+		country_is_colonial_or_company = yes
+    }
+
+    weight = {
+        value = 100
+    }
+}
+
+ai_strategy_montenegro_admin = {
+    icon = "gfx/interface/icons/ai_strategy_icons/placate_population.dds"
+
+    type = administrative
+    building_group_weights = {
+		bg_private_infrastructure = 2.0
+		bg_agriculture = 2.0
+		bg_ranching = 2.0
+		bg_logging = 1.5
+		bg_manufacturing = 0.5
+    }
+
+    subsidies = {
+        building_trade_center = must_have
+    }
+
+    goods_stances = {
+		grain = { stance = wants_high_supply }
+		meat = { stance = wants_high_supply }
+		fish = { stance = wants_high_supply }
+		fruit = { stance = wants_high_supply }
+		fabric = { stance = wants_high_supply }
+		wood = { stance = wants_high_supply }
+		liquor = { stance = wants_high_supply }
+		small_arms = { stance = wants_high_supply }
+	}
+    possible = {
+    	c:MON ?= this
+		NOR = {
+			any_scope_state = { # Has a port
+				has_building = building_port
+			}
+			ROOT.market_capital = { # Is in another market
+				NOT = {
+					owner = ROOT
+				}
+			}
+		}
     }
 
     weight = {

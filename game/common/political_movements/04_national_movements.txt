@@ -32,6 +32,9 @@
 			}
 		}
 	}
+
+	can_cause_obstinance = yes
+
 	creation_weight = {
 		value = 100
 	}
@@ -46,7 +49,7 @@
 
 	character_support_trigger = {
 		culture = {
-			has_discrimination_trait = south_asian_heritage
+			has_discrimination_trait_group = heritage_group_south_asian
 		}
 		religion = rel:hindu
 	}
@@ -68,7 +71,7 @@
 
 	pop_support_trigger = {
 		culture = {
-			has_discrimination_trait = south_asian_heritage
+			has_discrimination_trait_group = heritage_group_south_asian
 		}
 		religion = rel:hindu
 	}
@@ -87,25 +90,22 @@
 	pop_support_weight = {
 		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_hindu_nationalist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
+				exists = scope:political_movement
+				scope:political_movement ?= {
+					OR = {
+						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
 			}
 			if = {
 				limit = {
-					scope:affected_movement = {
+					scope:political_movement = {
 						is_being_suppressed = yes
 					}
 				}
 				add = {
-					value = 10
+					value = suppression_base_value
 					multiply = {
 						value = -0.5
 						add = owner.modifier:country_suppression_attraction_factor
@@ -115,7 +115,7 @@
 			}
 			else = {
 				add = {
-					value = 10
+					value = bolstering_base_value
 					multiply = {
 						value = 0.5
 						add = owner.modifier:country_bolster_attraction_factor
@@ -124,6 +124,7 @@
 				}
 			}
 		}
+
 		if = {
 			limit = {
 				religion = rel:hindu
@@ -219,6 +220,13 @@
 			value = 100
 		}
 
+		interest_group_can_join = {
+			OR = {
+				is_interest_group_type = ig_devout
+				leader = { religion = scope:political_movement.religion } # Muslims should never join this
+			}
+		}
+
 		state_weight = {
 			value = 1
 			if = {
@@ -247,6 +255,13 @@
 
 		weight = {
 			value = 1000
+		}
+
+		interest_group_can_join = {
+			OR = {
+				is_interest_group_type = ig_devout
+				leader = { religion = scope:political_movement.religion } # Muslims should never join this
+			}
 		}
 
 		state_weight = {
@@ -312,6 +327,25 @@
 				divide = 500
 			}
 		}
+		if = {
+			limit = {
+				owner = {
+					any_neighbouring_state = {
+						owner = {
+							NOT = { THIS = ROOT.owner }
+							any_political_movement = {
+								is_political_movement_type = movement_hindu_nationalist
+								is_insurrectionary = yes
+							}
+						}
+					}
+				}
+			}
+			add = {
+				desc = "NEIGHBOURING_COUNTRY_WITH_REVOLUTION"
+				value = 0.15
+			}
+		}
 	}
 }
 
@@ -325,6 +359,11 @@ movement_muslim_nationalist = {
 	}
 
 	creation_trigger = {
+		NOT = {
+			any_political_movement = { # Can only ever spawn once
+				is_political_movement_type = movement_muslim_nationalist
+			}
+		}
 		OR = {
 			AND = {
 				c:BIC ?= this
@@ -335,6 +374,7 @@ movement_muslim_nationalist = {
 						OR = {
 							religion = rel:sunni
 							religion = rel:shiite
+							religion = rel:ibadi
 						}
 					}
 					count >= 5
@@ -349,6 +389,7 @@ movement_muslim_nationalist = {
 						OR = {
 							religion = rel:sunni
 							religion = rel:shiite
+							religion = rel:ibadi
 						}
 					}
 					count >= 5
@@ -359,6 +400,9 @@ movement_muslim_nationalist = {
 	creation_weight = {
 		value = 100
 	}
+
+	can_cause_obstinance = yes
+
 	on_created = {}
 
 	religion_selection_trigger = {
@@ -373,11 +417,12 @@ movement_muslim_nationalist = {
 
 	character_support_trigger = {
 		culture = {
-			has_discrimination_trait = south_asian_heritage
+			has_discrimination_trait_group = heritage_group_south_asian
 		}
 		OR = {
 			religion = rel:sunni
 			religion = rel:shiite
+			religion = rel:ibadi
 		}
 	}
 	character_support_weight = {
@@ -406,11 +451,12 @@ movement_muslim_nationalist = {
 
 	pop_support_trigger = {
 		culture = {
-			has_discrimination_trait = south_asian_heritage
+			has_discrimination_trait_group = heritage_group_south_asian
 		}
 		OR = {
 			religion = rel:sunni
 			religion = rel:shiite
+			religion = rel:ibadi
 		}
 	}
 
@@ -428,25 +474,22 @@ movement_muslim_nationalist = {
 	pop_support_weight = {
 		if = {
 			limit = {
-				owner ?= {
-					any_political_movement = {
-						is_political_movement_type = movement_muslim_nationalist
-						OR = {
-							is_being_suppressed = yes
-							is_being_bolstered = yes
-						}
-						save_temporary_scope_as = affected_movement
+				exists = scope:political_movement
+				scope:political_movement ?= {
+					OR = {
+						is_being_suppressed = yes
+						is_being_bolstered = yes
 					}
 				}
 			}
 			if = {
 				limit = {
-					scope:affected_movement = {
+					scope:political_movement = {
 						is_being_suppressed = yes
 					}
 				}
 				add = {
-					value = 10
+					value = suppression_base_value
 					multiply = {
 						value = -0.5
 						add = owner.modifier:country_suppression_attraction_factor
@@ -456,7 +499,7 @@ movement_muslim_nationalist = {
 			}
 			else = {
 				add = {
-					value = 10
+					value = bolstering_base_value
 					multiply = {
 						value = 0.5
 						add = owner.modifier:country_bolster_attraction_factor
@@ -465,11 +508,13 @@ movement_muslim_nationalist = {
 				}
 			}
 		}
+
 		if = {
 			limit = {
 				OR = {
 					religion = rel:sunni
 					religion = rel:shiite
+					religion = rel:ibadi
 				}
 			}
 			add = { # Base acceptance values higher due to being a minority
@@ -559,6 +604,10 @@ movement_muslim_nationalist = {
 			value = 1000
 		}
 
+		interest_group_can_join = {
+			leader = { religion = scope:political_movement.religion } # Hindus should never join this
+		}
+
 		state_weight = {
 			value = 1
 			if = {
@@ -620,6 +669,61 @@ movement_muslim_nationalist = {
 				desc = "LIBERTY_DESIRE"
 				value = owner.liberty_desire
 				divide = 500
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					any_neighbouring_state = {
+						owner = {
+							NOT = { THIS = ROOT.owner }
+							any_political_movement = {
+								is_political_movement_type = movement_muslim_nationalist
+								is_insurrectionary = yes
+							}
+						}
+					}
+				}
+			}
+			add = {
+				desc = "NEIGHBOURING_COUNTRY_WITH_REVOLUTION"
+				value = 0.15
+			}
+		}
+
+		if = {
+			limit = {
+				owner = {
+					any_political_movement = {
+						NOT = { this = root } # Insurrectionary movements should not make themselves more insurrectionary
+						is_insurrectionary = yes
+					}
+				}
+			}
+			add = {
+				desc = "SIMULTANEOUS_INSURRECTIONARY_MOVEMENTS"
+				owner = {
+					every_political_movement = {
+						limit = {
+							NOT = { this = root } # Insurrectionary movements should not make themselves more insurrectionary
+							is_insurrectionary = yes
+						}
+						if = {
+							limit = {
+								exists = this.political_movement_identity_support
+							}
+							add = { # Identity support can get a bit high
+								value = this.political_movement_identity_support
+								multiply = 0.5
+							}
+						}
+						else = {
+							add = this.political_movement_support
+						}
+					}
+				}
+				min = 0.05
+				max = 0.25
 			}
 		}
 	}

@@ -240,6 +240,72 @@ prestige_good_russia_iron = {
 	texture = "gfx/interface/icons/goods_icons/prestige_goods/russia_iron_prestige.dds"
 }
 
+prestige_good_philips_chapel_radio = {
+	base_good = radios
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/philips_chapel_radio_prestige.dds"
+}
+
+prestige_good_basma_tobacco = {
+	base_good = tobacco
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/basma_tobacco_prestige.dds"
+}
+
+prestige_good_acorn_fed_pork = {
+	base_good = meat
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/acorn_fed_pork_prestige.dds"
+}
+
+prestige_good_pannonian_patent_flour = {
+	base_good = grain
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/pannonian_patent_flour_prestige.dds"
+}
+
+prestige_good_brunn_type_engines = {
+	base_good = engines
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/brunn_type_engine_prestige.dds"
+}
+
+prestige_good_bacardi_rum = {
+	base_good = liquor
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/bacardi_rum_prestige.dds"
+}
+
+prestige_good_sherry = {
+	base_good = wine
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/sherry_prestige.dds"
+}
+
+prestige_good_cigars = {
+	base_good = tobacco
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/cigars_prestige.dds"
+}
+
+prestige_good_havana_sugar = {
+	base_good = sugar
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/generic_sugar_prestige.dds"
+}
+
+prestige_good_port_wine = {
+	base_good = wine
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/port_wine_prestige.dds"
+}
+
+prestige_good_grand_strategy_games = {
+	base_good = fine_art
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/grand_strategy_games_prestige.dds"
+}
+
 #############################################################################################################
 # GENERIC PRESTIGE GOODS
 #############################################################################################################
@@ -303,3 +369,38 @@ prestige_good_generic_opium = {
 	texture = "gfx/interface/icons/goods_icons/prestige_goods/generic_opium_prestige.dds"
 }
 
+prestige_good_generic_small_arms = {
+	base_good = small_arms
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/generic_small_arms_prestige.dds"
+}
+
+prestige_good_generic_artillery = {
+	base_good = artillery
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/generic_artillery_prestige.dds"
+}
+
+prestige_good_generic_merchant_marine = {
+	base_good = merchant_marine
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/generic_merchant_marine_prestige.dds"
+}
+
+prestige_good_generic_grain = {
+	base_good = grain
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/generic_grain_prestige.dds"
+}
+
+prestige_good_generic_paper = {
+	base_good = paper
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/generic_paper_prestige.dds"
+}
+
+prestige_good_generic_explosives = {
+	base_good = explosives
+	prestige_bonus = 0.1
+	texture = "gfx/interface/icons/goods_icons/prestige_goods/generic_explosives_prestige.dds"
+}

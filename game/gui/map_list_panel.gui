@@ -754,6 +754,7 @@ types map_list_panel_types {
 					blockoverride "rank_text" {
 						raw_text = "#BOLD [Country.GetCountryScorePositionDesc]"
 					}
+
 					blockoverride "rank_text_2" {
 						raw_text = "#BOLD [Country.GetCountryScorePositionDesc]"
 						visible = no
@@ -1696,8 +1697,8 @@ types map_list_panel_types {
 					min_width = 56
 					align = right|nobaseline
 
-					text = "[State.GetConstructionEfficiency|%1+=]"
-					tooltip = "[State.GetConstructionEfficiencyTooltip]"
+					text = "[State.GetConstructionEfficiencyForBuildingType(MapListOption.GetBuildingData.GetBuilding.GetBuildingType)|%1+=]"
+					tooltip = "[State.GetConstructionEfficiencyForBuildingTypeTooltip(MapListOption.GetBuildingData.GetBuilding.GetBuildingType)]"
 					elide = right
 				}
 
@@ -2088,7 +2089,7 @@ types map_list_panel_types {
 				onclick = "[MapListPanel.Sort('tax_capacity_balance')]"
 				visible = "[ObjectsEqual(MapListBuildingPanel.GetBuildingType, GetBuildingType('building_government_administration').Self)]"
 			}
-			
+
 			sort_button = {
 				align = hcenter|nobaseline
 				
@@ -2103,8 +2104,8 @@ types map_list_panel_types {
 				size = { 70 20 }
 				onclick = "[MapListPanel.Sort('trade_capacity_balance')]"
 				visible = "[ObjectsEqual(MapListBuildingPanel.GetBuildingType, GetBuildingType('building_trade_center').Self)]"
-			}			
-			
+			}
+
 			sort_button = {
 				visible = "[Not(ObjectsEqual(MapListBuildingPanel.GetBuildingType, GetBuildingType('building_trade_center').Self))]"
 				align = hcenter|nobaseline
@@ -2113,18 +2114,18 @@ types map_list_panel_types {
 				size = { 80 20 }
 				onclick = "[MapListPanel.Sort('profit_impact')]"
 			}
-			
+
 			sort_button = {
 				visible = "[ObjectsEqual(MapListBuildingPanel.GetBuildingType, GetBuildingType('building_trade_center').Self)]"
 				align = hcenter|nobaseline
-				
+
 				icon = {
 					texture = "gfx/interface/icons/trade_icons/trade_potential.dds"
 					size = { 25 25 }
 					parentanchor = center
 					alwaystransparent = yes
-				}				
-				
+				}
+
 				tooltip = "TRADE_POTENTIAL_EXPLAINER"
 				size = { 80 20 }
 				onclick = "[MapListPanel.Sort('trade_potential')]"
@@ -2320,14 +2321,14 @@ types map_list_panel_types {
 				sort_button = {
 					visible = "[ObjectsEqual(MapListBuildingPanel.GetBuildingType, GetBuildingType('building_trade_center').Self)]"
 					align = hcenter|nobaseline
-					
+
 					icon = {
 						texture = "gfx/interface/icons/state_status_icons/trade_capacity.dds"
 						size = { 25 25 }
 						parentanchor = center
 						alwaystransparent = yes
 					}
-					
+
 					tooltip = "TRADE_POTENTIAL_EXPLAINER"
 					size = { 80 20 }
 					onclick = "[MapListPanel.Sort('trade_potential')]"
@@ -3651,10 +3652,6 @@ types map_list_panel_types {
 							rank_badge = {
 								parentanchor = center
 								size = { 50 50 }
-								
-								blockoverride "datacontext " { 
-									datacontext = "[Country]"
-								}
 
 								blockoverride "rank_text" {
 									raw_text = "#BOLD [Country.GetCountryScorePositionDesc]"
@@ -4187,6 +4184,20 @@ types map_list_panel_types {
 		blockoverride "shown_on_map_value" {
 			text = "[State.GetStateRegion.GetPollutionImpact|%R1]"
 			tooltip = "STATE_POLLUTION"
+		}
+	}
+
+	# STATE OBSTINANCE
+	type state_obstinance_map_list_panel = state_map_list_one_value {
+		name = "state_obstinance_map_list_panel"
+
+		blockoverride "shown_on_map_header" {
+			text = "concept_obstinance"
+			onclick = "[MapListPanel.Sort('obstinance')]"
+		}
+		blockoverride "shown_on_map_value" {
+			text = "[State.GetObstinance|%1v]"
+			tooltip = "TOOLTIP_STATE_OBSTINANCE"
 		}
 	}
 

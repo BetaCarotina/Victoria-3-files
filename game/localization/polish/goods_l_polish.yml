@@ -68,6 +68,7 @@
  popneed_luxury_items: "Artykuły luksusowe"
  popneed_art: "Dzieła sztuki"
  popneed_leisure: "Czas wolny"
+ popneed_stimulants: "Środki pobudzające"
  #Prestige goods:
  prestige_good_krupp_guns: "Działa Kruppa"
  prestige_good_canton_porcelain: "Porcelana kantońska"
@@ -109,6 +110,20 @@
  prestige_good_schichau_engines: "Silniki Schichaua"
  prestige_good_smirnoff_vodka: "Wódka Smirnoffa"
  prestige_good_russia_iron: "Żelazo rosyjskie"
+ prestige_good_philips_chapel_radio: "Odbiorniki radiowe Chapel"
+ prestige_good_grand_strategy_games: "Wielkie gry strategiczne"
+ #IP3 Goods
+ prestige_good_basma_tobacco: "Tytoń basma"
+ prestige_good_acorn_fed_pork: "Mięso ze świni karmionej żołędziami"
+ prestige_good_pannonian_patent_flour: "Objęta patentem mąka z Panonii"
+ prestige_good_brunn_type_engines: "Silniki firmy Brunn"
+ #IP4 Goods
+ prestige_good_bacardi_rum: "Rum Bacardi"
+ prestige_good_sherry: "Sherry"
+ prestige_good_cigars: "Cygara"
+ prestige_good_havana_sugar: "Cukier z Hawany"
+ prestige_good_port_wine: "Porto"
+ #Generic Prestige Goods
  prestige_good_generic_groceries: "Delikatesowe artykuły spożywcze"
  prestige_good_generic_steel: "Stal rafinowana"
  prestige_good_generic_furniture: "Stylowe meble"
@@ -119,3 +134,9 @@
  prestige_good_generic_coffee: "Doskonała kawa"
  prestige_good_generic_meat: "Najwyższej jakości mięso"
  prestige_good_generic_fish: "Wyselekcjonowane ryby"
+ prestige_good_generic_small_arms: "Broń krótka o dużej mocy"
+ prestige_good_generic_artillery: "Szybkostrzelna broń artyleryjska"
+ prestige_good_generic_merchant_marine: "Szybka marynarka handlowa"
+ prestige_good_generic_grain: "Zboże wysokiej jakości"
+ prestige_good_generic_paper: "Papier kraftowy"
+ prestige_good_generic_explosives: "Wysokiej klasy materiały wybuchowe"
