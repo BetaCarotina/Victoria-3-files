@@ -79,8 +79,9 @@ gran_colombia.1 = {
 			}
 			custom_tooltip = {
 				text = gain_large_caudillo_points
-				je:je_caudillo ?= {
-					add_progress = { value = -200 name = je_caudillo_progress_bar }
+				change_variable = {
+					name = caudillo_var
+					add = 200
 				}
 			}
 		}
@@ -120,8 +121,9 @@ gran_colombia.1 = {
 			}
 			custom_tooltip = {
 				text = lose_caudillo_points
-				je:je_caudillo ?= {
-					add_progress = { value = -100 name = je_caudillo_progress_bar }
+				change_variable = {
+					name = caudillo_var
+					add = -100
 				}
 			}
 		}
@@ -301,8 +303,9 @@ andean_federation.1 = {
 			}
 			custom_tooltip = {
 				text = gain_large_caudillo_points
-				je:je_caudillo ?= {
-					add_progress = { value = 200 name = je_caudillo_progress_bar }
+				change_variable = {
+					name = caudillo_var
+					add = 200
 				}
 			}
 		}
@@ -567,8 +570,9 @@ la_plata.1 = {
 			}
 			custom_tooltip = {
 				text = gain_large_caudillo_points
-				je:je_caudillo ?= {
-					add_progress = { value = 200 name = je_caudillo_progress_bar }
+				change_variable = {
+					name = caudillo_var
+					add = 200
 				}
 			}
 		}
@@ -608,8 +612,9 @@ la_plata.1 = {
 			}
 			custom_tooltip = {
 				text = lose_caudillo_points
-				je:je_caudillo ?= {
-					add_progress = { value = -100 name = je_caudillo_progress_bar }
+				change_variable = {
+					name = caudillo_var
+					add = -100
 				}
 			}
 		}

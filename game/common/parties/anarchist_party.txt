@@ -8,37 +8,27 @@ anarchist_party = {
 				desc = party_cnt
 				trigger = {
 					exists = c:SPA
-					c:SPA ?= THIS
+					THIS = c:SPA
 				}
 			}
 			triggered_desc = {
 				desc = party_socialist_league
 				trigger = {
 					exists = c:GBR
-					c:GBR ?= THIS
+					THIS = c:GBR
 				}
 			}
 			triggered_desc = {
 				desc = party_anarcho_communist_federation
 				trigger = {
 					exists = c:FRA
-					c:FRA ?= THIS
+					THIS = c:FRA
 				}
 			}
 			triggered_desc = {
-				desc = party_social_revolution_group
+				desc = party_maximalist_federation
 				trigger = {
-					c:POR ?= this
-					NOT = {
-						has_technology_researched = mass_propaganda
-					}
-				}
-			}
-			triggered_desc = {
-				desc = party_portuguese_anarchist_federation
-				trigger = {
-					c:POR ?= this
-					has_technology_researched = mass_propaganda
+					country_has_primary_culture = cu:portuguese
 				}
 			}
 			triggered_desc = {
@@ -86,7 +76,7 @@ anarchist_party = {
 		owner = {
 			country_has_voting_franchise = yes
 			any_interest_group = {
-				ig_counts_as_marginal = no
+				is_marginal = no
 				leader ?= {
 					has_ideology = ideology:ideology_anarchist
 				}
@@ -169,7 +159,7 @@ anarchist_party = {
 				owner = {
 					NOT = {
 						any_interest_group = {
-							ig_counts_as_marginal = no
+							is_marginal = no
 							leader ?= {
 								OR = {
 									has_ideology = ideology:ideology_communist
@@ -229,7 +219,6 @@ anarchist_party = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_meritocratic
-					has_ideology = ideology:ideology_cartist
 					has_ideology = ideology:ideology_agrarian
 					leader ?= {
 						has_ideology = ideology:ideology_social_democrat
@@ -317,9 +306,9 @@ anarchist_party = {
 					has_ideology = ideology:ideology_particularist
 					leader ?= {
 						OR = {
-						has_ideology = ideology:ideology_abolitionist
-						has_ideology = ideology:ideology_social_democrat
-						has_ideology = ideology:ideology_communist
+								has_ideology = ideology:ideology_abolitionist
+								has_ideology = ideology:ideology_social_democrat
+								has_ideology = ideology:ideology_communist
 								has_ideology = ideology:ideology_vanguardist
 						}
 					}
@@ -334,7 +323,7 @@ anarchist_party = {
 			limit = {
 				scope:number = 1
 				is_powerful = no
-				ig_counts_as_marginal = no
+				is_marginal = no
 			}
 			multiply = {
 				value = 2

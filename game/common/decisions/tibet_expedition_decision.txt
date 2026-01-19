@@ -8,7 +8,7 @@
 		}
 		OR = {
 			is_country_type = recognized
-			country_is_colonial_or_company = yes
+			is_country_type = colonial
 		}
 		NOT = { has_variable = on_expedition }
 		has_technology_researched = colonization
@@ -65,7 +65,7 @@
 		value = 0
 		if = {
 			limit = {
-				net_fixed_income > money_amount_multiplier_medium
+				weekly_net_fixed_income > money_amount_multiplier_medium
 				gold_reserves > 0
 			}
 			add = 1

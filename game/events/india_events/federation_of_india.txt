@@ -55,7 +55,7 @@ federation_of_india.1 = {
 			}
 			modifier = {
 				trigger = {
-					liberty_desire < define:NDiplomacy|WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_THRESHOLD
+					liberty_desire < 25
 				}
 				add = 10
 			}
@@ -233,11 +233,9 @@ federation_of_india.3 = {
 		ordered_diplomatically_relevant_country = {
 			limit = {
 				is_princely_state = yes
-				is_in_geographic_region = geographic_region_india
+				country_is_in_india = yes
 			}
 			order_by = country_rank
-			position = 0
-			check_range_bounds = no
 			save_scope_as = relevant_country
 		}
 	}
@@ -254,7 +252,7 @@ federation_of_india.3 = {
 			text = add_claims_on_india_tt
 			every_state = {
 				limit = {
-					is_in_geographic_region = geographic_region_india
+					state_is_in_india = yes
 					NOT = {
 						owner = ROOT
 						has_claim_by = ROOT
@@ -296,7 +294,7 @@ federation_of_india.3 = {
 			text = add_claims_on_india_tt
 			every_state = {
 				limit = {
-					is_in_geographic_region = geographic_region_india
+					state_is_in_india = yes
 					NOT = {
 						owner = ROOT
 						has_claim_by = ROOT
@@ -355,7 +353,7 @@ federation_of_india.4 = {
 		any_princely_state = {
 			is_subject_of = ROOT
 			relations:ROOT >= relations_threshold:amicable
-			liberty_desire < define:NDiplomacy|WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_THRESHOLD
+			liberty_desire <= 25
 			is_player = no
 		}
 	}
@@ -366,7 +364,7 @@ federation_of_india.4 = {
 			limit = {
 				is_subject_of = ROOT
 				relations:ROOT >= relations_threshold:amicable
-				liberty_desire < define:NDiplomacy|WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_THRESHOLD
+				liberty_desire <= 25
 				is_player = no
 			}
 			save_scope_as = relevant_princely_state

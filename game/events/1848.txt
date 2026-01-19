@@ -20,7 +20,7 @@
 	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
 
 	trigger = {
-		has_law = law_type:law_monarchy
+		has_law_or_variant = law_type:law_monarchy
 		OR = {
 			is_enacting_law = law_type:law_presidential_republic
 			is_enacting_law = law_type:law_parliamentary_republic
@@ -146,8 +146,6 @@
 		ig:ig_landowners ?= {
 			remove_ideology = ideology_paternalistic
 			remove_ideology = ideology_magnatial
-			remove_ideology = ideology_carlist_ig
-			remove_ideology = ideology_moderantist
 			remove_ideology = ideology_scholar_paternalistic
 			remove_ideology = ideology_junker_paternalistic
 			remove_ideology = ideology_papal_paternalistic
@@ -287,7 +285,7 @@
 		# reactionaries get VERY angry
 		every_interest_group = {
 			limit = {
-				ig_counts_as_marginal = no
+				is_marginal = no
 				law_stance = {
 					law = scope:current_voting_law_scope
 					value > neutral
@@ -427,6 +425,12 @@
 				create_political_movement = { type = movement_radical }
 			}
 		}
+		je:je_springtime_of_the_peoples = {
+			add_modifier = {
+				name = modifier_springtime_of_the_peoples
+				multiplier = 0.5
+			}
+		}
 		add_modifier = {
 			name = suppressing_radicals
 			days = short_modifier_time
@@ -457,14 +461,14 @@
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					can_have_radical_leader = yes
 					is_in_government = no
 				}
 			}
 			random_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					can_have_radical_leader = yes
 					is_in_government = no
 				}
@@ -486,6 +490,11 @@
 					}
 				}
 				create_political_movement = { type = movement_radical }
+			}
+		}
+		je:je_springtime_of_the_peoples = {
+			add_modifier = {
+				name = modifier_springtime_of_the_peoples
 			}
 		}
 		add_radicals = {
@@ -673,7 +682,7 @@
 			has_law_or_variant = law_type:law_secret_police
 			any_interest_group = {
 				is_in_government = no
-				ig_counts_as_marginal = no
+				is_marginal = no
 				leader = {
 					has_ideology = ideology:ideology_radical
 					is_immortal = no
@@ -683,7 +692,7 @@
 		random_interest_group = {
 			limit = {
 				is_in_government = no
-				ig_counts_as_marginal = no
+				is_marginal = no
 				leader = {
 					has_ideology = ideology:ideology_radical
 				}
@@ -740,7 +749,7 @@
 	trigger = {
 		NOT = { has_global_variable = peoples_springtime_happening }
 		NOT = { has_global_variable = peoples_springtime_happened }
-		is_in_geographic_region = geographic_region_europe
+		country_is_in_europe = yes
 		has_technology_researched = egalitarianism
 		has_law_or_variant = law_type:law_autocracy
 
@@ -854,7 +863,7 @@
 	trigger = {
 		NOT = { has_global_variable = peoples_springtime_happening }
 		NOT = { has_global_variable = peoples_springtime_happened }
-		is_in_geographic_region = geographic_region_europe
+		country_is_in_europe = yes
 		has_technology_researched = egalitarianism
 
 		any_interest_group = {
@@ -980,7 +989,7 @@
 	trigger = {
 		NOT = { has_global_variable = peoples_springtime_happening }
 		NOT = { has_global_variable = peoples_springtime_happened }
-		is_in_geographic_region = geographic_region_europe
+		country_is_in_europe = yes
 		has_technology_researched = egalitarianism
 
 		any_interest_group = {

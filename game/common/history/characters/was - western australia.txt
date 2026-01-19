@@ -2,9 +2,6 @@
 	c:WAS ?= {
 		create_character = {
 			template = AST_james_stirling
-			on_created = {
-				set_variable = { name = colonial_governor_term value = 7 }
-			}
 		}	
 
 		create_character = {

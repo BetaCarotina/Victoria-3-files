@@ -22,8 +22,6 @@
 		has_technology_researched = nationalism
 	}
 
-	scripted_button = je_canada_unite_can_button
-
 	complete = {
 		calc_true_if = {
 			amount >= 9
@@ -112,8 +110,6 @@ je_canada_gbr = {
 		has_technology_researched = nationalism
 	}
 
-	scripted_button = je_canada_unite_can_button
-
 	complete = {
 		any_subject_or_below = {
 			calc_true_if = {
@@ -178,8 +174,6 @@ je_australia_aus = {
 		has_technology_researched = nationalism
 	}
 
-	scripted_button = je_australia_unite_aus_button
-
 	complete = {
 		calc_true_if = {
 			amount >= 7
@@ -230,8 +224,6 @@ je_australia_gbr = {
 	possible = {
 		has_technology_researched = nationalism
 	}
-
-	scripted_button = je_australia_unite_aus_button
 
 	complete = {
 		any_subject_or_below = {

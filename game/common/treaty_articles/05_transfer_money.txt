@@ -29,18 +29,6 @@
 		in_default = no
 	}
 
-	requirement_to_maintain = {
-		trigger = {
-			custom_tooltip = {
-				text = "MONEY_TRANSFER_INPUT_QUANTITY_INVALID"
-				scope:article ?= {
-					exists = input_quantity
-					input_quantity > 0
-				}
-			}
-		}
-	}
-
     non_fulfillment = {
         consequences = freeze
 
@@ -92,12 +80,12 @@
 
 	quantity_min_value = {
         value = 100
-		max = fixed_income
+		max = income
 		min = 0
     }
 
     quantity_max_value = {
-        value = fixed_income
+        value = income
 		divide = 4
 
 		if = {
@@ -124,7 +112,7 @@
 			}
 
 			max = {
-				value = net_fixed_income
+				value = weekly_net_fixed_income
 				multiply = 0.25
 			}
 			min = 1000
@@ -223,14 +211,14 @@
 					limit = { exists = scope:article.input_quantity }
 
 					if = {
-						limit = { net_fixed_income < 0 }
+						limit = { weekly_net_fixed_income < 0 }
 
 						multiply = {
 							desc = "DIPLOMATIC_ACCEPTANCE_BUDGET_DEFICIT"
 							value = 1
 
 							add = {
-								value = net_fixed_income
+								value = weekly_net_fixed_income
 								divide = scope:article.input_quantity
 								multiply = -1
 								max = 0.2
@@ -238,14 +226,14 @@
 						}
 					}
 					else_if = {
-						limit = { net_fixed_income > 0 }
+						limit = { weekly_net_fixed_income > 0 }
 
 						multiply = {
 							desc = "DIPLOMATIC_ACCEPTANCE_BUDGET_SURPLUS"
 							value = 1
 
 							subtract = {
-								value = net_fixed_income
+								value = weekly_net_fixed_income
 								divide = scope:article.input_quantity
 								max = 0.2
 							}
@@ -324,14 +312,14 @@
 					limit = { exists = scope:article.input_quantity }
 
 					if = {
-						limit = { net_fixed_income < 0 }
+						limit = { weekly_net_fixed_income < 0 }
 
 						multiply = {
 							desc = "DIPLOMATIC_ACCEPTANCE_BUDGET_DEFICIT"
 							value = 1
 
 							add = {
-								value = net_fixed_income
+								value = weekly_net_fixed_income
 								divide = scope:article.input_quantity
 								multiply = -1
 								max = 0.2
@@ -339,14 +327,14 @@
 						}
 					}
 					else_if = {
-						limit = { net_fixed_income > 0 }
+						limit = { weekly_net_fixed_income > 0 }
 
 						multiply = {
 							desc = "DIPLOMATIC_ACCEPTANCE_BUDGET_SURPLUS"
 							value = 1
 
 							subtract = {
-								value = net_fixed_income
+								value = weekly_net_fixed_income
 								divide = scope:article.input_quantity
 								max = 0.2
 							}
@@ -464,7 +452,7 @@
 					add = scope:quantity
 					value = {
 						desc = "INFAMY_TARGET_QUANTITY_DEDUCTION_FACTOR"
-						add = scope:target_country.fixed_income
+						add = scope:target_country.income
 						multiply = 0.1
 					}
 					divide = 1000

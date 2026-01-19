@@ -60,33 +60,6 @@ has_no_research_alert = {
 	color = green
 }
 
-major_formable_possible = {
-	script_context = player_country_formation
-	texture = "gfx/interface/icons/alert_icons/formable_possible.dds"
-
-	valid = {
-		is_major_formation = yes
-	}
-
-	open_panel = diplomatic_overview|nation_formation
-	type = alert
-	color = green
-}
-
-formable_possible = {
-	script_context = player_country_formation
-	texture = "gfx/interface/icons/alert_icons/formable_possible.dds"
-
-	valid = {
-		is_major_formation = no
-	}
-
-	open_panel = diplomatic_overview|nation_formation
-	type = important_action
-	color = green
-	alert_group = formables_possible
-}
-
 can_establish_company = {
 	script_context = player_country
 	texture = "gfx/interface/icons/alert_icons/can_establish_company.dds"
@@ -186,11 +159,7 @@ has_no_war_goal_alert = {
 	texture = "gfx/interface/icons/alert_icons/has_no_war_goal.dds"
 
 	valid = {
-		scope:actor = { 
-			should_set_wargoal = {
-				target = root
-			}
-		}
+		scope:actor = { should_set_wargoal = yes }
 	}
 
 	open_panel = diplomatic_play
@@ -702,12 +671,15 @@ state_goods_shortage = {
 
 can_take_decisions = {
 	texture = "gfx/interface/icons/event_icons/event_scales.dds"
-	script_context = player_decision
+	script_context = player_country
+
+	valid = {
+		has_possible_decisions = yes
+	}
 
 	open_panel = journal
 	type = important_action
 	color = green
-	alert_group = can_take_decisions
 }
 
 # Hidden by default
@@ -729,7 +701,7 @@ stockpiling_gold_alert = {
 
 	valid = {
 		gold_reserves > gold_reserves_limit
-		net_fixed_income > 0
+		weekly_net_fixed_income > 0
 	}
 
 	open_panel = budget|default
@@ -743,7 +715,7 @@ can_abdicate_alert = {
 
 	valid = {
 		has_dlc_feature = voice_of_the_people_content
-		has_law = law_type:law_monarchy
+		has_law_or_variant = law_type:law_monarchy
 		exists = heir
 		ruler = {
 			is_immortal = no
@@ -772,7 +744,7 @@ can_resign_alert = {
 	valid = {
 		has_dlc_feature = voice_of_the_people_content
 		NOR = {
-			has_law = law_type:law_monarchy
+			has_law_or_variant = law_type:law_monarchy
 			has_law_or_variant = law_type:law_theocracy
 		}
 		ruler = {
@@ -1004,7 +976,7 @@ may_be_annexed_by_austria = {
 		exists = c:AUS
 		is_subject_of = c:AUS
 		is_subject_type = subject_type_crown_land
-		liberty_desire < define:NDiplomacy|WAR_GOAL_INFAMY_LOW_LIBERTY_DESIRE_THRESHOLD
+		liberty_desire <= 25
 		c:AUS ?= {
 			NOT = {
 				has_variable = crownlands_annexed_var

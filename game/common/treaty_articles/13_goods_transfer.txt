@@ -228,7 +228,7 @@
             request
         }
 
-		combined_acceptance_cap_max = 25
+		combined_acceptance_cap_max = 50
 		combined_acceptance_cap_min = -500
 
 		inherent_accept_score = {
@@ -253,14 +253,13 @@
                     max = {
                         "scope:article.input_market_goods(root)" ?= {
                             add = market_goods_delta
-                            multiply = 0.3
                             add = 10
                         }
                     }
                     multiply = {
                         "scope:article.input_market_goods(root)" ?= {
                             value = ai_treaty_export_value:root
-                            divide = 6 # Have to pay for convoys etc
+                            divide = 4 # Have to pay for convoys etc
                         }
                     }
                     divide = {
@@ -272,9 +271,9 @@
                     max = {
                         "scope:article.input_market_goods(root)" ?= {
                             value = ai_treaty_export_value:root
-                            divide = 6 # Have to pay for convoys etc
+                            divide = 4 # Have to pay for convoys etc
                         }
-                        max = 10
+                        max = 50
                     }
                 }
 
@@ -393,7 +392,6 @@
                         scope:article.input_quantity >= {
                             "scope:article.input_market_goods(root)" ?= {
                                 add = market_goods_delta
-                                multiply = 0.3
                                 add = 10
                             }
                         }
@@ -404,11 +402,10 @@
                         subtract = {
                             "scope:article.input_market_goods(root)" ?= {
                                 add = market_goods_delta
-                                multiply = 0.3
                                 add = 10
                             }
                         }
-                        multiply = 0.25
+                        multiply = 0.5
 
                         if = {
                             limit = {
@@ -475,7 +472,7 @@
                             value = ai_treaty_import_value:root
 							divide = 2
                         }
-						max = 10
+						max = 50
 					}
                 }
 
@@ -578,7 +575,7 @@
                                 add = 10
                             }
                         }
-                        multiply = 0.3
+                        multiply = 0.5
 
                         max = 1000
                     }

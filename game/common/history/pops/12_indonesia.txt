@@ -928,25 +928,37 @@
 	s:STATE_MINDANAO = {
 		region_state:PHI = {
 			create_pop = {
-				culture = spanish
-				size = 12
+				culture = moro
+				religion = sunni
+				size = 30321
 			}
 			create_pop = {
-				culture = filipino_mestizo
-				size = 286
-			}
-			create_pop = {
-				culture = visayan
-				size = 50323
-			}
-			create_pop = {
-				culture = lumad
+				culture = bornean
 				religion = catholic
-				size = 6002
+				size = 4400
 			}
 			create_pop = {
-				culture = lumad
-				size = 41463
+				culture = filipino
+				size = 235800
+			}
+			create_pop = {
+				culture = filipino
+				religion = animist
+				size = 18400
+			}
+			create_pop = {
+				pop_type = slaves
+				culture = filipino
+				religion = animist
+				size = 20208
+			}
+			create_pop = {
+				culture = bornean
+				size = 24053
+			}
+			create_pop = {
+				culture = spanish
+				size = 604
 			}
 		}
 		region_state:MGD = {
@@ -955,36 +967,23 @@
 				size = 206000
 			}
 			create_pop = {
-				culture = filipino_mestizo
-				size = 5800
+				culture = filipino
+				size = 35800
 			}
 			create_pop = {
-				culture = lumad
-				size = 50311
+				culture = filipino
+				religion = animist
+				size = 20311
 			}
 			create_pop = {
 				pop_type = slaves
-				culture = lumad
+				culture = filipino
 				religion = animist
-				size = 10020
+				size = 10000
 			}
 			create_pop = {
 				culture = bornean
 				size = 20004
-			}
-		}
-		region_state:MND = {
-			create_pop = {
-				culture = lumad
-				size = 451311
-			}
-			create_pop = {
-				culture = moro
-				size = 50123
-			}
-			create_pop = {
-				culture = visayan
-				size = 4801
 			}
 		}
 		region_state:SUL = {
@@ -998,12 +997,14 @@
 				size = 9600
 			}
 			create_pop = {
-				culture = lumad
+				culture = filipino
+				religion = animist
 				size = 17200
 			}
 			create_pop = {
 				pop_type = slaves
-				culture = lumad
+				culture = filipino
+				religion = animist
 				size = 6300
 			}
 			create_pop = {
@@ -1015,34 +1016,32 @@
 	s:STATE_LUZON = {
 		region_state:PHI = {
 			create_pop = {
+				culture = filipino
+				size = 1862796
+			}
+			create_pop = {
+				culture = han # nanfaren
+				religion = catholic
+				size = 8000
+			}
+			create_pop = {
 				culture = spanish
-				size = 942
+				size = 8000
 			}
 			create_pop = {
-				culture = filipino_mestizo
-				size = 47548
+				culture = bornean
+				religion = catholic
+				size = 112400
 			}
 			create_pop = {
-			    culture = tagalog
-			    size = 862014
+				culture = moro
+				religion = sunni
+				size = 48000
 			}
 			create_pop = {
-			    culture = ilocano
-			    size = 378006
-			}
-			create_pop = {
-			    culture = visayan
-			    size = 20301
-			}
-			create_pop = {
-			    culture = tagalog
-			    religion = animist
-			    size = 7694
-			}
-			create_pop = {
-			    culture = ilocano
-			    religion = animist
-			    size = 117951
+				pop_type = slaves
+				culture = filipino
+				size = 50000
 			}
 		}
 		region_state:SUL = {
@@ -1052,9 +1051,14 @@
 				size = 31000
 			}
 			create_pop = {
-				culture = lumad
+				culture = filipino
 				religion = animist
-				size = 12000
+				size = 7000
+			}
+			create_pop = {
+				pop_type = slaves
+				culture = filipino
+				size = 5000
 			}
 			create_pop = {
 				culture = yue
@@ -1065,25 +1069,27 @@
 	s:STATE_VISAYAS = {
 		region_state:PHI = {
 			create_pop = {
+				culture = filipino
+				size = 891604
+			}
+			create_pop = {
 				culture = spanish
-				size = 475
+				size = 796
 			}
 			create_pop = {
-				culture = filipino_mestizo
-				size = 26724
+				culture = moro
+				religion = sunni
+				size = 80000
 			}
 			create_pop = {
-				culture = visayan
-				size = 839006
-			}
-			create_pop = {
-				culture = tagalog
-				size = 30001
-			}
-			create_pop = {
-				culture = visayan
+				culture = filipino
 				religion = animist
-				size = 137537
+				size = 40000
+			}
+			create_pop = {
+				pop_type = slaves
+				culture = filipino
+				size = 30000
 			}
 		}
 	}
@@ -1117,44 +1123,6 @@
 			create_pop = {
 				culture = polynesian
 				size = 360
-			}
-		}
-		region_state:PHI = {
-			# Guam, based off 1830 census
-			create_pop = {
-				culture = micronesian # Natives
-				religion = catholic
-				size = 2612
-			}
-			create_pop = {
-				culture = filipino_mestizo # Mixed (Spanish, Filipino, Natives)
-				size = 1007
-			}
-			create_pop = {
-				culture = spanish # Spanish / Mestizo
-				size = 5
-			}
-			create_pop = {
-				culture = visayan # Filipinos
-				size = 2612
-			}
-			# Palau, could not find detailed information, likely below 6000 (late 19th century), with some Filipinos
-			create_pop = {
-				culture = micronesian # Natives
-				religion = catholic
-				size = 923
-			}
-			create_pop = {
-				culture = micronesian # Natives
-				size = 1432
-			}
-			create_pop = {
-				culture = filipino_mestizo # Mixed (Spanish, Filipino, Natives)
-				size = 62
-			}
-			create_pop = {
-				culture = visayan # Filipinos
-				size = 341
 			}
 		}
 	}

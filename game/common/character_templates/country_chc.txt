@@ -23,6 +23,7 @@ CIR_Ismail_Berzeg = {
 }
 
 CIR_Hawduqo_Mansur = {
+	is_general = yes
 	first_name = "Hawduqo"
 	last_name = "Mansur"
 	historical = yes

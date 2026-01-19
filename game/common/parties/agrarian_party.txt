@@ -10,49 +10,49 @@ agrarian_party = {
 				desc = party_irish_national_land_league
 				trigger = {
 					exists = c:IRE
-					c:IRE ?= THIS
+					THIS = c:IRE
 				}
 			}
 			triggered_desc = {
 				desc = party_independent_agriculture_party
 				trigger = {
 					exists = c:GBR
-					c:GBR ?= THIS
+					THIS = c:GBR
 				}
 			}
 			triggered_desc = {
 				desc = party_farmers_party
 				trigger = {
 					exists = c:NOR
-					c:NOR ?= THIS
+					THIS = c:NOR
 				}
 			}
 			triggered_desc = {
 				desc = party_free_peoples_party
 				trigger = {
 					exists = c:DEN
-					c:DEN ?= THIS
+					THIS = c:DEN
 				}
 			}
 			triggered_desc = {
 				desc = party_farmers_league
 				trigger = {
 					exists = c:SWE
-					c:SWE ?= THIS
+					THIS = c:SWE
 				}
 			}
 			triggered_desc = {
 				desc = party_peoples_party
 				trigger = {
 					exists = c:FIN
-					c:FIN ?= THIS
+					THIS = c:FIN
 				}
 			}
 			triggered_desc = {
 				desc = party_agrarian_and_farmer_party
 				trigger = {
 					exists = c:FRA
-					c:FRA ?= THIS
+					THIS = c:FRA
 				}
 			}
 			triggered_desc = {
@@ -69,7 +69,7 @@ agrarian_party = {
 				desc = party_fatherland_front
 				trigger = {
 					exists = c:AUS
-					c:AUS ?= THIS
+					THIS = c:AUS
 					any_interest_group = {
 						is_in_government = yes
 						party ?= {
@@ -84,7 +84,7 @@ agrarian_party = {
 				desc = party_landbund
 				trigger = {
 					exists = c:AUS
-					c:AUS ?= THIS
+					THIS = c:AUS
 					NAND = {
 						any_interest_group = {
 							is_in_government = yes
@@ -101,28 +101,28 @@ agrarian_party = {
 				desc = party_national_peasant_accord
 				trigger = {
 					exists = c:SER
-					c:SER ?= THIS
+					THIS = c:SER
 				}
 			}
 			triggered_desc = {
 				desc = party_agrarian_national_union
 				trigger = {
 					exists = c:BUL
-					c:BUL ?= THIS
+					THIS = c:BUL
 				}
 			}
 			triggered_desc = {
 				desc = party_national_farmer_party
 				trigger = {
 					exists = c:HUN
-					c:HUN ?= THIS
+					THIS = c:HUN
 				}
 			}
 			triggered_desc = {
 				desc = party_peoples_party
 				trigger = {
 					exists = c:USA
-					c:USA ?= THIS
+					THIS = c:USA
 				}
 			}
 			triggered_desc = {
@@ -184,7 +184,7 @@ agrarian_party = {
 		owner = {
 			country_has_voting_franchise = yes
 			ig:ig_rural_folk ?= {
-				ig_counts_as_marginal = no
+				is_marginal = no
 			}
 		}
 	}
@@ -220,7 +220,7 @@ agrarian_party = {
 		if = {
 			limit = {
 				owner = {
-					is_in_geographic_region = geographic_region_south_america
+					country_is_in_south_america = yes
 					any_primary_culture = {
 						has_discrimination_trait = language_hispanophone
 					}
@@ -234,7 +234,7 @@ agrarian_party = {
 		if = {
 			limit = {
 				owner = {
-					is_in_geographic_region = geographic_region_north_america
+					country_is_in_north_america = yes
 					OR = {
 						country_has_primary_culture = cu:yankee
 						country_has_primary_culture = cu:dixie
@@ -373,7 +373,6 @@ agrarian_party = {
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_meritocratic
-					has_ideology = ideology:ideology_cartist
 					has_ideology = ideology:ideology_agrarian
 					leader ?= {
 						has_ideology = ideology:ideology_social_democrat
@@ -470,9 +469,9 @@ agrarian_party = {
 					has_ideology = ideology:ideology_particularist
 					leader ?= {
 						OR = {
-						has_ideology = ideology:ideology_abolitionist
-						has_ideology = ideology:ideology_social_democrat
-						has_ideology = ideology:ideology_communist
+								has_ideology = ideology:ideology_abolitionist
+								has_ideology = ideology:ideology_social_democrat
+								has_ideology = ideology:ideology_communist
 								has_ideology = ideology:ideology_vanguardist
 						}
 					}
@@ -520,21 +519,6 @@ agrarian_party = {
 				desc = "from_no_rural_folk_in_party" # this should probably never actually display in game because the party won't exist
 			}
 		}
-		if = { # Carlists and Miguelists were against participating in electoral politics for a good while
-			limit = {
-				NOT = { owner = { has_technology_researched = political_agitation } }
-				leader = {
-					OR = {
-						has_ideology = ideology:ideology_carlist
-						has_ideology = ideology:ideology_miguelist
-					}
-				}
-			}
-			add = {
-				value = -20
-				desc = "from_traditionalist_monarchism"
-			}
-		}
 		if = {
 			limit = {
 				is_interest_group_type = ig_rural_folk
@@ -549,7 +533,7 @@ agrarian_party = {
 			limit = {
 				scope:number = 1
 				is_powerful = no
-				ig_counts_as_marginal = no
+				is_marginal = no
 			}
 			multiply = {
 				value = 2

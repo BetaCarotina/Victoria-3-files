@@ -249,7 +249,7 @@ SCN = {
 }
 
 NAV = {
-	states = { STATE_BASQUE_COUNTRY }
+	states = { STATE_NAVARRA }
 
 	ai_will_do = { always = no }
 }
@@ -569,14 +569,6 @@ DOM = {
 	ai_will_do = { always = no }
 }
 
-ATL = {
-	states = { STATE_CENTRAL_CUBA STATE_WESTERN_CUBA STATE_EASTERN_CUBA STATE_PUERTO_RICO STATE_SANTO_DOMINGO }
-
-	required_num_states = 4
-
-	ai_will_do = { always = no }
-}
-
 WIN = {
 	STATES = {
 		STATE_WEST_INDIES
@@ -671,11 +663,7 @@ BRE = {
 }
 
 CUB = {
-	states = {
-		STATE_WESTERN_CUBA
-		STATE_CENTRAL_CUBA
-		STATE_EASTERN_CUBA
-	}
+	states = { STATE_CUBA }
 
 	ai_will_do = { always = no }
 }
@@ -733,17 +721,18 @@ AIN = {
 
 ANL = {
 	states = {
-		STATE_LOWER_ANDALUSIA
-		STATE_UPPER_ANDALUSIA
+		STATE_ANDALUSIA
+		STATE_BADAJOZ
+		STATE_GRANADA
 	}
 	ai_will_do = { always = no }
 }
 
 CAS = {
 	states = {
-		STATE_OLD_CASTILE
-		STATE_NEW_CASTILE
-		STATE_MURCIA
+		STATE_ASTURIAS
+		STATE_CASTILE
+		STATE_TOLEDO
 	}
 
 	ai_will_do = { always = no }
@@ -1979,7 +1968,6 @@ PEU = {
 		STATE_ICA
 		STATE_AREQUIPA
 		STATE_TARAPACA
-		STATE_PASTAZA
 	}
 	ai_will_do = { always = no }
 }
@@ -2439,7 +2427,7 @@ DFR = {
 
 ASH = {
 	states = {
-		STATE_GOLD_COAST
+		STATE_GHANA
 	}
 	ai_will_do = { always = no }
 }
@@ -2950,32 +2938,6 @@ BNT = {
 	ai_will_do = { always = no }
 }
 
-ARN = {
-	states = {
-		STATE_ARAGON
-	}
-
-	ai_will_do = { always = no }
-}
-
-LEO = {
-	states = {
-		STATE_LEON
-		STATE_ASTURIAS
-		STATE_EXTREMADURA
-	}
-
-	ai_will_do = { always = no }
-}
-
-ASU = {
-	states = {
-		STATE_ASTURIAS
-	}
-
-	ai_will_do = { always = no }
-}
-
 TRH = { # Turkestan
 	states = {
 		STATE_FERGANA
@@ -2993,40 +2955,4 @@ TRH = { # Turkestan
 	ai_will_do = { always = no }
 
 	required_num_states = 5
-}
-
-FZN = {
-	states = {
-		STATE_LIBYAN_DESERT
-	}
-
-	ai_will_do = { always = no }
-
-	required_num_states = 1
-}
-
-CYR = {
-	states = {
-		STATE_LIBYA
-	}
-
-	ai_will_do = { always = no }
-
-	required_num_states = 1
-}
-
-LBY = {
-	states = {
-		STATE_TRIPOLI
-		STATE_LIBYA
-		STATE_LIBYAN_DESERT
-	}
-
-	possible = {
-		has_technology_researched = nationalism
-	}
-
-	ai_will_do = { always = no }
-
-	required_num_states = 3
 }

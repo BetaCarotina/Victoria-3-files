@@ -7,7 +7,7 @@
 
 	is_shown_when_inactive = {
 		exists = c:CHI
-		c:CHI ?= THIS
+		THIS = c:CHI
 	}
 
 	possible = {
@@ -131,7 +131,7 @@ je_heavenly_kingdom_main = {
 
 	is_shown_when_inactive = {
 		exists = c:CHI
-		c:CHI ?= THIS
+		THIS = c:CHI
 	}
 
 	possible = {
@@ -149,9 +149,8 @@ je_heavenly_kingdom_main = {
 		is_subject = no
 		any_scope_state = {
 			is_incorporated = yes
-			religion_percent_state = {
-				target = rel:protestant
-				value >= 0.01
+			any_scope_pop = {
+				has_pop_religion = protestant
 			}
 			is_capital = no
 			state_region = {
@@ -168,9 +167,8 @@ je_heavenly_kingdom_main = {
 		random_scope_state = {
 			limit = {
 				is_incorporated = yes
-				religion_percent_state = {
-					target = rel:protestant
-					value >= 0.01
+				any_scope_pop = {
+					has_pop_religion = protestant
 				}
 				is_capital = no
 				state_region = {
@@ -214,9 +212,10 @@ je_heavenly_kingdom_main = {
 		any_scope_state = {
 			AND = {
 				has_modifier = god_worshippers
-				religion_percent_state = {
-					target = rel:protestant
-					value >= 0.01
+				hidden_trigger = {
+					any_scope_pop = {
+						has_pop_religion = protestant
+					}
 				}
 				state_religious_acceptance = {
 	 				target = rel:protestant
@@ -245,14 +244,16 @@ je_taiping = {
 	complete = {
 		custom_tooltip = {
 			text = taiping_destroyed
-			NOT = {
-				exists = c:TPG
+			hidden_trigger = {
+				NOT = {
+					exists = c:TPG
+				}
 			}
 		}
 	}
 
 	immediate = {
-		c:TPG ?= {
+		c:TPG = {
 			save_scope_as = taiping_scope
 		}
 	}
@@ -276,7 +277,7 @@ je_taiping = {
 		}
 		hidden_effect = {
 			remove_modifier = taiping_taiping_rebellion
-			c:TPG ?= {
+			c:TPG = {
 				remove_modifier = taiping_taiping_rebellion
 			}
 		}
@@ -297,8 +298,10 @@ je_taiping_revolution = {
 		OR = {
 			custom_tooltip = {
 				text = china_destroyed
-				NOT = {
-					exists = c:CHI
+				hidden_trigger = {
+					NOT = {
+						exists = c:CHI
+					}
 				}
 			}
 			AND = {
@@ -310,7 +313,7 @@ je_taiping_revolution = {
 	}
 
 	immediate = {
-		c:CHI ?= {
+		c:CHI = {
 			save_scope_as = china_scope
 		}
 	}

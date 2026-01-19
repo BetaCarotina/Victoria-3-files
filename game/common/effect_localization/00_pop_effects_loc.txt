@@ -33,7 +33,6 @@ convert_population = {
 
 change_pop_culture = {
 	global = CHANGE_POP_CULTURE
-	third = CHANGE_POP_CULTURE
 }
 
 move_pop = {

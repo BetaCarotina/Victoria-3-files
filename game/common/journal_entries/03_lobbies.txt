@@ -496,9 +496,8 @@ je_anti_lobby_demand = {
 	}
 
 	invalid = {
-		NAND = {
+		NOT = {
 			exists = scope:target
-			exists = scope:relevant_lobby
 		}
 	}
 

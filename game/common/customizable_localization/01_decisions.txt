@@ -5,7 +5,7 @@
 	text = {
 		trigger = {
 			exists = c:USA
-			c:USA ?= THIS
+			this = c:USA
 			owns_entire_state_region = STATE_CALIFORNIA
 		}
 

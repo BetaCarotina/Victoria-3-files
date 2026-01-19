@@ -305,7 +305,7 @@ place_event = {
 	random_valid = yes
 	text = {
 		trigger = {
-			has_law = law_type:law_monarchy
+			has_law_or_variant = law_type:law_monarchy
 		}
 		localization_key = place_event_palace
 	}
@@ -353,7 +353,7 @@ place_event = {
 	text = {
 		trigger = {
 			exists = c:SWE
-			c:SWE ?= THIS
+			this = c:SWE
 			owns_entire_state_region = STATE_SVEALAND
 		}
 		localization_key = place_event_gamla_stan
@@ -362,7 +362,7 @@ place_event = {
 	text = {
 		trigger = {
 			exists = c:SWE
-			c:SWE ?= THIS
+			this = c:SWE
 			owns_entire_state_region = STATE_SVEALAND
 		}
 		localization_key = place_event_gustav
@@ -371,7 +371,7 @@ place_event = {
 	text = {
 		trigger = {
 			exists = c:RUS
-			c:RUS ?= THIS
+			this = c:RUS
 			owns_entire_state_region = STATE_MOSCOW
 		}
 		localization_key = place_event_kremlin
@@ -380,7 +380,7 @@ place_event = {
 	text = {
 		trigger = {
 			exists = c:USA
-			c:USA ?= THIS
+			this = c:USA
 			owns_entire_state_region = STATE_DISTRICT_OF_COLUMBIA
 		}
 		localization_key = place_event_whitehouse
@@ -389,7 +389,7 @@ place_event = {
 	text = {
 		trigger = {
 			exists = c:GBR
-			c:GBR ?= THIS
+			this = c:GBR
 		}
 		localization_key = place_event_houses_of_parliament
 	}
@@ -397,7 +397,7 @@ place_event = {
 	text = {
 		trigger = {
 			exists = c:GBR
-			c:GBR ?= THIS
+			this = c:GBR
 		}
 		localization_key = place_event_jersey
 	}
@@ -405,7 +405,7 @@ place_event = {
 	text = {
 		trigger = {
 			exists = c:BRZ
-			c:BRZ ?= THIS
+			this = c:BRZ
 		}
 		localization_key = place_event_largo
 	}
@@ -413,7 +413,7 @@ place_event = {
 	text = {
 		trigger = {
 			exists = c:NET
-			c:NET ?= THIS
+			this = c:NET
 		}
 		localization_key = place_event_binnenhof
 	}
@@ -443,7 +443,7 @@ assassin_description = {
 	text = {
 		trigger = {
 			exists = c:USA
-			c:USA ?= THIS
+			this = c:USA
 		}
 		localization_key = assassin_description_mkc
 	}
@@ -949,8 +949,8 @@ fiction_cliche = {
 	text = {
 		trigger = {
 			OR = {
-				is_in_geographic_region = geographic_region_europe
-				is_in_geographic_region = geographic_region_north_america
+				country_is_in_europe = yes
+				country_is_in_north_america = yes
 			}
 		}
 		localization_key = fanfic_ship_west
@@ -958,7 +958,7 @@ fiction_cliche = {
 
 	text = {
 		trigger = {
-			is_in_geographic_region = geographic_region_south_america
+			country_is_in_south_america = yes
 		}
 		localization_key = fanfic_ship_south_america
 	}

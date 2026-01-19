@@ -1325,29 +1325,15 @@ types military_formation_panel_types
 		}
 
 		### DEBUG INFO
-		flowcontainer = {
+		textbox = {
+			parentanchor = hcenter
+			text = "FORMATION_PANEL_DEBUG_INFO"
+			maximumsize = { @panel_width -1 }
 			max_width = @panel_width_minus_10
-			direction = vertical
+			autoresize = yes
+			multiline = yes
+			align = left|nobaseline
 			visible = "[InDebugMode]"
-
-			textbox = {
-				text = "[MilitaryFormation.GetCommonDebugInfo]"
-				maximumsize = { @panel_width -1 }
-				max_width = @panel_width_minus_10
-				autoresize = yes
-				multiline = yes
-				align = left|nobaseline
-			}
-
-			textbox = {
-				visible = "[Not(MilitaryFormation.GetCountry.IsPlayer)]"
-				text = "[MilitaryFormation.GetAIDebugInfo]"
-				maximumsize = { @panel_width -1 }
-				max_width = @panel_width_minus_10
-				autoresize = yes
-				multiline = yes
-				align = left|nobaseline
-			}
 		}
 	}
 
@@ -3801,7 +3787,7 @@ types military_formation_panel_types
 				visible = "[MilitaryFormation.GetCountry.IsLocalPlayer]"
 				onclick = "[PopupManager.ShowMilitaryFormationChangeName(MilitaryFormation.Self)]"
 				size = { 80 80 }
-
+			
 				icon = {
 					size = { 80 80 }
 					texture = "[MilitaryFormation.GetFlag]"
@@ -4005,7 +3991,7 @@ types military_formation_panel_types
 				spacing = @military_formation_grid_spacing
 				parentanchor = hcenter
 
-
+				
 				header_grid_item = {
 					tooltip = "MILITARY_FORMATION_EXPENSE_TOOLTIP_TAG"
 
@@ -4034,7 +4020,7 @@ types military_formation_panel_types
 						organization_bar = {
 							using = formation_item_progressbar_size
 							parentanchor = vcenter
-
+							
 							blockoverride "organization_value" {
 								value = "[FixedPointToFloat( MilitaryFormation.GetOrganizationPercentage )]"
 							}
@@ -4066,7 +4052,7 @@ types military_formation_panel_types
 						organization_bar = {
 							using = formation_item_progressbar_size
 							parentanchor = vcenter
-
+							
 							blockoverride "organization_value" {
 								value = "[MilitaryFormation.GetSupplyRaw]"
 							}
@@ -4534,7 +4520,6 @@ types military_formation_panel_types
 		### CONSCRIPTION ICON
 		icon_with_background_big = {
 			parentanchor = vcenter
-			enabled = "[IsValid( MilitaryFormation.RaiseConscripts )]"
 
 			block "mobilization_icon_size" {
 				size = { 80 80 }
@@ -4632,7 +4617,6 @@ types military_formation_panel_types
 
 		icon_with_background_big = {
 			parentanchor = vcenter
-			enabled = "[IsValid( MilitaryFormation.Mobilize )]"
 
 			block "mobilization_icon_size" {
 				size = { 80 80 }
@@ -5188,7 +5172,7 @@ types mobilization
 
 types formation_header {
 	type header_grid_item = widget {
-		size = { 140 30 }
+		size = { 140 30 } 
 
 		textbox = {
 			block "text_maximumsize" {

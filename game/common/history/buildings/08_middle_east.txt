@@ -15,7 +15,7 @@
 				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barrack"
+				building="building_barracks"
 				add_ownership={
 					country={
 						country="c:NEJ"
@@ -52,9 +52,9 @@
 					}
 				}
 				reserves=1
-			}
+			}			
 			create_building={
-				building="building_shipyard"
+				building="building_shipyards"
 				add_ownership={
 					building={
 						type="building_financial_district"
@@ -80,7 +80,7 @@
 				activate_production_methods={ "pm_fishing_trawlers" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barrack"
+				building="building_barracks"
 				add_ownership={
 					country={
 						country="c:OMA"
@@ -119,7 +119,7 @@
 				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barrack"
+				building="building_barracks"
 				add_ownership={
 					country={
 						country="c:ABU"
@@ -185,10 +185,10 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
+				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
 			}
 			create_building={
-				building="building_barrack"
+				building="building_barracks"
 				add_ownership={
 					country={
 						country="c:ZAI"
@@ -211,7 +211,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
+				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
 			}
 		}
 		region_state:LAH={
@@ -226,7 +226,7 @@
 					}
 				}
 				reserves=1
-				activate_production_methods={ "coffee_plantation_dry_process" "pm_road_carts"  }
+				activate_production_methods={ "default_building_coffee_plantation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_port"
@@ -249,7 +249,7 @@
 					}
 				}
 				reserves=1
-			}
+			}			
 		}
 		region_state:MAH={
 		}
@@ -272,7 +272,7 @@
 				activate_production_methods={ "pm_open_air_stockyards" "pm_simple_ranch" "pm_standard_fences" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barrack"
+				building="building_barracks"
 				add_ownership={
 					country={
 						country="c:HDJ"
@@ -287,7 +287,7 @@
 	s:STATE_HAIL={
 		region_state:JAB={
 			create_building={
-				building="building_barrack"
+				building="building_barracks"
 				add_ownership={
 					country={
 						country="c:JAB"
@@ -313,7 +313,7 @@
 				activate_production_methods={ "pm_simple_fishing" "pm_unrefrigerated"  }
 			}
 			create_building={
-				building="building_barrack"
+				building="building_barracks"
 				add_ownership={
 					country={
 						country="c:NEJ"
@@ -339,6 +339,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
+			}
+			create_building={
+				building="building_vineyard_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:TUR"
+						levels=1
+						region="STATE_CYPRUS"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_vineyard_plantation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_port"
@@ -487,10 +500,10 @@
 				activate_production_methods={ "pm_forest_glass"  "pm_manual_glassblowing" "pm_ceramics" }
 			}
 			create_building={
-				building="building_textile_mill"
+				building="building_textile_mills"
 				add_ownership={
 					building={
-						type="building_textile_mill"
+						type="building_textile_mills"
 						country="c:EGY"
 						levels=1
 						region="STATE_SYRIA"
@@ -597,10 +610,10 @@
 	s:STATE_BAGHDAD={
 		region_state:TUR={
 			create_building={
-				building="building_textile_mill"
+				building="building_textile_mills"
 				add_ownership={
 					building={
-						type="building_textile_mill"
+						type="building_textile_mills"
 						country="c:TUR"
 						levels=1
 						region="STATE_BAGHDAD"
@@ -765,6 +778,19 @@
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
 			}
 			create_building={
+				building="building_vineyard_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:PER"
+						levels=3
+						region="STATE_FARS"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_vineyard_plantation" "pm_road_carts"  }
+			}
+			create_building={
 				building="building_opium_plantation"
 				add_ownership={
 					building={
@@ -806,6 +832,19 @@
 				}
 				reserves=1
 				activate_production_methods={ "pm_simple_farming" "pm_no_secondary" "pm_tools_disabled"  }
+			}
+			create_building={
+				building="building_vineyard_plantation"
+				add_ownership={
+					building={
+						type="building_manor_house"
+						country="c:PER"
+						levels=1
+						region="STATE_KERMAN"
+					}
+				}
+				reserves=1
+				activate_production_methods={ "default_building_vineyard_plantation" "pm_road_carts"  }
 			}
 			create_building={
 				building="building_dye_plantation"
@@ -1071,10 +1110,10 @@
 	s:STATE_MAZANDARAN={
 		region_state:PER={
 			create_building={
-				building="building_furniture_manufactory"
+				building="building_furniture_manufacturies"
 				add_ownership={
 					building={
-						type="building_furniture_manufactory"
+						type="building_furniture_manufacturies"
 						country="c:PER"
 						levels=2
 						region="STATE_MAZANDARAN"
@@ -1140,10 +1179,10 @@
 	s:STATE_IRAKAJEMI={
 		region_state:PER={
 			create_building={
-				building="building_textile_mill"
+				building="building_textile_mills"
 				add_ownership={
 					building={
-						type="building_textile_mill"
+						type="building_textile_mills"
 						country="c:PER"
 						levels=1
 						region="STATE_IRAKAJEMI"
@@ -1205,10 +1244,10 @@
 				activate_production_methods={ "pm_simple_organization" "pm_professional_bureaucrats" "pm_religious_bureaucrats" }
 			}
 			create_building={
-				building="building_textile_mill"
+				building="building_textile_mills"
 				add_ownership={
 					building={
-						type="building_textile_mill"
+						type="building_textile_mills"
 						country="c:PER"
 						levels=2
 						region="STATE_TABRIZ"
@@ -1362,10 +1401,10 @@
 				activate_production_methods={ "pm_horizontal_drawer_cabinets" "pm_hereditary_bureaucrats" "pm_religious_bureaucrats" }
 			}
 			create_building={
-				building="building_textile_mill"
+				building="building_textile_mills"
 				add_ownership={
 					building={
-						type="building_textile_mill"
+						type="building_textile_mills"
 						country="c:TUR"
 						levels=1
 						region="STATE_HUDAVENDIGAR"
@@ -1375,7 +1414,7 @@
 				activate_production_methods={ "pm_handsewn_clothes"  "pm_traditional_looms" "pm_no_luxury_clothes" }
 			}
 			create_building={
-				building="building_paper_mill"
+				building="building_paper_mills"
 				add_ownership={
 					building={
 						type="building_financial_district"
@@ -1478,10 +1517,10 @@
 				reserves=1
 			}
 			create_building={
-				building="building_textile_mill"
+				building="building_textile_mills"
 				add_ownership={
 					building={
-						type="building_textile_mill"
+						type="building_textile_mills"
 						country="c:TUR"
 						levels=1
 						region="STATE_AYDIN"
@@ -1491,10 +1530,10 @@
 				activate_production_methods={ "pm_handsewn_clothes"  "pm_traditional_looms" "pm_no_luxury_clothes" }
 			}
 			create_building={
-				building="building_furniture_manufactory"
+				building="building_furniture_manufacturies"
 				add_ownership={
 					building={
-						type="building_furniture_manufactory"
+						type="building_furniture_manufacturies"
 						country="c:TUR"
 						levels=2
 						region="STATE_AYDIN"

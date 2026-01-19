@@ -47,9 +47,7 @@ pillager = {
 
 	command_modifier = {
 		character_supply_route_cost_mult = -0.5
-		character_battle_condition_guerilla_ambush_mult = 8
 		unit_devastation_mult = 0.25
-		character_popularity_add = -10
 	}
 
 	possible = {
@@ -72,7 +70,6 @@ surveyor = {
 	command_modifier = {
 		battle_offense_owned_province_mult = 0.1
 		battle_defense_owned_province_mult = 0.1
-		character_battle_condition_guerilla_ambush_mult = 4
 		character_battle_condition_charted_terrain_mult = 2
 		character_battle_condition_good_visibility_mult = 1
 	}
@@ -95,7 +92,6 @@ forest_commander = {
 
 	command_modifier = {
 		unit_defense_forested_mult = 0.25
-		character_battle_condition_guerilla_ambush_mult = 4
 	}
 
 	possible = {
@@ -138,7 +134,6 @@ mountain_commander = {
 
 	command_modifier = {
 		unit_defense_elevated_mult = 0.25
-		character_battle_condition_guerilla_ambush_mult = 4
 	}
 
 	possible = {
@@ -165,7 +160,6 @@ basic_artillery_commander = {
 		unit_combat_unit_type_mobile_artillery_offense_mult = 0.05
  		character_battle_condition_aggressive_maneuver_mult = 1
  		character_battle_condition_mud_mult = 0.5
- 		character_popularity_add = 5
  	}
 
  	possible = {
@@ -287,7 +281,6 @@ experienced_artillery_commander = {
 		unit_combat_unit_type_mobile_artillery_offense_mult = 0.1
 		character_battle_condition_aggressive_maneuver_mult = 2
 		character_battle_condition_mud_mult = 0.5
-		character_popularity_add = 10
 	}
 
 	possible = {
@@ -385,7 +378,6 @@ expert_artillery_commander = {
 		unit_combat_unit_type_mobile_artillery_offense_mult = 0.15
 		character_battle_condition_aggressive_maneuver_mult = 3
 		character_battle_condition_mud_mult = 0.5
-		character_popularity_add = 20
 	}
 
 	possible = {
@@ -461,7 +453,6 @@ stalwart_defender = {
 
 	command_modifier = {
 		unit_defense_mult = 0.1
-		character_popularity_add = 5
 	}
 
 	possible = {
@@ -583,7 +574,6 @@ basic_offensive_planner = {
 
 	command_modifier = {
 		unit_offense_mult = 0.05
-		character_popularity_add = 5
 	}
 
 	possible = {
@@ -614,7 +604,6 @@ experienced_offensive_planner = {
 	command_modifier = {
 		unit_offense_mult = 0.1
 		character_battle_condition_surprise_maneuver_mult = 0.5
-		character_popularity_add = 10
 	}
 
 	possible = {
@@ -638,7 +627,6 @@ expert_offensive_planner = {
 	command_modifier = {
 		unit_offense_mult = 0.2
 		character_battle_condition_surprise_maneuver_mult = 1.5
-		character_popularity_add = 20
 	}
 
 	possible = {
@@ -663,7 +651,6 @@ basic_defensive_strategist = {
 		unit_defense_mult = 0.1
 		character_battle_condition_dug_in_mult = 1
 		character_battle_condition_camouflaged_mult = 1
-		character_popularity_add = 5
 	}
 
 	possible = {
@@ -695,7 +682,6 @@ experienced_defensive_strategist = {
 		unit_defense_mult = 0.2
 		character_battle_condition_dug_in_mult = 2
 		character_battle_condition_camouflaged_mult = 2
-		character_popularity_add = 10
 	}
 
 	possible = {
@@ -720,7 +706,6 @@ expert_defensive_strategist = {
 		unit_defense_mult = 0.3
 		character_battle_condition_dug_in_mult = 3
 		character_battle_condition_camouflaged_mult = 3
-		character_popularity_add = 20
 	}
 
 	possible = {
@@ -746,7 +731,6 @@ basic_naval_commander = {
 	command_modifier = {
 		unit_offense_mult = 0.1
 		unit_defense_mult = 0.1
-		character_popularity_add = 5
 	}
 
 	possible = {
@@ -778,7 +762,6 @@ experienced_naval_commander = {
 		unit_offense_mult = 0.2
 		unit_defense_mult = 0.2
 		character_battle_condition_rough_waters_mult = -0.25
-		character_popularity_add = 10
 	}
 
 	possible = {
@@ -804,7 +787,6 @@ expert_naval_commander = {
 		unit_defense_mult = 0.3
 		character_battle_condition_rough_waters_mult = -0.5
 		character_blockade_mult = 0.1
-		character_popularity_add = 20
 	}
 
 	possible = {
@@ -828,7 +810,6 @@ convoy_raider_commander = {
 	command_modifier = {
 		character_convoy_raiding_mult = 0.1
 		unit_combat_unit_type_submarine_offense_mult = 0.1
-		character_popularity_add = 5
 	}
 
 	possible = {
@@ -870,7 +851,6 @@ experienced_convoy_raider = {
 	command_modifier = {
 		character_convoy_raiding_mult = 0.5
 		unit_combat_unit_type_submarine_offense_mult = 0.15
-		character_popularity_add = 10
 	}
 
 	possible = {
@@ -906,7 +886,6 @@ expert_convoy_raider = {
 	command_modifier = {
 		character_convoy_raiding_mult = 1.5
 		unit_combat_unit_type_submarine_offense_mult = 0.25
-		character_popularity_add = 20
 	}
 
 	possible = {
@@ -1050,7 +1029,7 @@ celebrity_commander = {
 
 	character_modifier = {
 		character_command_limit_mult = 0.3
-		character_popularity_add = 30	# More popularity for being popular is intentional
+		character_popularity_add = 25	# More popularity for being popular is intentional
 	}
 
 	# Reminder: this would only come into effect if this Commander is or becomes a Ruler
@@ -1408,10 +1387,6 @@ basic_political_operator = {
 		country_authority_mult = 0.05
 	}
 
-	command_modifier = {
-		character_coup_strength_mult = 0.05
-	}
-
 	agitator_modifier = {
 		political_movement_pop_attraction_mult = 0.05
 	}
@@ -1468,10 +1443,6 @@ experienced_political_operator = {
 		country_authority_mult = 0.1
 	}
 
-	command_modifier = {
-		character_coup_strength_mult = 0.10
-	}
-
 	agitator_modifier = {
 		political_movement_pop_attraction_mult = 0.10
 	}
@@ -1523,10 +1494,6 @@ expert_political_operator = {
 
 	country_modifier = {
 		country_authority_mult = 0.2
-	}
-
-	command_modifier = {
-		character_coup_strength_mult = 0.15
 	}
 
 	agitator_modifier = {
@@ -1680,7 +1647,7 @@ explorer = {
 	texture = "gfx/interface/icons/character_trait_icons/explorer.dds"
 
 	character_modifier = {
-		character_popularity_add = 20
+		character_popularity_add = 15
 		character_expedition_events_explorer_mult = 2
 	}
 
@@ -1924,7 +1891,6 @@ engineer = {
 
 	executive_modifier = {
 		building_group_bg_heavy_industry_throughput_add = 0.1
-		building_group_bg_military_industry_throughput_add = 0.1
 	}
 
 	interest_group_modifier = {
@@ -2034,7 +2000,6 @@ political_appointee = {
 	}
 
 	command_modifier = {
-		character_coup_strength_mult = -0.25
 	}
 
 	interest_group_modifier = {
@@ -2073,7 +2038,6 @@ inept = {
 		unit_morale_recovery_mult = -0.25
 		unit_defense_mult = -0.1
 		unit_offense_mult = -0.1
-		character_coup_strength_mult = -0.1
 	}
 
 	interest_group_modifier = {

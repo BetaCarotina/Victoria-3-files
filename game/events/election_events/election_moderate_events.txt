@@ -25,20 +25,16 @@ election_moderate_events.1 = {
 		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
 		NOT = { has_variable = election_event_cooldown }
-		NOT = { has_variable = mute_election_events }
 		any_active_party = {
-			party_has_members = yes
 			OR = {
 				is_party_type = conservative_party
 				is_party_type = liberal_party
 			}
 		}
 		any_active_party = {
-			party_has_members = yes
 			is_party_type = fascist_party
 		}
 		any_active_party = {
-			party_has_members = yes
 			is_party_type = communist_party
 		}
 	}
@@ -50,7 +46,6 @@ election_moderate_events.1 = {
 		}
 		random_active_party = {
 			limit = {
-				party_has_members = yes
 				OR = {
 					is_party_type = conservative_party
 					is_party_type = liberal_party
@@ -70,7 +65,6 @@ election_moderate_events.1 = {
 		scope:moderate_party = {
 			add_momentum = momentum_large
 		}
-		add_electoral_confidence = 0.03
 	}
 
 	# Suggest the political system needs some shaking up, adding momentum to communist, fascist and anarchist parties.
@@ -93,7 +87,6 @@ election_moderate_events.1 = {
 			limit = { exists = py:radical_party }
 			py:radical_party = { add_momentum = momentum_medium }
 		}
-		add_electoral_confidence = -0.03
 	}
 }
 
@@ -122,16 +115,13 @@ election_moderate_events.2 = {
 		NOT = { has_law_or_variant = law_type:law_single_party_state }
 		in_election_campaign = yes
 		NOT = { has_variable = election_event_cooldown }
-		NOT = { has_variable = mute_election_events }
 		any_active_party = {
-			party_has_members = yes
 			OR = {
 				is_party_type = conservative_party
 				is_party_type = liberal_party
 			}
 		}
 		any_active_party = {
-			party_has_members = yes
 			OR = {
 				is_party_type = communist_party
 				is_party_type = social_democrat_party
@@ -157,7 +147,6 @@ election_moderate_events.2 = {
 		}
 		random_active_party = {
 			limit = {
-				party_has_members = yes
 				OR = {
 					is_party_type = conservative_party
 					is_party_type = liberal_party
@@ -167,7 +156,6 @@ election_moderate_events.2 = {
 		}
 		random_active_party = {
 			limit = {
-				party_has_members = yes
 				OR = {
 					is_party_type = communist_party
 					is_party_type = social_democrat_party

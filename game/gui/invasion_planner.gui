@@ -339,7 +339,6 @@ default_popup = {
 							flowcontainer = {
 								visible = "[Not(IsDataModelEmpty(MilitaryFormation.GetCommanders))]"
 								datamodel = "[MilitaryFormation.GetCommanders]"
-								direction = vertical
 
 								item = {
 									textbox = {

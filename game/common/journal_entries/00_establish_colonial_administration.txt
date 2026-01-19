@@ -5,7 +5,7 @@
 
 	is_shown_when_inactive = {
 		NOT = { is_country_type = unrecognized }
-		is_not_in_geographic_region = geographic_region_africa
+		country_is_in_africa = no
 		OR = {
 			has_interest_marker_in_region = sr:region_senegal
 			has_interest_marker_in_region = sr:region_niger
@@ -20,7 +20,7 @@
 		NOT = { is_country_type = unrecognized }
 		is_subject = no
 		any_scope_state = {
-			is_in_geographic_region = geographic_region_africa
+			state_is_in_africa = yes
 		}
 		has_technology_researched = civilizing_mission
 	}

@@ -229,17 +229,12 @@
 		region_state:GBR = {
 			create_pop = {
 				culture = scottish
-				size = 434886
-			}
-			# est. 316680 Scottish Gaels
-			create_pop = {
-				culture = scottish_gaelic
-				size = 237510
+				size = 672396
 			}
 			create_pop = {
-				culture = scottish_gaelic
+				culture = scottish
 				religion = catholic
-				size = 79170
+				size = 8000
 			}
 		}
 	}
@@ -294,16 +289,12 @@
 		region_state:GBR = {
 			create_pop = {
 				culture = scottish
-				size = 1348072
+				size = 1397200
 			}
 			create_pop = {
 				culture = scottish
 				religion = catholic
 				size = 188000
-			}
-			create_pop = {
-				culture = scottish_gaelic
-				size = 49128
 			}
 			create_pop = {
 				culture = irish

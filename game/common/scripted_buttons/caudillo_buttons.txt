@@ -15,8 +15,9 @@
 	effect = {
 		custom_tooltip = {
 			text = gain_caudillo_points
-			je:je_caudillo ?= {
-				add_progress = { value = 100 name = je_caudillo_progress_bar }
+			change_variable = {
+				name = caudillo_var
+				add = 100
 			}
 		}
 		add_modifier = {

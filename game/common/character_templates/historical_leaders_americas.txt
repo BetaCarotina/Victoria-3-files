@@ -35,10 +35,10 @@ mex_juarez_character_template = {
     interest_group_leader_usage = {
         country_trigger = {
             exists = c:MEX
-            c:MEX ?= THIS
+            this = c:MEX
         }
         interest_group_trigger = {
-            ig_counts_as_marginal = no
+            is_marginal = no
             OR = {
                 is_interest_group_type = ig_petty_bourgeoisie
                 is_interest_group_type = ig_intelligentsia

@@ -31,10 +31,8 @@ anarchy.1 = {
 				has_ideology = ideology:ideology_reactionary
 				has_ideology = ideology:ideology_paternalistic
 				has_ideology = ideology:ideology_magnatial
-				has_ideology = ideology:ideology_carlist_ig
-				has_ideology = ideology:ideology_moderantist
 			}
-			ig_counts_as_marginal = no
+			is_marginal = no
 			leader = {
 				is_busy = no
 				is_immortal = no
@@ -52,10 +50,8 @@ anarchy.1 = {
 					has_ideology = ideology:ideology_reactionary
 					has_ideology = ideology:ideology_paternalistic
 					has_ideology = ideology:ideology_magnatial
-					has_ideology = ideology:ideology_carlist_ig
-					has_ideology = ideology:ideology_moderantist
 				}
-				ig_counts_as_marginal = no
+				is_marginal = no
 				leader = {
 					is_busy = no
 					is_immortal = no
@@ -204,7 +200,7 @@ anarchy.2 = {
 			}
 			random_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_dedicated_police
 						value > neutral
@@ -244,7 +240,7 @@ anarchy.2 = {
 			}
 			random_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_no_home_affairs
 						value < neutral
@@ -283,7 +279,7 @@ anarchy.2 = {
 			}
 			random_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_no_colonial_affairs
 						value < neutral
@@ -339,15 +335,10 @@ anarchy.3 = {
 	trigger = {
 		is_enacting_law = law_type:law_anarchy
 		ig:ig_rural_folk ?= {
-			ig_counts_as_marginal = no
+			is_marginal = no
 		}
 		NOT = {
 			has_modifier = mutual_aid
-		}
-		NOT = {
-			currently_enacting_law = {
-				has_amendment = amendment_type:amendment_agricultural_communes
-			}
 		}
 	}
 
@@ -383,12 +374,9 @@ anarchy.3 = {
 	option = { # novel agricultural methods
 		name = anarchy.3.b
 		# agriculture throughput
-		currently_enacting_law = {
-			add_amendment = {
-				type = amendment_agricultural_communes
-				sponsor = scope:farmer_ig
-				cooldown = 120
-			}
+		add_modifier = {
+			name = anarchist_agriculture
+			days = short_modifier_time
 		}
 		# increase success chance
 		add_enactment_modifier = {

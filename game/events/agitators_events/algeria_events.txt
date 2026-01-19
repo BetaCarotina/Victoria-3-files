@@ -86,6 +86,18 @@ algeria_events.1 = {
 		s:STATE_TUNISIA = {
 			add_claim = c:FRA
 		}
+		s:STATE_INNER_MOROCCO = {
+			add_claim = c:FRA
+		}
+		s:STATE_FEZ = {
+			add_claim = c:FRA
+		}
+		s:STATE_MARRAKECH = {
+			add_claim = c:FRA
+		}
+		s:STATE_WEST_SAHARA = {
+			add_claim = c:FRA
+		}
 	}
 	option = { # Focus on migration
 		name = algeria_events.1.b
@@ -138,6 +150,18 @@ algeria_events.1 = {
 			add_claim = c:FRA
 		}
 		s:STATE_TUNISIA = {
+			add_claim = c:FRA
+		}
+		s:STATE_INNER_MOROCCO = {
+			add_claim = c:FRA
+		}
+		s:STATE_FEZ = {
+			add_claim = c:FRA
+		}
+		s:STATE_MARRAKECH = {
+			add_claim = c:FRA
+		}
+		s:STATE_WEST_SAHARA = {
 			add_claim = c:FRA
 		}
 	}
@@ -203,6 +227,18 @@ algeria_events.1 = {
 			add_claim = c:FRA
 		}
 		s:STATE_TUNISIA = {
+			add_claim = c:FRA
+		}
+		s:STATE_INNER_MOROCCO = {
+			add_claim = c:FRA
+		}
+		s:STATE_FEZ = {
+			add_claim = c:FRA
+		}
+		s:STATE_MARRAKECH = {
+			add_claim = c:FRA
+		}
+		s:STATE_WEST_SAHARA = {
 			add_claim = c:FRA
 		}
 	}
@@ -584,7 +620,7 @@ algeria_events.4 = {
 	}
 	option = {
 		name = algeria_events.4.c
-		ig:ig_industrialists ?= {
+		ig:ig_industrialists = {
 			add_modifier = {
 				name = the_algerian_dream
 				days = normal_modifier_time
@@ -638,23 +674,23 @@ algeria_events.5 = {
 		OR = {
 			AND = {
 				exists = c:CON
-				c:CON ?= { relations:root <= relations_threshold:neutral }
-				NOT = {	c:CON ?= { is_subject_of = c:FRA } }
+				c:CON = { relations:root <= relations_threshold:neutral }
+				NOT = {	c:CON = { is_subject_of = c:FRA } }
 			}
 			AND = {
 				exists = c:AIT
-				c:AIT ?= { relations:root <= relations_threshold:neutral }
-				NOT = { c:AIT ?= { is_subject_of = c:FRA } }
+				c:AIT = { relations:root <= relations_threshold:neutral }
+				NOT = { c:AIT = { is_subject_of = c:FRA } }
 			}
 			AND = {
 				exists = c:MAS
-				c:MAS ?= { relations:root <= relations_threshold:neutral }
-				NOT = { c:MAS ?= { is_subject_of = c:FRA } }
+				c:MAS = { relations:root <= relations_threshold:neutral }
+				NOT = { c:MAS = { is_subject_of = c:FRA } }
 			}
 			AND = {
 				exists = c:TUG
-				c:TUG ?= { relations:root <= relations_threshold:neutral }
-				NOT = { c:TUG ?= { is_subject_of = c:FRA } }
+				c:TUG = { relations:root <= relations_threshold:neutral }
+				NOT = { c:TUG = { is_subject_of = c:FRA } }
 			}
 		}
 		any_scope_character = {
@@ -927,7 +963,7 @@ algeria_events.8 = {
 			custom_tooltip = {
 				text = algeria_events.8.tt.1
 				has_variable = algeria_constantine_var
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 			}
 		}
 		set_variable = algeria_deylik_restored
@@ -955,10 +991,10 @@ algeria_events.8 = {
 			custom_tooltip = {
 				text = algeria_events.8.tt.1
 				has_variable = algeria_constantine_var
-				has_law = law_type:law_monarchy
+				has_law_or_variant = law_type:law_monarchy
 				exists = c:TUR
-				c:TUR ?= {
-					has_law = law_type:law_monarchy
+				c:TUR = {
+					has_law_or_variant = law_type:law_monarchy
 				}
 			}
 		}
@@ -967,11 +1003,11 @@ algeria_events.8 = {
 		add_primary_culture = cu:turkish
 		if = {
 			limit = {
-				c:TUR ?= {
+				c:TUR = {
 					is_country_type = recognized
 				}
 			}
-			c:TUR ?= {
+			c:TUR = {
 				create_diplomatic_pact = {
 					country = c:ALD
 					type = puppet
@@ -979,7 +1015,7 @@ algeria_events.8 = {
 			}
 		}
 		else_if = {
-			c:TUR ?= {
+			c:TUR = {
 				create_diplomatic_pact = {
 					country = c:ALD
 					type = vassal
@@ -1135,7 +1171,7 @@ algeria_events.9 = {
 			limit = {
 				region = sr:region_north_africa
 				any_scope_building = {
-				 	is_building_type = building_barrack
+				 	is_building_type = building_barracks
 					level >= 20
 					occupancy >= 0.5
 				}
@@ -1143,7 +1179,7 @@ algeria_events.9 = {
 			save_scope_as = algeria_state_scope
 			random_scope_building = {
 				limit = {
-					is_building_type = building_barrack
+					is_building_type = building_barracks
 				}
 				save_scope_as = legion_barracks
 			}
@@ -1201,7 +1237,7 @@ algeria_events.9 = {
 			limit = {
 				region = sr:region_north_africa
 				any_scope_building = {
-				 	is_building_type = building_barrack
+				 	is_building_type = building_barracks
 					level >= 20
 					occupancy >= 0.5
 				}

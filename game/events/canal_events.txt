@@ -66,6 +66,7 @@ canal_events.2 = { #Getting the offer
 
 	option = { #Yes
 		name = canal_events.2.a
+		default_option = yes
 		trigger = {
 			any_country = {
 				has_variable = suez_canal_var
@@ -85,7 +86,6 @@ canal_events.2 = { #Getting the offer
 
 	option = { #No
 		name = canal_events.2.b
-		default_option = yes
 		trigger = {
 			any_country = {
 				has_variable = suez_canal_var
@@ -234,6 +234,7 @@ canal_events.6 = { #Owner getting the offer
 
 	option = { #Yes
 		name = canal_events.6.a
+		default_option = yes
 		trigger = {
             any_country = {
                 has_variable = panama_canal_var
@@ -253,7 +254,6 @@ canal_events.6 = { #Owner getting the offer
 
 	option = { #No
 		name = canal_events.6.b
-		default_option = yes
 		trigger = {
             any_country = {
                 has_variable = panama_canal_var

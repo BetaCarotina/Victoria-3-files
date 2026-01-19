@@ -1,7 +1,7 @@
 ﻿############# PLANTATIONS
 
 building_coffee_plantation = {
-	building_group = bg_plantations
+	building_group = bg_coffee_plantations
 	icon = "gfx/interface/icons/building_icons/coffee_plantation.dds"
 	required_construction = construction_cost_low
 
@@ -14,8 +14,6 @@ building_coffee_plantation = {
 
 	production_method_groups = {
 		pmg_base_building_coffee_plantation
-		pmg_drying_coffee_plantation
-		pmg_coffee_exploitation
 		pmg_train_automation_building_coffee_plantation
 	}
 	ownership_type = self
@@ -24,7 +22,7 @@ building_coffee_plantation = {
 }
 
 building_cotton_plantation = {
-	building_group = bg_plantations
+	building_group = bg_cotton_plantations
 	icon = "gfx/interface/icons/building_icons/cotton_plantation.dds"
 	required_construction = construction_cost_low
 
@@ -37,7 +35,6 @@ building_cotton_plantation = {
 
 	production_method_groups = {
 		pmg_base_building_cotton_plantation
-		pmg_cotton_exploitation
 		pmg_train_automation_building_cotton_plantation
 	}
 	ownership_type = self
@@ -60,7 +57,7 @@ building_cotton_plantation = {
 }
 
 building_dye_plantation = {
-	building_group = bg_plantations
+	building_group = bg_dye_plantations
 	icon = "gfx/interface/icons/building_icons/dye_plantation.dds"
 	required_construction = construction_cost_low
 
@@ -73,7 +70,6 @@ building_dye_plantation = {
 
 	production_method_groups = {
 		pmg_base_building_dye_plantation
-		pmg_dye_exploitation
 		pmg_train_automation_building_dye_plantation
 	}
 	ownership_type = self
@@ -96,7 +92,7 @@ building_dye_plantation = {
 }
 
 building_opium_plantation = {
-	building_group = bg_plantations
+	building_group = bg_opium_plantations
 	icon = "gfx/interface/icons/building_icons/opium_plantation.dds"
 	required_construction = construction_cost_low
 
@@ -138,7 +134,7 @@ building_opium_plantation = {
 }
 
 building_tea_plantation = {
-	building_group = bg_plantations
+	building_group = bg_tea_plantations
 	icon = "gfx/interface/icons/building_icons/tea_plantation.dds"
 	required_construction = construction_cost_low
 
@@ -151,7 +147,6 @@ building_tea_plantation = {
 
 	production_method_groups = {
 		pmg_base_building_tea_plantation
-		pmg_tea_exploitation
 		pmg_train_automation_building_tea_plantation
 	}
 	ownership_type = self
@@ -174,7 +169,7 @@ building_tea_plantation = {
 }
 
 building_tobacco_plantation = {
-	building_group = bg_plantations
+	building_group = bg_tobacco_plantations
 	icon = "gfx/interface/icons/building_icons/tobacco_plantation.dds"
 	required_construction = construction_cost_low
 
@@ -187,8 +182,6 @@ building_tobacco_plantation = {
 
 	production_method_groups = {
 		pmg_base_building_tobacco_plantation
-		pmg_manufacture_tobacco
-		pmg_working_conditions_tobacco
 		pmg_train_automation_building_tobacco_plantation
 	}
 	ownership_type = self
@@ -211,7 +204,7 @@ building_tobacco_plantation = {
 }
 
 building_sugar_plantation = {
-	building_group = bg_plantations
+	building_group = bg_sugar_plantations
 	icon = "gfx/interface/icons/building_icons/sugar_plantation.dds"
 	required_construction = construction_cost_low
 
@@ -224,8 +217,6 @@ building_sugar_plantation = {
 
 	production_method_groups = {
 		pmg_base_building_sugar_plantation
-		pmg_refinement_building_sugar_plantation
-		pmg_exploitation_sugar
 		pmg_train_automation_building_sugar_plantation
 	}
 	ownership_type = self
@@ -234,7 +225,7 @@ building_sugar_plantation = {
 }
 
 building_banana_plantation = {
-	building_group = bg_plantations
+	building_group = bg_banana_plantations
 	icon = "gfx/interface/icons/building_icons/banana_plantation.dds"
 	required_construction = construction_cost_low
 
@@ -247,7 +238,6 @@ building_banana_plantation = {
 
 	production_method_groups = {
 		pmg_base_building_banana_plantation
-		pmg_banana_exploitation
 		pmg_train_automation_building_banana_plantation
 	}
 	ownership_type = self
@@ -256,7 +246,7 @@ building_banana_plantation = {
 }
 
 building_silk_plantation = {
-	building_group = bg_plantations
+	building_group = bg_silk_plantations
 	icon = "gfx/interface/icons/building_icons/silk_plantation.dds"
 	required_construction = construction_cost_low
 
@@ -270,6 +260,27 @@ building_silk_plantation = {
 	production_method_groups = {
 		pmg_base_building_silk_plantation
 		pmg_train_automation_building_silk_plantation
+	}
+	ownership_type = self
+
+	background = "gfx/interface/icons/building_icons/backgrounds/building_panel_bg_plantations.dds"
+}
+
+building_vineyard_plantation = {
+	building_group = bg_vineyard_plantations
+	icon = "gfx/interface/icons/building_icons/vineyards.dds"
+	required_construction = construction_cost_low
+
+	unlocking_technologies = {
+		enclosure
+	}
+
+	city_type = farm
+	levels_per_mesh = 50
+
+	production_method_groups = {
+		pmg_base_building_vineyard_plantation
+		pmg_train_automation_building_vineyard_plantation
 	}
 	ownership_type = self
 

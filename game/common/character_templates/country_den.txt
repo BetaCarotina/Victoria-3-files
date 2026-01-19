@@ -230,7 +230,7 @@ DEN_arnold_peter_moller = {
 	executive_usage = {
 		country_trigger = {
 			exists = c:DEN
-            c:DEN ?= THIS
+            this = c:DEN
             has_dlc_feature = mp1_content
 		}
 		company_trigger = {

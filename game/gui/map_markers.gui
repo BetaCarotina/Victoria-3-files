@@ -814,16 +814,14 @@ container = {
 		round_progress_default = {
 			parentanchor = center
 			size = { 31 31 }
-			alwaystransparent = yes
 			tooltip = "DEFAULT_EVENT_OPTION"
 			value = "[Event.GetPercentageRemainingDays]"
 		}
 
-		button = {
+		icon = {
 			texture = "[Event.GetEventIcon]"
 			parentanchor = center
 			size = { 25 25 }
-			alwaystransparent = yes
 
 			background = {
 				using = blurry_dark_background
@@ -831,15 +829,13 @@ container = {
 		}
 	}
 
-	button = {
+	widget = {
 		size = { 100% 100% }
-		alwaystransparent = yes
 
-		button = {
+		icon = {
 			visible = "[Or( Or(Event.HasCategory('enactment'), Event.HasCategory('revolution')), LessThanOrEqualTo_int32( Event.GetNumRemainingDays, '(int32)60'))]"
 			using = highlighted_circle_selection_small
 			size = { 110% 110% }
-			alwaystransparent = yes
 		}
 	}
 }
@@ -855,7 +851,7 @@ container = {
 	onmousehierarchyleave = "[AccessHighlightManager.RemoveHighlight]"
 
 	tooltipwidget = {
-		FancyTooltip_WarGoal = {}
+		RegularTooltip_WarGoal = {}
 	}
 
 	background = {
@@ -1947,13 +1943,13 @@ container = {
 		widget = {
 			parentanchor = bottom|hcenter
 			size = { 100% 3 }
-
+			
 			battle_progressbar = {
 				parentanchor = bottom|hcenter
 				position = { 0 7 }
 				visible = "[Not(Battle.HasEnded)]"
 				size = { 90% 3 }
-
+				
 				blockoverride "values" {
 					value = "[Battle.CalcPushOfWar]"
 					min = -1
@@ -2341,7 +2337,7 @@ button = {
 				margin_right = 5
 				visible = "[MilitaryFormation.IsExiled]"
 				parentanchor = vcenter
-
+				
 				icon = {
 					size = { 32 32 }
 					texture = "gfx/interface/icons/military_icons/exiled_state.dds"
@@ -2871,7 +2867,7 @@ container = {
 	state = {
 		name = revolutionary_sound
 		trigger_when = "[PoliticalMovement.IsInsurrectionary]"
-
+		
 		start_sound = {
 			soundeffect = "event:/SFX/DLC/1.3_ip1/UI/item_revolutionary_movt"
 		}
@@ -3715,7 +3711,8 @@ flowcontainer = {
 		visible = "[Or(IsZoomLevelNear, State.IsBeingHighlighted)]"
 
 		icon = {
-			visible = "[State.HasDevastation]"
+			visible = "[State.GetStateRegion.HasDevastation]"
+			datacontext = "[State.GetStateRegion]"
 			tooltip = "TOOLTIP_STATE_DEVASTATION"
 			texture = "gfx/interface/icons/state_status_icons/has_devastation.dds"
 			size = { 30 30 }

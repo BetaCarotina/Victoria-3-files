@@ -9,16 +9,12 @@
 
     is_shown_when_inactive = {
         exists = c:CHI
-        c:CHI ?= THIS
-        has_technology_researched = nationalism
+        THIS = c:CHI
+        has_technology_researched = pan-nationalism
         country_has_primary_culture = cu:manchu
     }
     possible = {
-        has_technology_researched = pan-nationalism
-        radical_fraction = {
-            value >= 0.10
-            culture = cu:han
-        }
+        has_technology_researched = political_agitation
         any_state = {
         	state_region = { is_homeland = cu:han }
 	        NOT = { owner = ROOT }

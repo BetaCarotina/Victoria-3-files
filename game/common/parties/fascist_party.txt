@@ -6,7 +6,7 @@
 				desc = party_austrian_nazi_party
 				trigger = {
 					exists = c:AUS
-					c:AUS ?= THIS
+					THIS = c:AUS
 					any_interest_group = {
 						party ?= {
 							is_party_type = fascist_party
@@ -34,7 +34,7 @@
 				desc = party_greater_german_peoples_party
 				trigger = {
 					exists = c:AUS
-					c:AUS ?= THIS
+					THIS = c:AUS
 					NOT = {
 						any_interest_group = {
 							party ?= {
@@ -64,7 +64,7 @@
 				desc = party_fatherland_front
 				trigger = {
 					exists = c:AUS
-					c:AUS ?= THIS
+					THIS = c:AUS
 					any_interest_group = {
 						is_in_government = yes
 						party ?= {
@@ -79,133 +79,133 @@
 				desc = party_british_union_of_fascists
 				trigger = {
 					exists = c:GBR
-					c:GBR ?= THIS
+					THIS = c:GBR
 				}
 			}
 			triggered_desc = {
 				desc = party_mouvement_franciste
 				trigger = {
 					exists = c:FRA
-					c:FRA ?= THIS
+					THIS = c:FRA
 				}
 			}
 			triggered_desc = {
 				desc = party_national_front
 				trigger = {
 					exists = c:SWI
-					c:SWI ?= THIS
+					THIS = c:SWI
 				}
 			}
 			triggered_desc = {
 				desc = party_nasjonal_samling
 				trigger = {
 					exists = c:NOR
-					c:NOR ?= THIS
+					THIS = c:NOR
 				}
 			}
 			triggered_desc = {
 				desc = party_dnsap
 				trigger = {
 					exists = c:DEN
-					c:DEN ?= THIS
+					THIS = c:DEN
 				}
 			}
 			triggered_desc = {
 				desc = party_lapua_movement
 				trigger = {
 					exists = c:FIN
-					c:FIN ?= THIS
+					THIS = c:FIN
 				}
 			}
 			triggered_desc = {
 				desc = party_national_league_of_sweden
 				trigger = {
 					exists = c:SWE
-					c:SWE ?= THIS
+					THIS = c:SWE
 				}
 			}
 			triggered_desc = {
 				desc = party_national_union
 				trigger = {
 					exists = c:NET
-					c:NET ?= THIS
+					THIS = c:NET
 				}
 			}
 			triggered_desc = {
 				desc = party_rexist_party
 				trigger = {
 					exists = c:BEL
-					c:BEL ?= THIS
+					THIS = c:BEL
 				}
 			}
 			triggered_desc = {
 				desc = party_volksdeutsche_bewegung
 				trigger = {
 					exists = c:LUX
-					c:LUX ?= THIS
+					THIS = c:LUX
 				}
 			}
 			triggered_desc = {
 				desc = party_national_socialist_movement
 				trigger = {
 					exists = c:CHL
-					c:CHL ?= THIS
+					THIS = c:CHL
 				}
 			}
 			triggered_desc = {
 				desc = party_ratnik_party
 				trigger = {
 					exists = c:BUL
-					c:BUL ?= THIS
+					THIS = c:BUL
 				}
 			}
 			triggered_desc = {
 				desc = party_ustasha
 				trigger = {
 					exists = c:CRO
-					c:CRO ?= THIS
+					THIS = c:CRO
 				}
 			}
 			triggered_desc = {
 				desc = party_zbor
 				trigger = {
 					exists = c:SER
-					c:SER ?= THIS
+					THIS = c:SER
 				}
 			}
 			triggered_desc = {
 				desc = party_all_russian_fascist_party
 				trigger = {
 					exists = c:RUS
-					c:RUS ?= THIS
+					THIS = c:RUS
 				}
 			}
 			triggered_desc = {
 				desc = party_argentine_patriotic_league
 				trigger = {
 					exists = c:ARG
-					c:ARG ?= THIS
+					THIS = c:ARG
 				}
 			}
 			triggered_desc = {
 				desc = party_silver_legion
 				trigger = {
 					exists = c:USA
-					c:USA ?= THIS
+					THIS = c:USA
 				}
 			}
 			triggered_desc = {
 				desc = party_freedom_party
 				trigger = {
 					exists = c:CSA
-					c:CSA ?= THIS
+					THIS = c:CSA
 				}
 			}
 			triggered_desc = {
 				desc = party_national_union_of_greece
 				trigger = {
 					exists = c:GRE
-					c:GRE ?= THIS
+					THIS = c:GRE
 				}
 			}
 			triggered_desc = {
@@ -247,17 +247,7 @@
 			triggered_desc = {
 				desc = integralist_party
 				trigger = {
-					c:POR ?= this
-					NOT = {
-						has_technology_researched = mass_propaganda
-					}
-				}
-			}
-			triggered_desc = {
-				desc = national_syndicalist_movement
-				trigger = {
-					c:POR ?= this
-					has_technology_researched = mass_propaganda
+					country_has_primary_culture = cu:portuguese
 				}
 			}
 			triggered_desc = {
@@ -282,12 +272,6 @@
 				desc = integralist_action_party
 				trigger = {
 					country_has_primary_culture = cu:brazilian
-				}
-			}
-			triggered_desc = {
-				desc = circle_trigon_party
-				trigger = {
-					country_has_primary_culture = cu:iberian
 				}
 			}
 			triggered_desc = {
@@ -627,7 +611,6 @@
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_meritocratic
-					has_ideology = ideology:ideology_cartist
 					AND = {
 						has_ideology = ideology:ideology_loyalist
 						owner = {
@@ -662,7 +645,7 @@
 			limit = {
 				scope:number = 1
 				is_powerful = no
-				ig_counts_as_marginal = no
+				is_marginal = no
 			}
 			multiply = {
 				value = 2

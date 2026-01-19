@@ -25,6 +25,8 @@ utilitarian.1 = {
 		}
 	}
 
+	dlc = dlc011
+
 	event_image = {
 		video = "ip2_india_factory_floor"
 	}
@@ -78,7 +80,7 @@ utilitarian.1 = {
 			name = utilitarian_bonus
 			days = long_modifier_time
 		}
-		ig:ig_industrialists ?= {
+		ig:ig_industrialists = {
 			if = {
 				limit = {
 					has_ideology = ideology:ideology_malthusian
@@ -349,7 +351,7 @@ utilitarian.3 = {
 			limit = {
 				var:util_end_var > 2
 			}
-			ig:ig_industrialists ?= {
+			ig:ig_industrialists = {
 				if = {
 					limit = {
 						has_ideology = ideology:ideology_malthusian
@@ -390,7 +392,7 @@ utilitarian.4 = {
 	}
 
 	immediate = {
-		c:BIC ?= {
+		c:BIC = {
 			save_scope_as = bic_scope
 			top_overlord = {
 				save_scope_as = relevant_overlord
@@ -757,7 +759,7 @@ utilitarian.7 = {
 			}
 			save_scope_as = relevant_state
 		}
-		c:BIC ?= {
+		c:BIC = {
 			save_scope_as = bic_scope
 			top_overlord = {
 				save_scope_as = relevant_overlord
@@ -849,7 +851,7 @@ utilitarian.8 = { # Success event for schooling
 	}
 
 	immediate = {
-		c:BIC ?= {
+		c:BIC = {
 			save_scope_as = bic_scope
 			top_overlord = {
 				save_scope_as = relevant_overlord
@@ -1006,7 +1008,7 @@ utilitarian.9 = {
 				save_scope_as = relevant_character
 			}
 		}
-		c:BIC ?= {
+		c:BIC = {
 			save_scope_as = bic_scope
 			top_overlord = {
 				save_scope_as = relevant_overlord

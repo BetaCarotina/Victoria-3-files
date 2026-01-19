@@ -5,7 +5,7 @@
 
 	is_shown_when_inactive = {
 		exists = c:FRA
-		c:FRA ?= THIS
+		this = c:FRA
 		has_dlc_feature = voice_of_the_people_content
 	}
 

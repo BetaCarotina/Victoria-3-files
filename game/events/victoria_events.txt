@@ -27,13 +27,8 @@ victoria.1 = {
 		ruler = {
 			save_scope_as = queen_victoria
 		}
-		if = {
-			limit = {
-				exists = c:HAN
-			}
-			c:GBR ?= { power_bloc ?= { add_leverage = { target = c:HAN value = -1000 } } }
-		}
-		c:HAN ?= {
+		c:GBR = { power_bloc ?= { add_leverage = { target = c:HAN value = -1000 } } }
+		c:HAN = {
 			remove_diplomatic_pact = {
 				country = c:GBR
 				type = personal_union
@@ -67,7 +62,7 @@ victoria.1 = {
 			}
 			save_scope_as = hannover_victoria_scope
 		}
-		c:GBR ?= {
+		c:GBR = {
 			save_scope_as = britain_victoria_country_scope
 		}
 	}
@@ -79,7 +74,7 @@ victoria.1 = {
 			}
 		}
 		show_as_tooltip = {
-			c:HAN ?= {
+			c:HAN = {
 				remove_diplomatic_pact = {
 					country = c:GBR
 					type = personal_union
@@ -100,7 +95,7 @@ victoria.1 = {
 		}
 		custom_tooltip = victoria.1.tt
 		hidden_effect = {
-			c:HAN ?= {
+			c:HAN = {
 				trigger_event = { id = victoria.2 }
 			}
 		}
@@ -144,7 +139,7 @@ victoria.2 = {
 	option = {
 		name = victoria.2.a
 		show_as_tooltip = {
-			c:HAN ?= {
+			c:HAN = {
 				remove_diplomatic_pact = {
 					country = c:GBR
 					type = personal_union

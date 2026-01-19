@@ -28,7 +28,7 @@ nihilism.1 = {
 			}
 			if = {
 				limit = {
-					c:RUS ?= THIS
+					THIS = c:RUS
 					AND = {
 						game_date >= 1862.1.1
 						game_date <= 1882.1.1
@@ -84,7 +84,7 @@ nihilism.1 = {
 			}
 			else_if = {
 				limit = {
-					c:USA ?= THIS
+					THIS = c:USA
 					AND = {
 						game_date >= 1876.1.1
 						game_date <= 1930.1.1
@@ -108,7 +108,7 @@ nihilism.1 = {
 			}
 			else_if = {
 				limit = {
-					c:GBR ?= THIS
+					THIS = c:GBR
 					AND = {
 						game_date >= 1846.1.1
 						game_date <= 1906.1.1
@@ -131,7 +131,7 @@ nihilism.1 = {
 			}
 			else_if = {
 				limit = {
-					c:JAP ?= THIS
+					THIS = c:JAP
 					AND = {
 						game_date >= 1878.1.1
 						game_date <= 1908.1.1
@@ -613,7 +613,7 @@ nihilism.4 = {  #Fathers and Sons
 		}
 		if = {
 			limit = {
-				c:RUS ?= ROOT
+				ROOT = c:RUS
 			}
 			create_character = {
 				first_name = Ivan
@@ -633,7 +633,7 @@ nihilism.4 = {  #Fathers and Sons
 		}
 		else_if = {
 			limit = {
-				c:FRA ?= ROOT
+				ROOT = c:FRA
 				has_variable = orleanist_restoration_var
 			}
 			ig:ig_intelligentsia ?= {
@@ -644,7 +644,7 @@ nihilism.4 = {  #Fathers and Sons
 		}
 		else_if = {
 			limit = {
-				c:FRA ?= ROOT
+				ROOT = c:FRA
 				has_variable = legitimist_restoration_var
 			}
 			ig:ig_intelligentsia ?= {
@@ -655,7 +655,7 @@ nihilism.4 = {  #Fathers and Sons
 		}
 		else_if = {
 			limit = {
-				c:FRA ?= ROOT
+				ROOT = c:FRA
 				has_variable = bonapartist_restoration_var
 			}
 			ig:ig_intelligentsia ?= {
@@ -860,7 +860,7 @@ nihilism.7 = { #Turmoil at universities
 			ig_approval < 0
 		}
 		any_interest_group = {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			law_stance = {
 				law = law_type:law_state_religion
 				value > neutral
@@ -878,7 +878,7 @@ nihilism.7 = { #Turmoil at universities
 	immediate = {
 		random_interest_group = {
 			limit = {
-				ig_counts_as_marginal = no
+				is_marginal = no
 				law_stance = {
 					law = law_type:law_state_religion
 					value > neutral
@@ -1089,7 +1089,7 @@ nihilism.9 = { #Nihilists commit arson on government buildings
 		}
 		random_interest_group = {
 			limit = {
-				ig_counts_as_marginal = no
+				is_marginal = no
 				law_stance = {
 					law = law_type:law_state_religion
 					value > neutral
@@ -1133,7 +1133,7 @@ nihilism.9 = { #Nihilists commit arson on government buildings
 		}
 		random_interest_group = {
 			limit = {
-				ig_counts_as_marginal = no
+				is_marginal = no
 				law_stance = {
 					law = law_type:law_state_religion
 					value > neutral
@@ -1193,7 +1193,7 @@ nihilism.10 = { #Intellectual leader becomes a nihilist
 		}
 		if = {
 			limit = {
-				c:RUS ?= THIS
+				THIS = c:RUS
 				AND = {
 					game_date >= 1858.1.1
 					game_date <= 1875.1.1
@@ -1244,7 +1244,7 @@ nihilism.10 = { #Intellectual leader becomes a nihilist
 		}
 		else_if = {
 			limit = {
-				c:GBR ?= THIS
+				THIS = c:GBR
 				AND = {
 					game_date >= 1853.1.1
 					game_date <= 1891.1.1

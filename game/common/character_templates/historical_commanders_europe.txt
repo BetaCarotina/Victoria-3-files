@@ -17,8 +17,8 @@ bav_general_von_wittelsbach = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:BAV
-			c:BAV ?= THIS
-			c:BAV ?= { has_law = law_type:law_monarchy }
+			this = c:BAV
+			c:BAV = { has_law_or_variant = law_type:law_monarchy }
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -45,13 +45,13 @@ bav_general_von_der_tann = {
 			OR = {
 				AND = {
 					exists = c:BAV
-					c:BAV ?= THIS
+					this = c:BAV
 				}
 				AND = {
 					NOT = { exists = c:BAV }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_BAVARIA }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_BAVARIA }
 				}
 			}
 		}
@@ -80,7 +80,7 @@ bel_general_prisse = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:BEL
-			c:BEL ?= THIS
+			this = c:BEL
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -108,7 +108,7 @@ den_general_rye = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:DEN
-			c:DEN ?= THIS
+			this = c:DEN
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -136,7 +136,7 @@ den_admiral_suenson = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:DEN
-			c:DEN ?= THIS
+			this = c:DEN
 		}
 		role = admiral
 		earliest_usage_date = 1842.1.1
@@ -165,7 +165,7 @@ fra_admiral_courbet = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = admiral
 		earliest_usage_date = 1836.1.1
@@ -192,7 +192,7 @@ fra_admiral_lespes = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = admiral
 		earliest_usage_date = 1860.1.1
@@ -220,7 +220,7 @@ fra_admiral_boue_de_lapeyrere = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = admiral
 		earliest_usage_date = 1883.1.1
@@ -248,7 +248,7 @@ fra_admiral_jaureguiberry = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = admiral
 		earliest_usage_date = 1845.1.1
@@ -276,7 +276,7 @@ fra_general_foch = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = general
 		earliest_usage_date = 1879.1.1
@@ -303,7 +303,7 @@ fra_general_macmahon = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = general
 		earliest_usage_date = 1848.1.1
@@ -330,7 +330,7 @@ fra_general_bazaine = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = general
 		earliest_usage_date = 1848.1.1
@@ -357,7 +357,7 @@ fra_general_de_saint_arnaud = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -384,7 +384,7 @@ fra_general_changarnier = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -404,7 +404,9 @@ fra_general_dorleans = {
 	interest_group = ig_armed_forces
 	birth_date = 1822.1.16
 	on_created = {
-		set_variable = house_orleans
+		set_variable = {
+			name = orleanist_leader
+		}
 	}
 	traits = {
 		experienced_colonial_administrator
@@ -414,7 +416,7 @@ fra_general_dorleans = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:FRA
-			c:FRA ?= THIS
+			this = c:FRA
 		}
 		role = general
 		earliest_usage_date = 1847.1.1
@@ -442,7 +444,7 @@ net_admiral_rijk = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:NET
-			c:NET ?= THIS
+			this = c:NET
 		}
 		role = admiral
 		earliest_usage_date = 1836.1.1
@@ -468,7 +470,7 @@ net_general_de_kock = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:NET
-			c:NET ?= THIS
+			this = c:NET
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -491,7 +493,7 @@ net_general_michiels = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:NET
-			c:NET ?= THIS
+			this = c:NET
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -515,7 +517,7 @@ net_general_list = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:NET
-			c:NET ?= THIS
+			this = c:NET
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -542,7 +544,7 @@ por_general_de_mesquita = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:POR
-			c:POR ?= THIS
+			this = c:POR
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -572,13 +574,13 @@ pru_admiral_von_tirpitz = {
 			OR = {
 				AND = {
 					exists = c:PRU
-					c:PRU ?= THIS
+					this = c:PRU
 				}
 				AND = {
 					NOT = { exists = c:PRU }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_BRANDENBURG }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_BRANDENBURG }
 				}
 			}
 		}
@@ -608,13 +610,13 @@ pru_admiral_von_spee = {
 			OR = {
 				AND = {
 					exists = c:PRU
-					c:PRU ?= THIS
+					this = c:PRU
 				}
 				AND = {
 					NOT = { exists = c:PRU }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_RHINELAND }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_RHINELAND }
 				}
 			}
 		}
@@ -654,9 +656,6 @@ pru_admiral_von_hohenzollern = {
 		latest_usage_date = 1870.1.1
 		chance = 50
 	}
-	on_created = {
-		set_variable = house_hohenzollern
-	}
 }
 pru_general_zu_dohna_schlobitten = {
 	first_name = Karl_Friedrich
@@ -675,7 +674,7 @@ pru_general_zu_dohna_schlobitten = {
 	commander_usage = {
 		country_trigger = {
 			exists = c:PRU
-			c:PRU ?= THIS
+			this = c:PRU
 		}
 		role = general
 		earliest_usage_date = 1836.1.1
@@ -703,13 +702,13 @@ pru_general_von_moltke = { # Moltke the Younger
 			OR = {
 				AND = {
 					exists = c:PRU
-					c:PRU ?= THIS
+					this = c:PRU
 				}
 				AND = {
 					NOT = { exists = c:PRU }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_MECKLENBURG }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_MECKLENBURG }
 				}
 			}
 		}
@@ -740,13 +739,13 @@ pru_general_von_roon = {
 			OR = {
 				AND = {
 					exists = c:PRU
-					c:PRU ?= THIS
+					this = c:PRU
 				}
 				AND = {
 					NOT = { exists = c:PRU }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_POMERANIA }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_POMERANIA }
 				}
 			}
 		}
@@ -776,15 +775,15 @@ pru_general_prince_friedrich_karl = {
 			OR = {
 				AND = {
 					exists = c:PRU
-					c:PRU ?= THIS
-					c:PRU ?= { has_law = law_type:law_monarchy }
+					this = c:PRU
+					c:PRU = { has_law_or_variant = law_type:law_monarchy }
 				}
 				AND = {
 					NOT = { exists = c:PRU }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_POMERANIA }
-					c:GER ?= { has_law = law_type:law_monarchy }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_POMERANIA }
+					c:GER = { has_law_or_variant = law_type:law_monarchy }
 				}
 			}
 		}
@@ -814,13 +813,13 @@ pru_general_von_goeben = {
 			OR = {
 				AND = {
 					exists = c:PRU
-					c:PRU ?= THIS
+					this = c:PRU
 				}
 				AND = {
 					NOT = { exists = c:PRU }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_POMERANIA }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_POMERANIA }
 				}
 			}
 		}
@@ -850,13 +849,13 @@ pru_general_von_hindenburg = {
 			OR = {
 				AND = {
 					exists = c:PRU
-					c:PRU ?= THIS
+					this = c:PRU
 				}
 				AND = {
 					NOT = { exists = c:PRU }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_POSEN }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_POSEN }
 				}
 			}
 		}
@@ -887,13 +886,13 @@ pru_general_ludendorff = {
 			OR = {
 				AND = {
 					exists = c:PRU
-					c:PRU ?= THIS
+					this = c:PRU
 				}
 				AND = {
 					NOT = { exists = c:PRU }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_POSEN }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_POSEN }
 				}
 			}
 		}
@@ -924,13 +923,13 @@ sar_admiral_pellion_di_persano = {
 			OR = {
 				AND = {
 					exists = c:SAR
-					c:SAR ?= THIS
+					this = c:SAR
 				}
 				AND = {
 					NOT = { exists = c:SAR }
 					exists = c:ITA
-					c:ITA ?= THIS
-					c:ITA ?= { owns_entire_state_region = STATE_PIEDMONT }
+					this = c:ITA
+					c:ITA = { owns_entire_state_region = STATE_PIEDMONT }
 				}
 			}
 		}
@@ -958,13 +957,13 @@ sar_general_de_sonnaz = {
 			OR = {
 				AND = {
 					exists = c:SAR
-					c:SAR ?= THIS
+					this = c:SAR
 				}
 				AND = {
 					NOT = { exists = c:SAR }
 					exists = c:ITA
-					c:ITA ?= THIS
-					c:ITA ?= { owns_entire_state_region = STATE_PIEDMONT }
+					this = c:ITA
+					c:ITA = { owns_entire_state_region = STATE_PIEDMONT }
 				}
 			}
 		}
@@ -994,13 +993,13 @@ sar_general_la_marmora = {
 			OR = {
 				AND = {
 					exists = c:SAR
-					c:SAR ?= THIS
+					this = c:SAR
 				}
 				AND = {
 					NOT = { exists = c:SAR }
 					exists = c:ITA
-					c:ITA ?= THIS
-					c:ITA ?= { owns_entire_state_region = STATE_PIEDMONT }
+					this = c:ITA
+					c:ITA = { owns_entire_state_region = STATE_PIEDMONT }
 				}
 			}
 		}
@@ -1029,13 +1028,13 @@ sar_general_bava = {
 			OR = {
 				AND = {
 					exists = c:SAR
-					c:SAR ?= THIS
+					this = c:SAR
 				}
 				AND = {
 					NOT = { exists = c:SAR }
 					exists = c:ITA
-					c:ITA ?= THIS
-					c:ITA ?= { owns_entire_state_region = STATE_PIEDMONT }
+					this = c:ITA
+					c:ITA = { owns_entire_state_region = STATE_PIEDMONT }
 				}
 			}
 		}
@@ -1065,13 +1064,13 @@ sar_general_cadorna = {
 			OR = {
 				AND = {
 					exists = c:SAR
-					c:SAR ?= THIS
+					this = c:SAR
 				}
 				AND = {
 					NOT = { exists = c:SAR }
 					exists = c:ITA
-					c:ITA ?= THIS
-					c:ITA ?= { owns_entire_state_region = STATE_PIEDMONT }
+					this = c:ITA
+					c:ITA = { owns_entire_state_region = STATE_PIEDMONT }
 				}
 			}
 		}
@@ -1099,13 +1098,13 @@ sar_general_chiodo = {
 			OR = {
 				AND = {
 					exists = c:SAR
-					c:SAR ?= THIS
+					this = c:SAR
 				}
 				AND = {
 					NOT = { exists = c:SAR }
 					exists = c:ITA
-					c:ITA ?= THIS
-					c:ITA ?= { owns_entire_state_region = STATE_PIEDMONT }
+					this = c:ITA
+					c:ITA = { owns_entire_state_region = STATE_PIEDMONT }
 				}
 			}
 		}
@@ -1136,13 +1135,13 @@ sax_general_von_hausen = {
 			OR = {
 				AND = {
 					exists = c:SAX
-					c:SAX ?= THIS
+					this = c:SAX
 				}
 				AND = {
 					NOT = { exists = c:SAX }
 					exists = c:GER
-					c:GER ?= THIS
-					c:GER ?= { owns_entire_state_region = STATE_SAXONY }
+					this = c:GER
+					c:GER = { owns_entire_state_region = STATE_SAXONY }
 				}
 			}
 		}
@@ -1173,13 +1172,13 @@ sic_general_diaz = {
 			OR = {
 				AND = {
 					exists = c:SIC
-					c:SIC ?= THIS
+					this = c:SIC
 				}
 				AND = {
 					NOT = { exists = c:SIC }
 					exists = c:ITA
-					c:ITA ?= THIS
-					c:ITA ?= { owns_entire_state_region = STATE_PIEDMONT }
+					this = c:ITA
+					c:ITA = { owns_entire_state_region = STATE_PIEDMONT }
 				}
 			}
 		}

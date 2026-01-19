@@ -419,13 +419,13 @@ types character_types {
 				size = { 100% 100% }
 				using = generic_highlight
 				using = naval_commander_color
-
+				
 				block "frame_texture_historical" {
 					texture = "gfx/interface/portraits/portrait_frame_head_historical_no_info_link.dds"
 				}
 			}
 		}
-
+ 		
  		blockoverride "portrait_frame_on_top_of_portrait" {
 			block "laurel" {
 				icon = {

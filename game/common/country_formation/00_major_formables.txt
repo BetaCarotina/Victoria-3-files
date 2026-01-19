@@ -1,5 +1,5 @@
 ﻿GER = {
-	geographic_region = geographic_region_greater_germany
+	use_culture_states = yes
 
 	is_major_formation = yes
 
@@ -50,7 +50,7 @@
 }
 
 ITA = {
-	geographic_region = geographic_region_italy
+	use_culture_states = yes
 
 	is_major_formation = yes
 
@@ -116,7 +116,7 @@ ITA = {
 }
 
 SCA = {
-	geographic_region = geographic_region_scandinavia
+	use_culture_states = yes
 
 	is_major_formation = yes
 
@@ -155,7 +155,7 @@ SCA = {
 }
 
 FND = {
-	geographic_region = geographic_region_andean_federation
+	use_culture_states = yes
 
 	is_major_formation = yes
 
@@ -165,10 +165,6 @@ FND = {
 	required_states_fraction = 0.8
 
 	ai_will_do = { always = yes }
-
-	potential = {
-		has_dlc_feature = rp1_content
-	}
 
 	possible = {
 		has_journal_entry = je_andean_federation
@@ -205,7 +201,20 @@ FND = {
 }
 
 YUG = {
-	geographic_region = geographic_region_yugoslavia
+	states = {
+		STATE_WESTERN_SERBIA
+		STATE_EASTERN_SERBIA
+		STATE_KOSOVO
+		STATE_SKOPIA
+		STATE_DELVIDEK
+		STATE_MONTENEGRO
+		STATE_BOSNIA
+		STATE_SLAVONIA
+		STATE_DALMATIA
+		STATE_CROATIA
+		STATE_SLOVENIA
+		STATE_ISTRIA
+	}
 
 	is_major_formation = yes
 

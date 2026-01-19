@@ -11,7 +11,7 @@ cholera.1 = {
 				desc = cholera.1.d1
 				trigger = {
 					exists = c:GBR
-					c:GBR ?= THIS
+					this = c:GBR
 				}
 			}
 			triggered_desc = {
@@ -116,9 +116,9 @@ cholera.1 = {
 		name = cholera.1.c
 		trigger = {
 			exists = c:GBR
-			c:GBR ?= THIS
+			THIS = c:GBR
 			ig:ig_intelligentsia ?= {
-				ig_counts_as_marginal = no
+				is_marginal = no
 			}
 		}
 		ig:ig_intelligentsia ?= {

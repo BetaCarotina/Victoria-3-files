@@ -74,8 +74,6 @@ gg_korea.2 = { # Donghak Rebellion
 				is_in_government = yes
 			}
 			order_by = ig_clout
-			position = 0
-			check_range_bounds = no
 			leader = {
 				save_scope_as = gov_leader_scope
 			}
@@ -241,7 +239,7 @@ gg_korea.4 = { # Donghak Petition
 			value >= 0.2
 		}
 		ig:ig_rural_folk ?= {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_in_government = no
 		}
 	}
@@ -474,7 +472,7 @@ gg_korea.7 = { # Korean Uprising
 	duration = 3
 
 	immediate = {
-		c:KOR ?= {
+		c:KOR = {
 			save_scope_as = korea_scope
 			overlord = {
 				save_scope_as = china_scope
@@ -615,8 +613,8 @@ gg_korea.8 = { # Sino-Japanese War - for Japan
 			}
 			save_scope_as = china_scope
 		}
-		c:KOR ?= {
-			ig:ig_industrialists ?= {
+		c:KOR = {
+			ig:ig_industrialists = {
 				leader = {
 					save_scope_as = industrialists_leader_scope
 				}
@@ -705,7 +703,7 @@ gg_korea.9 = { # Sino-Japanese War - for China
 	}
 
 	immediate = {
-		c:JAP ?= {
+		c:JAP = {
 			save_scope_as = japan_scope
 		}
 	}
@@ -807,7 +805,7 @@ gg_korea.9 = { # Sino-Japanese War - for China
 			country = c:JAP
 			value = -50
 		}
-		c:JAP ?= {
+		c:JAP = {
 			set_secret_goal = {
 				country = ROOT
 				secret_goal = conquer
@@ -1032,11 +1030,11 @@ korea_monarchy.3 = { # Queen Myeongseong
 		}
 		if = {
 			limit = {
-				ig:ig_industrialists ?= {
+				ig:ig_industrialists = {
 					is_in_government = no
 				}
 			}
-			ig:ig_industrialists ?= {
+			ig:ig_industrialists = {
 				add_ruling_interest_group = yes
 			}
 		}
@@ -1057,22 +1055,6 @@ korea_monarchy.3 = { # Queen Myeongseong
 					hidden = yes
 				}
 			}
-		}
-	}
-}
-
-korea_monarchy.4 = { # Byeon Yi
-	type = country_event
-	hidden = yes
-	cooldown = { days = never_fire_again_modifier_time }
-	trigger = {
-		ruler ?= {
-			has_template = KOR_yi_hwan
-		}
-	}
-	immediate = {
-		create_character = {
-			template = KOR_yi_byeon
 		}
 	}
 }

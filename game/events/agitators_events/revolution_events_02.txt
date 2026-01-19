@@ -33,17 +33,14 @@ revolution_pulse_events.1 = {
 				law = law_type:law_national_supremacy
 				value > neutral
 			}
-			ig_counts_as_marginal = no
+			is_marginal = no
 		}
 		any_scope_state = {
 			is_incorporated = yes
 			any_scope_culture = {
 				has_homeland = prev
-				ROOT = {
-					country_average_culture_pop_acceptance = {
-						culture = prev
-						value < acceptance_status_4
-					}
+				root = {
+					cultural_acceptance_base = { target = prev value < acceptance_status_4 }
 				}
 			}
 		}
@@ -87,11 +84,8 @@ revolution_pulse_events.1 = {
 				is_incorporated = yes
 				any_scope_culture = {
 					has_homeland = prev
-					ROOT = {
-						country_average_culture_pop_acceptance = {
-							culture = prev
-							value < acceptance_status_4
-						}
+					root = {
+						cultural_acceptance_base = { target = prev value < acceptance_status_4 }
 					}
 				}
 			}
@@ -99,11 +93,8 @@ revolution_pulse_events.1 = {
 			random_scope_culture = {
 				limit = {
 					has_homeland = prev
-					ROOT = {
-						country_average_culture_pop_acceptance = {
-							culture = prev
-							value < acceptance_status_4
-						}
+					root = {
+						cultural_acceptance_base = { target = prev value < acceptance_status_4 }
 					}
 				}
 				save_scope_as = self_defense_threat_culture
@@ -325,7 +316,7 @@ revolution_pulse_events.3 = {
 				trigger = {
 					any_interest_group = {
 						is_insurrectionary = yes
-						ig_counts_as_marginal = no
+						is_marginal = no
 						ig_is_socialist = yes
 						NOT = {
 							any_scope_character = {
@@ -340,7 +331,7 @@ revolution_pulse_events.3 = {
 				trigger = {
 					any_interest_group = {
 						is_insurrectionary = yes
-						ig_counts_as_marginal = no
+						is_marginal = no
 						ig_is_socialist = yes
 						any_scope_character = {
 							has_role = agitator
@@ -371,7 +362,7 @@ revolution_pulse_events.3 = {
 		}
 		any_interest_group = {
 			is_insurrectionary = yes
-			ig_counts_as_marginal = no
+			is_marginal = no
 			ig_is_socialist = yes
 		}
 		any_scope_state = {
@@ -404,7 +395,7 @@ revolution_pulse_events.3 = {
 			limit = {
 				any_interest_group = {
 					is_insurrectionary = yes
-					ig_counts_as_marginal = no
+					is_marginal = no
 					ig_is_socialist = yes
 					any_scope_character = {
 						has_role = agitator
@@ -414,7 +405,7 @@ revolution_pulse_events.3 = {
 			random_interest_group = {
 				limit = {
 					is_insurrectionary = yes
-					ig_counts_as_marginal = no
+					is_marginal = no
 					ig_is_socialist = yes
 					any_scope_character = {
 						has_role = agitator
@@ -433,7 +424,7 @@ revolution_pulse_events.3 = {
 			random_interest_group = {
 				limit = {
 					is_insurrectionary = yes
-					ig_counts_as_marginal = no
+					is_marginal = no
 					ig_is_socialist = yes
 				}
 				save_scope_as = dual_power_ig
@@ -497,7 +488,7 @@ revolution_pulse_events.3 = {
 			scope:armed_forces_ig = {
 				NOR = {
 					is_insurrectionary = yes
-					ig_counts_as_marginal = yes
+					is_marginal = yes
 				}
 			}
 		}
@@ -544,12 +535,12 @@ revolution_pulse_events.4 = {
 	trigger = {
 		any_revolution_ongoing = yes
 		ig:ig_armed_forces ?= {
-			ig_counts_as_marginal = no
+			is_marginal = no
 		}
 		military_wage_level < medium
 		any_scope_state = {
 			any_scope_building = {
-				is_building_type = building_barrack
+				is_building_type = building_barracks
 			}
 			is_incorporated = yes
 		}
@@ -577,14 +568,14 @@ revolution_pulse_events.4 = {
 		random_scope_state = {
 			limit = {
 				any_scope_building = {
-					is_building_type = building_barrack
+					is_building_type = building_barracks
 				}
 				is_incorporated = yes
 			}
 			save_scope_as = soldiers_council_state
 			random_scope_building = {
 				limit = {
-					is_building_type = building_barrack
+					is_building_type = building_barracks
 				}
 				save_scope_as = soldiers_council_building
 			}
@@ -660,11 +651,11 @@ revolution_pulse_events.5 = {
 			civil_war_progress_high = yes
 		}
 		ig:ig_rural_folk ?= {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			ig_approval <= 0
 		}
 		ig:ig_landowners ?= {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = no
 		}
 		any_scope_state = {
@@ -777,7 +768,7 @@ revolution_pulse_events.5 = {
  			civil_war_progress_high = yes
 		}
  		ig:ig_armed_forces ?= {
- 			ig_counts_as_marginal = no
+ 			is_marginal = no
  		}
  		military_wage_level < medium
  		any_scope_state = {
@@ -941,7 +932,7 @@ revolution_pulse_events.7 = {
 			is_in_government = yes
 			ig_approval <= 0
 		}
-		has_law = law_type:law_monarchy
+		has_law_or_variant = law_type:law_monarchy
 		any_civil_war = {
 			is_civil_war_type = revolution
 			civil_war_progress_medium = yes
@@ -1280,12 +1271,12 @@ revolution_pulse_events.9 = {
 		}
 		ig:ig_armed_forces ?= {
 			is_insurrectionary = no
-			ig_counts_as_marginal = no
+			is_marginal = no
 		}
 		any_scope_state = {
 			is_in_revolt = yes
 			any_scope_building = {
-				is_building_type = building_barrack
+				is_building_type = building_barracks
 			}
 		}
 	}
@@ -1312,13 +1303,13 @@ revolution_pulse_events.9 = {
 			limit = {
 				is_in_revolt = yes
 				any_scope_building = {
-					is_building_type = building_barrack
+					is_building_type = building_barracks
 				}
 			}
 			save_scope_as = agitation_af_state
 			random_scope_building = {
 				limit = {
-					is_building_type = building_barrack
+					is_building_type = building_barracks
 				}
 				save_scope_as = agitation_af_building
 			}
@@ -1538,7 +1529,7 @@ revolution_pulse_events.11 = {
 			civil_war_progress_low = yes
 		}
 		ig:ig_armed_forces ?= {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			ig_approval <= 0
 		}
 		has_technology_researched = trench_works
@@ -1573,8 +1564,6 @@ revolution_pulse_events.11 = {
 				has_truce_with = root
 			}
 			order_by = country_rank
-			position = 0
-			check_range_bounds = no
 			save_scope_as = most_recent_opponent_scope
 		}
 	}
@@ -1755,7 +1744,7 @@ revolution_pulse_events.13 = {
 		}
 		country_has_voting_franchise = yes
 		ig:ig_armed_forces ?= {
-			ig_counts_as_marginal = no
+			is_marginal = no
 		}
 		any_scope_state = {
 			turmoil >= 0.25
@@ -1763,7 +1752,7 @@ revolution_pulse_events.13 = {
 		}
 		any_interest_group = {
 			is_insurrectionary = yes
-			ig_counts_as_marginal = no
+			is_marginal = no
 			ig_is_socialist = yes
 		}
 	}
@@ -1788,7 +1777,7 @@ revolution_pulse_events.13 = {
 		random_interest_group = {
 			limit = {
 				is_insurrectionary = yes
-				ig_counts_as_marginal = no
+				is_marginal = no
 				ig_is_socialist = yes
 			}
 			save_scope_as = attacked_ig
@@ -1936,7 +1925,7 @@ revolution_pulse_events.14 = {
 				is_interest_group_type = ig_landowners
 				is_interest_group_type = ig_petty_bourgeoisie
 			}
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_in_government = yes
 		}
 		empty_agitator_slots >= 1
@@ -1972,7 +1961,7 @@ revolution_pulse_events.14 = {
 					is_interest_group_type = ig_landowners
 					is_interest_group_type = ig_petty_bourgeoisie
 				}
-				ig_counts_as_marginal = no
+				is_marginal = no
 				is_in_government = yes
 			}
 			save_scope_as = reactionary_agitator_ig
@@ -2513,7 +2502,7 @@ revolution_pulse_events.18 = {
 		has_technology_researched = political_agitation
 		any_interest_group = {
 			is_insurrectionary = yes
-			ig_counts_as_marginal = no
+			is_marginal = no
 			ig_is_socialist = yes
 		}
 	}
@@ -2552,7 +2541,7 @@ revolution_pulse_events.18 = {
 		random_interest_group = {
 			limit = {
 				is_insurrectionary = yes
-				ig_counts_as_marginal = no
+				is_marginal = no
 				ig_is_socialist = yes
 			}
 			save_scope_as = internationalist_ig
@@ -3010,14 +2999,14 @@ revolution_pulse_events.21 = {
 			}
 		}
 		any_interest_group = {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = yes
 			law_stance = {
 				law = law_type:law_monarchy
 				value < neutral
 			}
 		}
-		has_law = law_type:law_monarchy
+		has_law_or_variant = law_type:law_monarchy
 		any_scope_state = {
 			is_incorporated = yes
 			turmoil > 0.2
@@ -3149,7 +3138,7 @@ revolution_pulse_events.22 = {
 			}
 		}
 		any_interest_group = {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = yes
 			law_stance = {
 				law = law_type:law_monarchy
@@ -3163,7 +3152,7 @@ revolution_pulse_events.22 = {
 				is_immortal = no
 			}
 		}
-		has_law = law_type:law_monarchy
+		has_law_or_variant = law_type:law_monarchy
 	}
 
 	cancellation_trigger = {
@@ -3227,7 +3216,7 @@ revolution_pulse_events.22 = {
 		}
 		random_interest_group = {
 			limit = {
-				ig_counts_as_marginal = no
+				is_marginal = no
 				is_insurrectionary = yes
 				law_stance = {
 					law = law_type:law_monarchy
@@ -3337,14 +3326,14 @@ revolution_pulse_events.23 = {
 			}
 		}
 		any_interest_group = {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = yes
 			law_stance = {
 				law = law_type:law_monarchy
 				value < neutral
 			}
 		}
-		has_law = law_type:law_monarchy
+		has_law_or_variant = law_type:law_monarchy
 		any_scope_state = {
 			is_incorporated = yes
 			has_building = building_university
@@ -3458,14 +3447,14 @@ revolution_pulse_events.24 = {
 			civil_war_progress_high = yes
 		}
 		any_interest_group = {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = yes
 			law_stance = {
 				law = law_type:law_monarchy
 				value < neutral
 			}
 		}
-		has_law = law_type:law_monarchy
+		has_law_or_variant = law_type:law_monarchy
 	}
 
 	cancellation_trigger = {
@@ -3599,7 +3588,7 @@ revolution_pulse_events.24 = {
 		}
 		random_interest_group = {
 			limit = {
-				ig_counts_as_marginal = no
+				is_marginal = no
 				is_insurrectionary = yes
 				law_stance = {
 					law = law_type:law_monarchy
@@ -3649,14 +3638,14 @@ revolution_pulse_events.25 = {
 			civil_war_progress_high = yes
 		}
 		any_interest_group = {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = yes
 			law_stance = {
 				law = law_type:law_monarchy
 				value < neutral
 			}
 		}
-		has_law = law_type:law_monarchy
+		has_law_or_variant = law_type:law_monarchy
 		ruler = {
 			is_immortal = no
 		}
@@ -4047,7 +4036,7 @@ revolution_pulse_events.26 = {
 
 	trigger = {
 		any_interest_group = {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = yes
 			law_stance = {
 				law = law_type:law_state_religion
@@ -4138,7 +4127,7 @@ revolution_pulse_events.27 = {
 
 	trigger = {
 		any_interest_group = {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = yes
 			law_stance = {
 				law = law_type:law_state_religion
@@ -4256,7 +4245,7 @@ revolution_pulse_events.28 = {
 	trigger = {
 		 any_civil_war = {
 			civil_war_is_reactionary_revolution = yes
-		civil_war_progress_medium = yes
+			civil_war_progress_medium = yes
 		}
 		any_scope_state = {
 			is_incorporated = yes
@@ -4411,7 +4400,7 @@ revolution_pulse_events.29 = {
 
 	trigger = {
 		any_interest_group = {
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = yes
 			law_stance = {
 				law = law_type:law_state_religion
@@ -4726,7 +4715,7 @@ revolution_pulse_events.31 = {
 		}
 		any_scope_state = {
 			is_incorporated = yes
-			has_building = building_barrack
+			has_building = building_barracks
 		}
 	}
 
@@ -4764,11 +4753,9 @@ revolution_pulse_events.31 = {
 		ordered_scope_state = {
 			limit = {
 				is_incorporated = yes
-				has_building = building_barrack
+				has_building = building_barracks
 			}
 			order_by = state_population
-			position = 0
-			check_range_bounds = no
 			save_scope_as = martial_laws_state
 		}
 	}
@@ -4920,8 +4907,6 @@ revolution_pulse_events.32 = {
 				}
 			}
 			order_by = state_population
-			position = 0
-			check_range_bounds = no
 			random_scope_pop = {
 				limit = {
 					has_state_religion = no
@@ -5020,7 +5005,7 @@ revolution_pulse_events.33 = {
 			is_civil_war_type = revolution
 			civil_war_progress_high = yes
 		}
-		ig:ig_industrialists ?= {
+		ig:ig_industrialists = {
 			is_insurrectionary = yes
 		}
 		NOR = {
@@ -5065,7 +5050,7 @@ revolution_pulse_events.33 = {
 			}
 			civil_war_save_scopes = yes
 		}
-		ig:ig_industrialists ?= {
+		ig:ig_industrialists = {
 			save_scope_as = industrialists_ig
 			leader = {
 				save_scope_as = industrialists_ig_leader
@@ -5082,8 +5067,7 @@ revolution_pulse_events.33 = {
 				}
 			}
 			order_by = gdp
-			position = 0
-			check_range_bounds = no
+
 			save_scope_as = greed_is_good_state
 		}
 	}
@@ -5105,7 +5089,7 @@ revolution_pulse_events.33 = {
 				days = short_modifier_time
 			}
 		}
-		ig:ig_industrialists ?= {
+		ig:ig_industrialists = {
 			add_modifier = {
 				name = modifier_industrialists_negotiation_opinion
 				days = short_modifier_time
@@ -5237,8 +5221,7 @@ revolution_pulse_events.34 = {
 				has_building = building_university
 			}
 			order_by = gdp
-			position = 0
-			check_range_bounds = no
+
 			save_scope_as = little_dark_age_state
 		}
 		random_primary_culture = {
@@ -5377,8 +5360,7 @@ revolution_pulse_events.35 = {
 				is_incorporated = yes
 			}
 			order_by = state_population
-			position = 0
-			check_range_bounds = no
+
 			save_scope_as = tragedy_of_commons_state
 		}
 	}
@@ -5510,8 +5492,7 @@ revolution_pulse_events.36 = {
 				has_building = building_government_administration
 			}
 			order_by = gdp
-			position = 0
-			check_range_bounds = no
+
 			save_scope_as = red_tape_state
 		}
 	}
@@ -5740,7 +5721,7 @@ revolution_pulse_events.38 = {
 		}
 		any_scope_state = {
 			is_incorporated = yes
-			has_building = building_barrack
+			has_building = building_barracks
 		}
 	}
 
@@ -5778,11 +5759,9 @@ revolution_pulse_events.38 = {
 		ordered_scope_state = {
 			limit = {
 				is_incorporated = yes
-				has_building = building_barrack
+				has_building = building_barracks
 			}
 			order_by = state_population
-			position = 0
-			check_range_bounds = no
 			save_scope_as = shall_not_be_infringed_state
 			owner = {
 				save_scope_as = agitator_country_scope
@@ -5799,7 +5778,7 @@ revolution_pulse_events.38 = {
 		scope:shall_not_be_infringed_state = {
 			random_scope_building = {
 				limit = {
-					is_building_type = building_barrack
+					is_building_type = building_barracks
 				}
 				add_modifier = {
 					name = modifier_unp_barracks_malus
@@ -5899,7 +5878,7 @@ revolution_pulse_events.39 = {
 		}
 		any_interest_group = {
 			is_in_government = no
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = no
 		}
 		any_interest_group = { is_insurrectionary = yes }
@@ -5928,7 +5907,7 @@ revolution_pulse_events.39 = {
 		random_interest_group = {
 			limit = {
 				is_in_government = no
-				ig_counts_as_marginal = no
+				is_marginal = no
 				is_insurrectionary = no
 			}
 			save_scope_as = defecting_ig
@@ -6000,7 +5979,7 @@ revolution_pulse_events.40 = {
 		any_revolution_ongoing = yes
 		any_interest_group = {
 			is_in_government = no
-			ig_counts_as_marginal = no
+			is_marginal = no
 			is_insurrectionary = no
 		}
 		any_interest_group = {
@@ -6039,7 +6018,7 @@ revolution_pulse_events.40 = {
 		random_interest_group = {
 			limit = {
 				is_in_government = no
-				ig_counts_as_marginal = no
+				is_marginal = no
 				is_insurrectionary = no
 			}
 			save_scope_as = defecting_ig

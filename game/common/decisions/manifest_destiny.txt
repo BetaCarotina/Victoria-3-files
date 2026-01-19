@@ -2,7 +2,7 @@
 
 	is_shown = {
 		exists = c:USA
-		c:USA ?= ROOT
+		root = c:USA
 		NOT = { has_variable = manifested_destiny }
 	}
 

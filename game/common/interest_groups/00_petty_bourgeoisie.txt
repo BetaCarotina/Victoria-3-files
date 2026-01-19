@@ -75,17 +75,6 @@
 			}
 			else_if = {
 				limit = {
-					c:POR ?= owner
-				}
-				remove_ideology = ideology_meritocratic
-				add_ideology = ideology_cartist
-
-				set_ig_trait = ig_trait:ig_trait_xenophobia
-				set_ig_trait = ig_trait:ig_trait_middle_managers
-				set_ig_trait = ig_trait:ig_trait_treasury_bonds
-			}
-			else_if = {
-				limit = {
 					owner = {
 						OR = {
 							c:BIC ?= this
@@ -168,32 +157,6 @@
 				swahili gujarati
 			}
 		}
-		rule = {
-			trigger = {
-				c:PHI ?= this
-				NOT = { has_variable = je_philippines_main_reliance_happened }
-				NOT = { any_primary_culture = { cu:filipino = this } }
-				NOT = { any_primary_culture = { cu:filipino_hispanophone = this } }
-				any_primary_culture = { cu:spanish = this }
-			}
-			cultures = {
-				spanish filipino_mestizo
-			}
-		}
-		rule = {
-			trigger = {
-				c:PHI ?= this
-				any_primary_culture = {
-					AND = {
-						cu:spanish = this
-						cu:filipino_hispanophone = this
-					}
-				}
-			}
-			cultures = {
-				spanish filipino_hispanophone
-			}
-		}
 	}
 	on_character_ig_membership = {
 		if = {
@@ -225,7 +188,7 @@
 					}
 					AND = {
 						c:ZAN ?= prev.owner
-						c:ZAN ?= {
+						c:ZAN = {
 							any_primary_culture = { cu:bedouin = this }
 						}
 						OR = {
@@ -491,7 +454,7 @@
 		# Monarch is not likely to adopt a marginal IG
 		if = {
 			limit = {
-				ig_counts_as_marginal = yes
+				is_marginal = yes
 			}
 			multiply = {
 				value = 0.1
@@ -537,7 +500,7 @@
 		if = {
 			limit = {
 				owner.ig:ig_petty_bourgeoisie ?= {
-					ig_counts_as_marginal = yes
+					is_marginal = yes
 				}
 			}
 			multiply = {
@@ -558,7 +521,7 @@
 			limit = {
 				exists = scope:company
 				exists = c:BIC
-				c:BIC ?= {
+				c:BIC = {
 					exists = owning_company
 					owning_company = scope:company
 				}

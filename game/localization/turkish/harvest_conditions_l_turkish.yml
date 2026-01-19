@@ -29,6 +29,4 @@
  moderate_rainfall_desc: "Toprağa can suyu veren; yukarıdan süzülen damlaları karşılamak için sabırsızlıkla bekleyen mahsullerin boy verdiği neşeli bir olay."
  #Natural Disasters
  tsunami: "Tsunami"
- tsunami_desc: "Karaya vurduğunda her şeyi dümdüz yapan ve yutan durdurulmaz bir su dalgası."
- earthquake: "Deprem"
- earthquake_desc: "Dünya yüzeyinde gerçekleşen, arkasında yıkım ve tahribat bırakan şiddetli ve ani bir sarsılma."
+ tsunami_desc: "Karaya vurduğunda her şeyi dümdüz yapan ve yutan durdurulmaz bir su dalgası"

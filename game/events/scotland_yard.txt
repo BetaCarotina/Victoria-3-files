@@ -12,7 +12,7 @@ scotland_yard.1 = {
 				desc = scotland_yard.1.d
 				trigger = {
 					exists = c:GBR
-					c:GBR ?= THIS
+					THIS = c:GBR
 					owns_entire_state_region = STATE_HOME_COUNTIES
 				}
 			}

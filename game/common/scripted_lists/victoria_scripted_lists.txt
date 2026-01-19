@@ -25,4 +25,3 @@ interest_group_in_opposition = {
         is_in_government = no
     }
 }
-

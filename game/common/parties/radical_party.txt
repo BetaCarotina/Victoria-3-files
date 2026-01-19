@@ -9,77 +9,77 @@ radical_party = {
 				desc = party_radical_civic_union
 				trigger = {
 					exists = c:ARG
-					c:ARG ?= THIS
+					THIS = c:ARG
 				}
 			}
 			triggered_desc = {
 				desc = party_democratic_progressive_party
 				trigger = {
 					exists = c:SPA
-					c:SPA ?= THIS
+					THIS = c:SPA
 				}
 			}
 			triggered_desc = {
 				desc = party_free_democratic_party
 				trigger = {
 					exists = c:SWI
-					c:SWI ?= THIS
+					THIS = c:SWI
 				}
 			}
 			triggered_desc = {
 				desc = party_national_progressive_party
 				trigger = {
 					exists = c:FIN
-					c:FIN ?= THIS
+					THIS = c:FIN
 				}
 			}
 			triggered_desc = {
 				desc = party_free_thinking_democratic_league
 				trigger = {
 					exists = c:NET
-					c:NET ?= THIS
+					THIS = c:NET
 				}
 			}
 			triggered_desc = {
 				desc = party_radical_liberal_party
 				trigger = {
 					exists = c:LUX
-					c:LUX ?= THIS
+					THIS = c:LUX
 				}
 			}
 			triggered_desc = {
 				desc = party_progressive_club
 				trigger = {
 					exists = c:AUS
-					c:AUS ?= THIS
+					THIS = c:AUS
 				}
 			}
 			triggered_desc = {
 				desc = party_radical_peoples_party
 				trigger = {
 					exists = c:SER
-					c:SER ?= THIS
+					THIS = c:SER
 				}
 			}
 			triggered_desc = {
 				desc = party_revival_party
 				trigger = {
 					exists = c:PER
-					c:PER ?= THIS
+					THIS = c:PER
 				}
 			}
 			triggered_desc = {
 				desc = party_mexican_liberal_party
 				trigger = {
 					exists = c:MEX
-					c:MEX ?= THIS
+					THIS = c:MEX
 				}
 			}
 			triggered_desc = {
 				desc = party_democratic_progressive_party
 				trigger = {
 					exists = c:GBR
-					c:GBR ?= THIS
+					THIS = c:GBR
 					has_law_or_variant = law_type:law_universal_suffrage
 				}
 			}
@@ -87,38 +87,38 @@ radical_party = {
 				desc = party_committee_of_union_and_progress
 				trigger = {
 					exists = c:TUR
-					c:TUR ?= THIS
-					has_law = law_type:law_monarchy
+					THIS = c:TUR
+					has_law_or_variant = law_type:law_monarchy
 				}
 			}
 			triggered_desc = {
 				desc = party_freedom_and_accord_party
 				trigger = {
 					exists = c:TUR
-					c:TUR ?= THIS
-					NOT = { has_law = law_type:law_monarchy }
+					THIS = c:TUR
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 				}
 			}
 			triggered_desc = {
 				desc = party_trudovik_group
 				trigger = {
 					exists = c:RUS
-					c:RUS ?= THIS
+					THIS = c:RUS
 				}
 			}
 			triggered_desc = {
 				desc = party_revive_china_society
 				trigger = {
 					exists = c:CHI
-					c:CHI ?= THIS
-					has_law = law_type:law_monarchy
+					THIS = c:CHI
+					has_law_or_variant = law_type:law_monarchy
 				}
 			}
 			triggered_desc = {
 				desc = party_republican_union
 				trigger = {
 					exists = c:FRA
-					c:FRA ?= THIS
+					THIS = c:FRA
 				}
 			}
 			triggered_desc = {
@@ -148,7 +148,7 @@ radical_party = {
 							country_has_primary_culture = cu:yi
 							country_has_primary_culture = cu:yue
 						}
-						NOT = { has_law = law_type:law_monarchy }
+						NOT = { has_law_or_variant = law_type:law_monarchy }
 					}
 				}
 			}
@@ -158,11 +158,11 @@ radical_party = {
 					OR = {
 						AND = {
 							exists = c:JAP
-							c:JAP ?= THIS
+							THIS = c:JAP
 						}
 						AND = {
 							exists = c:USA
-							c:USA ?= THIS
+							THIS = c:USA
 						}
 					}
 				}
@@ -171,14 +171,14 @@ radical_party = {
 				desc = party_radical_liberal_party
 				trigger = {
 					exists = c:ECU
-					c:ECU ?= THIS
+					THIS = c:ECU
 				}
 			}
 			triggered_desc = {
 				desc = party_national_union
 				trigger = {
 					exists = c:PEU
-					c:PEU ?= THIS
+					THIS = c:PEU
 				}
 			}
 			triggered_desc = {
@@ -188,38 +188,16 @@ radical_party = {
 				}
 			}
 			triggered_desc = {
-				desc = party_reformist_party
+				desc = party_progressive_dissidence
 				trigger = {
-					c:POR ?= this
-					has_law = law_type:law_monarchy
-					NOT = {
-						has_technology_researched = labor_movement
-					}
-				}
-			}
-			triggered_desc = {
-				desc = party_republican_party
-				trigger = {
-					c:POR ?= this
-					has_law = law_type:law_monarchy
-					has_technology_researched = labor_movement
-				}
-			}
-			triggered_desc = {
-				desc = party_democratic_party
-				trigger = {
-					c:POR ?= this
-					NOR = {
-						has_law = law_type:law_monarchy
-						has_law = law_type:law_theocracy
-					}
+					country_has_primary_culture = cu:portuguese
 				}
 			}
 			triggered_desc = {
 				desc = party_farroupilha
 				trigger = {
 					country_has_primary_culture = cu:brazilian
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 				}
 			}
 			triggered_desc = {
@@ -247,7 +225,7 @@ radical_party = {
 				desc = party_chartists
 				trigger = {
 					exists = c:GBR
-					c:GBR ?= THIS
+					THIS = c:GBR
 					NOT = { has_law_or_variant = law_type:law_universal_suffrage }
 				}
 			}
@@ -285,7 +263,7 @@ radical_party = {
 		owner = {
 			country_has_voting_franchise = yes
 			any_interest_group = {
-				ig_counts_as_marginal = no
+				is_marginal = no
 				OR = {
 					leader ?= {
 						has_ideology = ideology:ideology_radical
@@ -309,7 +287,6 @@ radical_party = {
 				has_ideology = ideology:ideology_integralist
 				has_ideology = ideology:ideology_ethno_nationalist
 				has_ideology = ideology:ideology_traditionalist
-				has_ideology = ideology:ideology_carlist
 				has_ideology = ideology:ideology_royalist
 				has_ideology = ideology:ideology_orleanist
 				has_ideology = ideology:ideology_bonapartist
@@ -351,7 +328,7 @@ radical_party = {
 		if = {
 			limit = {
 				owner = {
-					is_in_geographic_region = geographic_region_south_america
+					country_is_in_south_america = yes
 					any_primary_culture = {
 						has_discrimination_trait = language_hispanophone
 					}
@@ -365,7 +342,7 @@ radical_party = {
 		if = {
 			limit = {
 				owner = {
-					is_in_geographic_region = geographic_region_north_america
+					country_is_in_north_america = yes
 					OR = {
 						country_has_primary_culture = cu:yankee
 						country_has_primary_culture = cu:dixie
@@ -500,7 +477,7 @@ radical_party = {
 				}
 				owner = {
 					OR = {
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 						has_law_or_variant = law_type:law_theocracy
 					}
 				}
@@ -652,9 +629,9 @@ radical_party = {
 					has_ideology = ideology:ideology_particularist
 					leader ?= {
 						OR = {
-						has_ideology = ideology:ideology_abolitionist
-						has_ideology = ideology:ideology_social_democrat
-						has_ideology = ideology:ideology_communist
+								has_ideology = ideology:ideology_abolitionist
+								has_ideology = ideology:ideology_social_democrat
+								has_ideology = ideology:ideology_communist
 								has_ideology = ideology:ideology_vanguardist
 						}
 					}
@@ -669,7 +646,6 @@ radical_party = {
 			limit = {
 				scope:number >= 1 # If someone else is in this party first
 				is_interest_group_type = ig_trade_unions
-				owner = { has_technology_researched = labor_movement }
 				NOT = {
 					has_ideology = ideology:ideology_socialist
 				}
@@ -704,7 +680,7 @@ radical_party = {
 			limit = {
 				scope:number = 1
 				is_powerful = no
-				ig_counts_as_marginal = no
+				is_marginal = no
 			}
 			multiply = {
 				value = 2

@@ -14,7 +14,6 @@ AST_john_hindmarsh = {
 	interest_group = ig_armed_forces
 	ideology = ideology_jingoist_leader
 	traits = {
-		special_character_colonial_military
 		persistent
 		experienced_naval_commander
 	}
@@ -117,7 +116,6 @@ AST_james_stirling = {
 	interest_group = ig_armed_forces
 	ideology = ideology_jingoist_leader
 	traits = {
-		special_character_colonial_military
 		direct
 		bigoted
 	}
@@ -281,7 +279,6 @@ AST_richard_bourke = {
 	interest_group = ig_armed_forces
 	ideology = ideology_royalist
 	traits = {
-		special_character_colonial_military
 		charismatic
 		basic_offensive_planner
 	}

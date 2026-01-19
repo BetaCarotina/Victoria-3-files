@@ -113,7 +113,7 @@
 			}
 			custom_tooltip = {
 				text = je_conference_of_london_tt_5
-				c:BEL ?= {
+				c:BEL = {
 					has_war_with = c:NET
 				}
 			}
@@ -321,8 +321,6 @@
 							    }
 							}
 						    order_by = country_rank
-							position = 0
-							check_range_bounds = no
 						    if = {
 						        limit = {
 						            has_variable = favour_belgium_button_var
@@ -352,8 +350,6 @@
 							    }
 							}
 						    order_by = country_rank
-							position = 0
-							check_range_bounds = no
 						    if = {
 						        limit = {
 						            has_variable = favour_belgium_button_var
@@ -383,8 +379,6 @@
 							    }
 							}
 						    order_by = country_rank
-							position = 0
-							check_range_bounds = no
 						    if = {
 						        limit = {
 						            has_variable = favour_belgium_button_var
@@ -414,8 +408,6 @@
 							    }
 							}
 						    order_by = country_rank
-							position = 0
-							check_range_bounds = no
 						    if = {
 						        limit = {
 						            has_variable = favour_netherlands_button_var
@@ -445,8 +437,6 @@
 							    }
 							}
 						    order_by = country_rank
-							position = 0
-							check_range_bounds = no
 						    if = {
 						        limit = {
 						            has_variable = favour_netherlands_button_var
@@ -476,8 +466,6 @@
 							    }
 							}
 						    order_by = country_rank
-							position = 0
-							check_range_bounds = no
 						    if = {
 						        limit = {
 						            has_variable = partition_compromise_button_var
@@ -498,8 +486,6 @@
 							    has_journal_entry = je_conference_of_london
 							}
 						    order_by = country_rank
-							position = 0
-							check_range_bounds = no
 						    if = {
 						        limit = {
 						            has_variable = favour_belgium_button_var

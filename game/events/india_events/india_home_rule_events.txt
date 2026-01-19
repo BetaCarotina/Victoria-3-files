@@ -426,7 +426,7 @@ india_home_rule_events.3 = { # Jallianwala Bagh Massacre
 		else = {
 			random_scope_state = {
 				limit = {
-					is_in_geographic_region = geographic_region_india
+					state_is_in_india = yes
 				}
 				save_scope_as = jallianwala_bagh_state
 				random_scope_culture = {

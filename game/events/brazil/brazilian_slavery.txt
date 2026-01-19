@@ -61,7 +61,7 @@ brazilian_slavery.1 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value <= disapprove
@@ -70,7 +70,7 @@ brazilian_slavery.1 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value <= disapprove
@@ -162,7 +162,7 @@ brazilian_slavery.2 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value = strongly_disapprove
@@ -171,7 +171,7 @@ brazilian_slavery.2 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value = strongly_disapprove
@@ -202,7 +202,7 @@ brazilian_slavery.2 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value = strongly_disapprove
@@ -211,7 +211,7 @@ brazilian_slavery.2 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value = strongly_disapprove
@@ -401,7 +401,7 @@ brazilian_slavery.4 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value = strongly_disapprove
@@ -410,7 +410,7 @@ brazilian_slavery.4 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value = strongly_disapprove
@@ -432,7 +432,7 @@ brazilian_slavery.4 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value = strongly_disapprove
@@ -441,7 +441,7 @@ brazilian_slavery.4 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value = strongly_disapprove
@@ -643,7 +643,7 @@ brazilian_slavery.7 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					OR = {
 						law_stance = {
 							law = law_type:law_slave_trade
@@ -651,6 +651,10 @@ brazilian_slavery.7 = {
 						}
 						law_stance = {
 							law = law_type:law_legacy_slavery
+							value >= approve
+						}
+						law_stance = {
+							law = law_type:law_colonial_slavery
 							value >= approve
 						}
 					}
@@ -658,7 +662,7 @@ brazilian_slavery.7 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					OR = {
 						law_stance = {
 							law = law_type:law_slave_trade
@@ -666,6 +670,10 @@ brazilian_slavery.7 = {
 						}
 						law_stance = {
 							law = law_type:law_legacy_slavery
+							value >= approve
+						}
+						law_stance = {
+							law = law_type:law_colonial_slavery
 							value >= approve
 						}
 					}
@@ -679,7 +687,7 @@ brazilian_slavery.7 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					OR = {
 						law_stance = {
 							law = law_type:law_slave_trade
@@ -687,6 +695,10 @@ brazilian_slavery.7 = {
 						}
 						law_stance = {
 							law = law_type:law_legacy_slavery
+							value <= disapprove
+						}
+						law_stance = {
+							law = law_type:law_colonial_slavery
 							value <= disapprove
 						}
 					}
@@ -694,7 +706,7 @@ brazilian_slavery.7 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					OR = {
 						law_stance = {
 							law = law_type:law_slave_trade
@@ -702,6 +714,10 @@ brazilian_slavery.7 = {
 						}
 						law_stance = {
 							law = law_type:law_legacy_slavery
+							value <= disapprove
+						}
+						law_stance = {
+							law = law_type:law_colonial_slavery
 							value <= disapprove
 						}
 					}
@@ -723,7 +739,7 @@ brazilian_slavery.7 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					OR = {
 						law_stance = {
 							law = law_type:law_slave_trade
@@ -731,6 +747,10 @@ brazilian_slavery.7 = {
 						}
 						law_stance = {
 							law = law_type:law_legacy_slavery
+							value >= approve
+						}
+						law_stance = {
+							law = law_type:law_colonial_slavery
 							value >= approve
 						}
 					}
@@ -738,7 +758,7 @@ brazilian_slavery.7 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					OR = {
 						law_stance = {
 							law = law_type:law_slave_trade
@@ -746,6 +766,10 @@ brazilian_slavery.7 = {
 						}
 						law_stance = {
 							law = law_type:law_legacy_slavery
+							value >= approve
+						}
+						law_stance = {
+							law = law_type:law_colonial_slavery
 							value >= approve
 						}
 					}
@@ -759,7 +783,7 @@ brazilian_slavery.7 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					OR = {
 						law_stance = {
 							law = law_type:law_slave_trade
@@ -767,6 +791,10 @@ brazilian_slavery.7 = {
 						}
 						law_stance = {
 							law = law_type:law_legacy_slavery
+							value <= disapprove
+						}
+						law_stance = {
+							law = law_type:law_colonial_slavery
 							value <= disapprove
 						}
 					}
@@ -774,7 +802,7 @@ brazilian_slavery.7 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					OR = {
 						law_stance = {
 							law = law_type:law_slave_trade
@@ -782,6 +810,10 @@ brazilian_slavery.7 = {
 						}
 						law_stance = {
 							law = law_type:law_legacy_slavery
+							value <= disapprove
+						}
+						law_stance = {
+							law = law_type:law_colonial_slavery
 							value <= disapprove
 						}
 					}
@@ -1088,7 +1120,7 @@ brazilian_slavery.9 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value <= disapprove
@@ -1097,7 +1129,7 @@ brazilian_slavery.9 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value <= disapprove
@@ -1288,7 +1320,7 @@ brazilian_slavery.10 = {
 		if = {
 			limit = {
 				any_interest_group = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value <= disapprove
@@ -1297,7 +1329,7 @@ brazilian_slavery.10 = {
 			}
 			every_interest_group = {
 				limit = {
-					ig_counts_as_marginal = no
+					is_marginal = no
 					law_stance = {
 						law = law_type:law_slave_trade
 						value <= disapprove
@@ -1367,14 +1399,14 @@ brazilian_slavery.11 = {
 		}
 		# Large convoy and trade penalties
 		show_as_tooltip = {
-			c:BRZ ?= {
+			c:BRZ = {
 				add_modifier = {
 					name = aberdeen_act_enforced_brz
 					days = normal_modifier_time
 				}
 			}
 		}
-		c:BRZ ?= {
+		c:BRZ = {
 			trigger_event = { id = brazilian_slavery.12 popup = yes }
 		}
 		custom_tooltip = {
@@ -1425,7 +1457,7 @@ brazilian_slavery.12 = {
 		default_option = yes
 		# Makes up for part of the lost prestige and influence
 		show_as_tooltip = {
-			c:GBR ?= {
+			c:GBR = {
 				change_relations = {
 					country = c:BRZ
 					value = -50
@@ -1433,7 +1465,7 @@ brazilian_slavery.12 = {
 			}
 		}
 		# Large convoy and trade penalties
-		c:BRZ ?= {
+		c:BRZ = {
 			add_modifier = {
 				name = aberdeen_act_enforced_brz
 				days = normal_modifier_time

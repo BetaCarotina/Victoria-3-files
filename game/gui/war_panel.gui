@@ -1902,7 +1902,7 @@ types war_panel
 
 					blockoverride "war_goal_tooltip" {
 						tooltipwidget = {
-							FancyTooltip_WarGoalArticle = {
+							RegularTooltip_WarGoalArticle = {
 								datacontext = "[WarGoal.GetArticleDraft]"
 							}
 						}

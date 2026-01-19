@@ -393,20 +393,6 @@ egalitarianism = {
 		democracy
 	}
 
-	on_researched = {
-		if = {
-			limit = {
-				has_journal_entry = je_springtime_of_the_peoples
-				NOT = {
-					is_involved_in_journal_entry = je_springtime_of_the_peoples
-				}
-			}
-			je:je_springtime_of_the_peoples ?= {
-				add_involved_country = ROOT
-			}
-		}
-	}
-
 	ai_weight = {
 		value = 1
 
@@ -508,7 +494,7 @@ quinine = {
 			if = {
 				limit = {
 					any_scope_state = {
-						is_in_geographic_region = geographic_region_africa
+						state_is_in_africa = yes
 					}
 				}
 				add = 3
@@ -563,8 +549,8 @@ central_archives = {
 				OR = {
 					AND = {
 						OR = {
-							is_in_geographic_region = geographic_region_south_america
-							is_in_geographic_region = geographic_region_central_america
+							country_is_in_south_america = yes
+							country_is_in_central_america = yes
 						}
 						country_rank <= rank_value:major_power
 					}
@@ -896,7 +882,7 @@ feminism = {
 			}
 		}
 	}
-
+	
 	modifier = {
 		country_institution_social_security_max_investment_add = 1
 	}

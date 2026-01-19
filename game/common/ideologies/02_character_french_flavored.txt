@@ -48,7 +48,6 @@
 		law_anti_strike_laws = neutral
 		law_corporatized_unions = neutral
 		law_right_to_associate = disapprove
-		law_factory_councils = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -96,7 +95,7 @@
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 				}
 				ig_approval > 0
 			}
@@ -126,7 +125,7 @@
 		if = {
 			limit = {
 				owner = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					NOT = { has_variable = orleanist_restoration_var }
 				}
 				ig_approval < 0
@@ -138,7 +137,7 @@
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 					NOT = { has_variable = orleanist_restoration_var }
 				}
 				ig_approval < 0
@@ -183,7 +182,7 @@
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 				}
 				interest_group.ig_approval > 0
 			}
@@ -214,7 +213,7 @@
 		if = {
 			limit = {
 				owner = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					NOT = { has_variable = orleanist_restoration_var }
 				}
 				interest_group.ig_approval < 0
@@ -226,7 +225,7 @@
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 					NOT = { has_variable = orleanist_restoration_var }
 				}
 				interest_group.ig_approval < 0
@@ -309,7 +308,6 @@ ideology_legitimist = {
 		law_anti_strike_laws = neutral
 		law_corporatized_unions = neutral
 		law_right_to_associate = disapprove
-		law_factory_councils = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -357,7 +355,7 @@ ideology_legitimist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 				}
 				ig_approval > 0
 			}
@@ -379,7 +377,7 @@ ideology_legitimist = {
 		if = {
 			limit = {
 				owner = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					NOT = { has_variable = legitimist_restoration_var }
 				}
 				ig_approval < 0
@@ -391,7 +389,7 @@ ideology_legitimist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 					NOT = { has_variable = legitimist_restoration_var }
 				}
 				ig_approval < 0
@@ -437,7 +435,7 @@ ideology_legitimist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 				}
 				interest_group.ig_approval > 0
 			}
@@ -459,7 +457,7 @@ ideology_legitimist = {
 		if = {
 			limit = {
 				owner = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					NOT = { has_variable = legitimist_restoration_var }
 				}
 				interest_group.ig_approval < 0
@@ -471,7 +469,7 @@ ideology_legitimist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 					NOT = { has_variable = legitimist_restoration_var }
 				}
 				interest_group.ig_approval < 0
@@ -563,7 +561,6 @@ ideology_bonapartist = {
 		law_anti_strike_laws = approve
 		law_corporatized_unions = approve
 		law_right_to_associate = neutral
-		law_factory_councils = strongly_disapprove
 	}
 
 	country_trigger = {
@@ -611,7 +608,7 @@ ideology_bonapartist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 				}
 				ig_approval > 0
 			}
@@ -633,7 +630,7 @@ ideology_bonapartist = {
 		if = {
 			limit = {
 				owner = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					NOT = { has_variable = bonapartist_restoration_var }
 				}
 				ig_approval < 0
@@ -645,7 +642,7 @@ ideology_bonapartist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 					NOT = { has_variable = bonapartist_restoration_var }
 				}
 				ig_approval < 0
@@ -692,7 +689,7 @@ ideology_bonapartist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 				}
 				interest_group.ig_approval > 0
 			}
@@ -723,7 +720,7 @@ ideology_bonapartist = {
 		if = {
 			limit = {
 				owner = {
-					has_law = law_type:law_monarchy
+					has_law_or_variant = law_type:law_monarchy
 					NOT = { has_variable = bonapartist_restoration_var }
 				}
 				interest_group.ig_approval < 0
@@ -735,7 +732,7 @@ ideology_bonapartist = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_law = law_type:law_monarchy }
+					NOT = { has_law_or_variant = law_type:law_monarchy }
 					NOT = { has_variable = bonapartist_restoration_var }
 				}
 				interest_group.ig_approval < 0

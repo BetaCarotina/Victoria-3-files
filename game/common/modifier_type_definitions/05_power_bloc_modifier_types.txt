@@ -1,5 +1,4 @@
 ﻿power_bloc_leader_can_make_subjects_bool={
-	script_only = yes
 	decimals=1
 	color=neutral
 	boolean=yes
@@ -9,16 +8,6 @@
 }
 
 power_bloc_leader_can_force_state_religion_bool = {
-	script_only = yes
-	color = neutral
-	boolean = yes
-	game_data = {
-		ai_value = 0
-	}
-}
-
-power_bloc_leader_can_spread_culture_to_pb_bool={
-	script_only = yes
 	color = neutral
 	boolean = yes
 	game_data = {
@@ -27,7 +16,6 @@ power_bloc_leader_can_spread_culture_to_pb_bool={
 }
 
 power_bloc_leader_can_regime_change_bool = {
-	script_only = yes
 	color = neutral
 	boolean = yes
 	game_data = {
@@ -237,7 +225,6 @@ power_bloc_invite_acceptance_unrecognized_regional_power_add={
 }
 
 power_bloc_disallow_embargo_bool={
-	script_only = yes
 	decimals=1
 	color=neutral
 	boolean=yes
@@ -247,7 +234,6 @@ power_bloc_disallow_embargo_bool={
 }
 
 power_bloc_disallow_war_bool={
-	script_only = yes
 	decimals=1
 	color=neutral
 	boolean=yes

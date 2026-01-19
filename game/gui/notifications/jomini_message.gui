@@ -26,10 +26,6 @@ window = {
 	
 			header_standard = {
 				layoutpolicy_horizontal = expanding
-
-				blockoverride "header_text_position" {
-					parentanchor = center
-				}
 	
 				blockoverride "header_text"
 				{

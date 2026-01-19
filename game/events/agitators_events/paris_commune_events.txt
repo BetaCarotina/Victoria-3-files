@@ -164,14 +164,6 @@ paris_commune.1 = {
 					}
 					activate_law = law_type:law_closed_borders
 				}
-				if = {
-					limit = {
-						NOT = {
-							has_law = law_type:law_factory_councils
-						}
-					}
-					activate_law = law_type:law_factory_councils
-				}
 				add_modifier = {
 					name = modifier_paris_commune_politics
 					days = normal_modifier_time
@@ -187,7 +179,7 @@ paris_commune.1 = {
 				}
 			}
 		}
-		c:PRC ?= {
+		c:PRC = {
 			save_scope_as = paris_commune_scope
 			ig:ig_armed_forces ?= {
 				save_scope_as = national_guard_scope
@@ -201,7 +193,7 @@ paris_commune.1 = {
 		random_state = {
 			limit = {
 				owner = {
-					c:PRC ?= THIS
+					this = c:PRC
 				}
 			}
 			save_scope_as = paris_scope
@@ -210,7 +202,7 @@ paris_commune.1 = {
 			limit = {
 				socialist_revolution_ongoing = yes
 			}
-			c:PRC ?= {
+			c:PRC = {
 				activate_law = law_type:law_council_republic
 			}
 		}
@@ -236,7 +228,7 @@ paris_commune.1 = {
 		add_journal_entry = {
 			type = je_the_paris_commune_france
 		}
-		c:PRC ?= {
+		c:PRC = {
 			hidden_effect = {
 				add_journal_entry = {
 					type = je_the_paris_commune_communards
@@ -244,7 +236,7 @@ paris_commune.1 = {
 				add_loyalists = {
 					value = 0.9
 				}
-				c:FRA ?= {
+				c:FRA = {
 					add_treasury = -100000
 				}
 				add_treasury = 100000
@@ -262,7 +254,7 @@ paris_commune.1 = {
 		add_journal_entry = {
 			type = je_the_paris_commune_france
 		}
-		c:PRC ?= {
+		c:PRC = {
 			hidden_effect = {
 				add_journal_entry = {
 					type = je_the_paris_commune_communards
@@ -270,7 +262,7 @@ paris_commune.1 = {
 				add_loyalists = {
 					value = 0.9
 				}
-				c:FRA ?= {
+				c:FRA = {
 					add_treasury = -100000
 				}
 				add_treasury = 100000
@@ -310,13 +302,13 @@ paris_commune.2 = {
 
 	immediate = {
 		set_variable = paris_commune_crushed_var
-		c:PRC ?= {
+		c:PRC = {
 			save_scope_as = paris_commune_scope
 		}
 		random_state = {
 			limit = {
 				owner = {
-					c:PRC ?= THIS
+					this = c:PRC
 				}
 			}
 			save_scope_as = paris_scope
@@ -341,7 +333,7 @@ paris_commune.2 = {
 	option = {
 		name = paris_commune.2.a
 		default_option = yes
-		c:FRA ?= {
+		c:FRA = {
 			annex_as_civil_war = c:PRC
 		}
 		random_scope_state = {
@@ -401,7 +393,7 @@ paris_commune.2 = {
 	}
 	option = {
 		name = paris_commune.2.b
-		c:FRA ?= {
+		c:FRA = {
 			annex_as_civil_war = c:PRC
 		}
 		random_scope_state = {
@@ -477,13 +469,13 @@ paris_commune.3 = {
 
 	immediate = {
 		set_variable = march_on_versailles
-		c:PRC ?= {
+		c:PRC = {
 			save_scope_as = paris_commune_scope
 		}
 		random_state = {
 			limit = {
 				owner = {
-					c:PRC ?= THIS
+					this = c:PRC
 				}
 			}
 			save_scope_as = paris_scope
@@ -505,7 +497,7 @@ paris_commune.3 = {
 					hidden = yes
 				}
 			}
-			c:PRC ?= {
+			c:PRC = {
 				every_scope_character = {
 					transfer_character = c:FRA
 					if = {
@@ -559,7 +551,7 @@ paris_commune.3 = {
 					hidden = yes
 				}
 			}
-			c:PRC ?= {
+			c:PRC = {
 				every_scope_character = {
 					transfer_character = c:FRA
 					if = {
@@ -633,7 +625,7 @@ paris_commune.4 = {
 	}
 
 	immediate = {
-		c:PRC ?= {
+		c:PRC = {
 			save_scope_as = paris_commune_scope
 			end_truce = c:FRA
 			remove_modifier = fra_paris_commune_drain_proceeds
@@ -641,7 +633,7 @@ paris_commune.4 = {
 		random_state = {
 			limit = {
 				owner = {
-					c:PRC ?= THIS
+					this = c:PRC
 				}
 			}
 			save_scope_as = paris_scope
@@ -659,7 +651,7 @@ paris_commune.4 = {
 			base = 100
 		}
 		set_immune_to_revolutions = yes
-		c:PRC ?= {
+		c:PRC = {
 			add_loyalists = {
 				value = 0.10
 			}
@@ -680,7 +672,7 @@ paris_commune.4 = {
 		add_loyalists = {
 			value = 0.10
 		}
-		c:PRC ?= {
+		c:PRC = {
 			hidden_effect = {
 				every_scope_state = {
 					set_state_type = incorporated
@@ -714,7 +706,7 @@ paris_commune.5 = {
 	}
 
 	immediate = {
-		c:FRA ?= {
+		c:FRA = {
 			save_scope_as = france_scope
 		}
 		ROOT = {
@@ -758,14 +750,14 @@ paris_commune.5 = {
 			modifier = {
 				trigger = {
 					scope:france_scope = {
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 						NOR = {
 							has_law_or_variant = law_type:law_universal_suffrage
 							has_law_or_variant = law_type:law_census_voting
 						}
 					}
 					NOR = {
-						has_law = law_type:law_monarchy
+						has_law_or_variant = law_type:law_monarchy
 						has_law_or_variant = law_type:law_theocracy
 					}
 					OR = {
@@ -786,7 +778,7 @@ paris_commune.5 = {
 					country_rank >= rank_value:great_power
 				}
 			}
-			c:FRA ?= {
+			c:FRA = {
 				change_variable = { name = PRC_recognition_level add = 1 }  # Variable exists only for display purposes
 			}
 		}
@@ -796,7 +788,7 @@ paris_commune.5 = {
 					country_rank >= rank_value:major_power
 				}
 			}
-			c:FRA ?= {
+			c:FRA = {
 				change_variable = { name = PRC_recognition_level add = 0.5 } # Variable exists only for display purposes
 			}
 		}

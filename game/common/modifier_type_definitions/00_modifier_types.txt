@@ -113,14 +113,6 @@ country_bureaucracy_investment_cost_factor_mult={
 	}
 }
 
-country_amenability_add = {
-	decimals=0
-	color=good
-	game_data={
-		ai_value=0
-	}
-}
-
 country_authority_add={
 	decimals=1
 	color=good
@@ -224,17 +216,7 @@ country_overlord_income_transfer_mult={
 	}
 }
 
-country_diplomatic_reputation_add={
-	script_only = yes
-	decimals=0
-	color=good
-	game_data={
-		ai_value=0
-	}
-}
-
 country_liberty_desire_add={
-	script_only = yes
 	decimals=2
 	color=neutral
 	game_data={
@@ -243,7 +225,6 @@ country_liberty_desire_add={
 }
 
 country_liberty_desire_of_subjects_add={
-	script_only = yes
 	decimals=2
 	color=neutral
 	game_data={
@@ -252,7 +233,6 @@ country_liberty_desire_of_subjects_add={
 }
 
 country_liberty_desire_increase_mult={
-	script_only = yes
 	decimals=0
 	color=neutral
 	percent=yes
@@ -262,7 +242,6 @@ country_liberty_desire_increase_mult={
 }
 
 country_liberty_desire_decrease_mult={
-	script_only = yes
 	decimals=0
 	color=neutral
 	percent=yes
@@ -888,14 +867,6 @@ interest_group_ig_trade_unions_pop_attraction_mult={
 	}
 }
 
-interest_group_amenability_add={
-	decimals=0
-	color=good
-	game_data={
-		ai_value=0
-	}
-}
-
 interest_group_approval_add={
 	decimals=0
 	color=good
@@ -1037,7 +1008,6 @@ country_party_whip_impact_add={
 }
 
 country_radicals_from_legitimacy_mult={
-	script_only = yes
 	decimals=0
 	color=bad
 	percent=yes
@@ -1047,7 +1017,6 @@ country_radicals_from_legitimacy_mult={
 }
 
 country_loyalists_from_legitimacy_mult={
-	script_only = yes
 	decimals=0
 	color=good
 	percent=yes
@@ -1138,24 +1107,6 @@ country_law_enactment_stall_mult = {
 	decimals=0
 	color=bad
 	percent = yes
-	game_data={
-		ai_value=0
-	}
-}
-
-country_law_enactment_stall_add = {
-	decimals=0
-	color=bad
-	percent = yes
-	game_data={
-		ai_value=0
-	}
-}
-
-state_devastation_decay_mult ={
-	decimals=0
-	color=good
-	percent=yes
 	game_data={
 		ai_value=0
 	}
@@ -1988,7 +1939,7 @@ state_non_contiguous_incorporation_speed_mult={
 }
 
 state_infrastructure_add={
-	decimals=1
+	decimals=0
 	color=good
 	game_data={
 		ai_value=50
@@ -2072,7 +2023,7 @@ state_urbanization_per_level_mult={
 	}
 }
 
-state_building_barrack_max_level_add={
+state_building_barracks_max_level_add={
 	decimals=0
 	color=good
 	game_data={
@@ -2147,6 +2098,14 @@ state_migration_pull_mult={
 	}
 }
 
+state_migration_push_mult={
+	decimals=0
+	color=bad
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
 
 state_unincorporated_starting_wages_mult={
 	decimals=0
@@ -2202,37 +2161,10 @@ state_conscription_rate_mult={
 	}
 }
 
-state_minimum_incorporated_subsistence_arable_land_add={
-	decimals=0
-	color=neutral
-	percent=yes
-	game_data={
-		ai_value=0
-	}
-}
-
-building_minimum_incorporated_subsistence_employment_add={
-	decimals=0
-	color=neutral
-	percent=yes
-	game_data={
-		ai_value=0
-	}
-}
-
 state_birth_rate_mult={
 	decimals=0
 	color=good
 	percent=yes
-	game_data={
-		ai_value=0
-	}
-}
-
-state_blockade_resistance_add={
-	decimals=0
-	color=good
-	percent=no
 	game_data={
 		ai_value=0
 	}
@@ -2356,15 +2288,6 @@ character_supply_route_cost_mult={
 character_advancement_speed_add={
 	decimals=1
 	color=good
-	game_data={
-		ai_value=0
-	}
-}
-
-character_advancement_speed_mult={
-	decimals=0
-	color=good
-	percent=yes
 	game_data={
 		ai_value=0
 	}
@@ -2640,6 +2563,23 @@ unit_devastation_mult={
 	}
 }
 
+unit_advancement_speed_mult={
+	decimals=0
+	color=good
+	percent=yes
+	game_data={
+		ai_value=5000
+	}
+}
+
+unit_convoy_requirements_mult={
+	decimals=1
+	color=bad
+	percent=yes
+	game_data={
+		ai_value=0
+	}
+}
 
 unit_convoy_raiding_mult={
 	decimals=1
@@ -2921,67 +2861,67 @@ dummy_modifier_type={
 
 state_radicalism_increases_violent_hostility_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = bad
 }
 
 state_radicalism_increases_cultural_erasure_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = bad
 }
 
 state_radicalism_increases_open_prejudice_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = bad
 }
 
 state_radicalism_increases_second_rate_citizen_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = bad
 }
 
 state_radicalism_increases_full_acceptance_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = bad
 }
 
 state_loyalism_increases_violent_hostility_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = good
 }
 
 state_loyalism_increases_cultural_erasure_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = good
 }
 
 state_loyalism_increases_open_prejudice_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = good
 }
 
 state_loyalism_increases_second_rate_citizen_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = good
 }
 
 state_loyalism_increases_full_acceptance_mult = {
 	percent = yes
-	decimals = 0
+	decimals = 2
 	color = good
 }
 
 state_sell_orders_ammunition_add={
 	decimals=0
-	color=neutral
+	color=good
 	game_data={
 		ai_value=0
 	}
@@ -2989,7 +2929,7 @@ state_sell_orders_ammunition_add={
 
 state_sell_orders_small_arms_add={
 	decimals=0
-	color=neutral
+	color=good
 	game_data={
 		ai_value=0
 	}
@@ -2997,64 +2937,7 @@ state_sell_orders_small_arms_add={
 
 state_sell_orders_artillery_add={
 	decimals=0
-	color=neutral
-	game_data={
-		ai_value=0
-	}
-}
-
-state_sell_orders_grain_add={
-	decimals=0
-	color=neutral
-	game_data={
-		ai_value=0
-	}
-}
-
-state_buy_orders_ammunition_add={
-	decimals=0
-	color=neutral
-	game_data={
-		ai_value=0
-	}
-}
-
-state_buy_orders_small_arms_add={
-	decimals=0
-	color=neutral
-	game_data={
-		ai_value=0
-	}
-}
-
-state_buy_orders_artillery_add={
-	decimals=0
-	color=neutral
-	game_data={
-		ai_value=0
-	}
-}
-
-country_tobacco_min_export_tariffs_level_add={
-	decimals=0
-	color=neutral
-	game_data={
-		ai_value=0
-	}
-}
-
-country_tobacco_max_export_tariffs_level_add={
-	decimals=0
-	color=neutral
-	game_data={
-		ai_value=0
-	}
-}
-
-country_tobacco_export_tariffs_rate_add={
-	percent = yes
-	decimals=2
-	color=neutral
+	color=good
 	game_data={
 		ai_value=0
 	}
